@@ -113,23 +113,56 @@ public class Day02_5_문제2_문제14 {
 		
 		//문제15 : 나이를 입력받아 나이가 10세이상이면 학생 , 20세이상이면 성인 , 40세이상이면 중년 으로 출력하기
 		
+		int age = scanner.nextInt();
+		String result = (age >= 40) ? "중년" : (age >= 20) ? "성인" : (age >=10) ? "학생" : "아동";
+		System.out.println("당신은 " + result + "입니다");
+		
 		//문제16 : 3개의 정수를 입력받아 오름차순으로 정렬 
 		
 		 int num1 = scanner.nextInt();
 		 int num2 = scanner.nextInt();
 		 int num3 = scanner.nextInt();
 		 
-		 int max = (num1 > num2 && num2 > num3) ? num1 : (num1 < num2 && num2 > num3) ? num2 : (num1 < num2 && num2 < num3) ? num3 : num1;
-		 int mid = (num1 < num2 && num2 > num3) ? num1 : (num1 < num2 && num2 > num3) ? num2 : (num1 < num2 && num2 < num3) ? num3 : num1;
-		 int min = (num1 < num2 && num2 < num3) ? num3 : (num1 < num2 && num2 > num3) ? num2 : (num1 > num2 && num2 > num3) ? num1 : num3;
-		 System.out.println("답"+max + mid + min);
+		 int max = (num1 > num2 && num1 > num3) ? num1 : (num2 > num1 && num2 > num3) ? num2 : num3;
+		 int min = (num1 < num2 && num1 < num3) ? num1 : (num2 < num1 && num2 < num3) ? num2 : num3;
 		 
-		
-		
+		 //a : A > B > C
+		 int mid = (num1 > num2 && num1 < num3) ? num1 : (num2 > num1 && num2 < num3) ? num2 : (num3 > num1 && num2 < num3) ? num3 : 
+			 	   (num1 < num2 && num1 > num3) ? num1 : (num2 < num1 && num2 > num3) ? num2 : num3;
+		 
+		 System.out.println("답 "+min + mid + max);
+		 	
 		//문제17 : 4개의 정수를 입력받아 내림차순으로 정렬 
-		
-		
-		
+		 
+		 int sum1 = scanner.nextInt();
+		 int sum2 = scanner.nextInt();
+		 int sum3 = scanner.nextInt();
+		 int sum4 = scanner.nextInt();
+		 
+		 int max1 = (sum1 > sum2 && sum1 > sum3 && sum1 > sum4) ? sum1 : (sum2 > sum1 && sum2 > sum3 && sum2 > sum4) ? sum2 :
+			 		(sum3 > sum1 && sum3 > sum2 && sum3 > sum4) ? sum3 : sum4;
+		 int min1 = (sum1 < sum2 && sum1 < sum3 && sum1 < sum4) ? sum1 : (sum2 < sum1 && sum2 < sum3 && sum2 < sum4) ? sum2 :
+		 			(sum3 < sum1 && sum3 < sum2 && sum3 < sum4) ? sum3 : sum4;
+		 
+		 int mid1_1 = 	(sum1 > sum2 && sum1 < sum3 && sum1 < sum4) ? sum1 : 
+			 		  	(sum2 > sum1 && sum2 < sum3 && sum2 < sum4) ? sum2 :
+			 		  	(sum3 > sum1 && sum3 < sum2 && sum3 < sum4) ? sum3 :
+			 		  	(sum4 > sum1 && sum4 < sum2 && sum4 < sum3) ? sum4 :
+			 		  		
+			 			(sum1 > sum3 && sum1 < sum2 && sum1 < sum4) ? sum1 :
+			 			(sum2 > sum3 && sum2 < sum1 && sum2 < sum4) ? sum2 :
+			 			(sum3 > sum2 && sum3 < sum1 && sum3 < sum4) ? sum3 :
+			 			(sum4 > sum3 && sum4 < sum1 && sum4 > sum2) ? sum4 :
+			 			
+			 			(sum1 > sum4 && sum1 < sum2 && sum1 < sum3) ? sum1 :
+			 			(sum2 > sum4 && sum2 < sum1 && sum2 < sum3) ? sum2 :
+			 			(sum3 > sum4 && sum3 < sum1 && sum3 < sum3) ? sum3 :
+			 			sum4;
+		 
+		 int mid1_2 = (sum1+sum2+sum3+sum4)-(max1 + min1 + mid1_1);
+		 
+
+		 System.out.println("답 "+ max1 + mid1_2 + mid1_1 + min1);
 		// p. 102 확인문제
 		 
 		// 1 : 3
