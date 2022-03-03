@@ -2,9 +2,9 @@ package Day3;
 
 import java.util.Scanner;
 
-public class Day03_7 {
+public class Day03_7 {//cs
 
-	public static void main(String[] args) 
+	public static void main(String[] args) //ms
 	
 	{
 		boolean run = true; //실행 여부 변수 / true = 실행 false = 종료

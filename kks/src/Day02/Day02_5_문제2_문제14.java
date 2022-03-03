@@ -140,7 +140,7 @@ public class Day02_5_문제2_문제14 {
 		 int sum2 = scanner.nextInt();
 		 int sum3 = scanner.nextInt();
 		 int sum4 = scanner.nextInt();
-		 
+		 /*
 		 int max1 = (sum1 > sum2 && sum1 > sum3 && sum1 > sum4) ? sum1 : (sum2 > sum1 && sum2 > sum3 && sum2 > sum4) ? sum2 :
 			 		(sum3 > sum1 && sum3 > sum2 && sum3 > sum4) ? sum3 : (sum1 ==sum2 && sum1 > sum3 && sum1 > sum4) ? num1 :
 			 		(sum2 ==sum3 && sum2 > sum1 && sum2 > sum4) ? sum2 : (sum3 ==sum4 && sum3 ? sum1 && sum3 > sum2) ? sum3 :
@@ -151,7 +151,7 @@ public class Day02_5_문제2_문제14 {
 		 			(sum3 < sum1 && sum3 < sum2 && sum3 < sum4) ? sum3 : (sum1 ==sum2 && sum1 < sum3 && sum1 < sum4) ? sum1 :
 		 			(sum2 ==sum3 && sum2 < sum1 && sum2 < sum4) ? sum2 : (sum3 ==sum4 && sum3 < sum1 && sum3 < sum2) ? sum3 :
 		 			;		 
-		 
+		 */
 		 int mid1_1 = 	(sum1 > sum2 && sum1 < sum3 && sum1 < sum4) ? sum1 : 
 			 		  	(sum2 > sum1 && sum2 < sum3 && sum2 < sum4) ? sum2 :
 			 		  	(sum3 > sum1 && sum3 < sum2 && sum3 < sum4) ? sum3 :
@@ -179,7 +179,7 @@ public class Day02_5_문제2_문제14 {
 		 //int mid1_2 = (sum1+sum2+sum3+sum4)-(max1 + min1 + mid1_1);41
 		 
 
-		 System.out.println("답 "+ max1 + mid1_2 + mid1_1 + min1);
+		 //System.out.println("답 "+ max1 + mid1_2 + mid1_1 + min1);
 		// p. 102 확인문제
 		 
 		// 1 : 3
