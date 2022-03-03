@@ -197,6 +197,72 @@ public class Day03_8_별짓기연습 {//c s
 			System.out.println();
 		}
 		
+		//별문제11 : 입력받은 줄만큼 출력 [ 입력받은 행/열 동일 ]
+		//						줄		별		공란
+		//     *********		1		9		0
+		//		*******			2		7		1
+		//		 *****			3		5		2
+		//		  ***			4		3		3
+		//		   *			5		1		4
+		//	      ***			6		3		3
+		//	     *****			7		5		2
+		//	    *******			8		7		1
+		//     *********		9		9		0
 		
+		System.out.println("----------------------------");	
+		System.out.println("별문제9) 별갯수 입력");
+		int line9= scanner.nextInt();	
+		
+		for(int i = 1; i <= line9; i++) {
+			for(int b = 1; b <= i -1; b++) {
+				System.out.print(" ");
+			}
+			for(int s = 1; s <= (line9*2)-(i*2-1); s++) {
+				System.out.print("*");
+			}
+			System.out.println();
+		}
+		for(int j = 1; j <= line9-1; j++) {
+			for(int b1 = 1; b1 <= line9 -j-1; b1++) {
+				System.out.print(" ");
+			}
+			for(int s1 = 1; s1 <= j*2+1; s1++){
+				System.out.print("*");
+			}
+			System.out.println();
+		}
+		
+		//별문제11 : 입력받은 줄만큼 출력 [ 입력받은 행/열 동일 ]
+		//						줄		별		공란
+		//		*     *			1		2		5
+		//		 *   *			2		2		3
+		//		  * *			3		2		1
+		//		   *			4		1		3.3	
+		//	      * *			5		2		1
+		//	     *   *			6		2		3
+		//	    *     *			7		2		5
+		
+		System.out.println("----------------------------");	
+		System.out.println("별문제9) 별갯수 입력");
+		int line10= scanner.nextInt();	
+		
+		for(int i = 1; i <= line10; i++) {
+			for(int b = 1; b <= i -1; b++) {
+				System.out.print(" ");
+			}
+			for(int s = 1; s <= (line10*2)-(i*2-1); s++) {
+				System.out.print("*");
+			}
+			System.out.println();
+		}
+		for(int j = 1; j <= line10-1; j++) {
+			for(int b1 = 1; b1 <= line10 -j-1; b1++) {
+				System.out.print(" ");
+			}
+			for(int s1 = 1; s1 <= j*2+1; s1++){
+				System.out.print("*");
+			}
+			System.out.println();
+		}
 	}//m e
 }// c e
