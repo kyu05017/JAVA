@@ -2,12 +2,11 @@ package Day3;
 
 import java.util.Scanner;
 
-public class Day03_7 { //  cs
+public class Day03_7 {
+
+	public static void main(String[] args) 
 	
-	public static void main() {// ms
-		
-		
-		//공통 변수 어디서든 사용할수 있는 변수
+	{
 		boolean run = true; //실행 여부 변수 / true = 실행 false = 종료
 		int balance = 0; // 예금액 [ 통장안에 있는 금액]		
 		Scanner scanner = new Scanner(System.in); // 입력객체
@@ -46,6 +45,7 @@ public class Day03_7 { //  cs
 			
 			}
 		}
-				
-	}//me
-}//sc
+
+	}
+
+}
