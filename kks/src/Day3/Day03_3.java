@@ -89,17 +89,29 @@ public class Day03_3 { //c s
 		
 		int total = (국어 + 영어 + 수학)/3;
 		
-		if(total >= 90){
+		if(total >= 90){//평균 90점 이상이면
+				//if 중첩
 			if(국어==100) {
 				System.out.println("국어우수");
-			} else if (영어 == 100) {
+			}if (영어 == 100) {
 				System.out.println("영어우수");
-			} else if (수학 == 100 ) {
+			}if (수학 == 100 ) {
 				System.out.println("수학우수");
 			}
-		}else {
+		} else if(total >= 80) { //평균 80점 이상이면
+				//if 중첩
+			if(국어>=90) {
+				System.out.println("국어장려");
+			}if (영어 >=90) {
+				System.out.println("영어장려");
+			}if (수학 >=90 ) {
+				System.out.println("수학장려");
+			}
+		} else {
 			System.out.println("재시험");
 		}
+		
 	}//m e
 
 }//c e
+
