@@ -1,5 +1,7 @@
 package Day3;
 
+import java.util.Scanner;
+
 public class Day03_4 {//cs
 
 	public static void main(String[] args) {//ms
@@ -73,8 +75,27 @@ public class Day03_4 {//cs
 	
 		}
 		
+		System.out.println("----------------------------------------------------------");
+		
+		//문제1) 국어,영어, 수학 점수를 입려갑ㄷ아 평균이 90점 이상이면 A 80점이상이면 B 나머지 탈락
+		Scanner scanner = new Scanner(System.in);
+		
+		System.out.println("국어점수 입력"); int 국어 = scanner.nextInt();
+		System.out.println("영어점수 입력"); int 영어 = scanner.nextInt();
+		System.out.println("수학점수 입력"); int 수학 = scanner.nextInt();
+		
+		int total = (국어 + 영어 + 수학) /3;
 		
 		
+		System.out.println("평균 : " + total + " 나누기 /10 : " + (total/10));
+		
+		switch (total/10) { // 1의 자리를 제외 해서 계산
+			case  9 : System.out.println("A등급"); break;
+			case  8 : System.out.println("B등급"); break;
+			default  : System.out.println(" 탈락"); break; //마지막인 default는 break를 하지 않아도 된다,		
+		}
+		
+		//다만 변수의 패턴이 없는 경우는 힘들수 있다 그럴경우 if 문 추천
 		
 
 	}//me
