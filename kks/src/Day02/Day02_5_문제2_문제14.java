@@ -123,8 +123,10 @@ public class Day02_5_문제2_문제14 {
 		 int num2 = scanner.nextInt();
 		 int num3 = scanner.nextInt();
 		 
-		 int max = (num1 > num2 && num1 > num3) ? num1 : (num2 > num1 && num2 > num3) ? num2 : num3;
-		 int min = (num1 < num2 && num1 < num3) ? num1 : (num2 < num1 && num2 < num3) ? num2 : num3;
+		 int max = (num1 > num2 && num1 > num3) ? num1 : (num2 > num1 && num2 > num3) ? num2 :
+			 	   (num1 ==num2 && num1 > num3) ? num1 : (num1 == num3 &&num1 > num2) ? num2 : num3;
+		 int min = (num1 < num2 && num1 < num3) ? num1 : (num2 < num1 && num2 < num3) ? num2 : 
+		 		   (num1 ==num2 && num1 < num3) ? num1 : (num2 ==num3 && num2 < num1) ? num2 : num3;
 		 
 		 //a : A > B > C
 		 int mid = (num1 > num2 && num1 < num3) ? num1 : (num2 > num1 && num2 < num3) ? num2 : (num3 > num1 && num2 < num3) ? num3 : 
@@ -140,9 +142,15 @@ public class Day02_5_문제2_문제14 {
 		 int sum4 = scanner.nextInt();
 		 
 		 int max1 = (sum1 > sum2 && sum1 > sum3 && sum1 > sum4) ? sum1 : (sum2 > sum1 && sum2 > sum3 && sum2 > sum4) ? sum2 :
-			 		(sum3 > sum1 && sum3 > sum2 && sum3 > sum4) ? sum3 : sum4;
+			 		(sum3 > sum1 && sum3 > sum2 && sum3 > sum4) ? sum3 : (sum1 ==sum2 && sum1 > sum3 && sum1 > sum4) ? num1 :
+			 		(sum2 ==sum3 && sum2 > sum1 && sum2 > sum4) ? sum2 : (sum3 ==sum4 && sum3 ? sum1 && sum3 > sum2) ? sum3 :
+			 		sum4;
+		 
+		 
 		 int min1 = (sum1 < sum2 && sum1 < sum3 && sum1 < sum4) ? sum1 : (sum2 < sum1 && sum2 < sum3 && sum2 < sum4) ? sum2 :
-		 			(sum3 < sum1 && sum3 < sum2 && sum3 < sum4) ? sum3 : sum4;
+		 			(sum3 < sum1 && sum3 < sum2 && sum3 < sum4) ? sum3 : (sum1 ==sum2 && sum1 < sum3 && sum1 < sum4) ? sum1 :
+		 			(sum2 ==sum3 && sum2 < sum1 && sum2 < sum4) ? sum2 : ;
+		 
 		 
 		 int mid1_1 = 	(sum1 > sum2 && sum1 < sum3 && sum1 < sum4) ? sum1 : 
 			 		  	(sum2 > sum1 && sum2 < sum3 && sum2 < sum4) ? sum2 :
@@ -159,7 +167,16 @@ public class Day02_5_문제2_문제14 {
 			 			(sum3 > sum4 && sum3 < sum1 && sum3 < sum3) ? sum3 :
 			 			sum4;
 		 
-		 int mid1_2 = (sum1+sum2+sum3+sum4)-(max1 + min1 + mid1_1);
+		 int mid1_2 =   (sum1 > sum2 && sum1 > sum3 && sum1 < sum4) ? sum1 : (sum2 > sum1 && sum2 > sum3 && sum2 < sum4) ? sum2 :
+			 			(sum3 > sum1 && sum3 > sum2 && sum3 < sum4) ? sum3 : (sum4 > sum1 && sum4 > sum2 && sum4 < sum3) ? sum4 :
+			 				
+			 			(sum1 > sum2 && sum1 > sum4 && sum1 < sum3) ? sum1 : (sum2 > sum1 && sum1 > sum4 && sum2 < sum3) ? sum2 :
+			 			(sum3 > sum1 && sum3 > sum4 && sum3 < sum2) ? sum3 : (sum4 > sum1 && sum4 > sum3 && sum4 < sum2) ? sum4 :
+			 				
+			 			(sum1 > sum2 && sum1 > sum4 && sum1 < sum3) ? sum1 : (sum2 > sum3 && sum2 > sum4 && sum2 < sum1) ? sum2 :
+			 			(sum3 > sum2 && sum3 > sum4 && sum3 < sum1) ? sum3 : sum4;
+		 
+		 //int mid1_2 = (sum1+sum2+sum3+sum4)-(max1 + min1 + mid1_1);41
 		 
 
 		 System.out.println("답 "+ max1 + mid1_2 + mid1_1 + min1);
