@@ -149,8 +149,8 @@ public class Day02_5_문제2_문제14 {
 		 
 		 int min1 = (sum1 < sum2 && sum1 < sum3 && sum1 < sum4) ? sum1 : (sum2 < sum1 && sum2 < sum3 && sum2 < sum4) ? sum2 :
 		 			(sum3 < sum1 && sum3 < sum2 && sum3 < sum4) ? sum3 : (sum1 ==sum2 && sum1 < sum3 && sum1 < sum4) ? sum1 :
-		 			(sum2 ==sum3 && sum2 < sum1 && sum2 < sum4) ? sum2 : ;
-		 
+		 			(sum2 ==sum3 && sum2 < sum1 && sum2 < sum4) ? sum2 : (sum3 ==sum4 && sum3 < sum1 && sum3 < sum2) ? sum3 :
+		 			;		 
 		 
 		 int mid1_1 = 	(sum1 > sum2 && sum1 < sum3 && sum1 < sum4) ? sum1 : 
 			 		  	(sum2 > sum1 && sum2 < sum3 && sum2 < sum4) ? sum2 :
