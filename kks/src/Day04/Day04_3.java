@@ -42,14 +42,14 @@ public class Day04_3 {//c s
 				game+=1;
 				same+=1;
 			}
-			else if(player == 0 && computer == 2 || player == 1 && computer == 0 ||player == 2 && computer == 1) {
+			else if((player == 0 && computer == 2) || (player == 1 && computer == 0) || (player == 2 && computer == 1)) {
 				System.out.println("당신이 이겼습니다");
 				System.out.println(" 플레이어가 낸수 : " + player);
 				System.out.println(" 컴퓨터가 낸수 : " + computer);
 				playerWin +=1;
 				game+=1;
 			}
-			else if(computer == 1 && player == 0 || computer == 0 && player == 2 || computer == 2 && player == 1) {
+			else if((computer == 1 && player == 0) || (computer == 0 && player == 2) || (computer == 2 && player == 1)) {
 				System.out.println("당신이 졌습니다");
 				System.out.println(" 플레이어가 낸수 : " + player);
 				System.out.println(" 컴퓨터가 낸수 : " + computer);
