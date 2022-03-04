@@ -38,42 +38,41 @@ public class Day04_3 {//c s
 	
 			
 			if(player == computer) {
-				System.out.println("비겻습니다.");
+				System.err.println("비겻습니다.");
 				game+=1;
 				same+=1;
 			}
 			else if((player == 0 && computer == 2) || (player == 1 && computer == 0) || (player == 2 && computer == 1)) {
-				System.out.println("당신이 이겼습니다");
+				System.err.println("당신이 이겼습니다");
 				System.out.println(" 플레이어가 낸수 : " + player);
 				System.out.println(" 컴퓨터가 낸수 : " + computer);
 				playerWin +=1;
 				game+=1;
 			}
 			else if((computer == 1 && player == 0) || (computer == 0 && player == 2) || (computer == 2 && player == 1)) {
-				System.out.println("당신이 졌습니다");
+				System.err.println("당신이 졌습니다");
 				System.out.println(" 플레이어가 낸수 : " + player);
 				System.out.println(" 컴퓨터가 낸수 : " + computer);
 				computerWin +=1;
 				game+=1;
 			}
-
 			else if(player == 3) {
 				System.out.println("-----전적-----");
 				System.out.println("총 게임수 : " + game);
-				System.out.println("비긴 횟수  :" + same);
+				System.out.println("비긴  횟수 :" + same);
 				System.out.println("당신의 승리 :" + playerWin);
 				System.out.println("컴퓨터 승리 :" + computerWin);
 				System.out.println("-----최종승리-----");
 				if(playerWin > computerWin) {
-					System.out.println("당신이 이겼습니다.");
+					System.err.println("당신이 이겼습니다.");
 				} 
 				else {
-					System.out.println("컴퓨터가 이겼습니다.");
+					System.err.println("컴퓨터가 이겼습니다.");
 				}
 				break;
 			}
 			else {
-				
+				System.err.println("잘못된 입력입니다.");
 			}
 
 		}
