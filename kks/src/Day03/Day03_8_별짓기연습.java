@@ -245,7 +245,7 @@ public class Day03_8_별짓기연습 {//c s
 		System.out.println("----------------------------");	
 		System.out.println("별문제10) 별갯수 입력");
 		int line10= scanner.nextInt();	
-		
+		/*
 		for(int i = 1; i <= line10 - 2; i++) {
 			
 			for(int s = 1; s <= line10 ;s++) {
@@ -274,8 +274,14 @@ public class Day03_8_별짓기연습 {//c s
 			}
 			System.out.println();
 		}
+		*/
 		for(int i = 1; i <= line10 -3;i++) {
-			
+			for(int b = 1; b <= i - 1; b++) {
+				System.out.print(" ");
+			}
+			for(int s = 1; s == 1; ) {
+				System.out.print("*");
+			}
 		}
 
 	}//m e
