@@ -1,5 +1,8 @@
 package Day04;
 
+import java.util.Random;
+import java.util.Scanner;
+
 public class Day04_5 {
 
 	public static void main(String[] args) {
@@ -12,6 +15,9 @@ public class Day04_5 {
 				//1. 1~ 45 사이
 				//2. 중복 x
 			//3사용자 추첨번호와 컴ㅍ퓨터 추첨번호 동일 수의 개수
+		
+
+		
 		
 
 	}
