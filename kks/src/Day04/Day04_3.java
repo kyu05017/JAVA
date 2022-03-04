@@ -36,27 +36,8 @@ public class Day04_3 {//c s
 								//random.nextInt(10) : 0 ~ 9 까지 난수 발생
 								//rnadom.nextInt(11) + 10 : 10~20 중 난수 발생
 	
-			
-			if(player == computer) {
-				System.err.println("비겻습니다.");
-				game+=1;
-				same+=1;
-			}
-			else if((player == 0 && computer == 2) || (player == 1 && computer == 0) || (player == 2 && computer == 1)) {
-				System.err.println("당신이 이겼습니다");
-				System.out.println(" 플레이어가 낸수 : " + player);
-				System.out.println(" 컴퓨터가 낸수 : " + computer);
-				playerWin +=1;
-				game+=1;
-			}
-			else if((computer == 1 && player == 0) || (computer == 0 && player == 2) || (computer == 2 && player == 1)) {
-				System.err.println("당신이 졌습니다");
-				System.out.println(" 플레이어가 낸수 : " + player);
-				System.out.println(" 컴퓨터가 낸수 : " + computer);
-				computerWin +=1;
-				game+=1;
-			}
-			else if(player == 3) {
+			if(player == 3) {
+				
 				System.out.println("-----전적-----");
 				System.out.println("총 게임수 : " + game);
 				System.out.println("비긴  횟수 :" + same);
@@ -65,13 +46,36 @@ public class Day04_3 {//c s
 				System.out.println("-----최종승리-----");
 				if(playerWin > computerWin) {
 					System.err.println("당신이 이겼습니다.");
+					System.out.println("알림)게임을 종료 합니다");
 				} 
 				else {
 					System.err.println("컴퓨터가 이겼습니다.");
+					System.out.println("알림)게임을 종료 합니다");
 				}
 				break;
 			}
+			
+			if((player == 0 && computer == 2) || (player == 1 && computer == 0) || (player == 2 && computer == 1)) {
+				System.err.println("당신이 이겼습니다");
+				System.out.println(" 플레이어가 낸수 : " + player);
+				System.out.println(" 컴퓨터가 낸수 : " + computer);
+				playerWin +=1;
+				game+=1;
+			}
+			else if((player == 0 && computer == 0) || (player == 1 && computer == 1) || (player == 2 && computer == 2)) {
+				System.err.println("비겼습니다.");
+				System.out.println(" 플레이어가 낸수 : " + player);
+				System.out.println(" 컴퓨터가 낸수 : " + computer);
+				same +=1;
+			}
 			else {
+				System.err.println("당신이 졌습니다");
+				System.out.println(" 플레이어가 낸수 : " + player);
+				System.out.println(" 컴퓨터가 낸수 : " + computer);
+				computerWin +=1;
+				game+=1;
+			}
+			if(player > 3) {
 				System.err.println("잘못된 입력입니다.");
 			}
 
