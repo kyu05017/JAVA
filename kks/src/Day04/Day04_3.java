@@ -53,35 +53,33 @@ public class Day04_3 {//c s
 					System.out.println("알림)게임을 종료 합니다");
 				}
 				break;
-			}
-			
-			if((player == 0 && computer == 2) || (player == 1 && computer == 0) || (player == 2 && computer == 1)) {
-				System.err.println("당신이 이겼습니다");
-				System.out.println(" 플레이어가 낸수 : " + player);
-				System.out.println(" 컴퓨터가 낸수 : " + computer);
-				playerWin +=1;
-				game+=1;
-			}
-			else if((player == 0 && computer == 0) || (player == 1 && computer == 1) || (player == 2 && computer == 2)) {
-				System.err.println("비겼습니다.");
-				System.out.println(" 플레이어가 낸수 : " + player);
-				System.out.println(" 컴퓨터가 낸수 : " + computer);
-				same +=1;
+			}else if(player >= 0 && player <= 2) {
+				if((player == 0 && computer == 2) || (player == 1 && computer == 0) || (player == 2 && computer == 1)) {
+					System.err.println("당신이 이겼습니다");
+					System.out.println(" 플레이어가 낸수 : " + player);
+					System.out.println(" 컴퓨터가 낸수 : " + computer);
+					playerWin +=1;
+					game+=1;
+				}
+				else if((player == 0 && computer == 0) || (player == 1 && computer == 1) || (player == 2 && computer == 2)) {
+					System.err.println("비겼습니다.");
+					System.out.println(" 플레이어가 낸수 : " + player);
+					System.out.println(" 컴퓨터가 낸수 : " + computer);
+					same +=1;
+				}
+				else {
+					System.err.println("당신이 졌습니다");
+					System.out.println(" 플레이어가 낸수 : " + player);
+					System.out.println(" 컴퓨터가 낸수 : " + computer);
+					computerWin +=1;
+					game+=1;
+				}
 			}
 			else {
-				System.err.println("당신이 졌습니다");
-				System.out.println(" 플레이어가 낸수 : " + player);
-				System.out.println(" 컴퓨터가 낸수 : " + computer);
-				computerWin +=1;
-				game+=1;
-			}
-			if(player > 3) {
 				System.err.println("잘못된 입력입니다.");
 			}
-
+	
 		}
-		
-		
 	}//s e
 
 }// c e
