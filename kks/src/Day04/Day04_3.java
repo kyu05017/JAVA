@@ -38,8 +38,8 @@ public class Day04_3 {//c s
 	
 			if(player == 3) {
 				
-				System.out.println("-----전적-----");
-				System.out.println("총 게임수 : " + game);
+				System.out.println("------전적------");
+				System.out.println("총  게임수 : " + game);
 				System.out.println("비긴  횟수 :" + same);
 				System.out.println("당신의 승리 :" + playerWin);
 				System.out.println("컴퓨터 승리 :" + computerWin);
