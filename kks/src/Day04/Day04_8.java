@@ -43,5 +43,27 @@ public class Day04_8 {
 			System.out.print(temp + " ");
 		}
 		
+		//로또 번호 생성
+		for(int i = 0; i < 6; i++) {
+			int lotto = random.nextInt(45)+1;
+			boolean pass2 = true;
+			
+			for(int temp : lottoNum) {
+				if(lotto == temp) {
+					i--;
+					pass2 = false;
+				}
+			}
+			if(pass2 == true) {
+				lottoNum[i] = lotto;
+			}
+		}
+		System.out.print("\n \t추첨번호\t: ");
+		// * 배열내 모든 인덱스 출력 
+		for( int temp : lottoNum ) {
+			System.out.print( temp +"\t");
+		}
+		
+		
 	}//m e
 }//c e
