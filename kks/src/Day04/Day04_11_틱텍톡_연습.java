@@ -3,7 +3,7 @@ package Day04;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Day04_11_틱텍톡_연습_실패 {// c s
+public class Day04_11_틱텍톡_연습 {// c s
 	
 	public static void main(String[] args) {
 		/*
@@ -99,7 +99,11 @@ public class Day04_11_틱텍톡_연습_실패 {// c s
 			}
 			//무승부
 			
-			
+			for(int i = 0; i < 9; i++) {
+				if( gamePad[i].equals("[ ]") ) {
+					System.out.println("무승부입니다.");
+					}
+				}
 			
 			/////////////////////////// 4. 게임종료 //////////////////////////////
 			if( win.equals("[O]") ) { 

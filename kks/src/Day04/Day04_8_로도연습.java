@@ -4,7 +4,7 @@ import java.util.Iterator;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Day04_8 {//c s
+public class Day04_8_로도연습 {//c s
 
 	public static void main(String[] args) {//m s
 		
