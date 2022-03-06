@@ -38,7 +38,9 @@ public class Day04_11_틱텍톡_연습 {// c s
 		String[] gamePad = { "[ ]", "[ ]", "[ ]" ,
 						     "[ ]", "[ ]", "[ ]" , 
 						     "[ ]", "[ ]", "[ ]" };
-		String win = ""; 
+		String win = "";
+		int myturn = 0;
+		int comturn = 0;
 		
 		
 		while(true) {
@@ -58,6 +60,7 @@ public class Day04_11_틱텍톡_연습 {// c s
 				if( gamePad[point].equals("[ ]")) {
 					// 선택한 위치가 공백이면 O 알 두기 
 					gamePad[point] = "[O]";
+					myturn +=1;
 					break;	// 가장 가까운 반복문 탈출;
 				}else {
 					System.out.println(" 알림)) 해당 위치에 이미 알이 존재. [ 재 선택 ] ");
@@ -69,52 +72,54 @@ public class Day04_11_틱텍톡_연습 {// c s
 				int cumPoint = random.nextInt(9);
 				if(gamePad[cumPoint].equals("[ ]")) {
 					gamePad[cumPoint] = "[X]";
+					comturn +=1;
 					break;
 				}
 			}
 			
 			//가로로 승리
-			for(int i = 0; i <= 6; i+=3) {
-				if(gamePad[i].equals(gamePad[i+1]) && gamePad[i+1].equals(gamePad[i+2])) {
-					//i가 0일때 인덱스0이 1과 같으면서 1일때 2와 같은경우
-					//i가 3일때 인데스3이 4와 같으면서 4일때 5와 같은경우
-					//i가 6일때 인데스6이 7과 같으면서 7일대 8과 같은경우
-					win = gamePad[i];//동일한 알으 승리알 변수에 대입
-				}
-			}
-			//세로로 승리
-			for(int i = 0; i <= 2; i++) {
-				if(gamePad[i].equals(gamePad[i+3]) && gamePad[i+3].equals(gamePad[i+6])) {
-					//i가 0일때 인덱스 0이 3과 같으면서 3이 6이랑 동일한 경우
-					//i가 1일때 인덱스 1이 4와 같으면서 4가 7이랑 동일한 경우
-					//i가 2일때 인덱스 2가 5와 같으면서 5가 8이랑 동일한 경우
-					win = gamePad[i];
-				}
-			}
-			if( gamePad[0].equals(gamePad[4]) && gamePad[4].equals(gamePad[8] )) {
-				win = gamePad[0];
-			}
-			if( gamePad[2].equals(gamePad[4]) && gamePad[4].equals(gamePad[6] )) {
-				win = gamePad[2];
-			}
-			//무승부
-			
-			for(int i = 0; i < 9; i++) {
-				if( gamePad[i].equals("[ ]") ) {
-					System.out.println("무승부입니다.");
+			if(myturn < 6 || comturn < 5) {
+				for(int i = 0; i <= 6; i+=3) {
+					if(gamePad[i].equals(gamePad[i+1]) && gamePad[i+1].equals(gamePad[i+2])) {
+						//i가 0일때 인덱스0이 1과 같으면서 1일때 2와 같은경우
+						//i가 3일때 인데스3이 4와 같으면서 4일때 5와 같은경우
+						//i가 6일때 인데스6이 7과 같으면서 7일대 8과 같은경우
+						win = gamePad[i];//동일한 알으 승리알 변수에 대입
 					}
 				}
-			
-			/////////////////////////// 4. 게임종료 //////////////////////////////
-			if( win.equals("[O]") ) { 
-				System.out.println(" 알림)) 플레이어 승리"); 
+				//세로로 승리
+				for(int i = 0; i <= 2; i++) {
+					if(gamePad[i].equals(gamePad[i+3]) && gamePad[i+3].equals(gamePad[i+6])) {
+						//i가 0일때 인덱스 0이 3과 같으면서 3이 6이랑 동일한 경우
+						//i가 1일때 인덱스 1이 4와 같으면서 4가 7이랑 동일한 경우
+						//i가 2일때 인덱스 2가 5와 같으면서 5가 8이랑 동일한 경우
+						win = gamePad[i];
+					}
+				}
+				if( gamePad[0].equals(gamePad[4]) && gamePad[4].equals(gamePad[8] )) {
+					win = gamePad[0];
+				}
+				if( gamePad[2].equals(gamePad[4]) && gamePad[4].equals(gamePad[6] )) {
+					win = gamePad[2];
+				}
+				//무승부
+				
+				
+				
+				/////////////////////////// 4. 게임종료 //////////////////////////////
+				if( win.equals("[O]") ) { 
+					System.out.println(" 알림)) 플레이어 승리"); 
+					break; // 게임종료 
+				}
+				if( win.equals("[X]") ) {
+					System.out.println(" 알림)) 컴퓨터 승리");
+					break; // 게임종료
+				}
+			}
+			else{
+				System.out.println(" 알림)) 비겼습니다."); 
 				break; // 게임종료 
 			}
-			if( win.equals("[X]") ) {
-				System.out.println(" 알림)) 컴퓨터 승리");
-				break; // 게임종료
-			}
-			
 			
 			
 		}//w e
