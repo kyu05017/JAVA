@@ -1,8 +1,10 @@
 package Star_Practice;
 
-public class Stat_pratice {
+import java.util.Scanner;
 
-	public static void main(String[] args) {
+public class Stat_pratice {//c s
+
+	public static void main(String[] args) {//m s
 		/*
 		 * 
 		 * 별문제11 : 입력받은 줄만큼 출력 [ 입력받은 행/열 동일 ] 
@@ -17,11 +19,43 @@ public class Stat_pratice {
 		 	*     *		
 			
 		 */
+		Scanner scanner = new Scanner(System.in);
 		
-		
-		for(int i = 1; i <= 7; i++) {
+		System.out.println("---------------------------------");
+		int line1 = scanner.nextInt();
+		for(int i = 1; i <= line1; i++) {
+			for (int j = 1; j < i; j++) {
+				System.out.print("-");
+			}
 			System.out.print("*");
+			System.out.println();
 		}
-	}
+		
+		
+		System.out.println("---------------------------------");
+		int line2 = scanner.nextInt();
+		for(int i = 1;i <= line2; i++) {
+			for(int j = 1; j <= line2 - i; j++) {
+				System.out.print("-");
+			}
+			System.out.print("*");
+			System.out.println();
+		}
+		
+		System.out.println("---------------------------------");
+		int line3 = scanner.nextInt();
+		for(int i = 1; i <= line3; i++) {
+			for(int j = 1; j <= line3; j++) {
+				if(j == i || j == 11-i) {
+					System.out.print("*");
+				}
+				else {
+					System.out.print(" ");
+				}
+			}
+		}
+		System.out.println();
+		System.out.println("---------------------------------");
 
-}
+	}//m e
+}//c e
