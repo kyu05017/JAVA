@@ -78,50 +78,57 @@ public class Day04_11_틱텍톡_연습 {// c s
 			}
 			
 			//가로로 승리
-			if(myturn < 6 || comturn < 5) {
-				for(int i = 0; i <= 6; i+=3) {
-					if(gamePad[i].equals(gamePad[i+1]) && gamePad[i+1].equals(gamePad[i+2])) {
-						//i가 0일때 인덱스0이 1과 같으면서 1일때 2와 같은경우
-						//i가 3일때 인데스3이 4와 같으면서 4일때 5와 같은경우
-						//i가 6일때 인데스6이 7과 같으면서 7일대 8과 같은경우
-						win = gamePad[i];//동일한 알으 승리알 변수에 대입
-					}
-				}
-				//세로로 승리
-				for(int i = 0; i <= 2; i++) {
-					if(gamePad[i].equals(gamePad[i+3]) && gamePad[i+3].equals(gamePad[i+6])) {
-						//i가 0일때 인덱스 0이 3과 같으면서 3이 6이랑 동일한 경우
-						//i가 1일때 인덱스 1이 4와 같으면서 4가 7이랑 동일한 경우
-						//i가 2일때 인덱스 2가 5와 같으면서 5가 8이랑 동일한 경우
-						win = gamePad[i];
-					}
-				}
-				if( gamePad[0].equals(gamePad[4]) && gamePad[4].equals(gamePad[8] )) {
-					win = gamePad[0];
-				}
-				if( gamePad[2].equals(gamePad[4]) && gamePad[4].equals(gamePad[6] )) {
-					win = gamePad[2];
-				}
-				//무승부
-				
-				
-				
-				/////////////////////////// 4. 게임종료 //////////////////////////////
-				if( win.equals("[O]") ) { 
-					System.out.println(" 알림)) 플레이어 승리"); 
-					break; // 게임종료 
-				}
-				if( win.equals("[X]") ) {
-					System.out.println(" 알림)) 컴퓨터 승리");
-					break; // 게임종료
+			
+			for(int i = 0; i <= 6; i+=3) {
+				if(gamePad[i].equals(gamePad[i+1]) && gamePad[i+1].equals(gamePad[i+2])) {
+				//i가 0일때 인덱스0이 1과 같으면서 1일때 2와 같은경우
+				//i가 3일때 인데스3이 4와 같으면서 4일때 5와 같은경우
+				//i가 6일때 인데스6이 7과 같으면서 7일대 8과 같은경우
+				win = gamePad[i];//동일한 알으 승리알 변수에 대입
 				}
 			}
-			else{
-				System.out.println(" 알림)) 비겼습니다."); 
+			//세로로 승리
+			for(int i = 0; i <= 2; i++) {
+				if(gamePad[i].equals(gamePad[i+3]) && gamePad[i+3].equals(gamePad[i+6])) {
+				//i가 0일때 인덱스 0이 3과 같으면서 3이 6이랑 동일한 경우
+				//i가 1일때 인덱스 1이 4와 같으면서 4가 7이랑 동일한 경우
+				//i가 2일때 인덱스 2가 5와 같으면서 5가 8이랑 동일한 경우
+					win = gamePad[i];
+				}
+			}
+			if( gamePad[0].equals(gamePad[4]) && gamePad[4].equals(gamePad[8] )) {
+				win = gamePad[0];
+			}
+			if( gamePad[2].equals(gamePad[4]) && gamePad[4].equals(gamePad[6] )) {
+				win = gamePad[2];
+			}
+						//무승부
+			boolean draw = false;
+			
+			for(int i = 0; i < gamePad.length; i++) {
+				if(comturn == 4)
+				{
+					if (gamePad[i].equals("[ ]")) {
+						draw = true;
+						break;
+					}
+				}
+				
+			}
+						
+						/////////////////////////// 4. 게임종료 //////////////////////////////
+			if( win.equals("[O]") ) { 
+				System.out.println(" 알림)) 플레이어 승리"); 
 				break; // 게임종료 
 			}
-			
-			
+			if( win.equals("[X]") ) {
+				System.out.println(" 알림)) 컴퓨터 승리");
+				break; // 게임종료
+			}
+			if (draw == true) {
+				System.out.println("알림)) 비겼습니다");
+				break;
+			}
 		}//w e
 		
 		for( int i = 0 ; i<gamePad.length; i++ ) {
