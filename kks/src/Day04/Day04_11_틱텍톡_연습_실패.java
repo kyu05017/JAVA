@@ -34,7 +34,7 @@ public class Day04_11_틱텍톡_연습_실패 {// c s
 					048 246
 		 */
 		Scanner scanner = new Scanner(System.in);
-		Random random = new Random();
+		
 		String[] gamePad = { "[ ]", "[ ]", "[ ]" ,
 						     "[ ]", "[ ]", "[ ]" , 
 						     "[ ]", "[ ]", "[ ]" };
@@ -47,14 +47,17 @@ public class Day04_11_틱텍톡_연습_실패 {// c s
 				//i는 게임패드[0~8] 9까지 1씩 증가하며 반복
 				System.out.print(gamePad[i]);
 				//인덱스 번호가 2 5 8이먄 줄바꿈
-				if( i % 3 == 2 ) System.out.println();
+				if( i % 3 == 2 ) {
+					System.out.println();
+				}
 			}
 			//플레이어 위치 선택
 			while( true ) {
-				System.out.print(" 위치 선택 : ");int choice = scanner.nextInt(); 
-				if( gamePad[choice].equals("[ ]")) {
+				System.out.print("위치 선택");
+				int point = scanner.nextInt(); 
+				if( gamePad[point].equals("[ ]")) {
 					// 선택한 위치가 공백이면 O 알 두기 
-					gamePad[choice] = "[ㅇ]";
+					gamePad[point] = "[O]";
 					break;	// 가장 가까운 반복문 탈출;
 				}else {
 					System.out.println(" 알림)) 해당 위치에 이미 알이 존재. [ 재 선택 ] ");
@@ -62,14 +65,16 @@ public class Day04_11_틱텍톡_연습_실패 {// c s
 			}
 			//컴퓨터 위치선택
 			while(true) {
-				int cumChoice = random.nextInt(9);
-				if(gamePad[cumChoice].equals("[ ]")) {
-					gamePad[cumChoice] = "[X]";
+				Random random = new Random();
+				int cumPoint = random.nextInt(9);
+				if(gamePad[cumPoint].equals("[ ]")) {
+					gamePad[cumPoint] = "[X]";
 					break;
 				}
 			}
+			
 			//가로로 승리
-			for(int i = 0; i <= 6; i=+3) {
+			for(int i = 0; i <= 6; i+=3) {
 				if(gamePad[i].equals(gamePad[i+1]) && gamePad[i+1].equals(gamePad[i+2])) {
 					//i가 0일때 인덱스0이 1과 같으면서 1일때 2와 같은경우
 					//i가 3일때 인데스3이 4와 같으면서 4일때 5와 같은경우
@@ -92,6 +97,10 @@ public class Day04_11_틱텍톡_연습_실패 {// c s
 			if( gamePad[2].equals(gamePad[4]) && gamePad[4].equals(gamePad[6] )) {
 				win = gamePad[2];
 			}
+			//무승부
+			
+			
+			
 			/////////////////////////// 4. 게임종료 //////////////////////////////
 			if( win.equals("[O]") ) { 
 				System.out.println(" 알림)) 플레이어 승리"); 
@@ -101,6 +110,9 @@ public class Day04_11_틱텍톡_연습_실패 {// c s
 				System.out.println(" 알림)) 컴퓨터 승리");
 				break; // 게임종료
 			}
+			
+			
+			
 		}//w e
 		
 		for( int i = 0 ; i<gamePad.length; i++ ) {
@@ -108,5 +120,6 @@ public class Day04_11_틱텍톡_연습_실패 {// c s
 			// 인덱스 2 5 8 이면 줄바꿈 
 			if( i % 3 == 2 ) System.out.println();
 		}
+		
 	}//m e
 }// c e
