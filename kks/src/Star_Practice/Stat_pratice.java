@@ -20,7 +20,7 @@ public class Stat_pratice {//c s
 			
 		 */
 		Scanner scanner = new Scanner(System.in);
-		
+		/*
 		System.out.println("---------------------------------");
 		int line1 = scanner.nextInt();
 		for(int i = 1; i <= line1; i++) {
@@ -41,20 +41,16 @@ public class Stat_pratice {//c s
 			System.out.print("*");
 			System.out.println();
 		}
-		
+		*/
 		System.out.println("---------------------------------");
 		int line3 = scanner.nextInt();
-		for(int i = 1; i <= line3; i++) {
-			for(int j = 1; j <= line3; j++) {
-				if(j == i || j == 11-i) {
-					System.out.print("*");
-				}
-				else {
-					System.out.print(" ");
-				}
-			}
+		
+		for (int i = 0; i < line3; i++) {
+            for (int j = 0; j < (line3 + i); j++) {
+            	System.out.print((j == (line3 - i - 1) || j == i) ? "*" : " ");
+            }
+            System.out.println();
 		}
-		System.out.println();
 		System.out.println("---------------------------------");
 
 	}//m e
