@@ -3,7 +3,7 @@ package Day04;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Day04_11_틱텍톡_연습 {// c s
+public class Day04_11_틱텍톡_연습_실패 {// c s
 	
 	public static void main(String[] args) {
 		/*
@@ -51,11 +51,10 @@ public class Day04_11_틱텍톡_연습 {// c s
 			}
 			//플레이어 위치 선택
 			while( true ) {
-				System.out.print(" 위치 선택 : "); 
-				int choice = scanner.nextInt();
-				if( gamePad[choice].equals("[ ]") ) {
+				System.out.print(" 위치 선택 : ");int choice = scanner.nextInt(); 
+				if( gamePad[choice].equals("[ ]")) {
 					// 선택한 위치가 공백이면 O 알 두기 
-					gamePad[choice] = "[O]";
+					gamePad[choice] = "[ㅇ]";
 					break;	// 가장 가까운 반복문 탈출;
 				}else {
 					System.out.println(" 알림)) 해당 위치에 이미 알이 존재. [ 재 선택 ] ");
@@ -103,6 +102,7 @@ public class Day04_11_틱텍톡_연습 {// c s
 				break; // 게임종료
 			}
 		}//w e
+		
 		for( int i = 0 ; i<gamePad.length; i++ ) {
 			System.out.print( gamePad[i] );
 			// 인덱스 2 5 8 이면 줄바꿈 
