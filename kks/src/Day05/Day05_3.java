@@ -83,13 +83,16 @@ public class Day05_3 {//c s
 				}
 			}
 			else if(select==4) { // 평균 구하기
-				int sum2 = 0;
-				double avg2 = 0.0;
+				int sum2 = 0; //총합계
+				int max2 = 0; //최고 점수
+				double avg2 = 0.0; // 평균점수
 				for(int i = 0; i < score.length; i++) {
 					sum2 += score[i];
+					avg2 = sum2/score.length;
+					if(max2 < score[i]) max2 = score[i];
 				}
-				avg2 = sum2/studentNum;
-				System.out.printf(" avg : %.2f",avg2);
+				System.out.printf(" 최고값 : %d \n",max2);
+				System.out.printf(" 평균값 : %.2f",avg2);
 				System.out.println();
 			}
 			else if(select==5) {
