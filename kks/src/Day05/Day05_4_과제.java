@@ -92,17 +92,12 @@ public class Day05_4_과제 {//c s
 							login = true;
 						}
 					}
-					if((login == false)) {
-						System.out.println("로그인에 실패하였습니다.");
-					}
-					//id if 끝
-					else if((login == true)) {
-						System.out.print((adminCheck == true) ? "알림)관리자 로그인이 완료 되었습니다.\n" : "알림)로그인이 완료 되었습니다.\n");
-						break;
-					}
 				}
-				
-				
+				if((login == false)) {
+					System.out.println("로그인에 실패하였습니다.");
+				}
+				else if((login == true)) {
+					System.out.print((adminCheck == true) ? "알림)관리자 로그인이 완료 되었습니다.\n" : "알림)로그인이 완료 되었습니다.\n");
 				while(true) {
 					
 					System.out.println("---------------도서대여시스템-----------------");
@@ -116,22 +111,20 @@ public class Day05_4_과제 {//c s
 							System.out.println("검색할 책이름을 입력 :");
 							System.out.println("-----------------------------------------");
 							String bookSearch = scanner.next();
-							boolean books = false;
 							for(int bs = 0; bs < book.length; bs++) {
 								if(book[bs][0] != null && book[bs][0].equals(bookSearch)) {
-									books = true;
-								}
-								else {
-									 books = false;
+									System.out.println("책이름\t대여여부\t대여자\n");
+									System.out.printf("%s\t%s\t%s \n",book[bs][0], book[bs][1], book[bs][2]);
+									if(book[bs][1] == null) {
+										System.out.println(bookSearch+"대여 가능합니다");
+									}
 								}
 							}
-							if(books == true)System.out.println("검색하신 "+bookSearch+" 존재 합니다.");
-							if(books == false)System.out.println("검색하신 "+bookSearch+" 존재하지 않습니다");
 							System.out.println("-----------------------------------------");
 							}
 							else if(work2.equals("도서목록") || work2.equals("2")) {
 								System.out.println("-----------------------------------------");
-								System.out.println("책이름\t대여가능여부\t대여자\n");
+								System.out.println("책이름\t대여여부\t대여자\n");
 								for(int bl = 0; bl < book.length; bl++) {
 									if(book[bl][0] != null) {
 										System.out.printf("%s\t%s\t%s \n",book[bl][0], book[bl][1], book[bl][2]);
@@ -193,19 +186,35 @@ public class Day05_4_과제 {//c s
 							}
 						}//일반메뉴 끝
 						else if(adminCheck == true && loginCheck == false) {//관리자 로그인후 메뉴
-							
+							boolean bookCheak = true;
+							for(int i = 0; i < memberlist.length; i++) {
+								if(memberlist[i][0] != null && memberlist[i][0].equals(id)) {
+									System.out.println("알림) 이미 존재하는 책입니다.");
+									bookCheak = false;
+									break;
+								}
+							}
 							if(work2.equals("도서등록") || work2.equals("1")) {
 								System.out.println("-----------------------------------------");
 								System.out.println("등록할 책 이름을 입력하세요.");
 								System.out.println("-----------------------------------------");
 								String bookname3 = scanner.next();
-								boolean bookCheak = true;
+								boolean bookCk = true;
+								for(int i = 0; i < book.length; i++) {
+									if(book[i][0] != null && book[i][0].equals(bookname3)) {
+										System.out.println("알림) 이미 존재하는 책입니다.");
+										bookCk = false;
+										break;
+									}
+								}
 								
 								for(int j = 0;j < book.length; j++) {
-									if(book[j][0] == null) {
-										book[j][0] = bookname3;
-										System.out.println("알림) 저장이 완료되었습니다.");
-										break;
+									if(bookCk == true) {
+										if(book[j][0] == null) {
+											book[j][0] = bookname3;
+											System.out.println("알림) 저장이 완료되었습니다.");
+											break;
+										}
 									}
 								}	
 							}
@@ -224,7 +233,7 @@ public class Day05_4_과제 {//c s
 							System.out.println("삭제할 책 이름을 입력하세요.");
 							System.out.println("-----------------------------------------");
 							String bookname3 = scanner.next();
-							boolean bookCheak = true;
+							
 							
 							for(int b2 = 0; b2 < book.length; b2++) {
 								if(book[b2][0].equals(bookname3)) {
@@ -250,7 +259,7 @@ public class Day05_4_과제 {//c s
 			else {
 				System.err.println("알림) 없는메뉴 입니다.");
 			}//로그인 메뉴 종료
-			
+			}
 		}//와일 종료
 	}//m e
 }//c s
