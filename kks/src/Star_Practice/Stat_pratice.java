@@ -49,7 +49,7 @@ public class Stat_pratice {//c s
 			//i가 0 일때 i는 5 미만까지 1씩 증가 하며 반복
             for (int j = 0; j < (line3 + i); j++) {
             	//j가 0 일때 j는 5(5+0) 까지 증가 반복
-            	System.out.print((j == (line3 - i - 1) || j == i) ? "*" : "0");
+            	System.out.print((j == (line3 - i - 1) || j == i) ? "*" : " ");
             	//0 과 (5 - 0 - 1 )이 같거나 0과 0이 같으면 * 아니라면 [ ]
             }
             System.out.println();
