@@ -256,9 +256,8 @@ public class Day05_4_과제 {//c s
 					}//관리자 메뉴끝
 				}
 			}
-			else {
+			} else {//로그인 메뉴 종료
 				System.err.println("알림) 없는메뉴 입니다.");
-			}//로그인 메뉴 종료
 			}
 		}//와일 종료
 	}//m e
