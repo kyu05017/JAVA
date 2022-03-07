@@ -36,10 +36,12 @@ public class Day05_4_과제 {//c s
 		String[][] memberlist = new String[100][2];
 		String[][] book = new String[100][3];
 		String adminId = "admin";
+		int adminPw = 0;
+		adminPw = 1234;
 		while(true) {//와일 시작
-			System.out.println("----------도서대여시스템-----------");
-			System.out.println("1.회원가입                 2.로그인");
-			System.out.println("------------------------------");
+			System.out.println("-------------도서대여시스템--------------");
+			System.out.println("1.회원가입         2.로그인         3.종료 ");
+			System.out.println("------------------------------------");
 			
 			String work1 = scanner.next();
 			if(work1.equals("회원가입") || work1.equals("1")) {//회원가입 시작
@@ -73,15 +75,15 @@ public class Day05_4_과제 {//c s
 			else if(work1.equals("로그인") || work1.equals("2")) {//로그인 메뉴 시작
 				System.out.println("-------------로그인--------------");
 				System.out.println("아이디  입력"); String id = scanner.next();
-				System.out.println("비밀번호 입력"); String pw = scanner.next();
+				System.out.println("비밀번호 입력"); int pw = scanner.nextInt();
 				System.out.println("---------------------------------");
 				
 				boolean loginCheck = false;
 				boolean adminCheck = false;
 				boolean login = false;
 				for(int i = 0; i < memberlist.length; i++) {//로그인 for
-					if((memberlist[i][0] != null && memberlist[i][0].equals(id) && memberlist[i][1].equals(pw)) || (id.equals("admin") && pw.equals("1234"))) {//id if 시작
-						if(id.equals("admin") && pw.equals("1234")) {
+					if((memberlist[i][0] != null && memberlist[i][0].equals(id) && memberlist[i][1].equals(pw)) || (id.equals("admin") && pw == adminPw)) {//id if 시작
+						if(id.equals("admin") && pw == adminPw) {
 							//System.out.println("알림)관리자 로그인이 완료 되었습니다.");
 							adminCheck = true;
 							login = true;
@@ -101,7 +103,7 @@ public class Day05_4_과제 {//c s
 				while(true) {
 					
 					System.out.println("---------------도서대여시스템-----------------");
-					System.out.print((adminCheck == true) ? "1.도서등록 2.도서목룍 3.도서삭제 4.로그아웃\n" : "1.도서검색 2.도서목록 3.도서대여 4.도서반납 5.로그아웃\n");
+					System.out.print((adminCheck == true) ? "1.도서등록 2.도서목룍 3.도서삭제 4.관리자암호변경 5.로그아웃\n" : "1.도서검색 2.도서목록 3.도서대여 4.도서반납 5.로그아웃\n");
 					System.out.println("-----------------------------------------");
 					String work2 = scanner.next();
 					if(loginCheck == true && adminCheck == false) {//일반 로그인후 메뉴
@@ -161,8 +163,8 @@ public class Day05_4_과제 {//c s
 								for(int bs = 0; bs < book.length; bs++) {
 									if(book[bs][0] != null && book[bs][0].equals(bookname1)) {
 										book[bs][0] = bookname1;
-										book[bs][1] = null;
-										book[bs][2] = null;
+										book[bs][1] = "대여가능";
+										book[bs][2] = "";
 										bookRant = true;
 									}
 									else {
@@ -212,6 +214,8 @@ public class Day05_4_과제 {//c s
 									if(bookCk == true) {
 										if(book[j][0] == null) {
 											book[j][0] = bookname3;
+											book[j][1] = "대여가능";
+											book[j][2] = "";
 											System.out.println("알림) 저장이 완료되었습니다.");
 											break;
 										}
@@ -243,7 +247,13 @@ public class Day05_4_과제 {//c s
 								}
 							}
 						}	
-						else if(work2.equals("로그아웃") || work2.equals("4")) {
+						else if(work2.equals("관리자비밀번호") || work2.equals("4")) {
+							System.out.println("관리자 비밀번호를 변경합니다");
+							int pw2 = scanner.nextInt();
+							adminPw = pw2;
+							break;
+						}	
+						else if(work2.equals("로그아웃") || work2.equals("5")) {
 							System.out.println("-----------------------------------------");
 							System.out.println("알림) 로그아웃 하셨습니다.");
 							System.out.println("-----------------------------------------");
@@ -256,7 +266,12 @@ public class Day05_4_과제 {//c s
 					}//관리자 메뉴끝
 				}
 			}
-			} else {//로그인 메뉴 종료
+			} 
+			else if(work1.equals("종료") || work1.equals("3")) {
+				System.err.println("알림) 프로그램을 종료합니다.");
+				break;
+			}
+			else {//로그인 메뉴 종료
 				System.err.println("알림) 없는메뉴 입니다.");
 			}
 		}//와일 종료
