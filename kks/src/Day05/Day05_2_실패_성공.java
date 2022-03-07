@@ -2,7 +2,7 @@ package Day05;
 
 import java.util.Scanner;
 
-public class Day05_2_실패 {// c s
+public class Day05_2_실패_성공 {// c s
 	
 	//회원제 방문록 프로그램
 		// 1. 초기메뉴 [ 1. 회원가입 2. 로그인 ]
@@ -28,17 +28,17 @@ public class Day05_2_실패 {// c s
 			System.out.println("1.회원가입                 2.로그인");
 			System.out.println("------------------------------");
 			
-			String work = scanner.nextLine();
+			int ch = scanner.nextInt();
 			
 			//회원가입
-			if(work.equals("회원가입") || work.equals("1")) { // 1 if s
+			if(ch == 1) { // 1 if s
 				System.out.println("------------회원가입-------------");
 				System.out.println("사용할 아이디  입력 :");
-				String id = scanner.nextLine();
+				String id = scanner.next();
 				System.out.println("사용할 비밀번호 입력 :");
-				String pw = scanner.nextLine();
+				String pw = scanner.next();
 				System.out.println("이름 입력 : ");
-				String name = scanner.nextLine();
+				String name = scanner.next();
 				//String 3개의 변수를 입력받아 맴버리스트에 2차원 배열에 저장
 					//1. 빈공간[정수 = 0, 실수 = 0.0 , 문자열 = null]을 찾아서 저장 [ 만약에 빈공간이 없으면 회원가입 불가]
 					//2. 아이디 중복체크
@@ -46,7 +46,7 @@ public class Day05_2_실패 {// c s
 				
 				//회원 중복체크
 				boolean idCheck = true;//아이디 중복체크
-				for(int i = 0; i < 100; i ++) {
+				for(int i = 0; i < memberLsit.length; i ++) {
 					if(memberLsit[i][0] != null && memberLsit[i][0].equals(id)) {
 						// ==null : 회원이 없다. !=null : 회원이 존재한다
 						System.err.println("알림) 이미 존재하는 회원입니다.");
@@ -57,7 +57,7 @@ public class Day05_2_실패 {// c s
 				
 				//회원 한계적용
 				if(idCheck == true) {
-					for(int i = 0; i < 100; i++) {
+					for(int i = 0; i < memberLsit.length; i++) {
 							if(memberLsit[i][0] == null) {
 							//i 번째 행에 id가 공백이면 저장가능 
 							memberLsit[i][0] = id;
@@ -75,12 +75,12 @@ public class Day05_2_실패 {// c s
 			//회원가입 종료
 			
 			//로그인
-			else if(work.equals("로그인") || work.equals("2")) {
+			else if(ch == 2) {
 				System.out.println("------------ 로그인 -------------");
 				System.out.println("아이디  입력 :");
-				String id = scanner.nextLine();
+				String id = scanner.next();
 				System.out.println("비밀번호 입력 :");
-				String pw = scanner.nextLine();
+				String pw = scanner.next();
 				boolean loginCheck = false;
 				
 				//배열내에 입력받은 id와 pw가 동일하면 로그인 완료
@@ -115,8 +115,8 @@ public class Day05_2_실패 {// c s
 							
 							System.out.println("1.방문록                 2.로그아웃");
 							System.out.println("------------------------------");
-				
-							if(work.equals("방문록") && work.equals("1")) {
+							int ch2 = scanner.nextInt();
+							if(ch2 == 1) {
 								System.out.println("----------글쓰기-----------");
 								System.out.println("제목 :");String title = scanner.next();
 								System.out.println("내용 :");String contents = scanner.next();
@@ -131,7 +131,7 @@ public class Day05_2_실패 {// c s
 									}
 								}
 							}
-							else if(work.equals("로그아웃") && work.equals("2")) {
+							else if(ch2 == 2) {
 								System.err.println("로그아웃이 완료되었습니다.");
 								break;
 							}
