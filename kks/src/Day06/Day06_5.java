@@ -7,7 +7,7 @@ public class Day06_5 {
 		
 		// 1. 생성자 없이 필드에 값넣기
 		Korean k1 = new Korean();
-			k1.name = "유재석";
+			k1.name = "유재석";// 필드에 직접 들어가서 대입한다
 			k1.ssn = "123123-1231237";
 		System.out.println("(빈생성자)k1의 국적 :" + k1.nation);
 		System.out.println("(빈생성자)k1의 이름 :" + k1.name);
