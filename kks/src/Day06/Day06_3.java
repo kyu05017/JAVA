@@ -1,5 +1,6 @@
 package Day06;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class Day06_3 {
@@ -33,12 +34,12 @@ public class Day06_3 {
 		
 		while(true) { // 프로그램 실행 무한루프 [ 종료조건 5번 ]
 			System.out.println("----------------회원제 방문록-----------------");
-			System.out.println("1.회원가입 2.로그인 3.아이디찾기 4.비밀번호 찾기5.종료");
+			System.out.println("1.회원가입 2.로그인 3.아이디찾기 4.비밀번호 찾기 5.종료");
 			System.out.println("------------------------------------------");
 			int work1 = scanner.nextInt();
 			
 			
-			if(work1 == 1) {//if_1_1 s
+			if(work1 == 1) {//if_1_1 s [ 회원가입 ]
 
 				// 1, id, password, name, phone 입력받기 => 변수4개
 				System.out.println("------------회원가입-------------");
@@ -60,16 +61,16 @@ public class Day06_3 {
 				member.name = name2;
 				member.phone = phone2;
 				
-				//중복확인
-				/*
+				// * 아이디 중복체크
+					// 1. 배열내 객체중 입력한 아이디와 동일한 아이디 찾기
+				
 				for(Member temp :memberList) {
-					if(temp != null && id2.equals(memberList[temp])) {
-						System.err.println("알림)) 이미 존재하는 회원입니다.");
+					if(temp != null && temp.id.equals(id2)) {
+						System.err.println("알림)) 이미 사용중인 아이디 입니다.");
 						idCheck = false;
 					}
 				}
-				*/
-				
+				 
 				// 4. 여러개 객체를 저장하는 배열에 저장
 					// 1. 공백 인덱스 찾기 [ 공백이 아니면 기존 회원 존재]
 				int i = 0; // 인데스 위치 변수
@@ -79,34 +80,219 @@ public class Day06_3 {
 					if(idCheck == true && temp == null) { // 만약에 해당 객체가 공백이면
 						memberList[i] = member;
 						System.err.println("알림)) 회원가입이 완료되었습니다.");
+						idCheck = true;
 						break;
 					}
 					i++;
 				}
 				
-			}//if_1_1 e
-			else if(work1 == 2) {//if_1_2 s
+			}//if_1_1 e [ 회원가입 ]
+			else if(work1 == 2) {//if_1_2 s [ 로그인 ]
 				
+				// 1. 입력을 받는다
 				System.out.println("------------ 로그인 -------------");
 				System.out.println("아이디  입력 :");
-				String id2 = scanner.next();
+				String loginId2 = scanner.next();
 				System.out.println("비밀번호 입력 :");
-				String pw2 = scanner.next();
+				String loginPw2 = scanner.next();
+				byte loginCheck = 0;
 				
-				boolean loginCheck = false;
+				// 2. 기존배열 [회원리스트] 내 입력받은 값과 비교
+				int i = 0;
+				for(Member temp : memberList) {
+					if(temp != null && temp.id.equals(loginId2) && temp.password.equals(loginPw2)) {
+						System.err.println("알림)) 로그인이 완료 되었습니다.");
+						loginCheck = 1;
+						break;
+					}
+					i++;
+				}
+				int j = 0;
+				for(Member temp : memberList) {
+					if(temp != null && temp.id.equals(loginId2)) {
+						loginCheck = 2;
+						break;
+					}
+					j++;
+				}
+				int h = 0;
+				for(Member temp : memberList) {
+					if(temp != null && temp.password.equals(loginPw2)) {
+						loginCheck = 3;
+						break;
+					}
+					h++;
+				}
 				
+				// 3. 로그인 성공 유무
+				if(loginCheck == 0) {
+					System.out.println();
+					System.err.println("알림)) 존재하지 않은 회원입니다.");
+				}
+				else if(loginCheck == 2) {
+					System.out.println();
+					System.err.println("알림)) 비밀번호가 틀렸습니다.");
+				}
+				else if(loginCheck == 3) {
+					System.out.println();
+					System.err.println("알림)) 아이디가가 틀렸습니다.");
+				}
+				else if(loginCheck == 1) { // 방문록 시작
+					
+					while(true) {
+						System.out.println("----------------회원제 방문록-----------------");
+						
+						
+						System.out.println("------------------ 메뉴 --------------------");
+						System.out.println(" [1.방문록작성][2.방문록수정][3.방문록삭제][4.로그아웃]");
+						System.out.println("------------------------------------------");
+						
+						int work2 = scanner.nextInt();
+						
+						if (work2 == 1) {//방문록 작성
+							
+							
+							
+						}//방문록 작성
+						else if (work2 == 2) {//방문록 수정
+							
+							
+							
+						}// 방문록 수정
+						else if (work2 == 3) { // 방문록 삭제
+							
+							
+							
+						}// 방문록 삭제
+						else if (work2 == 4) { //로그아웃
+							System.out.println("알림)) 로그아웃 하셨습니다. 메인메뉴로 돌아갑니다.");
+							loginCheck = 0;
+							break;
+						}//로그아웃
+					}
+				}// 방문록 끝
 				
-			}//if_1_2 e
-			else if(work1 == 3) {//if_1_3 s
+			}//if_1_2 e [ 로그인 ]
+			else if(work1 == 3) {//if_1_3 s [ 아이디 찾기 ]
 				
-			}//if_1_3 e
-			else if(work1 == 4) {//if_1_4 s
+				// 1. 이름과 연락처를 입력받는다.
+				System.out.println("------------ 아이디 찾기 -------------");
+				System.out.println("이름  입력 :");
+				String findname1 = scanner.next();
+				System.out.println("전화번호 입력 :");
+				String faidphone1 = scanner.next();
+				byte findCheck1 = 0;
 				
-			}//if_1_4 e
-			else if(work1 == 5) {//if_1_5 s
+				// 2. 기존배열 [회원리스트] 내 입력받은 값과 비교
+				int i = 0;
+				for(Member temp : memberList) {
+					if(temp != null && temp.name.equals(findname1) && (temp.phone.equals(faidphone1))) {
+						System.err.println("알림)) 가입하신 아이디는 ID :" + temp.id);
+						findCheck1 = 2;
+						break;
+					}
+					else if(temp != null && temp.name.equals(findname1)) {
+						System.err.println("알림)) 전화번호가 잘못되었습니다");
+						findCheck1 = 2;
+						break;
+					}
+					else if(temp != null && temp.phone.equals(faidphone1)) {
+						System.err.println("알림)) 아이디이 잘못되었습니다.");
+						findCheck1 = 2;
+						break;
+					}
+					else {
+						findCheck1 = 0;
+					}
+					i++;
+				}
+				if (findCheck1 == 0) {
+					System.err.println("알림)) 알수없는 사용자");
+				}
+				
+			}//if_1_3 e [ 아이디 찾기 ]
+			else if(work1 == 4) {//if_1_4 s [ 비밀번호 찾기 ]
+				
+				System.out.println("------------ 비밀변호 찾기 -------------");
+				System.out.println("아이디  입력 :");
+				String findname2 = scanner.next();
+				System.out.println("전화번호 입력 :");
+				String faidphone2 = scanner.next();
+				byte findCheck2 = 0;
+				Random random = new Random();
+				
+				// 2. 기존배열 [회원리스트] 내 입력받은 값과 비교
+				int i = 0;
+				for(Member temp : memberList) {
+					if(temp != null && temp.id.equals(findname2) && temp.phone.equals(faidphone2)) {
+						System.err.println("알림)) 가입하신 비밀번호는 PassWord :" + temp.password);
+						findCheck2 = 2;
+						break;
+					}
+					else if(temp != null && temp.phone.equals(faidphone2)) {
+						System.err.println("알림)) 가입된 이름이 없습니다.");
+						findCheck2 = 2;
+						break;
+					}
+					else if(temp != null && temp.id.equals(findname2)) {
+						System.err.println("알림)) 전화번호가 잘못되었습니다.");
+						findCheck2 = 2;
+						break;
+					}
+					else{
+						findCheck2 = 0;
+					}
+					i++;
+				}
+				if (findCheck2 == 0) {
+					System.err.println("알림)) 알수없는 사용자");
+				}
+				
+			}//if_1_4 e [ 비밀번호 찾기 ]
+			else if(work1 == 6) {//if_1_5 s [탈퇴 ]
+
+				System.out.println("------------회원탈퇴-------------");
+				System.out.println("탈퇴할 아이디  입력 :");
+				String outId = scanner.next();
+				System.out.println("비밀번호 입력 :");
+				String outPw = scanner.next();
+				byte idcheck = 0;
+				
+				int i = 0;
+				for(Member temp : memberList) {
+					if(temp != null && temp.id.equals(outId) && temp.password.equals(outPw)) {
+						System.err.println("알림))"+outId+"의 탈퇴가 완료되었습니다.");
+						idcheck = 0;
+						temp.id = null;
+						temp.password = null;
+						temp.name = null;
+						temp.phone = null;
+						break;
+					}
+					if(temp != null && temp.password.equals(outPw)) {
+						System.err.println("알림)) 비밀번호가 잘못됐습니다.");
+						idcheck = 0;
+						break;
+					}
+					if(temp != null && temp.id.equals(outId)) {
+						System.err.println("알림)) 아이디가 잘못됐습니다.");
+						idcheck = 0;
+						break;
+					}
+					else {
+						idcheck = 2;
+					}
+					i++;
+				}
+				if (idcheck == 2) {
+					System.err.println("알림)) 알수없는 사용자");
+				}
+				
+			}//탈퇴
+			else if(work1 == 5) {//if_1_5 s [종료]
 				System.err.println("프로그램을 종료합니다");
 				break;
-			}//if_1_5 e
+			}//if_1_5 e [ 종료 끝]
 			else {//if_1 e
 				System.out.println("------------------------------------------");
 				System.err.println("알림)) 존재하지 않는 메뉴 입니다.");
