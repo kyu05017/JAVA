@@ -70,7 +70,7 @@ public class Day06_6 {//c s
 			else if(ch == 2) { // ch2 s
 				System.out.println("------------------글보기-----------------");
 				System.out.println("게시물 번호 선택");int bno = scanner.nextInt();
-					//배열내 머든 객체를 출력 반복문
+					//배열내 머든 객체를 출력 반복문			//현재 인데스 번호 
 				// 반복문 사용 목적 없음 => 출력할[인덱스] 위치를 입력받았기 때문에
 				// 입력받은 인덱스 위치에 출력
 				System.out.printf("작성자: %s  제목: %s\n",boardlist[bno].writer,boardlist[bno].title);
@@ -121,14 +121,16 @@ public class Day06_6 {//c s
 					System.out.println("비밀번호를 입력하세요.");
 					String pw2 = scanner.next();
 					if (pw2.equals(boardlist[bno].password)) {
+						System.out.println("수정할 제목을 입력하세요");
+						boardlist[bno].title = scanner.next();
 						System.out.println("수정할 내용을 입력하세요");
-						String edit = scanner.next();
-						boardlist[bno].content = edit;
+						boardlist[bno].content = scanner.next();
+						System.out.println("수정이 완료 되었습니다.");
 					}
 					else {
 						System.out.println("비밀번호가 틀렸습니다.");
 					}
-					System.out.println("수정이 완료 되었습니다.");
+					
 					System.out.println("--------------------------------------");
 					
 				}
