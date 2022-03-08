@@ -117,7 +117,7 @@ public class Day06_6 {//c s
 				}
 				else if (ch2 == 3) {
 					System.out.println("------------------글수정-----------------");
-					System.out.println("글을 삭제 합니다.");
+					System.out.println("글을 수정 합니다.");
 					System.out.println("비밀번호를 입력하세요.");
 					String pw2 = scanner.next();
 					if (pw2.equals(boardlist[bno].password)) {
