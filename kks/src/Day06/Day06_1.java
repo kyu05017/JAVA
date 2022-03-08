@@ -21,11 +21,24 @@ public class Day06_1 {
 		
 		//예1) p.195
 	
-		Student student1 = new Student();
+		Student s1 = new Student();
+		// 1. Student   : 정의된 클래스명
+		// 2. student   : 객체명 [ 마우거나 ] : 추천 [ 클래스명 소문자 ]
+		// 3. new 연산자  : 메모리(저장공간)를 생성 
+		// 4. Student() : 생성자명()
+		// * 객체 생성시 4가지가 필요!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 		System.out.println("s1 변수가 Student 객체를 참조합니다.");
+		System.out.println(s1);
+		//Day06.Student@1c4af82c
+		//패키지이름 // 클래스명 // 메모리위치(주소값)
 		
-		Student student2 = new Student();
+		Student s2 = new Student();
 		System.out.println("s2 변수가 또 다른 Student 객체를 참조합니다.");
+		System.out.println(s2);
+		//Day06.Student@379619aa
+		//패키지이름 // 클래스명 // 메모리위치(주소값)
+		
+		//같은 클래스라도 선언을 달리하면 서로다른 주소값을 가진다.
 
 	}
 
