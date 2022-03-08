@@ -21,9 +21,9 @@ public class Day06_6 {//c s
 		// 3. 글보기 메뉴 
 			// 1. 뒤로가기(목록보기)
 			// 2. 삭제
-				// 작성자와 비밀번호 입력받아 동일하면 삭제
+				//비밀번호 입력받아 동일하면 삭제
 			// 3. 수정
-				// 작성자와 비밀번호 입력받아 동일하면 수정
+				//비밀번호 입력받아 동일하면 수정
 	
 	public static void main(String[] args) {//m s
 		
@@ -37,12 +37,12 @@ public class Day06_6 {//c s
 				//배열내 머든 객체를 출력 반복문
 			int index = 0;//인덱스 추가 [ 반복순서 : 배열내 객체 수 체크 ]
 			for(Board board : boardlist) {
-				if( board != null ) { // 만약에 해당 board 객체가 내용물이 있으면 출력
-					System.out.printf("%d\t%s\t%s \n" , index , board.writer , board.title);
+				if( board != null) { // 만약에 해당 board 객체가 내용물이 있으면 출력
+					System.out.printf("%d\t%s\t%s \n" , (index) , board.writer , board.title);
 				}
 				index++;// 인덱스 증가
 			}
-			System.out.println("(1)글쓰기 (2)글보기");
+			System.out.println("(1)글쓰기 (2)글보기 (3)종료");
 			System.out.println("--------------------------------------");
 			int ch = scanner.nextInt();
 			
@@ -69,10 +69,77 @@ public class Day06_6 {//c s
 			}//ch1 e
 			else if(ch == 2) { // ch2 s
 				System.out.println("------------------글보기-----------------");
+				System.out.println("게시물 번호 선택");int bno = scanner.nextInt();
+					//배열내 머든 객체를 출력 반복문
+				// 반복문 사용 목적 없음 => 출력할[인덱스] 위치를 입력받았기 때문에
+				// 입력받은 인덱스 위치에 출력
+				System.out.printf("작성자: %s  제목: %s\n",boardlist[bno].writer,boardlist[bno].title);
+				System.out.printf("내용 : %s\n",boardlist[bno].content);
+				System.out.println("(1)목록보기 (2)글삭제 (3)글수정"); int ch2 = scanner.nextInt();
+				System.out.println("--------------------------------------");
+				
+				if (ch2 == 1) {
+					System.out.println("알림)) 메뉴로 돌아갑니다");
+				}
+				else if (ch2 == 2) {
+					System.out.println("------------------글삭제-----------------");
+					System.out.println("글을 삭제 합니다.");
+					System.out.println("비밀번호를 입력하세요.");
+					String password = scanner.next();
+					if( boardlist[bno].password.equals(password) ) { // 게시물객체내 비밀번호 == 입력한 비밀번호 
+						System.out.println(" 알림)) 삭제 성공 ");
+						boardlist[bno] = null; // 해당 게시물에 null 변경 // 삭제처리
+						
+						// 삭제후에 삭제된 인덱스 뒤로 한칸씩 앞으로 이동 
+							// 왜???  만약에 해당 코드가 없을경우 배열내 사이사이 공백 발생 
+						for( int i = bno ; i< boardlist.length ; i++ ) {
+							// * 검색된 게시물의 인덱스부터 마지막인덱스까지 1씩증가 
+							
+							if( i == boardlist.length-1) boardlist[ boardlist.length-1 ] = null;
+							// i가 마지막인덱스와 같으면 마지막인덱스에는 null 대입
+							else boardlist[i] = boardlist[i+1];// 삭제된 게시물 다음 게시물
+							// 마지막 인덱스가 아니면 인덱스 당기기 
+							
+								// *  	만약에 2번 인덱스 삭제시 
+								// 		2인덱스 = 3인덱스 
+								//	  	3인덱스 = 4인덱스 
+								//		4인덱스 = 5인덱스 
+								//      ~~~~~~~~~~~
+								//		98인덱스 = 99인덱스 [ 0번~99번 -> 100개 인덱스 ]
+								//		99인덱스 = null [ 99번 인덱스 : 마지막인덱스 ] 
+						
+						}
+						
+					}else {
+						System.out.println(" 알림)) 비밀번호가 다릅니다 [ 삭제실패 ]");
+					}
+					System.out.println("--------------------------------------");
+				}
+				else if (ch2 == 3) {
+					System.out.println("------------------글수정-----------------");
+					System.out.println("글을 삭제 합니다.");
+					System.out.println("비밀번호를 입력하세요.");
+					String pw2 = scanner.next();
+					if (pw2.equals(boardlist[bno].password)) {
+						System.out.println("수정할 내용을 입력하세요");
+						String edit = scanner.next();
+						boardlist[bno].content = edit;
+					}
+					else {
+						System.out.println("비밀번호가 틀렸습니다.");
+					}
+					System.out.println("수정이 완료 되었습니다.");
+					System.out.println("--------------------------------------");
+					
+				}
+				else {
+					System.out.println("잘못 입력하여습니다");
+				}
 				
 			}//ch2 e
 			else if(ch == 3) { // ch3 s
 				System.out.println("알림) 종료했습니다.");
+				break;
 			}//ch3 e
 			else {
 				System.out.println("알림)) 잘못된 입력");
