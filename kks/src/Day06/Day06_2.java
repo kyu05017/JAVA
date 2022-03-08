@@ -27,8 +27,8 @@ public class Day06_2 {
 		
 		// 새로운 자동차 객체 생성 [ 독립적으로 움직임 ]
 		Car yourcar = new Car();
-		
-		System.out.println("2번째 자동차 :" + yourcar.speed);
+		yourcar.maxSpeed = 1000;
+		System.out.println("2번째 자동차 :" + yourcar.maxSpeed);
 	}
 
 }

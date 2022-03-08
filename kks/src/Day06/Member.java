@@ -10,6 +10,6 @@ public class Member {
 	String phone;
 	
 	// 2. 생성자
-	
+		// 만일 생성자가 1개도 없으면 기본생성자 자동 생성
 	// 3. 메소드
 }
