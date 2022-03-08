@@ -68,10 +68,11 @@ public class Day06_6 {//c s
 				
 			}//ch1 e
 			else if(ch == 2) { // ch2 s
+				System.out.println("------------------글보기-----------------");
 				
 			}//ch2 e
 			else if(ch == 3) { // ch3 s
-				
+				System.out.println("알림) 종료했습니다.");
 			}//ch3 e
 			else {
 				System.out.println("알림)) 잘못된 입력");
