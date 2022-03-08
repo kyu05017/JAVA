@@ -2,7 +2,7 @@ package Day05;
 
 import java.util.Scanner;
 
-public class Day05_2_실패_성공 {// c s
+public class Day05_2_방문록_성공 {// c s
 	
 	//회원제 방문록 프로그램
 		// 1. 초기메뉴 [ 1. 회원가입 2. 로그인 ]
