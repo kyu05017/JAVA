@@ -10,12 +10,10 @@ public class A¥ı«œ±‚B_2 {
 		
 		int tesk = scanner.nextInt();
 		
-		int a;
-		int b;
 		
-		for(int i = 0; i <= tesk; i++) {
-			a = scanner.nextInt();
-			b = scanner.nextInt();
+		for(int i = 0; i < tesk; i++) {
+			int a = scanner.nextInt();
+			int b = scanner.nextInt();
 			System.out.printf("%d\n",(a+b));
 		}
 		scanner.close();

@@ -2,21 +2,17 @@ package baekjoon;
 
 import java.util.Scanner;
 
-public class N차빼기 {
+public class N차_더하기 {
 
 	public static void main(String[] args) {
-
+		
 		Scanner scanner = new Scanner(System.in);
+		int num = scanner.nextInt();
 		
-		int tesk = scanner.nextInt();
-		for(int i = tesk; i > 0;i--) {
-			//i가 0일때 0부터 1씩 5이하까지 증가하면서
-			//
-			//tesk = tesk - i;
+		for(int i = 1; i <= num; i++) {
 			System.out.println(i);
-			
 		}
-		
+
 	}
 
 }
