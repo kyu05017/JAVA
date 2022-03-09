@@ -68,6 +68,10 @@ public class 엘리베이터_다섯번째_5분50초 {
 					nowFloor = 5;
 					break; 
 				}
+				default : {
+					System.out.println("존재하지 않는 층수 입니다.");
+					break; 
+				}
 			
 			}
 		}
