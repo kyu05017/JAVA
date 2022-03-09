@@ -2,7 +2,7 @@ package MyPratice;
 
 import java.util.Scanner;
 
-public class 엘리베이터 {
+public class 엘리베이터_첫번째_19분45초 {
 	
 	
 	public static void main(String[] args) {
