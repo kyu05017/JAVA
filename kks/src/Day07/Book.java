@@ -28,6 +28,36 @@ public class Book {
 		//1.도서검색
 	void bsearch() {
 		System.out.println("--------------- 도서검색-----------------");
+		System.out.println("이름으로 검색하려면 (이름) 코드로 검색하려면(코드):");
+		String serch = Day07_5_bookApplication.scanner.next();
+		if(serch.equals("이름")) {
+			String sn =Day07_5_bookApplication.scanner.next();
+			for(Book temp : Day07_5_bookApplication.books) {
+				if(temp != null) {
+					if(sn.equals(temp.bname)) {
+						if(temp.brental) {
+							System.out.println("입력하신 해당 도서 "+sn+"는 현재 대여 가능합니다.");
+							return;
+						}
+						else {
+							System.out.println("입력하신 해당 도서 "+sn+"는 현재 대여중입니다.");
+							return;
+						}
+					}
+					else {
+						System.out.println("알림)) 해당 도서가 존재하지 않습니다.");
+					}
+				}
+			}
+			
+		}
+		else if(serch.equals("도서")) {
+			String is = Day07_5_bookApplication.scanner.next();
+			
+		}
+		else {
+			System.out.println("잘못된 입력.");
+		}
 	}
 		//2.도서목록
 	void blist() {
