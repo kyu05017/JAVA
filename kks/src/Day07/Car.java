@@ -23,7 +23,7 @@ public class Car {
 			System.out.println("gas가 없습니다.");
 			return false;
 		}
-		System.out.println("gas가 있습니다.");
+		System.out.println(gas+"만큼의 gas가 있습니다.");
 		return true;
 	}
 	
