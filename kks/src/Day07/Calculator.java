@@ -37,4 +37,18 @@ public class Calculator {// c s
 		//함수호출시 함수로 들어오는 x와 y 는 int형으로 받기
 	// 4. { 실행문 }
 	
+	double divide(int x, int y) { //인수 o 반환 o
+	//리턴타입 메소드명 (인수1, 인수2) 선언문 { 실행코드 return 실수데이터 }
+		double result = (double)x/(double)y;
+						// (자료명) 변수명 : 강제형변환
+							//int형 변수 => double로 변경
+								//왜??? 나누기후에 소수점 있을수 있기 때문에
+		return result; // 결과값 => 메소드 호출했던 곳으로
+	}
+	
+	void powerOff() { // 인수 x 반환 x
+		System.out.println("전원을 끕니다.");
+		return;
+	}
+ 	
 }//c e
