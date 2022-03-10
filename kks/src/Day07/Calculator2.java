@@ -10,7 +10,7 @@ public class Calculator2 {
 		// 1. 실행
 	void execute() {//인수x 반환o
 		double result = avg(7,10); // 내부에서 메소드 호출
-		System.out.println("실행 결과 : " + result);
+		System.out.println("실행결과 : " + result);
 	}	
 		// 2. 평균 메소드
 	double avg(int x, int y) {//인수o 반환o
