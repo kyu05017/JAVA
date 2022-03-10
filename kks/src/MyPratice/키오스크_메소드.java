@@ -24,9 +24,6 @@ public class 키오스크_메소드 {
 			System.out.println("1콜라300원 2환타200원 3사이다300원");
 			System.out.println("4결제");
 			int ch = scanner.nextInt();
-			int coke = keymenu.bc();
-			int whan = keymenu.bw();
-			int cidar = keymenu.buyci();
 			if(ch == 1) {
 				keymenu.bc();
 			}
@@ -37,8 +34,8 @@ public class 키오스크_메소드 {
 				keymenu.buyci();
 			}
 			else if(ch == 4) {
-				int result = (coke*300)+(whan*200)+(cidar*100);
-				appAplication.pay(coke,whan,cidar,result);
+				int result = (keymenu.buycoke*300)+(keymenu.buywhan*200)+(keymenu.buycider*100);
+				appAplication.pay(keymenu.buycoke,keymenu.buywhan,keymenu.buycider,result);
 			}
 			else {
 				System.out.println("알림)) 준비되어있지 않은 메뉴 입니다.");
@@ -77,6 +74,9 @@ public class 키오스크_메소드 {
 		}
 		else if( ch2 == 2) {
 			System.out.println("결제를 취소했습니다.");
+			keymenu.cokeitem -= x;
+			keymenu.whanitem -= y;
+			keymenu.cideritem -= z;
 			x = 0; y =0; z = 0;
 		}
 		else {
