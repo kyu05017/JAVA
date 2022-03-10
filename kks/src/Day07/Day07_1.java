@@ -19,6 +19,11 @@ public class Day07_1 { // c s
 		// 2.메소드 호출
 		myCalc.powerOn();
 		
+		// 3. 메소드 호출 [ 인수 2개 ]
+		int result1 = myCalc.plus(5, 6);
+			// * plus메소드에 5와 6을 전달후에
+			// * 11이라는 결과값을 받아서 result1에 저장
+		System.out.println("result1 : " + result1);
 		
 	}// m e
 
