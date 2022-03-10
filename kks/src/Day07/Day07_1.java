@@ -25,12 +25,13 @@ public class Day07_1 { // c s
 			// * 11이라는 결과값을 받아서 result1에 저장
 		System.out.println("result1 : " + result1);
 		
-		
+		// 4. 메소드 호출
 		byte x = 10;
 		byte y = 4;
 		double result2 = myCalc.divide(x, y);
 		System.out.println("result2 : " + result2);
 		
+		// 5. 메소드 호출
 		myCalc.powerOff();
 	}// m e
 
