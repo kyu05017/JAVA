@@ -1,4 +1,4 @@
-package 타임어택;
+package MyPratice;
 
 import java.util.Scanner;
 
