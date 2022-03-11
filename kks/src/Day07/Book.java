@@ -31,6 +31,7 @@ public class Book {
 		System.out.println("이름으로 검색하려면 (이름) 코드로 검색하려면(코드):");
 		String serch = Day07_5_bookApplication.scanner.next();
 		if(serch.equals("이름")) {
+			System.out.println("알림)) 도서이름을 입력하세요");
 			String sn =Day07_5_bookApplication.scanner.next();
 			for(Book temp : Day07_5_bookApplication.books) {
 				if(temp != null) {
@@ -51,8 +52,26 @@ public class Book {
 			}
 			
 		}
-		else if(serch.equals("도서")) {
+		else if(serch.equals("코드")) {
+			System.out.println("알림)) 도서코드를 입력하세요");
 			String is = Day07_5_bookApplication.scanner.next();
+			for(Book temp : Day07_5_bookApplication.books) {
+				if(temp != null) {
+					if(is.equals(temp.bname)) {
+						if(temp.brental) {
+							System.out.println("입력하신 해당 도서 "+is+"는 현재 대여 가능합니다.");
+							return;
+						}
+						else {
+							System.out.println("입력하신 해당 도서 "+is+"는 현재 대여중입니다.");
+							return;
+						}
+					}
+					else {
+						System.out.println("알림)) 해당 도서가 존재하지 않습니다.");
+					}
+				}
+			}
 			
 		}
 		else {
@@ -140,7 +159,7 @@ public class Book {
 		
 		
 		// 객체화 [ 도서대여여부 = true , 대여회원 id = null]
-		Book book = new Book(isbm, bname, bwriter,true,null);
+		Book book = new Book(isbm, bname, bwritwer,true,null);
 		int i = 0;
 		//등록
 		for(Book temp : Day07_5_bookApplication.books) {

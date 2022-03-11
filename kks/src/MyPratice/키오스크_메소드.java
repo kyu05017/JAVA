@@ -62,7 +62,7 @@ public class 키오스크_메소드 {
 					keymenu.cokeitem -= x;
 					keymenu.whanitem -= y;
 					keymenu.cideritem -= z;
-					x = 0; y =0; z = 0;
+					keymenu.buycoke = 0; keymenu.buywhan =0; keymenu.buycider = 0;
 					
 					
 					break;
@@ -77,7 +77,7 @@ public class 키오스크_메소드 {
 			keymenu.cokeitem -= x;
 			keymenu.whanitem -= y;
 			keymenu.cideritem -= z;
-			x = 0; y =0; z = 0;
+			keymenu.buycoke = 0; keymenu.buywhan =0; keymenu.buycider = 0;
 		}
 		else {
 			System.out.println("잘못된 입력입니다.");
