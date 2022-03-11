@@ -109,12 +109,13 @@ public class Book {
 	void brental(String loginid) {
 		System.out.println("--------------- 도서대여-----------------");
 		System.out.print("대여할 ISBM :");String aa = Day07_5_bookApplication.scanner.next();
+		int i = 0;
 		for(Book temp : Day07_5_bookApplication.books) {
 			if(temp != null &&temp.ISBM.equals(aa) && temp.brental) {
 				if(temp.brental ) {
 					System.out.println("알림)) 해당 도서를 대여합니다.");
-					temp.mid = loginid;
-					temp.brental = false;
+					Day07_5_bookApplication.books[i].mid = loginid;
+					Day07_5_bookApplication.books[i].brental = false;
 					return;
 				}
 				else {
@@ -122,7 +123,7 @@ public class Book {
 					return;
 				}
 			}
-			
+			i++;
 		}
 		System.out.println("알림)) 동일한 ISBM이 없습니다.");
 	}
@@ -132,6 +133,7 @@ public class Book {
 			System.out.println("--------------- 도서반납-----------------");
 			myrentalbook(loginid);
 			System.out.print("반납할 ISBM :");String aa = Day07_5_bookApplication.scanner.next();
+			int i = 0;
 			for(Book temp : Day07_5_bookApplication.books) {
 				if(temp.mid == null) {
 					System.out.println("알림)) 대여하신 책이 없습니다.");
@@ -143,11 +145,12 @@ public class Book {
 					}
 					else {
 						System.out.println("알림)) 해당 도서를 반납합니다.");
-						temp.brental = true;
-						temp.mid = null;
+						Day07_5_bookApplication.books[i].brental = true;
+						Day07_5_bookApplication.books[i].mid = null;
 						return;
 					}
 				}
+				i++;
 			}
 		}catch(NullPointerException e){
 			System.out.println("알림)) 동일한 ISBM이 없습니다.");
