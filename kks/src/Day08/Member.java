@@ -13,6 +13,9 @@ public class Member {
 	public Member() { //ºó»ý¼ºÀÚ
 		
 	}
+	public Member(String phone) {
+		this.phone = phone;
+	}
 
 	public Member(String name, String id, String pw, String phone, String address) {
 		this.name = name;
