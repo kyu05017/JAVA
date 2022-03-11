@@ -2,6 +2,8 @@ package Day07;
 
 import java.util.Scanner;
 
+//대여없이 반납하면 눌포인트 수정
+
 public class Day07_5_bookApplication {// c s
 	
 	// bookAplication 클래스 : 압출력 관련코드
