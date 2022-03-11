@@ -1,4 +1,4 @@
-package MyPratice;
+package 개인과제_4번쨰_키오스크;
 
 import java.util.Scanner;
 
