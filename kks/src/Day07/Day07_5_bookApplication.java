@@ -38,6 +38,7 @@ public class Day07_5_bookApplication {// c s
 	static Scanner scanner = new Scanner(System.in);
 	static Member[] members = new Member[1000];//모든 클래스에서 사용하는 회원목록 
 	static Book[] books = new Book[1000];
+	static boolean aa;
 	
 	// 0. 코드르 읽어주는 메소드
 	public static void main(String[] args) { // m s
@@ -104,7 +105,9 @@ public class Day07_5_bookApplication {// c s
 	
 	// 2. 일반회원 메뉴 메소드
 	void membermenu(String loginid) { //인수의 변수명을 아무거나
+		
 		while(true) {
+			
 			System.out.println("---------------도서대여시스템-----------------");
 			System.out.println("1.도서검색 2.도서목록 3.도서대여 4.도서반납 5.로그아웃");
 			int ch= scanner.nextInt();
@@ -118,11 +121,19 @@ public class Day07_5_bookApplication {// c s
 			}
 			else if (ch ==3) {//도서대여
 				book.brental(loginid);
+				aa = true;
 			}
 			else if(ch ==4) {//도서반납
-				book.bback(loginid);
+				if(aa == true) {
+					book.bback(loginid);
+				}
+				else {
+					System.out.println("알림)) 대여하신 책이 없습니다.");
+				}
+				
 			}
 			else if(ch==5) {//로그아웃
+				aa = false;
 				return;
 			}
 			else {

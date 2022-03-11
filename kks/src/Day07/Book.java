@@ -94,11 +94,13 @@ public class Book {
 		}
 	}
 	void myrentalbook(String loginid) {
-		System.out.println("--------------- 도서목록-----------------");
+		System.out.println("--------------- 대여목록-----------------");
 		System.out.print("ISBM\t도서명\t작가\t대여가능여부\n");
 		for(Book temp : Day07_5_bookApplication.books) {
-			if(temp != null && temp.mid.equals(loginid)) {
-
+			if(temp.mid == null) {
+				System.out.println("알림)) 대여하신 책이 없습니다.");
+			}
+			else if(temp != null && temp.mid.equals(loginid)) {
 				System.out.println(temp.ISBM + "\t"+ temp.bname + "\t"+temp.bwriter+"\t"+"대여중");
 			}
 		}
@@ -130,6 +132,9 @@ public class Book {
 		myrentalbook(loginid);
 		System.out.print("반납할 ISBM :");String aa = Day07_5_bookApplication.scanner.next();
 		for(Book temp : Day07_5_bookApplication.books) {
+			if(temp.mid == null) {
+				System.out.println("알림)) 대여하신 책이 없습니다.");
+			}
 			if(temp != null &&temp.ISBM.equals(aa) && temp.mid.equals(loginid)) {
 				if(temp.brental ) {
 					System.out.println("알림)) 대여중인 도서가 아닙니다.");
@@ -142,8 +147,8 @@ public class Book {
 					return;
 				}
 			}
-			
 		}
+		
 		System.out.println("알림)) 동일한 ISBM이 없습니다.");
 	}
 
