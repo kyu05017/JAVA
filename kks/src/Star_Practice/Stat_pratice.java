@@ -61,6 +61,7 @@ public class Stat_pratice {//c s
 		//3 - * - * -
 		//4 * - - - *
 		System.out.println("---------------------------------");
+	
 
 	}//m e
 }//c e
