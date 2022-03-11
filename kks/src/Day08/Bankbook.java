@@ -15,10 +15,11 @@ public class Bankbook {
 		
 	}
 
-	public Bankbook(int banknum, int nowmoney, String bankpw) {
+	public Bankbook(int banknum, int nowmoney, String bankpw, String username) {
 		this.banknum = banknum;
 		this.nowmoney = nowmoney;
 		this.bankpw = bankpw;
+		this.username = username;
 
 	}
 	//메소드
@@ -40,7 +41,7 @@ public class Bankbook {
 		}
 		System.out.print("사용할 비민번호 입력 : \n");String pw = Day08_5.scanner.next();
 	
-		Bankbook bankbook = new Bankbook(banknum,0, pw);
+		Bankbook bankbook = new Bankbook(banknum,0, pw,x);
 		try {
 			int i = 0;
 				for(Bankbook temp2 : Day08_5.bankbooks) {
@@ -58,10 +59,10 @@ public class Bankbook {
 		return false;
 	}
 /////////////////////////////////////////////////////////////////////////////////////////////
-	public void inmoney() {//입금
+	public void inmoney(String x) {//입금
 		System.out.print("계좌번호  입력 	: \n");int banknum =Day08_5.scanner.nextInt();
 		for(Bankbook temp : Day08_5.bankbooks) {
-			if(temp != null && temp.banknum != banknum) {
+			if(temp != null && temp.banknum != banknum && temp.username.equals(x)) {
 				System.out.println("알림)) 입력한 계좌번호가 존재하지 않습니다.");
 				return;
 			}
@@ -72,7 +73,7 @@ public class Bankbook {
 		try {
 			int i = 0;
 			for(Bankbook temp : Day08_5.bankbooks) {
-				if(temp != null &&temp.banknum == banknum && temp.bankpw.equals(pw)) {
+				if(temp != null &&temp.banknum == banknum && temp.bankpw.equals(pw) && temp.username.equals(x)) {
 					System.out.println("알림)) "+money + "원이 계좌로 입금 되었습니다");
 					Day08_5.bankbooks[i].nowmoney += money;
 					return;
@@ -85,10 +86,10 @@ public class Bankbook {
 		}
 	}
 	/////////////////////////////////////////////////////////////////////////////////////////////
-	void outmoney() {//출금
+	void outmoney(String x) {//출금
 		System.out.print("계좌번호  입력 	: \n");int banknum =Day08_5.scanner.nextInt();
 		for(Bankbook temp : Day08_5.bankbooks) {
-			if(temp != null && temp.banknum != banknum) {
+			if(temp != null && temp.banknum != banknum && temp.username.equals(x)) {
 				System.out.println("알림)) 입력한 계좌번호가 존재하지 않습니다.");
 				return;
 			}
@@ -99,7 +100,7 @@ public class Bankbook {
 		try {
 			int i = 0;
 			for(Bankbook temp : Day08_5.bankbooks) {
-				if(temp != null &&temp.banknum == banknum && temp.bankpw.equals(pw)) {
+				if(temp != null &&temp.banknum == banknum && temp.bankpw.equals(pw) && temp.username.equals(x)) {
 					if(money > temp.nowmoney) {
 						System.out.println("알림)) 잔액이 부족합니다.");
 						return;
@@ -126,7 +127,7 @@ public class Bankbook {
 		System.out.print("계좌번호\t현재잔액\t\n");
 		try {
 			for(Bankbook temp : Day08_5.bankbooks) {
-				if(temp != null) {
+				if(temp != null && temp.username.equals(x)) {
 					System.out.println(temp.banknum + "\t"+ temp.nowmoney);
 				}
 			}
@@ -136,11 +137,11 @@ public class Bankbook {
 		}
 	}
 	///////////////////////////////////////////////////////////////////////////////////////
-	void sendmoney() { 
+	void sendmoney(String x) { 
 		System.out.println("이체))");
 		System.out.print("계좌 번호 입력 	: "); int bname = Day08_5.scanner.nextInt();
 		for(Bankbook temp : Day08_5.bankbooks) {
-			if(temp != null && temp.banknum != banknum) {
+			if(temp != null && temp.banknum != banknum && temp.username.equals(x)) {
 				System.out.println("알림)) 입력한 계좌번호가 존재하지 않습니다.");
 				return;
 			}
@@ -150,7 +151,7 @@ public class Bankbook {
 		try {
 			int i = 0;
 			for(Bankbook temp : Day08_5.bankbooks) {
-				if(temp != null && temp.bankpw.equals(pw) && temp.banknum == bname) {
+				if(temp != null && temp.bankpw.equals(pw) && temp.banknum == bname && temp.username.equals(x)) {
 					System.out.print("받으실분 계좌번호  : "); int bnum = Day08_5.scanner.nextInt();
 					try {
 						for(Bankbook temp2 : Day08_5.bankbooks) {
@@ -186,7 +187,7 @@ public class Bankbook {
 		
 	}
 	//////////////////////////////////////////////
-	void findbankpw() {
+	void findbankpw(String x) {
 		System.out.println("비밀번호))");
 		System.out.print("계좌번호 	: \n"); int banknum = Day08_5.scanner.nextInt();
 		System.out.print("연락처 		: \n"); String phone = Day08_5.scanner.next();

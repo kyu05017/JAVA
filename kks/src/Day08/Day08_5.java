@@ -65,19 +65,19 @@ public class Day08_5 {
 				bankbook.bankbooklsit(loginid);
 			}
 			else if(ch==3) {
-				bankbook.inmoney();
+				bankbook.inmoney(loginid);
 			}
 			else if(ch==4) {
-				bankbook.outmoney();
+				bankbook.outmoney(loginid);
 			}
 			else if(ch==5) {
-				bankbook.sendmoney();
+				bankbook.sendmoney(loginid);
 			}
 			else if(ch==6) {
-				mobilebank.loanmenu();
+				mobilebank.loanmenu(loginid);
 			}
 			else if(ch==7) {
-				bankbook.findbankpw();
+				bankbook.findbankpw(loginid);
 			}
 			else if(ch==8) {
 				System.out.println("알림)) 로그아웃 되었습니다.");
@@ -90,14 +90,14 @@ public class Day08_5 {
 		
 	} // 일반회원 메뉴 종료
 	//////////////////////////////////////////////////////////////////////////////////////////
-	void loanmenu() {
+	void loanmenu(String x) {
 		while(true) {
 			Loan loan = new Loan();
 			System.out.println("------------------회원 메뉴---------------");
 			System.out.println("1.대출상품목록 2.대출잔액확인 3.대출상환 4.뒤로가기");
 			int ch = scanner.nextInt();
 			if(ch == 1) {
-				loan.myloanlsit(null);
+				loan.myloanlsit(x);
 			}
 			else if(ch == 2) {
 				
