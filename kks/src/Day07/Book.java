@@ -93,7 +93,7 @@ public class Book {
 			}
 		}
 	}
-	void myrentalbook(String loginid) {
+	void myrentalbook(String loginid) { 
 		System.out.println("--------------- 대여목록-----------------");
 		System.out.print("ISBM\t도서명\t작가\t대여가능여부\n");
 		for(Book temp : Day07_5_bookApplication.books) {
@@ -128,28 +128,31 @@ public class Book {
 	}
 		//4.도서반납
 	void bback(String loginid) {
-		System.out.println("--------------- 도서반납-----------------");
-		myrentalbook(loginid);
-		System.out.print("반납할 ISBM :");String aa = Day07_5_bookApplication.scanner.next();
-		for(Book temp : Day07_5_bookApplication.books) {
-			if(temp.mid == null) {
-				System.out.println("알림)) 대여하신 책이 없습니다.");
-			}
-			if(temp != null &&temp.ISBM.equals(aa) && temp.mid.equals(loginid)) {
-				if(temp.brental ) {
-					System.out.println("알림)) 대여중인 도서가 아닙니다.");
-					return;
+		try{
+			System.out.println("--------------- 도서반납-----------------");
+			myrentalbook(loginid);
+			System.out.print("반납할 ISBM :");String aa = Day07_5_bookApplication.scanner.next();
+			for(Book temp : Day07_5_bookApplication.books) {
+				if(temp.mid == null) {
+					System.out.println("알림)) 대여하신 책이 없습니다.");
 				}
-				else {
-					System.out.println("알림)) 해당 도서를 반납합니다.");
-					temp.brental = true;
-					temp.mid = null;
-					return;
+				if(temp != null &&temp.ISBM.equals(aa) && temp.mid.equals(loginid)) {
+					if(temp.brental ) {
+						System.out.println("알림)) 대여중인 도서가 아닙니다.");
+						return;
+					}
+					else {
+						System.out.println("알림)) 해당 도서를 반납합니다.");
+						temp.brental = true;
+						temp.mid = null;
+						return;
+					}
 				}
 			}
+		}catch(NullPointerException e){
+			System.out.println("알림)) 동일한 ISBM이 없습니다.");
 		}
 		
-		System.out.println("알림)) 동일한 ISBM이 없습니다.");
 	}
 
 		//5.도서등록
