@@ -1,9 +1,15 @@
 package 개인과제_4번쨰_키오스크;
 
+//스캐너가 있는 자바 클래스를 임폴트
 import java.util.Scanner;
 
+//현재 클래스
 public class 키오스크_도전_5번째 {
+	
+	//메인메소드
 	public static void main(String[] args) {
+		
+		//스캐너 객체 선언
 		Scanner scanner = new Scanner(System.in);
 		
 		int bc=0;		//콜라구매횟수
@@ -13,7 +19,8 @@ public class 키오스크_도전_5번째 {
 		int wi =10;		//환타재고
 		int cidi=10;	//사이다재고
 		
-		while(true) {
+		//반복문
+		while(true) { // 무한반복 종료조건없음
 			System.out.println("자판기))");
 			System.out.println("1)콜라 300원 2)환타 200원 3)사이다 100원");
 			System.out.println("4)결제");
@@ -32,7 +39,7 @@ public class 키오스크_도전_5번째 {
 				System.out.println("사이다를 추가하셨습니다");
 				bcid +=1; // 사이다 구매횟수에 1추가
 			}
-			else if(ch==4) {
+			else if(ch==4) {// 4일 경우 결제창을 보여준다
 				System.out.println("결제창))");
 				System.out.println("품목\t수량 \t 가격\t");
 				if(bc != 0)System.out.printf("콜라\t%d\t%d",bc,bc*300);			//콜라 구매횟수가 0이 아니라면 출력
@@ -65,11 +72,11 @@ public class 키오스크_도전_5번째 {
 					bc =0; bw =0; bcid =0;//추가항 항목을 0으로 모두 초기화
 					break;//빈복문 종료
 				}
-				else {
-					System.out.println("잘못된 입력입니다.");
+				else {//결제창 if에서 잘못 입력받았을경우
+					System.out.println("알림)) 잘못된 입력입니다.");
 				}
 			}
-			else {
+			else {//메인 반복문의 if문에서 잘못 입력받았을 경우
 				System.out.println("알림)) 잘못된 입력입니다.");
 			}
 		}
