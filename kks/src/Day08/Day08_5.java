@@ -94,18 +94,15 @@ public class Day08_5 {
 		while(true) {
 			Loan loan = new Loan();
 			System.out.println("------------------회원 메뉴---------------");
-			System.out.println("1.대출상품목록 2.대출잔액확인 3.대출상환 4.뒤로가기");
+			System.out.println("1.대출상품목록 2.대출확인 3.뒤로가기");
 			int ch = scanner.nextInt();
 			if(ch == 1) {
-				loan.myloanlsit(x);
+				loan.loanlsit(x);
 			}
 			else if(ch == 2) {
-				
+				loan.myloan(x);
 			}
-			else if(ch ==  3) {
-				
-			}
-			else if(ch==4) {
+			else if(ch==3) {
 				System.out.println("알림)) 이전 페이지로 이동합니다");
 				break;
 			}
@@ -128,7 +125,7 @@ public class Day08_5 {
 				loan.newloan(loginid);
 			}
 			else if(ch==2) {
-				
+				loan.removeloan(loginid);
 			}
 			else if(ch==3) {
 				System.out.println("알림)) 로그아웃 되었습니다.");

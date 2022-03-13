@@ -1,6 +1,5 @@
 package Day08;
 
-import Day08_2.B;
 
 public class Bankbook {
 	
