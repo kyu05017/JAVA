@@ -1,29 +1,27 @@
-package 개인과제_6번째;
+package 개인과제_6번째_로또판별기;
 
 import java.util.Random;
 import java.util.Scanner;
 
-public class 로또판변기_1 {
+public class 로또판별기 {
 	public static void main(String[] args) {
-		
-		int[] mynum = new int[6];
-		int[] chnum = new int[6];
-		
 		Scanner scanner = new Scanner(System.in);
 		Random random = new Random();
 		
-		for(int i = 0; i < 6; i++) {
-			System.out.println("1~45 사이 입력");
+		int[] mynum = new int[6];
+		int[] comnum = new int[6];
+		
+		for(int i = 0; i < mynum.length; i++) {
+			System.out.println("1~45 숫자 입력");
 			int num = scanner.nextInt();
 			boolean pass = true;
 			
 			if(num < 1 || num > 45) {
-				System.out.println("유효하지 않는 번호 입니다.");
+				System.out.println("잘못된 숫자 선택입니다.");
 				i--;
 				pass = false;
 			}
-			
-			for(int j = 0; j < 6; j++) {
+			for(int j = 0;j < mynum.length;j++) {
 				if(num == mynum[j]) {
 					System.out.println("이미 선택한 숫자 입니다.");
 					i--;
@@ -34,34 +32,34 @@ public class 로또판변기_1 {
 				mynum[i] = num;
 			}
 		}
-		
-		System.out.println("사용자가 선택한 번호 : ");
+		System.out.println("당신이 선택한 숫자");
 		for(int temp : mynum) {
-			System.out.print(temp+"\t");
+			System.out.print(temp +"\t");
 		}
 		
-		for(int i = 0; i < 6; i++) {
-			int choice = scanner.nextInt(45)+1;
+		for(int i = 0; i < comnum.length;i++) {
+			int comn = random.nextInt(45)+1;
 			boolean pass2 = true;
-			for(int temp : chnum) {
-				if(choice == temp) {
+			
+			for(int temp : comnum) {
+				if(comn == temp) {
 					i--;
 					pass2 = false;
 				}
 			}
 			if(pass2 == true) {
-				chnum[i] = choice;
+				comnum[i] = comn;
 			}
+			
 		}
-		
-		int index = 0;
+		int i = 0;
 		for(int temp1 : mynum) {
-			for(int temp2 : chnum) {
+			for(int temp2 : comnum) {
 				if(temp1 == temp2) {
-					index++;
+					i++;
 				}
 			}
 		}
-		System.out.println("같은 숫자 갯수 : "+ index);
+		System.out.println("당첨됫 숫자의 갯수 :" + i);
 	}
 }
