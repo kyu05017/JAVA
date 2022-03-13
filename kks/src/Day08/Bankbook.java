@@ -203,7 +203,22 @@ public class Bankbook {
 							System.out.println("1)변경 2)뒤로가기");
 							int ch = Day08_5.scanner.nextInt();
 							if(ch==1) {
-								changepw(x);
+								System.out.println("비밀번로를 변경합니다.");
+								System.out.print("새로운 비밀번호를 입력하세요. :");
+								String npw = Day08_5.scanner.next();		
+								try {
+									int i = 0;
+									for(Bankbook temp3 : Day08_5.bankbooks) {
+										if(temp3 != null && temp3.username.equals(x) && temp3.banknum==bnum) {
+											Day08_5.bankbooks[i].bankpw = npw;
+											System.out.println("비밀번호 변경이 완료 되었습니다");
+										}
+										i++;
+									}
+								}
+								catch(NullPointerException e) {
+									System.out.println("알림)) 잘못된 정보입니다.");
+								}
 								pwcheck = true;
 							}
 							else if(ch==2) {
@@ -222,24 +237,5 @@ public class Bankbook {
 			return;
 		}
 		if(pwcheck == false)System.out.println("알림)) 존재하지 않는 회원입니다.");
-	}
-	///////////////////////////////////////////////////////////////////////////////
-	void changepw(String x) {
-		System.out.println("비밀번로를 변경합니다.");
-		System.out.print("새로운 4자리 비밀번호를 입력하세요. :");
-		String npw = Day08_5.scanner.next();		
-		try {
-			int i = 0;
-			for(Bankbook temp : Day08_5.bankbooks) {
-				if(temp != null && temp.username.equals(x)) {
-					Day08_5.bankbooks[i].bankpw = npw;
-					System.out.println("비밀번호 변경이 완료 되었습니다");
-				}
-				i++;
-			}
-		}
-		catch(NullPointerException e) {
-			System.out.println("알림)) 잘못된 정보입니다.");
-		}
 	}
 }
