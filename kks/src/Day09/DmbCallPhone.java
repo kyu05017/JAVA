@@ -9,6 +9,7 @@ public class DmbCallPhone extends Callphone {
 	
 	//생성자
 	public DmbCallPhone(String model, String color, int channel) {
+		super();
 		this.model = model;		//this.필드명
 		this.color = color;		//this.필드명
 		// * 현재 클래스의 없는 필드 임으로 슈퍼클래스내 맴버 호출

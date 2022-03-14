@@ -5,11 +5,12 @@ public class Callphone { // 클래스 선언
 	//필드
 	String model;
 	String color;
-	
+/////////////////////////////////////////////////////////////////////////////////////////////////////
 	//생성자
 	public Callphone() {
 		
 	}
+/////////////////////////////////////////////////////////////////////////////////////////////////////
 	//메소드 [ void만 return 생략 가능하다 ]
 	//받는 인수도 없고 반환하는 타입도 없다
 	void powerOn() {
@@ -24,7 +25,7 @@ public class Callphone { // 클래스 선언
 	
 	// 반환 타입은 없지만 인수를 받음
 	void sendVoice(String message) {
-		System.out.println("자기 :" + message);
+		System.out.println("나 : " + message);
 	}
 	void receveVoice(String message) {
 		System.out.println("상대방 : "+ message);
