@@ -19,7 +19,7 @@ public class Tire {
 		++accmiatedRotation; //누적 회전수 1씩 증가
 		if(accmiatedRotation < maxRotatoin) {
 			//누적 회전수가 최대 회전수 보다 작으면 수명이 남음
-			System.out.println(location+" Tire 수명 : "+(maxRotatoin-accmiatedRotation)+"회");
+			System.out.println(location+" 기본 Tire 수명 : "+(maxRotatoin-accmiatedRotation)+"회");
 			return true;
 		}
 		else {
