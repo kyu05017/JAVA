@@ -40,9 +40,7 @@ public class Day09_06 {// m c s
 					System.out.println("알림)) 계좌 생성이 완료 되었습니다.");
 					System.out.println("계좌번호는 "+ result + "입니다.");
 				}
-				else {
-					System.out.println("알림)) 계좌 등록에 실패했습니다.");
-				}
+				else {System.out.println("알림)) 계좌 등록에 실패했습니다.");}
 			}
 			else if(ch == 2) {
 				System.out.println("입금 페이지))");
@@ -56,28 +54,45 @@ public class Day09_06 {// m c s
 				else if(inmoney == 2){
 					System.out.println("알림)) 계좌번호 또는 비밀번호가 잘못되었습니다.");
 				}
-				else {
-					System.out.println("알림)) 입금에 실패 했습니다.");
-				}
+				else {System.out.println("알림)) 입금에 실패 했습니다.");}
 			}
 			else if(ch == 3) {
 				System.out.println("출금 페이지))");
 				System.out.println("계좌번호 입력 : ");String bknum = scanner.next();
 				System.out.println("비밀번호 입력 : ");String pw = scanner.next();
-				System.out.println("입금할 금액 입력 : ");int putmoney = scanner.nextInt();
+				System.out.println("출금할 금액 입력 : ");int putmoney = scanner.nextInt();
 				int outmoney = controler.outmoney(bknum,pw,putmoney);
 				if(outmoney == 0) {
-					System.out.println("알림)) "+putmoney+"원이 "+bknum+"계좌로 입금이 완료 되었습니다.");
+					System.out.println("알림)) "+putmoney+"원이 "+bknum+"계좌에서 출금이 완료 되었습니다.");
 				}
 				else if(outmoney == 2){
 					System.out.println("알림)) 계좌번호 또는 비밀번호가 잘못되었습니다.");
-				}else {
-					System.out.println("알림)) 입금에 실패 했습니다.");
 				}
+				else if(outmoney == 3){
+					System.out.println("알림)) 잔액이 부족하여 출금에 실패했습니다.");
+				}
+				else {System.out.println("알림)) 출금에 실패 했습니다.");}
 			}
 			else if(ch == 4) {
 				System.out.println("이체 페이지))");
-				controler.sendmoney();
+				System.out.println("계좌번호 입력 : ");String bknum = scanner.next();
+				System.out.println("비밀번호 입력 : ");String pw = scanner.next();
+				System.out.println("받는 사람의 계좌번호 입력 : ");String bknum2 = scanner.next();
+				System.out.println("이체할 금액 입력 : ");int putmoney = scanner.nextInt();
+				
+				int reslut = controler.sendmoney(bknum,pw,bknum2,putmoney);
+				if(reslut == 2) {
+					System.out.println("계좌번호 "+ bknum2+ "로 "+putmoney+"원을 이체 했습니다.");
+				}
+				else if(reslut == 4) {
+					System.out.println("알림)) 계좌번호 혹은 비밀번호를 잘못입력했습니다.");
+				}
+				else if(reslut == 1) {
+					System.out.println("알림)) 계좌에 잔액이 부족하여 이체에 실패했습니다.");
+				}
+				else {
+					System.out.println("알림)) 이체에 실패했습니다.");
+				}
 			}
 			else if(ch == 5) {
 				System.out.println("내 계좌 목록 페이지))");
@@ -92,7 +107,6 @@ public class Day09_06 {// m c s
 					i++;
 					}
 				}
-				
 			}
 			else if(ch == 6) {
 				System.out.println("대출 페이지))");
@@ -102,10 +116,7 @@ public class Day09_06 {// m c s
 				System.out.println("알림)) 프로그램을 종료했습니다.");
 				break;
 			}
-			else {
-				System.out.println("알림))잘못된 입력");
-			}
+			else {System.out.println("알림))잘못된 입력");}
 		}
 	}
-	
 }// m c e

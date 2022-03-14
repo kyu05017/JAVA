@@ -65,10 +65,7 @@ public class Controler { // 통합 컨트롤러
 				return 0;
 			}
 			i++;
-			//동일한 계좌번호를 부정해서 실패시킴
-			if(temp2 != null || !(temp2.getBanknum().equals(bnum))){
-				return 2;
-			}
+			return 2;
 		}
 		return 1;
 	}
@@ -78,9 +75,14 @@ public class Controler { // 통합 컨트롤러
 		
 		int i = 0;
 		for(Bank temp2 : Day09_06.banks) {
-			if(temp2.getBanknum().equals(bnum) && temp2.getBankpw().equals(pw)) {
-				Day09_06.banks[i].setMymoney(-putmoney);
-				return 0;
+			if(temp2 != null && temp2.getBanknum().equals(bnum) && temp2.getBankpw().equals(pw)) {
+				if(putmoney > temp2.getMymoney()) {
+					return 3;
+				}
+				else {
+					Day09_06.banks[i].setMymoney(temp2.getMymoney()-putmoney);
+					return 0;
+				}
 			}
 			i++;
 			if(temp2 != null || !(temp2.getBanknum().equals(bnum)) || !(temp2.getBankpw().equals(pw))){
@@ -90,8 +92,29 @@ public class Controler { // 통합 컨트롤러
 		return 1;
 	}
 		// 4. 이체 [ Update ] 
-	public boolean sendmoney() {
-		return false;
+	public int sendmoney(String bknum1, String pw,String bknum2,int sendmoney) {
+		int i = 0;
+		for(Bank temp : Day09_06.banks) {
+			if(temp != null && bknum1.equals(temp.getBanknum()) && pw.equals(temp.getBankpw())) {
+				int j = 0;
+				for(Bank temp2 : Day09_06.banks) {
+					if(temp2 != null && bknum2.equals(temp2.getBanknum())) {
+						if(temp.getMymoney() < sendmoney) {
+							return 1;
+						}
+						else {
+							Day09_06.banks[i].setMymoney(temp.getMymoney()-sendmoney);
+							Day09_06.banks[j].setMymoney(temp2.getMymoney()+sendmoney);
+							return 2;
+						}
+						
+					}
+					j++;
+				}
+			}
+			i++;
+		}
+		return 4;
 	}
 		// 5. 내 계좌목록 [ Read ]
 	public Bank[] mylist(String name) {
