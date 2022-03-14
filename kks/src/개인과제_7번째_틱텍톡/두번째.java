@@ -10,7 +10,9 @@ public class 두번째 {
 		Random random = new Random();
 		
 		String[] pad = {"[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]"};
-		String win = "";
+		String my = "[O]";
+		String com = "[X]";
+		String win = null;
 		int comturn = 0;
 		
 		while(true) {
@@ -23,7 +25,7 @@ public class 두번째 {
 				System.out.println("위치 선택");
 				int p = scanner.nextInt();
 				if(pad[p].equals("[ ]")) {
-					pad[p] = "[O]";
+					pad[p] = my;
 					break;
 				}
 				else {
@@ -33,7 +35,7 @@ public class 두번째 {
 			while(true) {
 				int cp = random.nextInt(9);
 				if(pad[cp].equals("[ ]")) {
-					pad[cp] = "[X]";
+					pad[cp] = com;
 					comturn +=1;
 					break;
 				}
@@ -45,11 +47,11 @@ public class 두번째 {
 				}
 			}
 			for(int i = 0; i <= 2; i++) {
-				if(pad[i].equals(pad[i+3]) && pad[i].equals(pad[i+6])) {
+				if(pad[i].equals(pad[i+3]) && pad[i+3].equals(pad[i+6])) {
 					win = pad[i];
 				}
 			}
-			if(pad[0].equals(pad[4]) && pad[4].equals(pad[6])) {
+			if(pad[0].equals(pad[4]) && pad[4].equals(pad[8])) {
 				win = pad[0];
 			}
 			if(pad[2].equals(pad[4]) && pad[4].equals(pad[6])) {
@@ -67,11 +69,11 @@ public class 두번째 {
 				}
 			}
 			
-			if(win .equals("[o]")) {
+			if(win .equals(my)) {
 				System.out.println("플레이어 승리");
 				break;
 			}
-			if(win.equals("[X]")) {
+			if(win.equals(com)) {
 				System.out.println("컴퓨터 승리");
 			}
 			if(draw==true) {

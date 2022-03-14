@@ -1,6 +1,6 @@
 package Day09;
 
-public class Computer extends Calculator{
+public final class Computer extends Calculator{ // final 클래스는 수정이 안됌
 			// 서브클래스 extends 슈퍼클래스
 	
 	//필드
