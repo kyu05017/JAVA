@@ -8,5 +8,12 @@ public class Day10_3 {
 		GamePad gp;
 		gp = new BattleGame();
 		gp.bottonA();
+		gp.bottonB();
+		gp.bottonC();
+		
+		gp = new SccocerGame();
+		gp.bottonA();
+		gp.bottonB();
+		gp.bottonC();
 	}
 }
