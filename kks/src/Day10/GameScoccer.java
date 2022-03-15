@@ -1,6 +1,6 @@
 package Day10;
 
-public class SccocerGame implements GamePad {
+public class GameScoccer implements GamePad {
 
 	@Override
 	public void bottonA() {
