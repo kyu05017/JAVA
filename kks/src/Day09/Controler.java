@@ -153,6 +153,12 @@ public class Controler { // 통합 컨트롤러
 		return false;
 	}
 	
+	// 대출상환
+	public boolean outloan() {
+		
+		return false;
+	}
+	
 	
 	
 	

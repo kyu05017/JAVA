@@ -108,13 +108,38 @@ public class Day09_6 {// m c s
 			}
 			else if(ch == 6) {
 				System.out.println("대출 페이지))");
-				System.out.println("계좌번호 입력 : ");
-				String bnum = scanner.next();
-				System.out.println("비밀번호 입력 : ");
-				String pw = scanner.next();
-				System.out.println("대출 받을 금액 입력 (이자율 10%)");
-				int loan = scanner.nextInt();
-				controler.loanmoney(bnum,pw,loan);
+				System.out.println("1)대출 2)상환");
+				int ch2 = scanner.nextInt();
+				
+				if(ch2 == 1) {
+					System.out.println("대출))");
+					System.out.println("계좌번호 입력 : ");
+					String bnum = scanner.next();
+					System.out.println("비밀번호 입력 : ");
+					String pw = scanner.next();
+					System.out.println("대출 받을 금액 입력 (이자율 10%)");
+					int loan = scanner.nextInt();
+					boolean result = controler.loanmoney(bnum,pw,loan);
+					if(result) {
+						System.out.println("알림)) 대출이 승인 완료되었습니다.");
+						System.out.println(bnum+"계좌에 "+loan+"원이 입금되었습니다. ( 이율 10% )");
+					}
+					else {
+						System.out.println("알림)) 대출이 거절되었습니다.");
+					}
+				}
+				else if(ch2 == 2) {
+					System.out.println("상환))");
+					System.out.println("계좌번호 입력 : ");
+					String bnum = scanner.next();
+					System.out.println("비밀번호 입력 : ");
+					String pw = scanner.next();
+					
+				}
+				else {
+					System.out.println("알림)))잘못된 입력입니다.");
+				}
+				
 			}
 			else if(ch == 7) {
 				System.out.println("알림)) 프로그램을 종료했습니다.");
