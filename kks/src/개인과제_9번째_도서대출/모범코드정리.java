@@ -19,6 +19,9 @@ public class 모범코드정리 {
 				
 			}
 			else if(ch == 2) {
+				//회원 메뉴
+				
+				//운영자 메뉴
 				
 			}
 			else if(ch == 3) {
