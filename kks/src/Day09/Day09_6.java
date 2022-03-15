@@ -135,6 +135,13 @@ public class Day09_6 {// m c s
 					System.out.println("비밀번호 입력 : ");
 					String pw = scanner.next();
 					
+					for(Bank temp : Day09_6.banks) {
+						if(temp!=null && bnum.equals(temp.getBanknum()) && pw.equals(temp.getBankpw())) {
+							System.out.println("당신의 상환 금액은 "+temp.getLoanmoney()+"원 입니다.");
+						}
+					}
+					
+					
 				}
 				else {
 					System.out.println("알림)))잘못된 입력입니다.");
