@@ -37,9 +37,9 @@ public class Controler { // 통합 컨트롤러
 			if(bncheck == false)break;
 		}
 		Bank temp = null;
-		if(bankcompanynum == 1) {temp = new Kokmin(bnum, pw, name, 0);}
-		else if(bankcompanynum == 2){temp = new Shinhan(bnum, pw, name, 0);}
-		else if(bankcompanynum == 3) {temp = new Hana(bnum, pw, name, 0);}
+		if(bankcompanynum == 1) {temp = new Kokmin(bnum, pw, name, 0 ,0);}
+		else if(bankcompanynum == 2){temp = new Shinhan(bnum, pw, name, 0, 0);}
+		else if(bankcompanynum == 3) {temp = new Hana(bnum, pw, name, 0, 0);}
 		else {
 			return null;
 		}
