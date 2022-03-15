@@ -141,6 +141,8 @@ public class Controler { // 통합 컨트롤러
 	}
 		// 6. 대출 [ Update ]
 	public boolean loanmoney() {
+		
+		
 		return false;
 	}
 	

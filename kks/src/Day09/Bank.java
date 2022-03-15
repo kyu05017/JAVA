@@ -7,6 +7,7 @@ public class Bank {
 	private String bankpw;
 	private String name;
 	private int mymoney;
+	private int loanmoney;
 	
 	//2.积己磊
 		// 1. 后积己磊
@@ -15,11 +16,12 @@ public class Bank {
 	}
 
 		// 2. 葛锹 鞘靛 积己磊
-	public Bank(String banknum, String bankpw, String name, int mymoney) {
+	public Bank(String banknum, String bankpw, String name, int mymoney, int loanmoney) {
 		this.banknum = banknum;
 		this.bankpw = bankpw;
 		this.name = name;
 		this.mymoney = mymoney;
+		this.loanmoney = loanmoney;
 	}
 	//3.皋家靛
 		// 1. 拌谅积己
@@ -54,7 +56,12 @@ public class Bank {
 	public void setMymoney(int mymoney) {
 		this.mymoney = mymoney;
 	}
-	
+	public int getLoanmoney() {
+		return loanmoney;
+	}
+	public void setLoanmoney(int loanmoney) {
+		this.loanmoney = loanmoney;
+	}	
 	
 }
 	

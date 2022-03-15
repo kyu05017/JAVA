@@ -108,6 +108,10 @@ public class Day09_6 {// m c s
 			}
 			else if(ch == 6) {
 				System.out.println("대출 페이지))");
+				System.out.println("계좌번호 입력 : ");
+				String bnum = scanner.next();
+				System.out.println("비밀번호 입력 : ");
+				String pw = scanner.next();
 				controler.loanmoney();
 			}
 			else if(ch == 7) {
