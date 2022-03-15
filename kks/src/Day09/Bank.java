@@ -59,8 +59,8 @@ public class Bank {
 	public int getLoanmoney() {
 		return loanmoney;
 	}
-	public void setLoanmoney(int loanmoney) {
-		this.loanmoney = loanmoney;
+	public void setLoanmoney(double d) {
+		this.loanmoney = (int) d;
 	}	
 	
 }

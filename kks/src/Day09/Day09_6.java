@@ -95,13 +95,13 @@ public class Day09_6 {// m c s
 			else if(ch == 5) {
 				System.out.println("내 계좌 목록 페이지))");
 				System.out.println("계좌주 입력 : ");String name = scanner.next();
-				System.out.println("순서\t계좌번호\t잔액\t");
+				System.out.println("순서\t계좌번호\t잔액\t대출액");
 				
 				Bank[] mybanklist = controler.mylist(name);
 				int i = 1;
 				for(Bank temp : mybanklist) {
 					if(temp != null) {
-					System.out.printf("%d\t%s\t%d원\n",i,temp.getBanknum(),temp.getMymoney());
+					System.out.printf("%d\t%s\t%d원\t%d\n",i,temp.getBanknum(),temp.getMymoney(),temp.getLoanmoney());
 					i++;
 					}
 				}
@@ -112,7 +112,9 @@ public class Day09_6 {// m c s
 				String bnum = scanner.next();
 				System.out.println("비밀번호 입력 : ");
 				String pw = scanner.next();
-				controler.loanmoney();
+				System.out.println("대출 받을 금액 입력 (이자율 10%)");
+				int loan = scanner.nextInt();
+				controler.loanmoney(bnum,pw,loan);
 			}
 			else if(ch == 7) {
 				System.out.println("알림)) 프로그램을 종료했습니다.");

@@ -140,9 +140,16 @@ public class Controler { // 통합 컨트롤러
 		return mybanklist;
 	}
 		// 6. 대출 [ Update ]
-	public boolean loanmoney() {
+	public boolean loanmoney(String bnum,String pw, int loan) {
 		
-		
+		int i = 0;
+		for(Bank temp : Day09_6.banks) {
+			if(temp != null && bnum.equals(temp.getBanknum()) && pw.equals(temp.getBankpw())) {
+				Day09_6.banks[i].setMymoney(temp.getMymoney()+loan);
+				Day09_6.banks[i].setLoanmoney(loan + (loan*0.1));
+				return true;
+			}
+		}
 		return false;
 	}
 	
