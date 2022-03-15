@@ -18,5 +18,16 @@ public class Day10_2 {
 					// A버튼 : 슈팅	
 					// B버튼 : 방어
 		
+		// 1.인터페이스 객체 선언 
+		RemoteControl rc;
+		//인터페이스명 객체명
+			// 2. 인터페이스에 텔레비전 클래스 메모리 할당
+		rc = new Television();
+		
+		rc.turnOn();
+		rc.setVolume(10);
+		rc.setMute(true);
+		rc.turnOff();
+		RemoteControl.changeBettery();
 	}
 }

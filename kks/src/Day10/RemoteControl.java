@@ -8,6 +8,7 @@ public interface RemoteControl { //인터페이스 선언
 	public int MIN_VOLUME = 0; 	// 리모콘의 최소소음
 	
 		// 2. 추상메소드**	: 선언o 구현x
+			// abstracts : 추상 [ 인터페이스 구현 생략]
 	public void turnOn();				// : { } : 중략 [ 구현 x ]
 	public void turnOff();				// : 구현 x
 	public void setVolume(int volume);	// : 구현 x
@@ -24,6 +25,6 @@ public interface RemoteControl { //인터페이스 선언
 	
 		// 4. 정적메소드	: 선언o 구현o [  객체없이 사용 가능 ]
 	static void changeBettery() {
-		System.out.println("건전지를 교체합니다.");
+		System.out.println("리모콘 건전지를 교체합니다.");
 	}
 }
