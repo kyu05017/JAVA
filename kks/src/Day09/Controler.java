@@ -1,10 +1,11 @@
-package Day08;
+package Day09;
 
 import java.util.Random;
 
+import Day08.Hana;
+import Day08.Kokmin;
+import Day08.Shinhan;
 import Day08_2.B;
-import Day09.Bank;
-import Day09.Day09_06;
 
 public class Controler { // 통합 컨트롤러
 	
@@ -28,7 +29,7 @@ public class Controler { // 통합 컨트롤러
 			bnum = String.format("%04d",ranNo);//%4d 정수 4자리 [ 만일 자릿수 없으면 공백처리]	
 													  //%04d 정수 4자리[ 만일 자리수 없으면 0  처리]
 			boolean bncheck = false;
-			for(Bank temp : Day09_06.banks) {
+			for(Bank temp : Day09_6.banks) {
 				if(temp != null && temp.getBanknum().equals(bnum)) {
 					bncheck = true;
 				}
@@ -44,9 +45,9 @@ public class Controler { // 통합 컨트롤러
 		}
 		
 		int i = 0;
-		for(Bank temp3 : Day09_06.banks) {
+		for(Bank temp3 : Day09_6.banks) {
 			if(temp3 == null) { // 해당 temp가 공백이면 공백에 저장.
-				Day09_06.banks[i] = temp;
+				Day09_6.banks[i] = temp;
 				return bnum;
 			}
 			i++;
@@ -57,11 +58,11 @@ public class Controler { // 통합 컨트롤러
 		// 2. 입금 [ Update ]
 	public int inmoney(String bnum, int putmoney) {
 		int i = 0;
-		for(Bank temp2 : Day09_06.banks) {
+		for(Bank temp2 : Day09_6.banks) {
 			// 동일한 계좌번호가 있으면 입금처리
 			if(temp2 != null && temp2.getBanknum().equals(bnum)) {
 				//해당 배열이 공백이 아니고 입력한 인수와 같으면
-				Day09_06.banks[i].setMymoney(temp2.getMymoney()+putmoney);
+				Day09_6.banks[i].setMymoney(temp2.getMymoney()+putmoney);
 				return 0;
 			}
 			i++;
@@ -74,13 +75,13 @@ public class Controler { // 통합 컨트롤러
 		Bank bank = new Bank();
 		
 		int i = 0;
-		for(Bank temp2 : Day09_06.banks) {
+		for(Bank temp2 : Day09_6.banks) {
 			if(temp2 != null && temp2.getBanknum().equals(bnum) && temp2.getBankpw().equals(pw)) {
 				if(putmoney > temp2.getMymoney()) {
 					return 3;
 				}
 				else {
-					Day09_06.banks[i].setMymoney(temp2.getMymoney()-putmoney);
+					Day09_6.banks[i].setMymoney(temp2.getMymoney()-putmoney);
 					return 0;
 				}
 			}
@@ -94,17 +95,17 @@ public class Controler { // 통합 컨트롤러
 		// 4. 이체 [ Update ] 
 	public int sendmoney(String bknum1, String pw,String bknum2,int sendmoney) {
 		int i = 0;
-		for(Bank temp : Day09_06.banks) {
+		for(Bank temp : Day09_6.banks) {
 			if(temp != null && bknum1.equals(temp.getBanknum()) && pw.equals(temp.getBankpw())) {
 				int j = 0;
-				for(Bank temp2 : Day09_06.banks) {
+				for(Bank temp2 : Day09_6.banks) {
 					if(temp2 != null && bknum2.equals(temp2.getBanknum())) {
 						if(temp.getMymoney() < sendmoney) {
 							return 1;
 						}
 						else {
-							Day09_06.banks[i].setMymoney(temp.getMymoney()-sendmoney);
-							Day09_06.banks[j].setMymoney(temp2.getMymoney()+sendmoney);
+							Day09_6.banks[i].setMymoney(temp.getMymoney()-sendmoney);
+							Day09_6.banks[j].setMymoney(temp2.getMymoney()+sendmoney);
 							return 2;
 						}
 						
@@ -122,7 +123,7 @@ public class Controler { // 통합 컨트롤러
 		
 		Bank[] mybanklist = new Bank[100];
 		
-		for(Bank temp : Day09_06.banks) {
+		for(Bank temp : Day09_6.banks) {
 			if(temp != null && name.equals(temp.getName())) {
 				// 해당 계좌내 계좌주와 인수의 계좌주와 동일하면
 				// 내 계좌목록 배열내 빈공간을 찾아서 내계좌목록에 넣기

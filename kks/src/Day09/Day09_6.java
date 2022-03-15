@@ -2,9 +2,7 @@ package Day09;
 
 import java.util.Scanner;
 
-import Day08.Controler;
-
-public class Day09_06 {// m c s
+public class Day09_6 {// m c s
 	
 	// 은행계좌프로긂 [ 상속 ]
 			// 은행[super]
@@ -18,7 +16,7 @@ public class Day09_06 {// m c s
 	public static Bank[] banks = new Bank[1000];
 	
 	public static void main(String[] args) {
-		Day09_06 aa = new Day09_06();
+		Day09_6 aa = new Day09_6();
 		aa.menu();
 	}
 	void menu() {
