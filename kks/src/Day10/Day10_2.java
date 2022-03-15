@@ -20,14 +20,69 @@ public class Day10_2 {
 		
 		// 1.인터페이스 객체 선언 
 		RemoteControl rc;
+		Searchable rc3;
 		//인터페이스명 객체명
 			// 2. 인터페이스에 텔레비전 클래스 메모리 할당
 		rc = new Television();
-		
+		rc3 = new Television();
+		// 3. 인터페이스 실행
 		rc.turnOn();
 		rc.setVolume(10);
 		rc.setMute(true);
+		rc.setMute(false);
+		rc3.search("naver");
 		rc.turnOff();
 		RemoteControl.changeBettery();
+		System.out.println();
+		
+		// 4. 인터페이스내 클래스 메모리 할당
+		rc = new Audio();
+		// 5. 인터페이스 실행
+		rc.turnOn();
+		rc.setVolume(8);
+		rc.setMute(true);
+		rc.setMute(false);
+		rc.turnOff();
+		
+		RemoteControl.changeBettery();
+		
+		System.out.println();
+		rc = new Television();
+		rc.turnOff();
+		System.out.println();
+		// 익명 구현 객체
+		
+		RemoteControl rc2 = new RemoteControl() {
+		//인터페이스명 객체명 = new 인터페이스명 
+			
+			@Override
+			public void turnOn() {
+				System.out.println("리모컨을 켭니다.");
+			}
+			
+			@Override
+			public void turnOff() {
+				System.out.println("리모컨을 끕니다");
+			}
+			
+			@Override
+			public void setVolume(int volume) {
+				System.out.println("현재 오디오 볼륨 : "+volume);
+			}
+		};
+		
+		rc2.turnOn();
+		rc2.turnOff();
+		rc2.setVolume(156465135);
+		
+		// 디폴트 메소드 호출
+		rc2.setMute(true); // 인터페이스에서 이미 구현이 되어있다. 일반 메소드와 차이가 없다
+		RemoteControl.changeBettery(); //객체없이 사용 가능
+		//메모리 할당 받는 방법
+			//회부 클래스/ 내부클래스 내 필드(저장기능), 메소드(저장가능), 저장  사용시
+		//1. new 연산자 
+		//2. static 연산자
+		
 	}
+
 }

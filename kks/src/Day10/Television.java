@@ -1,6 +1,6 @@
 package Day10;
 
-public class Television implements RemoteControl{
+public class Television implements RemoteControl, Searchable{
 			//클래스명 implements 인터페이스명
 					// 구현하다.
 	private int volume;
@@ -31,5 +31,18 @@ public class Television implements RemoteControl{
 			this.volume = volume;
 		}
 		System.out.println("현재 TV 볼륨 : "+this.volume);
+	}
+	@Override
+	public void search(String url) {
+		System.out.println(url+"을 검색합니다.");
+	}
+	@Override
+	public void setMute(boolean mute) {
+		if(mute) {
+			System.out.println("TV 무음 처리");
+		}
+		else {
+			System.out.println("TV 무음 해제");
+		}
 	}
 }
