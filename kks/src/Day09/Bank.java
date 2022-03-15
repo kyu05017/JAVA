@@ -53,8 +53,8 @@ public class Bank {
 	public int getMymoney() {
 		return mymoney;
 	}
-	public void setMymoney(int mymoney) {
-		this.mymoney = mymoney;
+	public void setMymoney(double d) {
+		this.mymoney = (int) d;
 	}
 	public int getLoanmoney() {
 		return loanmoney;

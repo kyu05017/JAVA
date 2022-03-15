@@ -140,7 +140,17 @@ public class Day09_6 {// m c s
 							System.out.println("당신의 상환 금액은 "+temp.getLoanmoney()+"원 입니다.");
 						}
 					}
-					
+					System.out.println("1)상환 2) 돌아가기");
+					int ch3 = scanner.nextInt();
+					if(ch3 == 1) {
+						controler.outloan(bnum,pw);
+					}
+					else if(ch3 == 2) {
+						System.out.println("알림)) 이전으로 돌아갑니다.");
+					}
+					else {
+						System.out.println("알림)) 잘못된 입력입니다.");
+					}
 					
 				}
 				else {
