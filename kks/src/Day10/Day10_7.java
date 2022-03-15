@@ -40,6 +40,7 @@ public class Day10_7 {
 				itemlist.add(goods);
 			}
 			
+			
 		} catch (Exception e) {} // catch :  예외 잡기 => Exception 클래스의 객체를 저장
 		while(true) {
 			System.out.println("메뉴판))");
