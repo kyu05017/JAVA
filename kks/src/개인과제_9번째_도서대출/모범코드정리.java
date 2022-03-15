@@ -52,18 +52,14 @@ public class 모범코드정리 {
 				int adminmenu = 0;
 				
 				for(int i = 0; i <members.length;i++) {
-					if(members[i][0] != null && members[i][0].equals(id) && members[i][1].equals(pw)) {
-						login = 1;
-						System.out.println("알림)) "+id+"님 환영합니다.");
-						break;
-					}
-					else if(members[i] != null && id.equals("admin") && members[i][2].equals(pw)) {
+					if(members[i] != null && id.equals("admin") && members[i][1].equals(pw)) {
 						login = 2;
 						System.out.println("알림)) 관리자로 로그인 하셨습니다.");
 						break;
 					}
-					else {
-						System.out.println("알림)) 로그인에 실패했습니다.");
+					else if(members[i][0] != null && members[i][0].equals(id) && members[i][1].equals(pw)) {
+						login = 1;
+						System.out.println("알림)) "+id+"님 환영합니다.");
 						break;
 					}
 				}
@@ -88,28 +84,97 @@ public class 모범코드정리 {
 						else if(ch2 == 4) adminmenu = 4;
 					}
 					if(menu == 1) {
-						System.out.println("테스트 검색");
-						break;
+						System.out.println("도서검색))");
+						System.out.println("채이름 입력 :");
+						String bname = scanner.next();
+						for(int i = 0; i < book.length;i++) {
+							if(book[i][0] != null && book[i][0].equals(bname)) {
+								if(book[i][2].equals("")) {
+									System.out.printf("%s 책은 현재 대여가능합니다. \n",bname);
+									break;
+								}
+								else {
+									System.out.println("책이름\t대여여부\t대여자");
+									System.out.printf("%s\t%s\t%s\n",book[i][0],book[i][1],book[i][2]);
+									break;
+								}
+							}
+						}
 					}
 					else if(menu == 2 || adminmenu == 2) {
-						System.out.println("테스트 목록");
-						break;
+						System.out.println("책이름\t대여여부\t대여자");
+						for(int i =0; i< book.length;i++) {
+							if(book[i][0] != null) {
+								
+								System.out.printf("%s\t%s\t%s\n",book[i][0],book[i][1],book[i][2]);
+							}
+						}
 					}
 					else if(menu == 3) {
-						System.out.println("테스트 대여");
-						break;
-					}
-					else if(adminmenu == 1) {
-						System.out.println("테스트 등록");
-						break;
-					}
-					else if(adminmenu == 3) {
-						System.out.println("테스트 삭제");
-						break;
+						System.out.println("도서대여))");
+						System.out.println("대여할 책이름 입력 : ");
+						String bname = scanner.next();
+						for(int i =0; i <book.length;i++) {
+							if(book[i][0] != null && book[i][0].equals(bname)) {
+								book[i][2] = "대여중";
+								for(int j = 0; j < members.length;j++) {
+									if(members[j][0] != null) {
+										book[i][1] = id;
+										break;
+									}
+								}
+							}
+						}
 					}
 					else if(menu == 4) {
-						System.out.println("테스트 반납");
-						break;
+						System.out.println("도서 반납))");
+						System.out.println("반납하실 책이름 입력");
+						String bname = scanner.next();
+						
+						for(int i = 0; i < book.length;i++) {
+							if(book[i][0] != null && book[i][0].equals(bname)) {
+								book[i][1] = "";
+								book[i][2] = "";
+								break;
+							}
+						}
+					}
+					else if(adminmenu == 1) {
+						System.out.println("도서등록)");
+						System.out.println("등록할 도서 이름 입력 :");
+						String name = scanner.next();
+						boolean pass = true;
+						for(int i = 0; i < book.length;i++) {
+							if(book[i][0] != null && book[i][0].equals(name)) {
+								System.out.println("알림)) 이미 등록한 책입니다.");
+								pass = false;
+							}
+						}
+						if(pass) {
+							for(int i = 0; i<book.length;i++) {
+								if(book[i][0] == null) {
+									book[i][0] = name;
+									book[i][1] = "";
+									book[i][2] = "";
+									System.out.println("알림)) 도서 등록이 완료 되었습니다.");
+									break;
+								}
+							}
+						}
+					}
+					else if(adminmenu == 3) {
+						System.out.println("도서 삭제))");
+						System.out.println("삭제할 책이름 입력 :");
+						String name = scanner.next();
+						
+						for(int i = 0;i<book.length;i++) {
+							if(book[i][0] != null && book[i][0].equals(name)) {
+								book[i][0] = null;
+								book[i][1] = null;
+								book[i][2] = null;
+							}
+						}
+						
 					}
 					else if(menu == 5 || adminmenu == 4) {
 						System.out.println("로그아웃 했습니다.");
