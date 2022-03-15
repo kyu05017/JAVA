@@ -158,9 +158,14 @@ public class Controler { // 통합 컨트롤러
 		int i = 0;
 		for(Bank temp : Day09_6.banks) {
 			if(temp != null && bnum.equals(temp.getBanknum()) && pw.equals(temp.getBankpw())) {
-				Day09_6.banks[i].setMymoney(temp.getMymoney()-(temp.getLoanmoney()+(temp.getLoanmoney()*0.1)));
-				Day09_6.banks[i].setLoanmoney(0);
-				return true;
+				if(temp.getMymoney() < temp.getLoanmoney()) {
+					return false;
+				}
+				else {
+					Day09_6.banks[i].setMymoney(temp.getMymoney()-(temp.getLoanmoney()+(temp.getLoanmoney()*0.1)));
+					Day09_6.banks[i].setLoanmoney(0);
+					return true;
+				}
 			}
 		}
 		return false;

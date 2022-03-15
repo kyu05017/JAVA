@@ -101,7 +101,7 @@ public class Day09_6 {// m c s
 				int i = 1;
 				for(Bank temp : mybanklist) {
 					if(temp != null) {
-					System.out.printf("%d\t%s\t%d원\t%d\n",i,temp.getBanknum(),temp.getMymoney(),temp.getLoanmoney());
+					System.out.printf("%d\t%s\t%d원\t%d원\n",i,temp.getBanknum(),temp.getMymoney(),temp.getLoanmoney());
 					i++;
 					}
 				}
@@ -143,7 +143,14 @@ public class Day09_6 {// m c s
 					System.out.println("1)상환 2) 돌아가기");
 					int ch3 = scanner.nextInt();
 					if(ch3 == 1) {
-						controler.outloan(bnum,pw);
+						boolean result = controler.outloan(bnum,pw);
+					
+						if(result) {
+							System.out.println("알림)) 상환을 완료했습니다.");
+						}
+						else {
+							System.out.println("알림)) 상환에 실패했습니다.");
+						}
 					}
 					else if(ch3 == 2) {
 						System.out.println("알림)) 이전으로 돌아갑니다.");
