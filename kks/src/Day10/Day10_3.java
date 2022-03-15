@@ -11,7 +11,7 @@ public class Day10_3 {
 		gp.bottonB();
 		gp.bottonC();
 		
-		gp = new SccocerGame();
+		gp = new GameScoccer();
 		gp.bottonA();
 		gp.bottonB();
 		gp.bottonC();
