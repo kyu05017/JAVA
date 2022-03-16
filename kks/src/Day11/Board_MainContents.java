@@ -1,6 +1,8 @@
 package Day11;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Board_MainContents {
 	
@@ -16,21 +18,28 @@ public class Board_MainContents {
 		//생성자
 	public Board_MainContents() {
 	}
-
-	public Board_MainContents(String title, String contens, String password, String writer) {
+	// 게시물 등록 [ 날짜 자동주입 ]
+	public Board_MainContents(String title, String contens, String writer, String password) {
 		this.title = title;
 		this.contens = contens;
 		this.password = password;
 		this.writer = writer;
+		Date date = new Date(); // 날짜 객체 입력
+		// 날짜 형식 클래스 : SimpleDateFormat 클래스 java.text
+		SimpleDateFormat format = new SimpleDateFormat("yy-MM-dd");
+		this.Date = format.format(date);
+		// 객체명.format{ 날짜 } : 해당 달짜가 포멧으로 설정한 패턴으로 저장
 	}
 
+	//게시물 수정
+	
 	public Board_MainContents(String title, String contens, String password, String writer, int viewcount,String date, ArrayList<Board_Reply> replylist) {
 		this.title = title;
 		this.contens = contens;
 		this.password = password;
 		this.writer = writer;
 		this.viewcount = viewcount;
-		Date = date;
+		this.Date = date;
 		this.replylist = replylist;
 	}
 

@@ -1,5 +1,8 @@
 package Day11;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class Board_Reply {
 
 	//필드
@@ -12,18 +15,16 @@ public class Board_Reply {
 	public Board_Reply() {
 	}
 
+
 	public Board_Reply(String reply_contents, String reply_writer, String reply_password) {
-		super();
-		this.reply_contents = reply_contents;
-		this.reply_writer = reply_writer;
-		this.reply_password = reply_password;
-	}
-	
-	public Board_Reply(String reply_contents, String reply_writer, String reply_password, String reply_Date) {
 		this.reply_contents = reply_contents;
 		this.reply_writer = reply_writer;
 		this.reply_password=reply_password;
-		this.reply_Date = reply_Date;
+		Date date = new Date(); // 날짜 객체 입력
+		// 날짜 형식 클래스 : SimpleDateFormat 클래스 java.text
+		SimpleDateFormat format = new SimpleDateFormat("yy-MM-dd");
+		this.reply_Date = format.format(date);
+		// 객체명.format{ 날짜 } : 해당 달짜가 포멧으로 설정한 패턴으로 저장
 	}
 	
 	//메소드
