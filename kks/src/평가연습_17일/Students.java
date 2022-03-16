@@ -3,7 +3,6 @@ package 평가연습_17일;
 public class Students {
 	
 	//필드 
-	private String student;
 	private String name;
 	private int kor;
 	private int eng;
@@ -18,8 +17,7 @@ public class Students {
 	}
 
 
-	public Students(String student, String name, int kor, int eng, int math, int total, double ave) {
-		this.student = student;
+	public Students( String name, int kor, int eng, int math, int total, double ave) {
 		this.name = name;
 		this.kor = kor;
 		this.eng = eng;
@@ -28,15 +26,6 @@ public class Students {
 		this.ave = ave;
 	}
 
-
-	public String getStudent() {
-		return student;
-	}
-
-
-	public void setStudent(String student) {
-		this.student = student;
-	}
 
 
 	public String getName() {
