@@ -12,7 +12,12 @@ public class Day11_3 {
 		catch(Exception e) {
 			System.out.println( e );
 		}	
-	
+		try {
+			withdraw(30000);
+		}
+		catch(Exception e) {
+			System.out.println(e);
+		}
 		
 	}
 	
@@ -31,4 +36,12 @@ public class Day11_3 {
 		}
 		*/
 	}
+	
+	// p,444 ~ 445 :예외 만들기
+	public static void withdraw(int money)throws Exception {
+		if(20000 < money) {
+			throw new Exception("잔고부족");
+		}
+	}
+	
 }
