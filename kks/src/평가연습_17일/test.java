@@ -48,14 +48,16 @@ public class test {
 					for(Students temp : studentlist) {
 						if(temp == null) {
 							studentlist[j] = students;
-							for(int h = 0; j< studentlist.length; h++) {
-									if(temp > total2) {
-										String[] temp = students[i];
-										students[i] = students[j];
-										students[j] = temp;
-								}
+							int h = 0;
+							for(Students temp2 : studentlist) {
+								if(temp.getTotal() > temp2.getTotal()) {
+										Temp[] temp3 = studentlist[j];
+										studentlist[j] = studentlist[h];
+										studentlist[h] = temp3;
+								}	
+								h++;
 							}
-							break;
+
 						}
 						j++;
 					}
