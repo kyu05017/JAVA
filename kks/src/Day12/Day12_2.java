@@ -1,7 +1,5 @@
 package Day12;
 
-import java.io.UnsupportedEncodingException;
-
 public class Day12_2 {
 	
 	public static void main(String[] args) {
