@@ -69,12 +69,6 @@ public class 개인과제_11번째_회원제프로그램_클래스필드 {
 						System.out.println("메세지)) 로그인에 실패했습니다.");
 					}
 					
-					else if(pass) {
-						while(true) {//회원메뉴
-							
-							
-						}
-					}
 				}
 				else if(ch == 3) {
 					System.out.println("아이디 찾기))");
