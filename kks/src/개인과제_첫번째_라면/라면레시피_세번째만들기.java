@@ -1,4 +1,4 @@
-package MyPratice;
+package 개인과제_첫번째_라면;
 
 import java.util.Scanner;
 

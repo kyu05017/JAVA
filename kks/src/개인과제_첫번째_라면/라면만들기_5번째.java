@@ -1,8 +1,8 @@
-package MyPratice;
+package 개인과제_첫번째_라면;
 
 import java.util.Scanner;
 
-public class 라면라세피_네번째 {
+public class 라면만들기_5번째 {
 
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
