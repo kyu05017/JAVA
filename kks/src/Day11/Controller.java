@@ -38,8 +38,8 @@ public class Controller {
 				temp.setTitle(newtitle);
 				temp.setContens(newcontents);
 				Controller.save();
-				return true;
-			}
+			return true;
+			}	
 			else {
 				return false;
 			}
