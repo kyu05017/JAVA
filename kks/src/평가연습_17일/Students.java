@@ -18,6 +18,7 @@ public class Students {
 
 
 	public Students( String name, int kor, int eng, int math, int total, double ave) {
+
 		this.name = name;
 		this.kor = kor;
 		this.eng = eng;
@@ -25,6 +26,7 @@ public class Students {
 		this.total = total;
 		this.ave = ave;
 	}
+
 
 
 
