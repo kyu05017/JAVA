@@ -35,12 +35,13 @@ public class 첫번째 {
 					System.out.println("PW : ");
 					String pw = scanner.next();
 					
-					Board board = new Board(title, contents, pw, work);
+					Board board = new Board(title, contents, id, pw);
 					
 					int i = 0;
 					for(Board temp : boardlist) {
 						if(temp == null) {
 							boardlist[i] = board;
+							break;
 						}
 						i++;
 					}
@@ -49,11 +50,11 @@ public class 첫번째 {
 					System.out.println("게시판))");
 					System.out.println("게시문 번호 선택");
 					int num = scanner.nextInt();
-					System.out.printf("작성자 : %s || 제목 : %s\n",boardlist[num].writer,boardlist[num].title);
-					System.out.printf("내용 : %s\n",boardlist[num].content);
-					String work2 = scanner.next();
+					System.out.printf("작성자 : %s || 제목 : %s\n",boardlist[num-1].writer,boardlist[num-1].title);
+					System.out.printf("내용 : %s\n",boardlist[num-1].content);
 					System.out.println("메뉴)");
 					System.out.println("1)목록가기 2)글삭제 3)글수정");
+					String work2 = scanner.next();
 					if(work2.equals("1") || work2.equals("목록가기")) {
 						System.out.println("목록으로 돌아갑니다.");
 					}
@@ -61,17 +62,24 @@ public class 첫번째 {
 						System.out.println("글삭제))");
 						System.out.println("PW : ");
 						String pw = scanner.next();
-						if(boardlist[num].password.equals(pw)) {
-							for(int i = 0; i <boardlist.length; i++) {
-								if(i == boardlist.length-1) {
-									boardlist[boardlist.length-1] = null;
+						boolean pass = false;
+						
+						if(boardlist[num-1].password.equals(pw)) {
+							pass = true;
+						}
+						else {
+						
+						}
+						if(pass) {
+							for(int i = num-1;i <boardlist.length;i++) {
+								if( i == boardlist.length-1) {
+									boardlist[ boardlist.length-1 ] = null;
 								}
 								else {
 									boardlist[i] = boardlist[i+1];
 								}
 							}
 						}
-						System.out.println("글삭제 완료");
 					}
 					else if(work2.equals("3") || work2.equals("글수정")) {
 						System.out.println("글수정))");
@@ -93,7 +101,7 @@ public class 첫번째 {
 							System.out.println("수정이 완료 되었습니다.");
 						}
 						else {
-							System.out.println("비밀번호가 잘묏됐습니다.");
+							System.out.println("비밀번호가 잘못됐습니다.");
 						}
 						
 					}
