@@ -1,15 +1,20 @@
 package MyPratice;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.Scanner;
 
 public class 여러가지_입출력 {
 	public static void main(String[] args) throws IOException {
-		//객체 입력
+		// 입력
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		Scanner scanner = new Scanner(System.in);
+		
+		// 출력
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		
 		// 문자열
 		
@@ -41,12 +46,19 @@ public class 여러가지_입출력 {
 		String str_b2 = new String(bytes,0,b2_input-2);
 		int in_b2 = Integer.parseInt(str_b2);
 		
-		
+
 		
 		System.out.println("버프리드 정수형 : " + a2_int);
 		System.out.println("시스템인 정수형 : " + in_b2);
 		System.out.println("스캐너  정수형 : " + c2);
 		
+		
+		
+		String Z = br.readLine();
+		bw.write("버프라이트로 출력 : "+Z+"\n");
+		bw.flush();
+		bw.close();
+		scanner.close();
 		
 		
 	}
