@@ -1,4 +1,4 @@
-package MyPractice01_IO;
+package MyPractice01;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -6,23 +6,20 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
-public class Buffered연습2 {
+public class Buffred연습3 {
 
-	public static void main(String[] args) throws NumberFormatException, IOException {
+	public static void main(String[] args) throws IOException {
 
-		//객체선언
+
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		
-		//입력받음
-		int A = Integer.parseInt(br.readLine());
-		String B = br.readLine();
+		String A = br.readLine();
+		int B = Integer.parseInt(br.readLine());
 
-		//출력
 		bw.write(A+"\n");
 		bw.write(B+"\n");
 		
-		//닫아줘야함
 		bw.close();
 	}
 

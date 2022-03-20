@@ -1,4 +1,4 @@
-package MyPractice01_IO;
+package MyPractice01;
 
 import java.io.BufferedReader;
 import java.io.IOException;
