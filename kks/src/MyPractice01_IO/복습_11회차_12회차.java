@@ -1,4 +1,4 @@
-package MyPratice;
+package MyPractice01_IO;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;

@@ -1,4 +1,4 @@
-package Star_Practice;
+package MyPractice03_Star;
 
 import java.util.Scanner;
 

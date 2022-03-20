@@ -1,4 +1,4 @@
-package MyPractice2;
+package MyPractice02_Progrms;
 
 
 public class Car {

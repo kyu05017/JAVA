@@ -1,4 +1,4 @@
-package MyPractice2;
+package MyPractice02_Progrms;
 
 import java.text.DecimalFormat;
 import java.util.Scanner;
