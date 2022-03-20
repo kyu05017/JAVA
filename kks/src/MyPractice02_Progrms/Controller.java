@@ -159,6 +159,13 @@ public class Controller {
 						System.out.print("결제하실 금액은  ");
 						System.out.println( df.format( todaypay ) );
 					}
+					else if(car_all_min >=480) {
+						int todaypay = 50000;;
+						money = todaypay;
+						DecimalFormat df = new DecimalFormat("#,##0원");
+						System.out.print("결제하실 금액은  ");
+						System.out.println( df.format( todaypay ) );
+					}
 				}
 				else if(now_day > car_day){
 					int todaypay = ((now_day - car_day)*50000);
