@@ -102,9 +102,9 @@ public class Member {
 	void findid() {
 		System.out.println("---------------아이디찾기---------------");
 		System.out.println("이름을 입력하세요.");
-		String inputname = 모범카피.scanner.next();
+		String inputname = scanner.next();
 		System.out.println("전화번호를 입력하세요.");
-		String inputphone = 모범카피.scanner.next();
+		String inputphone = scanner.next();
 		boolean ck = false;
 		int i = 0;
 		for(Member temp : 모범카피.members) {
@@ -122,9 +122,9 @@ public class Member {
 	void findpw() {
 		System.out.println("---------------아이디찾기---------------");
 		System.out.println("아이디를 입력하세요.");
-		String inputid = 모범카피.scanner.next();
+		String inputid = scanner.next();
 		System.out.println("전화번호를 입력하세요.");
-		String inputphone = 모범카피.scanner.next();
+		String inputphone = scanner.next();
 		boolean ck = false;
 		int i = 0;
 		for(Member temp : 모범카피.members) {

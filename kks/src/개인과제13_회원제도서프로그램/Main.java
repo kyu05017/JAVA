@@ -2,7 +2,7 @@ package 개인과제13_회원제도서프로그램;
 
 import java.util.Scanner;
 
-public class Main_모법코드 {
+public class Main {
 	
 	static Scanner sc = new Scanner(System.in);
 	static Member[] members = new Member[1000];
