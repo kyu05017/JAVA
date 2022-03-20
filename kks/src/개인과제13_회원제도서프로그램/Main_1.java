@@ -2,12 +2,12 @@ package 개인과제13_회원제도서프로그램;
 
 import java.util.Scanner;
 
-public class Main {
+public class Main_1 {
 	
 	static Scanner sc = new Scanner(System.in);
-	static Member_tesk[] memberlist = new Member_tesk[1000];
-	static Book_rental_tesk[] booklist = new Book_rental_tesk[1000]; 
-	static Main main = new Main();
+	static Member_tesk_1[] memberlist = new Member_tesk_1[1000];
+	static Book_rental_tesk_1[] booklist = new Book_rental_tesk_1[1000]; 
+	static Main_1 main = new Main_1();
 	
 	public static void main(String[] args) {
 
@@ -15,7 +15,7 @@ public class Main {
 	}
 	
 	void Menu() {
-		Member_tesk member = new Member_tesk();
+		Member_tesk_1 member = new Member_tesk_1();
 		while(true) {
 			System.out.println("회원제 도서대여 프로그램))");
 			System.out.println("1.회원가입 2.로그인 3.아이디찾기 4.비밀번호찾기 5.종료");
@@ -112,7 +112,7 @@ public class Main {
 			System.out.println(id+ "님 환영 합니다.");
 			System.out.println("1.도서검색 2.도서목록 3.도서대여 4.도서반납 5.로그아웃");
 			int ch= sc.nextInt();
-			Book_rental_tesk book = new Book_rental_tesk();
+			Book_rental_tesk_1 book = new Book_rental_tesk_1();
 			
 			if(ch == 1) {
 				System.out.println("도서검색))");
@@ -178,7 +178,7 @@ public class Main {
 			System.out.println("관리자 메뉴))");
 			System.out.println("1.도서추가 2.도서목록 3.도서삭제 4.로그아웃");
 			int ch= sc.nextInt();
-			Book_rental_tesk book = new Book_rental_tesk();
+			Book_rental_tesk_1 book = new Book_rental_tesk_1();
 			
 			if(ch == 1) {
 				System.out.println("도서등록))");

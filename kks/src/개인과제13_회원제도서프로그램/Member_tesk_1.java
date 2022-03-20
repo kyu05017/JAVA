@@ -1,6 +1,6 @@
 package 개인과제13_회원제도서프로그램;
 
-public class Member_tesk {
+public class Member_tesk_1 {
 	
 	int member_Number;
 	String id;
@@ -8,11 +8,11 @@ public class Member_tesk {
 	String name; 
 	String phone;
 	
-	public Member_tesk() {
+	public Member_tesk_1() {
 
 	}
 
-	public Member_tesk(int member_Number, String id, String password, String name, String phone) {
+	public Member_tesk_1(int member_Number, String id, String password, String name, String phone) {
 		this.member_Number = member_Number;
 		this.id = id;
 		this.password = password;
@@ -24,7 +24,7 @@ public class Member_tesk {
 		
 		boolean pass = true;
 		
-		for(Member_tesk temp : Main.memberlist) {
+		for(Member_tesk_1 temp : Main_1.memberlist) {
 			if(temp != null && temp.id.equals(id)) {
 				pass = false;
 				return 5;
@@ -32,26 +32,26 @@ public class Member_tesk {
 		}
 		int num = 0;
 		int i = 0;
-		for(Member_tesk temp : Main.memberlist) {
+		for(Member_tesk_1 temp : Main_1.memberlist) {
 			if(temp == null) {
 				if(i == 0) {
 					num = 1;
 					break;
 				}
 				else {
-					num = Main.memberlist[i-1].member_Number + 1;
+					num = Main_1.memberlist[i-1].member_Number + 1;
 					break;
 				}
 			}
 			i++;
 		}
 		
-		Member_tesk account = new Member_tesk(num, id, password, name, phone);
+		Member_tesk_1 account = new Member_tesk_1(num, id, password, name, phone);
 		
 		int j = 0;
-		for(Member_tesk temp : Main.memberlist) {
+		for(Member_tesk_1 temp : Main_1.memberlist) {
 			if(temp == null) {
-				Main.memberlist[i] = account;
+				Main_1.memberlist[i] = account;
 				return 1;
 			}
 		}
@@ -60,7 +60,7 @@ public class Member_tesk {
 	
 	String signIn(String id, String password) {
 		
-		for(Member_tesk temp : Main.memberlist) {
+		for(Member_tesk_1 temp : Main_1.memberlist) {
 			if(temp != null && id.equals("admin") && temp.password.equals(password)) {
 				return "admin";
 			}
@@ -73,7 +73,7 @@ public class Member_tesk {
 	
 	String findId(String name, String phone) {
 		
-		for(Member_tesk temp : Main.memberlist) {
+		for(Member_tesk_1 temp : Main_1.memberlist) {
 			if(temp != null && temp.name.equals(name) && temp.phone.equals(phone)) {
 				return temp.id;
 			}
@@ -83,7 +83,7 @@ public class Member_tesk {
 	
 	String findPassword(String id, String phone) {
 		
-		for(Member_tesk temp : Main.memberlist) {
+		for(Member_tesk_1 temp : Main_1.memberlist) {
 			if(temp != null && temp.id.equals(id) && temp.phone.equals(phone)) {
 				return temp.password;
 			}
