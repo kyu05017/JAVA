@@ -1,4 +1,4 @@
-package 개인과제_5번째_가위바위보;
+package 개인과제05_가위바위보;
 
 import java.util.Random; 	//랜덤 객체 임폴트
 import java.util.Scanner;	//입력 객체 임폴트

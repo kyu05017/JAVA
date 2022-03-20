@@ -1,4 +1,4 @@
-package 개인과제_4번쨰_키오스크;
+package 개인과제04_키오스크;
 
 //스캐너가 있는 자바 클래스를 임폴트
 import java.util.Scanner;

@@ -1,4 +1,4 @@
-package 개인과제_11번째_회원제프로그램_클래스필드;
+package 개인과제11_회원제프로그램_클래스필드;
 
 import java.util.Scanner;
 

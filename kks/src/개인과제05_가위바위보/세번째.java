@@ -1,4 +1,4 @@
-package 개인과제_5번째_가위바위보;
+package 개인과제05_가위바위보;
 
 import java.util.Random;
 import java.util.Scanner;

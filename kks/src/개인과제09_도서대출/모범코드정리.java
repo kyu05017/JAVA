@@ -1,4 +1,4 @@
-package 개인과제_9번째_도서대출;
+package 개인과제09_도서대출;
 
 import java.util.Scanner;
 

@@ -1,4 +1,4 @@
-package 개인과제_12번째_비회원제게시판;
+package 개인과제12_비회원제게시판;
 
 public class Board {
 	// * Board 클래스 선언

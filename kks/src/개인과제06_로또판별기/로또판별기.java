@@ -1,4 +1,4 @@
-package 개인과제_6번째_로또판별기;
+package 개인과제06_로또판별기;
 
 import java.util.Random;
 import java.util.Scanner;

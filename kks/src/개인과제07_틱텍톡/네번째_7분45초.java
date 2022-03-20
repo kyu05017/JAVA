@@ -1,4 +1,4 @@
-package 개인과제_7번째_틱텍톡;
+package 개인과제07_틱텍톡;
 
 import java.util.Random;
 import java.util.Scanner;

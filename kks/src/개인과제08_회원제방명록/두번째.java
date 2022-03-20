@@ -1,4 +1,4 @@
-package 개인과제_8번째_회원제방명록;
+package 개인과제08_회원제방명록;
 
 import java.util.Scanner;
 

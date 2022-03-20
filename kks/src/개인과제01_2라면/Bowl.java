@@ -1,4 +1,4 @@
-package 개인과제_첫번째_라면;
+package 개인과제01_2라면;
 
 class Bowl {
 	String water;

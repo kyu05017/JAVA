@@ -1,4 +1,4 @@
-package 개인과제_첫번째_엘리베이터;
+package 개인과제01_1_엘리베이터;
 
 import java.util.Scanner;
 

@@ -1,4 +1,4 @@
-package 개인과제_10번째_PC방자리;
+package 개인과제10_PC방자리;
 
 import java.util.Scanner;
 
