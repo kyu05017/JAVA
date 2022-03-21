@@ -46,7 +46,7 @@ public class Controller {
 
 		try {
 		FileOutputStream outputStream = new FileOutputStream("D:/inCarSave.txt");
-		// 2. 파일에 작성할 내용 [ 한줄씩 ]
+
 		for(Car temp : carlist) {
 			String contents = temp.getCarNum() +","+temp.getCardate()+","+temp.getParking()+"\n";
 			outputStream.write(contents.getBytes());
@@ -55,22 +55,21 @@ public class Controller {
 		catch(Exception e) {
 		}
 	}
-	
-	// 게시물 불러오기
+
 	public static void inCarLoad() {
 		
 		try {
 			FileInputStream inputStream = new FileInputStream("D:/inCarSave.txt");
-			byte[] bytes = new byte[1024]; // 1 . 바이트 배열 선언
-			inputStream.read(bytes); // 2. 모든 바이트를 읽어와서 바이트열에 저장 
-			String file = new String(bytes); // 3. 바이트를 문자열로 변환
-			String[]list = file.split("\n"); // 4. 문자열 자르기
+			byte[] bytes = new byte[1024]; 
+			inputStream.read(bytes); 
+			String file = new String(bytes); 
+			String[]list = file.split("\n"); 
 			int i = 0;
 			for(String temp : list) {
 				if( i+1 == list.length ) {
 					break; 
 				}
-				String[] filed = temp.split(",");// 5. 문자열 자르기 
+				String[] filed = temp.split(",");
 				Car temp2 = new Car(filed[0], filed[1],Integer.parseInt(filed[2]));
 				carlist.add(temp2);
 				i++;
@@ -86,7 +85,7 @@ public class Controller {
 
 		try {
 		FileOutputStream outputStream = new FileOutputStream("D:/saleList.txt");
-		// 2. 파일에 작성할 내용 [ 한줄씩 ]
+	
 		for(DaySale temp : salelist) {
 			String contents = temp.getTodaymoney()+","+temp.getSavedate()+"\n";
 			outputStream.write(contents.getBytes());
@@ -101,16 +100,16 @@ public class Controller {
 		
 		try {
 			FileInputStream inputStream = new FileInputStream("D:/saleList.txt");
-			byte[] bytes = new byte[1024]; // 1 . 바이트 배열 선언
-			inputStream.read(bytes); // 2. 모든 바이트를 읽어와서 바이트열에 저장 
-			String file = new String(bytes); // 3. 바이트를 문자열로 변환
-			String[]list = file.split("\n"); // 4. 문자열 자르기
+			byte[] bytes = new byte[1024];
+			inputStream.read(bytes);  
+			String file = new String(bytes); 
+			String[]list = file.split("\n"); 
 			int i = 0;
 			for(String temp : list) {
 				if( i+1 == list.length ) {
 					break; 
 				}
-				String[] filed = temp.split(",");// 5. 문자열 자르기 
+				String[] filed = temp.split(",");
 				DaySale temp2 = new DaySale(Integer.parseInt(filed[0]),filed[1]);
 				salelist.add(temp2);
 				i++;
