@@ -29,7 +29,7 @@ public class Day14_4 {
 			// 0.5초 간격으로 소리 실행
 			// 0.5 초 간격으로 띵 출력
 		
-		Toolkit toolkit = new Toolkit.getDefaultToolkit();
+		Toolkit toolkit = Toolkit.getDefaultToolkit();
 		
 		for(int i = 0; i < 5; i++) {
 			toolkit.beep();//소리 메소드
@@ -49,6 +49,23 @@ public class Day14_4 {
 			
 		}
 		
+		System.out.println("-------------------------");
+		
+		Runnable beepTesk = new BeepTesk();
+		
+		Thread thread = new Thread(beepTesk);
+		
+		thread.start();
+		
+		for(int i = 0; i < 5 ;i++) {
+			System.out.println("딩");
+			try {
+				Thread.sleep(500);
+			} catch (InterruptedException e) {
+
+			}
+		}
+	
 	}
 	
 }
