@@ -22,6 +22,7 @@ public class Day14_5 {
 		dogSound.start();// 런 메소드 호출 [ 멀티 스레드 시작 ] 
 		catSound.start();
 		tigersound.start();
+
 	}
 	
 }
