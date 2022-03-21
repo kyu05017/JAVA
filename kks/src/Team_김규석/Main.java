@@ -23,6 +23,7 @@ public class Main {
 						tower[temp.getParking()] = "["+temp.getCarNum()+"]";
 					}
 				}
+				
 				for(int i = 0; i < tower.length; i++) {
 					 System.out.print(tower[i]);
 					 if(i%4==3) {
