@@ -87,9 +87,6 @@ public class Bankbook {
 					pass = true;
 					return;
 				}
-				else {
-					
-				}
 				i++;
 			}
 		}
