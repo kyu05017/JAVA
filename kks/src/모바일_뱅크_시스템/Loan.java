@@ -82,7 +82,7 @@ public class Loan {
 		catch(NullPointerException e) {}
 	}
 /////////////////////////////////////////////////////////////////////////////	
-	void removeloan() {
+	void removeloan(String x) {
 		System.out.println("----------------대출 상품 삭제 페이지------------------");
 		System.out.print("삭제할 대출 상품이름 입력 : \n"); 
 		for(Loan temp : Day08_5.loanlist) {
