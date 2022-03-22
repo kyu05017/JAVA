@@ -2,6 +2,10 @@ package 개인과제14_모바일뱅크시스템;
 
 import java.util.Scanner;
 
+import 모바일_뱅크_시스템.Bankbook;
+import 모바일_뱅크_시스템.Day08_5;
+import 모바일_뱅크_시스템.Loan;
+
 public class Controller {
 	
 	static Account[] accountlist = new Account[1000];
@@ -83,8 +87,8 @@ public class Controller {
 		int i = 0;
 		for(Bank_Book temp : banklist) {
 			if(temp != null &&temp.getBanknum() == bnum && temp.getBankpw().equals(pw) && temp.getUsername().equals(id)) {
-				
-				banklist[i].setNowmoney(+money);
+				int a = banklist[i].getNowmoney() + money;
+				banklist[i].setNowmoney(a);
 				return true;
 			}
 			i++;
@@ -97,8 +101,8 @@ public class Controller {
 		int i = 0;
 		for(Bank_Book temp : banklist) {
 			if(temp != null &&temp.getBanknum() == bnum && temp.getBankpw().equals(pw) && temp.getUsername().equals(id)) {
-				
-				banklist[i].setNowmoney(-money);
+				int a = banklist[i].getNowmoney() - money;
+				banklist[i].setNowmoney(a);
 				return true;
 			}
 			i++;
@@ -134,8 +138,10 @@ public class Controller {
 							System.out.println("알림)) 잔액이 부족하여 이체를 실패했습니다.");
 						}
 						else {
-							banklist[j].setNowmoney(+money2);
-							banklist[i].setNowmoney(-money2) ;
+							int a = banklist[j].getNowmoney() + money2;
+							int b = banklist[i].getNowmoney() - money2;
+							banklist[j].setNowmoney(a);
+							banklist[i].setNowmoney(b) ;
 							System.out.println("계좌번호 "+bnum+"에 "+money2+"원을 이체 했습니다.");
 							return;
 						}
@@ -261,12 +267,73 @@ public class Controller {
 		System.out.println("알림)) 일치하는 대출 상품이 없습니다.");
 	}
 	
-	void myloan() {
+	void myloan(String id) {
+		Scanner scanner = new Scanner(System.in);
 		
+		for(Loan_System temp : loanlist) {
+			if(temp != null &&temp.getLid().equals(id)) {
+				System.out.println(temp.getLname() + "\t"+ (temp.getLoanmoney()+(temp.getLoanmoney()*temp.getInterest())));
+				System.out.println("1)대출상환  2)뒤로가기");
+				int ch = scanner.nextInt();
+				if(ch == 1) {
+					System.out.println("알림)) 대출상환 페이지로 이동합니다.");
+					outloan(id);
+				}
+				else if(ch == 2) {
+					System.out.println("알림)) 이전으로 돌아갑니다.");
+					return;
+				}
+				
+			}
+		}
 	}
 	
-	void outloan() {
+	void outloan(String id) {
 		
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("대출상환)) ");
+		for(Loan_System temp : loanlist) {
+			if(temp!=null && id.equals(temp.getLid())) {
+				System.out.println(temp.getLname()+"\t"+temp.getLoanmoney()+"\t"+(temp.getInterest()*100)+"%\t"+temp.getLid());
+			}
+		}
+		System.out.print("상환할 대출상품의 이름을 입력하세요 : \n");
+		String out = scanner.next();
+		try {
+			int j = 0;
+			for(Loan_System temp : loanlist) {
+				
+				if(temp!=null && !temp.getLname().equals(out)) {}
+				else if(temp != null && temp.getLname().equals(out)) {
+					System.out.print("출금할 계좌번호를 입력하세요.  : \n");
+					int bnum = scanner.nextInt();
+					int i = 0;
+					for(Bank_Book temp2 : banklist) {
+						if(temp2 != null && temp2.getNowmoney() < (temp.getLoanmoney()+(temp.getLoanmoney()*temp.getInterest()))) {
+							System.out.println("알림)) 잔액이 부족하여 상환하실수 없습니다.");
+							return;
+						}
+						else if(temp2 != null && temp2.getUsername().equals(id) && temp2.getBanknum() == bnum) {
+							System.out.println(temp.getLname()+" 상품을 상환 합니다.");
+							System.out.println("상환 금액은 "+ (temp.getLoanmoney()+(temp.getLoanmoney()*temp.getInterest())) + "원 입니다.");
+							int a = (int) (banklist[i].getNowmoney() - (temp.getLoanmoney()+(temp.getLoanmoney()*temp.getInterest())));
+							banklist[i].setNowmoney(a);
+							banklist[i].setLoanm(0);
+							loanlist[j].setLid(" ");
+							System.out.println("알림)) 상환이 완료되었습니다. 이용해주셔서 감사합니다.");
+							return;
+						}
+						i++;
+					}
+				} 
+				
+				j++;
+			}
+			System.out.println("알림)) 존재하지 않는 상품입니다.");
+		}
+		catch(NullPointerException e) {
+		
+		}
 	}
 	
 	void inloan(String id) {
@@ -286,9 +353,11 @@ public class Controller {
 					for(Bank_Book temp2 : banklist) {
 						if(temp2 != null && temp2.getUsername().equals(id)&&temp2.getBanknum() == bnum) {
 							System.out.println(temp.getLname()+" 상품을  대출받았습니다.");
-							banklist[i].getNowmoney() += temp.loanmoney;
-							banklist[i].setLoanm((temp.getLoanmoney()+(temp.setLname(*temp.getInterest()))));
-							loanlist[j].lid = x;
+							int a = banklist[i].getNowmoney() + temp.getLoanmoney();
+							int b = (int) (temp.getLoanmoney() + (temp.getLoanmoney()*temp.getInterest()));
+							banklist[i].setNowmoney(a);
+							banklist[i].setLoanm(b);
+							loanlist[j].setLname(id);
 							return;
 						}
 						i++;

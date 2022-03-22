@@ -283,7 +283,7 @@ public class Main {
 				System.out.println("대출받은상품 목록 목록))");
 				System.out.print("대출상품\t대출잔액\t\n");
 				
-				con.myloan();
+				con.myloan(id);
 			}
 			else if(ch.equals("3")) {
 				System.out.println("이전 메뉴로 돌아갑니다.");
