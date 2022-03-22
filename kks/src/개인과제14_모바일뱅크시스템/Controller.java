@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import 모바일_뱅크_시스템.Bankbook;
 import 모바일_뱅크_시스템.Day08_5;
-import 모바일_뱅크_시스템.Member;
+import 모바일_뱅크_시스템.Loan;
 
 public class Controller {
 	
@@ -168,16 +168,101 @@ public class Controller {
 	
 /////////////////////////////////////////////////////////////////////////////////////////	
 	
-	void newloan() {
+	void newloan(String lname, int loan) {
 		
+		for(Loan_System temp : loanlist) {
+			if(temp!=null && temp.getLname().equals(lname)) {
+				System.out.println("알림)) 현재 사용중인 대출 상품입니다.[등록실패]");
+				return; 
+			}
+		}
+		
+		Loan_System newloan = new Loan_System(lname, loan, " ", false);
+		
+		int i = 0;
+		for(Loan_System temp : loanlist) {
+			if(temp==null) {
+				System.out.println("알림)) 대출 상품 등록이 완료되었습니다.");
+				loanlist[i]=newloan;
+				return;
+			}
+			i++;
+		}
 	}
 	
-	void loanlsit() {
+	void loanlsit(String id) {
 		
+		Scanner scanner = new Scanner(System.in);
+		
+		for(Loan_System temp : loanlist) {
+			if(temp!=null) {
+				System.out.println(temp.getLname()+"\t"+temp.getLoanmoney()+"\t"+(temp.getInterest()*100)+"%"+temp.getLid());
+			}
+		} 
+		System.out.println("1)대출받기  2)뒤로가기");
+		int ch = scanner.nextInt();
+		
+		
+		if(ch == 1) {
+			System.out.println("알림)) 대출 페이지로 이동합니다.");
+			inloan(id);
+		}
+		else if(ch == 2) {
+			System.out.println("알림)) 이전으로 돌아갑니다.");
+			return;
+		}
 	}
 	
 	void removeloan() {
 		
+		Scanner scanner = new Scanner(System.in);
+		
+		for(Loan_System temp : loanlist) {
+			if(temp!=null) {
+				System.out.println(temp.getLname()+"\t"+temp.getLoanmoney()+"\t"+(temp.getInterest()*100)+"%"+temp.getLid());
+			}
+		}
+		String lname =scanner.next();	
+		int a =0;
+		for(Loan_System temp : loanlist) {
+			if(temp!=null && !temp.getLname().equals(lname)) {
+				
+			}
+			else if(temp!=null && temp.getLname().equals(lname)) {
+				System.out.println("검색 결과 : ");
+				System.out.println("상품이름\t대출금액\t이자율");
+				System.out.println(temp.getLname()+"\t"+temp.getLoanmoney()+"\t"+(temp.getInterest()*100)+"%");
+				System.out.println("1.삭제 2.취소"); int ch = scanner.nextInt();
+				
+				if(ch==1) {
+					System.out.println("알림)) 해당 상품이 삭제되었습니다.");
+					loanlist[a]=null;
+					int j = 0;	
+					for(Loan_System temp2 : loanlist) {
+						if(temp2==null) {
+							for(int i=j; i<loanlist.length; i++) {
+								if(i==loanlist.length-1) {
+									loanlist[loanlist.length-1] = null;
+								}
+								else {
+									loanlist[i]=loanlist[i+1];
+								}
+							}
+						}
+						j++;	
+					} // for end
+					return;
+				} // if end
+				else if(ch==2) {
+					System.out.println("알림)) 관리자 메뉴로 돌아갑니다.");
+					return;
+				}
+				else System.out.println("알림)) 알 수 없는 입력입니다.");
+					return;
+			}
+			a++;
+		} // for end
+		System.out.println("알림)) 일치하는 대출 상품이 없습니다.");
 	}
 	
 	void myloan() {
@@ -188,7 +273,38 @@ public class Controller {
 		
 	}
 	
-	void inloan() {
+	void inloan(String id) {
 		
+		Scanner scanner = new Scanner(System.in);
+		
+		System.out.println("대출받기)) ");
+		System.out.print("받으실 대출상품의 이름을 입력하세요 : \n");
+		String ln = scanner.next();
+		try {
+			int j = 0;
+			for(Loan_System temp : loanlist) {
+				if(temp != null && temp.getLname().equals(ln)) {
+					System.out.print("받으실 계좌번호를 입력하세요.  : \n");
+					int bnum = scanner.nextInt();
+					int i = 0;
+					for(Bank_Book temp2 : banklist) {
+						if(temp2 != null && temp2.getUsername().equals(id)&&temp2.getBanknum() == bnum) {
+							System.out.println(temp.getLname()+" 상품을  대출받았습니다.");
+							banklist[i].getNowmoney() += temp.loanmoney;
+							banklist[i].setLoanm((temp.getLoanmoney()+(temp.setLname(*temp.getInterest()))));
+							loanlist[j].lid = x;
+							return;
+						}
+						i++;
+					}
+				}
+				
+				j++;
+			}
+			System.out.println("알림)) 존재하지 않는 상품입니다.");
+		}
+		catch(NullPointerException e) {
+			System.out.println("알림)) 잘못된 정보입니다.");
+		}
 	}
 }

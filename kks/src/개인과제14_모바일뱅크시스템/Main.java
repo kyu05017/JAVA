@@ -2,6 +2,8 @@ package 개인과제14_모바일뱅크시스템;
 
 import java.util.Scanner;
 
+import 모바일_뱅크_시스템.Day08_5;
+
 public class Main {
 	
 	static Controller con = new Controller();
@@ -202,7 +204,7 @@ public class Main {
 			}
 			else if(ch.equals("6")) {
 				
-				main.loanmenu();
+				main.loanmenu(id);
 			}
 			else if(ch.equals("7")) {
 				System.out.println("비밀번호 찾기))");
@@ -234,13 +236,26 @@ public class Main {
 			String ch = scanner.next();
 			
 			if(ch.equals("1")) {
+				System.out.println("대출 상품 등록 페이지))");
+				// 1. 입력받기
+				System.out.print("대출 상품이름 입력 : \n"); 
+				String lname = scanner.next();
+				System.out.print("대출 금액 입력 : \n"); 
+				int loan = scanner.nextInt();
+				
+				con.newloan(lname,loan);
 				
 			}
 			else if(ch.equals("2")) {
+				System.out.println("대출 상품 삭제 페이지))");
+				System.out.print("삭제할 대출 상품이름 입력 : \n"); 
 				
+				
+				con.removeloan();
 			}
 			else if(ch.equals("3")) {
-				
+				System.out.println("로그아웃 하셨습니다.");
+				return;
 			}
 			else {
 				System.out.println("알림)) 잘못된 입력입니다.");
@@ -248,7 +263,7 @@ public class Main {
 		} // while end
 	}
 	
-	void loanmenu() {
+	void loanmenu(String id) {
 		
 		Scanner scanner = new Scanner(System.in);
 		
@@ -258,13 +273,21 @@ public class Main {
 			String ch = scanner.next();
 			
 			if(ch.equals("1")) {
+				System.out.println("대출상품 목록 목록))");
+				System.out.println("상품이름\t대출금액\t이자율\t대출자");
+				
+				con.loanlsit(id);
 				
 			}
 			else if(ch.equals("2")) {
+				System.out.println("대출받은상품 목록 목록))");
+				System.out.print("대출상품\t대출잔액\t\n");
 				
+				con.myloan();
 			}
 			else if(ch.equals("3")) {
-				
+				System.out.println("이전 메뉴로 돌아갑니다.");
+				return;
 			}
 			else {
 				System.out.println("알림)) 잘못된 입력입니다.");
