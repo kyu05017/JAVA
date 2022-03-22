@@ -1,4 +1,4 @@
-package 프로그램밍언어활용_김규석;
+package 프로그램밍언어활용_김규석_0317;
 
 import java.util.Scanner;
 
