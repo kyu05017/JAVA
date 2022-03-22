@@ -1,6 +1,6 @@
 package Day15;
 
-public class Game implements GamePad{
+public class Game extends Game3{
 		// 클래스명 implements 인터페이스명
 	
 	@Override

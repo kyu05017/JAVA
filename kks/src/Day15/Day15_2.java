@@ -44,7 +44,16 @@ public class Day15_2 {
 			// 게임교체
 		pad1 = new Game2();
 		
-
+		Game3 g3 = new Game3();
+		g3 = new Game();
+		g3 = new Game2();
+		//////////////////////////////////////
+		//  상속		: 상속 [ extends ]	VS	인터페이스 [ implements ] 
+		// 연결수		:			1		VS	다중[ 여러개 ]
+		// override : 재정의 [ 수정 ]		VS	구햔 [ 정의 ]
+		// 다형성 	: 부모 <  -   자식		VS	부모  <- 자식
+		// 목적 		: 	연장 [ 빠른설계 ] 	VS	동일한 목적의 서로다른 클래스를 조작
+		//								VS  추상
 		
 		
 	}
