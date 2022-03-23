@@ -126,7 +126,7 @@ public class Controller {
 		
 		int i = 0;
 		for(Bank_Book temp : banklist) {
-			if(temp.getBanknum() == bnum && temp.getBankpw().equals(pw)) {
+			if(temp != null && temp.getBanknum() == bnum && temp.getBankpw().equals(pw)) {
 				System.out.print("받으실분 계좌번호  : "); 
 				int bnum2 = scanner.nextInt();
 				int j = 0;
@@ -272,7 +272,7 @@ public class Controller {
 		
 		for(Loan_System temp : loanlist) {
 			if(temp != null &&temp.getLid().equals(id)) {
-				System.out.println(temp.getLname() + "\t"+ (temp.getLoanmoney()+(temp.getLoanmoney()*temp.getInterest())));
+				System.out.println(temp.getLoanmoney() + "\t"+ (temp.getLoanmoney()+(temp.getLoanmoney()*temp.getInterest())));
 				System.out.println("1)대출상환  2)뒤로가기");
 				int ch = scanner.nextInt();
 				if(ch == 1) {

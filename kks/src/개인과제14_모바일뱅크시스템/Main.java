@@ -63,6 +63,7 @@ public class Main {
 				
 				if(result.equals("admin")) {
 					System.out.println("관리자로 로그인 했습니다");
+					main.adminmenu();
 				}
 				else if(result.equals(id)) {
 					System.out.println(id+"님 환영합니다.");
@@ -108,7 +109,6 @@ public class Main {
 			}
 			else if(ch.equals("5")) {
 				System.out.println("프로그램 종료.");
-				scanner.close();
 				return;
 			}
 			else {
@@ -217,7 +217,6 @@ public class Main {
 			}
 			else if(ch.equals("8")) {
 				System.out.println("로그아웃 했습니다.");
-				scanner.close();
 				return;
 			}
 			else {
