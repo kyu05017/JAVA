@@ -272,7 +272,7 @@ public class Controller {
 		
 		for(Loan_System temp : loanlist) {
 			if(temp != null &&temp.getLid().equals(id)) {
-				System.out.println(temp.getLoanmoney() + "\t"+ (temp.getLoanmoney()+(temp.getLoanmoney()*temp.getInterest())));
+				System.out.println(temp.getLoanmoney());
 				System.out.println("1)대출상환  2)뒤로가기");
 				int ch = scanner.nextInt();
 				if(ch == 1) {
