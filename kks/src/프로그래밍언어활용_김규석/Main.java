@@ -2,7 +2,6 @@ package 프로그래밍언어활용_김규석;
 
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.Scanner;
 
