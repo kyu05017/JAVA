@@ -272,14 +272,14 @@ public class Controller {
 		
 		for(Loan_System temp : loanlist) {
 			if(temp != null &&temp.getLid().equals(id)) {
-				System.out.println(temp.getLoanmoney());
+				System.out.println(temp.getLname() +" "+ (temp.getLoanmoney()+(temp.getLoanmoney()*temp.getInterest())));
 				System.out.println("1)대출상환  2)뒤로가기");
-				int ch = scanner.nextInt();
-				if(ch == 1) {
+				String ch = scanner.next();
+				if(ch.equals("1")) {
 					System.out.println("알림)) 대출상환 페이지로 이동합니다.");
 					outloan(id);
 				}
-				else if(ch == 2) {
+				else if(ch.equals("2")) {
 					System.out.println("알림)) 이전으로 돌아갑니다.");
 					return;
 				}
@@ -357,7 +357,7 @@ public class Controller {
 							int b = (int) (temp.getLoanmoney() + (temp.getLoanmoney()*temp.getInterest()));
 							banklist[i].setNowmoney(a);
 							banklist[i].setLoanm(b);
-							loanlist[j].setLname(id);
+							loanlist[j].setLid(id);
 							return;
 						}
 						i++;
