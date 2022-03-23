@@ -1,4 +1,4 @@
-package 프로그래밍언어활용_김규석;
+package 프로그래밍언어활용_김규석_0323;
 
 public class Parking {
 	// 필드
