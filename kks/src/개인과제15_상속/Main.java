@@ -1,4 +1,4 @@
-package 개인과제16_상속;
+package 개인과제15_상속;
 
 public class Main {
 	
