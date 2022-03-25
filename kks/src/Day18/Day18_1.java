@@ -45,7 +45,7 @@ public class Day18_1 {
 		// 2. 리스트객체명.add ( 객체명 == 제네릭 타입 ); 리스트객체 내 요소 추가
 		list.add("Java");		// 0
 		list.add("jdbc");		// 1
-		list.add("Servlet/JSP");// 2
+		list.add("Servlet/JSP");// 2 
 		
 		System.out.println("리스트내 요소들 확인" + list);
 		list.add(2,"DateBase"); // 인덱스 2에 요소 추가
