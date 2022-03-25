@@ -43,7 +43,13 @@ public class Day18_1 {
 					// 3. List : 리스트 객체명 ( 아무거나 )
 						// 4. new Arraylist < 제네릭 = 생략가능 > ( 길이 = 생략가능 = 초기값 10개 ); // 생성자 
 		// 2. 리스트객체명.add ( 객체명 == 제네릭 타입 ); 리스트객체 내 요소 추가
-		list.add("ㅇ");
+		list.add("Java");		// 0
+		list.add("jdbc");		// 1
+		list.add("Servlet/JSP");// 2
+		
+		System.out.println("리스트내 요소들 확인" + list);
+		list.add(2,"DateBase"); // 인덱스 2에 요소 추가
+		System.out.println("특정 인덱스에 요소를 추가" + list);
 	}
 		
 }
