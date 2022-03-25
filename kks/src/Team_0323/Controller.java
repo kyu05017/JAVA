@@ -45,25 +45,23 @@ public class Controller {
 	}
 	
 	
-	public void findid(String name, String phone) {//아이디찾기
+	public String findid(String name, String phone) {//아이디찾기
 
 		for(Member temp : Controller.memberlist) {
 			if(temp!=null&&temp.getName().equals(name)&&temp.getPhone().equals(phone)) {
-				System.out.println("회원님의 아이디: "+ temp.getId());
+				return temp.getId();
 			}
-			else {System.out.println("해당 아이디를 찾을 수 없습니다.");
-			}
-		}///for
+		}
+		return "false";
 	}
 	
-	public void findpw(String id,String phone) {
+	public String findpw(String id,String phone) {
 		for(Member temp : Controller.memberlist) {
 			if(temp!=null&&temp.getId().equals(id)&&temp.getPhone().equals(phone)) {
-				System.out.println("회원님의 비밀번호: "+ temp.getPw());
+				return temp.getPw();
 			}
-			else {System.out.println("해당 비밀번호를 찾을 수 없습니다.");
-			}
-		}///for
+		}
+		return "false";
 	}
 	
 	public void changepw() {}

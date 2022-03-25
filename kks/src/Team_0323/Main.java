@@ -118,8 +118,14 @@ public static void main(String[] args) {
 					System.out.println("전화번호: "); 
 					String phone = scanner.next();
 					
-					con.findid(name,phone);
+					String result = con.findid(name,phone);
 					
+					if(result.equals("false")) {
+						System.out.println("메세지)) 존재하지 않는 회원입니다.");
+					}
+					else {
+						System.out.println("메세지)) 회원님의 아이디는 "+ result + " 입니다.");
+					}
 				}
 				else if(ch.equals("4") || ch.equals("비밀번호찾기")){
 					System.out.println("아이디: "); 
@@ -127,7 +133,14 @@ public static void main(String[] args) {
 					System.out.println("전화번호: "); 
 					String phone = scanner.next();
 					
-					con.findid(id,phone);
+					String result = con.findid(id,phone);
+					
+					if(result.equals("false")) {
+						System.out.println("메세지)) 존재하지 않는 회원입니다.");
+					}
+					else {
+						System.out.println("메세지)) 회원님의 비밀번호는 "+ result + " 입니다.");
+					}
 				}
 				else {System.out.println("번호를 입력해주세요");}
 			}
