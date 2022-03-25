@@ -10,12 +10,17 @@ public static void main(String[] args) {
 		Main main = new Main();
 		Controller con = new Controller();
 		DB db = new DB();
+		db.memberLoad();
 		
 		while(true) {
 			try {
-				db.memberLoad();
+				
 				////상영영화목록////
 				////
+				for(Member temp : con.memberlist) {
+					System.out.println(temp.getId());
+				}
+				
 				System.out.println("메뉴)) ");
 				System.out.println("1.회원가입 2.로그인 3.아이디찾기 4.비밀번호찾기 5.종료"); 
 				System.out.println("선택 : ");

@@ -32,7 +32,6 @@ public class Controller {
 	
 	public String login(String id,String pw) {
 		
-		db.memberLoad();
 
 		for(Member temp : memberlist) {
 			if(temp!=null) {
@@ -128,7 +127,6 @@ public class Controller {
 						break;
 					}
 				}
-				
 				temp.setPw(new_pw);
 				db.memberSave();
 				return true;
@@ -136,26 +134,27 @@ public class Controller {
 		}
 		return false;
 	}
-	/*
-	public void singOut(String id) {
+
+	public void singOut(String id)  {
+		System.out.println("회원 탈퇴))");
+		System.out.println("비밀번호 입력 : ");
+		String pw = scanner.next();
 		
 		for(Member temp : memberlist) {
-			if(temp != null && temp.getId().equals(id)) {
-				memberlist.remove(temp);
-				break;
-			}
-		}
-		db.memberSave();
-		return;
-	}
-	*/
-	public void singOut(String id)  {
-
-		for(int i = 0; i <memberlist.size(); i++) {
-			
-			if(memberlist.get(i).getId().equals(id)) {
-
-				memberlist.remove(i);
+	
+			if(temp.getId().equals(id) && temp.getPw().equals(pw)) {
+				System.out.println("메세지)) 정말 탈퇴하시겠습니까?");
+				System.out.println("1)네     2)아니요");
+				String work = scanner.next();
+				if(work.equals("1") || work.equals("네")) {
+					memberlist.remove(temp);
+					break;
+				}
+				else if (work.equals("2") || work.equals("아니요")) {
+					System.out.println("이전 메뉴로 돌아갑니다.");
+					break;
+				}
+				
 			}
 		}
 		db.memberSave();
