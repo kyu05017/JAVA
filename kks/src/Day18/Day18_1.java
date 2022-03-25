@@ -29,20 +29,30 @@ public class Day18_1 {
 		// 3. TreeMap 클래스
 		// 4. Propertoes 클래스
 	
-	
-	// p. 728 : Arraylist 클래스
-		// 배열과 유사하지만 길이 ( 저장수 ) 가 가변 [ 자동 ]
-		
-		// 1. 리스트 클래스 선언 [ 리스트 안에 저장할 항목의 자료형 >> 제네릭 ] 
-	
 	public static void main(String[] args) {
 		
+	// p. 728 : Arraylist 클래스
+		// 배열과 유사하지만 길이 ( 저장수 ) 가 가변 [ 자동 ]
+		// 1. 리스트 클래스 선언 [ 리스트 안에 저장할 항목의 자료형 >> 제네릭 ] 
 		ArrayList<String> list = new ArrayList<>();
 			// 1. ArrayList : 리스트 클래스
 				// 2. < 제네릭 > : 클래스 내부 [ 리스트 내부 ] 에 들어가는 자료형 
 					// 3. List : 리스트 객체명 ( 아무거나 )
 						// 4. new Arraylist < 제네릭 = 생략가능 > ( 길이 = 생략가능 = 초기값 10개 ); // 생성자 
-		// 2. 리스트객체명.add ( 객체명 == 제네릭 타입 ); 리스트객체 내 요소 추가
+		// 다양한 메소드 제공 
+		// * 리스트객체명.add( 객체명 ) == 해당 객체를 리스트객체내 추가 [ 비어있는 곳을 찾아감 ]
+		// * 리스트객체명.add( 인덱스 , 객체명 ) == 해당인덱스에 객체를 리스트 객체내 삽입 [ 기존인덱스는 뒤로 인덱스 + 1 ]
+		// * 리스트객체명.get( 인덱스 ) == 리스트 객체내 해당 인덱스 객체 호출
+		// * 리스트객체명.remove ( 인덱스 ) == 리스트 객체내 해당 인덱스 삭제 [ 삭제된 인덱스 뒤로 인덱스 -1 ] 
+		// * 리스트객체명.remove ( 객체명 ) == 리스트 객체내 해당 객체 삭제 
+		// * 리스트객체명.clear() == 리스트 객체내 모든 객체 비우기
+		// * 리스트객체명.size() == 리스트 객체내 객체수 [ 길이 ]
+		// * 리스트객체명.isEmpty() == 리스트객체내 비어있는지 확인 [ 리스트 객체내 비어있는지 확인 ]
+			// [ 리스트 객체내 요소가 1개라도 없다면 true || 아니라면 false ] 
+		// * 리스트객체명.contains( 객체명 ) == 리스트객체내 해당 객체 존재 여부 확인 [ true / false ]
+		// * 리스트객체명.indexOf( 객체명 ) == 리스트객체내 해당 객체의 인덱스 번호를 알려줌
+		
+		// 2. 리스트객체명.add ( 객체명 == 제네릭 타입 ); 리스트객체 내 요소 추가 [ 비어있는 마지막 인덱스 ] 
 		list.add("Java");		// 0
 		list.add("jdbc");		// 1
 		list.add("Servlet/JSP");// 2 
@@ -80,10 +90,14 @@ public class Day18_1 {
 		System.out.println("2번 인덱스 삭제 후 : " + list );
 		list.remove("iBATIS");
 		System.out.println("아이베티스 삭제 후 : " + list);
+		
+		System.out.println(list.isEmpty());
 		// 모두 삭제
 		list.clear();
 		System.out.println("모두 삭제 후 : " + list);
 		
+		System.out.println(list.isEmpty());
+	
 		
 	}
 		
