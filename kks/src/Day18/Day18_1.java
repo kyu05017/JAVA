@@ -48,8 +48,13 @@ public class Day18_1 {
 		list.add("Servlet/JSP");// 2 
 		
 		System.out.println("리스트내 요소들 확인" + list);
-		list.add(2,"DateBase"); // 인덱스 2에 요소 추가
+		list.add(2,"DateBase"); // 인덱스 2에 요소 추가 [ 기존 인덱스2 >> 인덱스3 ]
 		System.out.println("특정 인덱스에 요소를 추가" + list);
+		
+		list.add("iBATIS");
+		
+		// 3. 리스트객체명.size() : 리스트 내 요소들의 개수 [ 길이 ]
+		System.out.println("리스트내 객체 수 : " + list.size());
 	}
 		
 }
