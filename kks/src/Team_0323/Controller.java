@@ -192,8 +192,20 @@ public class Controller {
 	}
 
 	
-	public void movie_remove () {
+	public void movie_remove (int num) {
 		
+		System.out.println("메세지)) 정말 삭제하시겠습니까?");
+		System.out.println("1)네  2)아니요");
+		String work = scanner.next();
+		
+		if(work.equals("1") || work.equals("네")) {
+			num -= 1;
+			movielist.remove(num);
+		}
+		else if(work.equals("2") || work.equals("아니요")) {
+			
+		}
+		db.memberSave();
 	}
 	
 	public void sale() {}

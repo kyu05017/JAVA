@@ -1,6 +1,8 @@
 package Team_0323;
 
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
 
 public class Main {
@@ -10,6 +12,7 @@ public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
 		Main main = new Main();
 		Controller con = new Controller();
+		
 		DB db = new DB();
 		db.memberLoad();
 		db.movieLoad();
@@ -17,8 +20,14 @@ public static void main(String[] args) {
 		while(true) {
 			try {
 				////상영영화목록////
+				Date date = new Date();
+				SimpleDateFormat cardate = new SimpleDateFormat("yyyy - MM - dd HH : mm");
+				String carInTime = cardate.format(date);
+				
 				System.out.println("--------------------------------------------------------");
-				System.out.println("|    현재 상영중인 영화     | 영화시작시간 |    영화끝나는시간       |");
+				System.out.println("\t현재 시간 : "+ carInTime);
+				System.out.println("--------------------------------------------------------");
+				System.out.printf("|\t%s\t\t| %s | %s | \n","상역작","시작 시간","종료 시간");
 				System.out.println("--------------------------------------------------------");
 				for(Movie movie : Controller.movielist) {
 					
@@ -328,12 +337,31 @@ public static void main(String[] args) {
 				
 			}
 			else if(ch.equals("2")||ch.equals("영화삭제")){
-				System.out.println("영화제목: "); 
-				String title = scanner.nextLine();
-				System.out.println("상영관선택: "); 
-				String screen = scanner.next();
-				System.out.println("영화시간: "); 
-				String intime = scanner.next();
+				System.out.println("영화 삭제))");
+				System.out.println("현재 영화 목록))----------------------------------");
+				int i = 0;
+				for(Movie temp : con.movielist) {
+					System.out.println((i+1)+temp.getTitle());
+					i++;
+				}
+				System.out.println("----------------------------------------------");
+				System.out.println("번호입력 : ");
+				int num = 0;
+				while(true) {
+					boolean pass = true;
+					try {
+						num = scanner.nextInt();
+						
+					}
+					catch(Exception e) {
+						System.out.println("메세지)) 잘못된 입력");
+						pass = false;
+					}
+					if(pass) {
+						break;
+					}
+				}
+				con.movie_remove(num);
 			}
 			else if(ch.equals("3")||ch.equals("매출확인")) {
 				System.out.println("");
