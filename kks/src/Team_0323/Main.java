@@ -15,7 +15,9 @@ public static void main(String[] args) {
 				////상영영화목록////
 				////
 				System.out.println("메뉴)) ");
-				System.out.println("1.회원가입 2.로그인 3.아이디찾기 4.비밀번호찾기 선택: "); String ch = scanner.next();
+				System.out.println("1.회원가입 2.로그인 3.아이디찾기 4.비밀번호찾기 5.종료"); 
+				System.out.println("선택 : ");
+				String ch = scanner.next();
 				
 				if(ch.equals("1") || ch.equals("회원가입")) {
 
@@ -68,7 +70,7 @@ public static void main(String[] args) {
 						phone = scanner.next();
 						
 						if(phone.length() >= 12 || phone.length() < 10) {
-							System.out.println("메세지 잘못된 형식의 번호입니다.");
+							System.out.println("메세지)) 잘못된 형식의 번호입니다.");
 							pass = 0;
 						}
 						else {
@@ -143,6 +145,10 @@ public static void main(String[] args) {
 					else {
 						System.out.println("메세지)) 회원님의 비밀번호는 "+ result + " 입니다.");
 					}
+				}
+				else if(ch.equals("5") || ch.equals("종료")){
+					System.out.println("메세지)) 프로그램을 종료 합니다.");
+					break;
 				}
 				else {System.out.println("메세지)) 존재하지 않는 메뉴 입니다.");
 				}

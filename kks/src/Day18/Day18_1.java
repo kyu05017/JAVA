@@ -40,7 +40,10 @@ public class Day18_1 {
 		ArrayList<String> list = new ArrayList<>();
 			// 1. ArrayList : 리스트 클래스
 				// 2. < 제네릭 > : 클래스 내부 [ 리스트 내부 ] 에 들어가는 자료형 
-		
+					// 3. List : 리스트 객체명 ( 아무거나 )
+						// 4. new Arraylist < 제네릭 = 생략가능 > ( 길이 = 생략가능 = 초기값 10개 ); // 생성자 
+		// 2. 리스트객체명.add ( 객체명 == 제네릭 타입 ); 리스트객체 내 요소 추가
+		list.add("ㅇ");
 	}
 		
 }
