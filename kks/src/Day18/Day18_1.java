@@ -55,6 +55,22 @@ public class Day18_1 {
 		
 		// 3. 리스트객체명.size() : 리스트 내 요소들의 개수 [ 길이 ]
 		System.out.println("리스트내 객체 수 : " + list.size());
+		
+		// 4.리스트객체명.get() : 리스트 객체 내 특정 인덱스의 요소를 호출
+		System.out.println("2번 인덱스 호출 " + list.get(2));
+		
+		// 5. 반복문 환용 [ 리스트와 반복문 같이 활용 ] 
+		for(int i = 0; i < list.size(); i++) {	// i 는 0 부터 리스트의 객체내의 총 길이까지 1씩 증가하며 반복
+			String str = list.get(i); // i 번째 인덱스를 호출해서 문자열에 저장 
+			System.out.println(i+":" + str);	// 저장된 값을 출력 
+		}
+		// * 반복문 활용2 
+		int j = 1;
+		for(String temp : list) {
+			System.out.println(j + ":" + temp);
+			j++;
+		}
+		
 	}
 		
 }
