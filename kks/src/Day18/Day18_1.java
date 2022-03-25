@@ -34,5 +34,13 @@ public class Day18_1 {
 		// 배열과 유사하지만 길이 ( 저장수 ) 가 가변 [ 자동 ]
 		
 		// 1. 리스트 클래스 선언 [ 리스트 안에 저장할 항목의 자료형 >> 제네릭 ] 
-		ArrayList<>
+	
+	public static void main(String[] args) {
+		
+		ArrayList<String> list = new ArrayList<>();
+			// 1. ArrayList : 리스트 클래스
+				// 2. < 제네릭 > : 클래스 내부에 들어가는 자료형 
+		
+	}
+		
 }
