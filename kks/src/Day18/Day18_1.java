@@ -1,5 +1,7 @@
 package Day18;
 
+import java.util.ArrayList;
+
 public class Day18_1 {
 
 	
@@ -27,4 +29,10 @@ public class Day18_1 {
 		// 3. TreeMap 클래스
 		// 4. Propertoes 클래스
 	
+	
+	// p. 728 : Arraylist 클래스
+		// 배열과 유사하지만 길이 ( 저장수 ) 가 가변 [ 자동 ]
+		
+		// 1. 리스트 클래스 선언 [ 리스트 안에 저장할 항목의 자료형 >> 제네릭 ] 
+		ArrayList<>
 }
