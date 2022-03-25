@@ -9,6 +9,7 @@ public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
 		Main main = new Main();
 		Controller con = new Controller();
+		DB db = new DB();
 		
 		while(true) {
 			try {
@@ -20,6 +21,8 @@ public static void main(String[] args) {
 				String ch = scanner.next();
 				
 				if(ch.equals("1") || ch.equals("회원가입")) {
+					
+					db.memberLoad();
 
 					String id = null;
 					String pw = null;
@@ -48,7 +51,7 @@ public static void main(String[] args) {
 						int pass = 0;
 						System.out.println("비밀번호: "); 
 						pw = scanner.next();
-						if(pw.length() < 7) {
+						if(pw.length() < 8) {
 							System.out.println("메세지)) 비밀번호의 길이는 8자리 이상이여야 합니다.");
 							pass = 0;
 						}

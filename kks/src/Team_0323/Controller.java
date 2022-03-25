@@ -1,6 +1,7 @@
 package Team_0323;
 
-import java.text.DecimalFormat;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -22,6 +23,7 @@ public class Controller {
 	//회원 시스템 ////////////////////////////////////////////////////////////////////////
 	
 	public int sign (String id, String pw,String name, String phone) {
+		
 		//객체화
 		Member member = new Member( id, pw, name, phone,false);
 		//회원정보 저장
@@ -55,7 +57,7 @@ public class Controller {
 	public String findid(String name, String phone) {//아이디찾기
 
 		for(Member temp : memberlist) {
-			if(temp!=null&&temp.getName().equals(name)&&temp.getPhone().equals(phone)) {
+			if(temp!=null && temp.getName().equals(name) && temp.getPhone().equals(phone)) {
 				return temp.getId();
 			}
 		}
@@ -64,7 +66,7 @@ public class Controller {
 	
 	public String findpw(String id,String phone) {
 		for(Member temp : memberlist) {
-			if(temp!=null&&temp.getId().equals(id)&&temp.getPhone().equals(phone)) {
+			if(temp!=null && temp.getId().equals(id) && temp.getPhone().equals(phone)) {
 				return temp.getPw();
 			}
 		}
@@ -84,7 +86,13 @@ public class Controller {
 				String work = scanner.next();
 				
 				if(work.equals("1")) {
-					changepw(id);
+					boolean result = changepw(id);
+					if(result) {
+						System.out.println("메세지)) 비밀번호 변경완료");
+					}
+					else {
+						System.out.println("메세지)) 비밀변호 변경실패");
+					}
 				}
 				else if(work.equals("2")) {
 					singOut(id);
@@ -100,7 +108,7 @@ public class Controller {
 		
 	}
 	
-	public void changepw(String id) {
+	public boolean changepw(String id) {
 		System.out.println("비밀번호 변경)) ");
 		System.out.println("비밀번호 : ");
 		String pw = scanner.next();
@@ -109,7 +117,7 @@ public class Controller {
 			if(temp.getId().equals(id) && temp.getPw().equals(pw)) {
 				while(true) {
 					int pass = 0;
-					System.out.println(" 변경할 비밀번호 입력 : "); 
+					System.out.println("변경할 비밀번호 입력 : "); 
 					new_pw = scanner.next();
 					if(new_pw.length() < 7) {
 						System.out.println("메세지)) 비밀번호의 길이는 8자리 이상이여야 합니다.");
@@ -123,12 +131,15 @@ public class Controller {
 					}
 				}
 				temp.setPw(new_pw);
-				break;
+				db.memberSave();
+				return true;
 			}
 		}
+		return false;
 	}
 	
 	public void singOut(String id) {
+		System.out.println("회원탈퇴");
 		
 	}
 	
