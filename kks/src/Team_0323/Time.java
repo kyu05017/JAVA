@@ -1,16 +1,15 @@
-package Day15;
+package Team_0323;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Music extends Thread{
+public class Time extends Thread{
 
 	@Override
 	public void run() {
 		
-		
-		// 병열처리 실행
-		while(true) { // 음악클래스 내 스레드가 실행중
+
+		while(true) {
 			Date date = new Date();
 			SimpleDateFormat nowdate = new SimpleDateFormat("yyyy - MM - dd HH : mm");
 			String nowTime = nowdate.format(date);

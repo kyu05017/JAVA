@@ -205,7 +205,7 @@ public class Controller {
 		else if(work.equals("2") || work.equals("¾Æ´Ï¿ä")) {
 			
 		}
-		db.memberSave();
+		db.movieSave();
 	}
 	
 	public void sale() {}

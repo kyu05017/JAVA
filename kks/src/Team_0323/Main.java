@@ -21,11 +21,12 @@ public static void main(String[] args) {
 			try {
 				////상영영화목록////
 				Date date = new Date();
-				SimpleDateFormat cardate = new SimpleDateFormat("yyyy - MM - dd HH : mm");
-				String carInTime = cardate.format(date);
-				
+				SimpleDateFormat nowdate = new SimpleDateFormat("yyyy - MM - dd HH : mm");
+				SimpleDateFormat nowtime = new SimpleDateFormat("HH:mm");
+				String nowTime = nowdate.format(date);
 				System.out.println("--------------------------------------------------------");
-				System.out.println("\t현재 시간 : "+ carInTime);
+				System.out.print("\t현재 시간 : " + nowTime);
+				System.out.println();
 				System.out.println("--------------------------------------------------------");
 				System.out.printf("|\t%s\t\t| %s | %s | \n","상역작","시작 시간","종료 시간");
 				System.out.println("--------------------------------------------------------");
