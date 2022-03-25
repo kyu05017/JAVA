@@ -1,5 +1,6 @@
 package Team_0323;
 
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 public class Main {
@@ -186,14 +187,7 @@ public static void main(String[] args) {
 			String ch = scanner.next();
 			
 			if(ch.equals("1")||ch.equals("예매")) {
-				System.out.println("영화제목: "); 
-				String title = scanner.nextLine();
-				//////해당 영화의 상영시간 출력//
-				System.out.println("영화시간: "); 
-				String intime = scanner.next();
-				////선택한 영화의 상영관 좌석 선택///
-				System.out.println("좌석선택: "); 
-				String seat = scanner.next();
+				
 			}
 			else if(ch.equals("2")||ch.equals("예매취소")){
 				System.out.println("영화제목: "); 
@@ -223,18 +217,99 @@ public static void main(String[] args) {
 	}
 	public void adminmenu() {
 		
+		Controller con = new Controller();
+		
 		while(true) {
 			System.out.println("관리자 메뉴))");
 			System.out.println("1.영화등록 2.영화삭제 3.매출확인 4.로그아웃"); 
 			System.out.println("선택 : ");
 			String ch =scanner.next();
 			if(ch.equals("1")||ch.equals("영화등록")) {
-				System.out.println("영화제목: "); 
-				String title = scanner.nextLine();
-				System.out.println("상영관선택: "); 
-				String screen = scanner.next();
-				System.out.println("영화시간: "); 
-				String intime = scanner.next();
+				
+				System.out.println("영화제목 : ");		
+				String title = scanner.next();
+				boolean pass1 = false;
+				int hour = 0;
+				while(true) {
+					System.out.println("시작 시간: ");	
+					hour = scanner.nextInt();
+					if(hour > 23) {
+						System.out.println("메세지)) 다시 입력하세요");
+						pass1 = false;
+					}
+					else {
+						pass1 = true;
+					}
+					if(pass1) {
+						break;
+					}
+				}
+				DecimalFormat df = new DecimalFormat("00");
+				String start_hour = df.format(hour);
+				int min = 0;
+				boolean pass2 = false;
+				while(true) {
+					System.out.println("시작 분: ");	
+					min = scanner.nextInt();
+					if(min > 59) {
+						System.out.println("메세지)) 다시 입력하세요");
+						pass2 = false;
+					}
+					else {
+						pass2 = true;
+					}
+					if(pass2) {
+						break;
+					}
+				}
+				df = new DecimalFormat("00");
+				String start_min = df.format(min);
+				
+				String intime = start_hour+":"+start_min;
+				boolean moviest_admin = true;
+				
+				while(moviest_admin) {
+					if (intime.length() != 5) {
+						System.out.println("메세지)) 입력오류");
+						System.out.println("시작 시간: ");	
+						start_hour = scanner.next();
+						System.out.println("시작 분: ");	
+						start_min = scanner.next();
+						intime = start_hour+":"+start_min;
+					}else {
+						moviest_admin = false;
+					}
+				}
+				
+				System.out.println("러닝타임(분) : ");		
+				int time = scanner.nextInt();
+				
+				int runhour = time/60;
+				int runmin = time%60;
+				
+				df = new DecimalFormat("00");
+				String new_runhour = df.format(runhour);
+				String new_runmin = df.format(runmin);
+				String runtime = new_runhour+":"+new_runmin;
+				Boolean movierun_admin = true;
+				while(movierun_admin) {
+					if (runtime.length() != 5) {
+						System.out.println("다시 입력해주세요.");
+						System.out.println("러닝타임(분) : ");		
+						time = scanner.nextInt();
+						
+						runhour = time/60;
+						runmin = time%60;
+						new_runhour = df.format(runhour);
+						new_runmin = df.format(runmin);
+						
+						runtime = new_runhour+":"+new_runmin;
+					}else {
+						movierun_admin = false;
+					}
+				}
+				con.moive_register(title, intime, runtime);
+				
 			}
 			else if(ch.equals("2")||ch.equals("영화삭제")){
 				System.out.println("영화제목: "); 
