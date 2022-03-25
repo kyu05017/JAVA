@@ -78,6 +78,13 @@ public static void main(String[] args) {
 						}
 						else {
 							pass = 1;
+							for(Member temp : Controller.memberlist) {
+								if (temp !=null &&  temp.getPhone().equals(phone)) {
+									System.out.println("메세지)) 이미 등록된 전화번호입니다.");
+									pass = 0;
+									break;
+								}
+							}
 						}
 						if(pass == 1) {
 							allpass += 1;
@@ -158,10 +165,6 @@ public static void main(String[] args) {
 			}
 			catch(Exception e) {}
 		}
-	
-	
-	
-	
 	}
 	
 	Scanner scanner = new Scanner(System.in);
