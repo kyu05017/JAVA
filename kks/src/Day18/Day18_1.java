@@ -39,7 +39,7 @@ public class Day18_1 {
 		
 		ArrayList<String> list = new ArrayList<>();
 			// 1. ArrayList : 리스트 클래스
-				// 2. < 제네릭 > : 클래스 내부에 들어가는 자료형 
+				// 2. < 제네릭 > : 클래스 내부 [ 리스트 내부 ] 에 들어가는 자료형 
 		
 	}
 		

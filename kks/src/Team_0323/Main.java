@@ -7,7 +7,7 @@ public class Main {
 public static void main(String[] args) {
 		
 		Scanner scanner = new Scanner(System.in);
-		
+		Main main = new Main();
 		Controller con = new Controller();
 		
 		while(true) {
@@ -103,12 +103,14 @@ public static void main(String[] args) {
 					
 					if(result.equals("admin")) {
 						System.out.println("메세지))관리자 로그인");
+						main.adminmenu();
 					}
 					else if(result.equals("false")) {
 						System.out.println("메세지)) 로그인 실패");
 					}
 					else { 
 						System.out.println("메세지)) "+result + "님 환영 합니다.");
+						main.membermenu();
 					}
 
 				}
@@ -142,7 +144,8 @@ public static void main(String[] args) {
 						System.out.println("메세지)) 회원님의 비밀번호는 "+ result + " 입니다.");
 					}
 				}
-				else {System.out.println("번호를 입력해주세요");}
+				else {System.out.println("메세지)) 존재하지 않는 메뉴 입니다.");
+				}
 			}
 			catch(Exception e) {}
 		}
@@ -204,7 +207,9 @@ public static void main(String[] args) {
 	public void adminmenu() {
 		
 		while(true) {
+			System.out.println("관리자 메뉴))");
 			System.out.println("1.영화등록 2.영화삭제 3.매출확인 4.로그아웃"); 
+			System.out.println("선택 : ");
 			String ch =scanner.next();
 			if(ch.equals("1")||ch.equals("영화등록")) {
 				System.out.println("영화제목: "); 
