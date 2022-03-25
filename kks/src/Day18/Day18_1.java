@@ -60,16 +60,24 @@ public class Day18_1 {
 		System.out.println("2번 인덱스 호출 " + list.get(2));
 		
 		// 5. 반복문 환용 [ 리스트와 반복문 같이 활용 ] 
+			// 인덱스가 필요할때!!!
 		for(int i = 0; i < list.size(); i++) {	// i 는 0 부터 리스트의 객체내의 총 길이까지 1씩 증가하며 반복
 			String str = list.get(i); // i 번째 인덱스를 호출해서 문자열에 저장 
 			System.out.println(i+":" + str);	// 저장된 값을 출력 
 		}
 		// * 반복문 활용2 
-		int j = 1;
+			// 인덱스 없이 요소들을 불러올때 
+		int j = 1;	 // 인덱스를 만들어 대체 
 		for(String temp : list) {
 			System.out.println(j + ":" + temp);
 			j++;
 		}
+		
+		// 6. 리스트객체명.remove(); 
+		list.remove(2);
+		System.out.println("2번 인덱스 삭제 : " + list );
+		list.remove(2);
+		System.out.println("2번 인덱스 삭제 후 : " + list );
 		
 	}
 		
