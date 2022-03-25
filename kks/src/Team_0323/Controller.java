@@ -1,5 +1,6 @@
 package Team_0323;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -53,7 +54,7 @@ public class Controller {
 	
 	public String findid(String name, String phone) {//아이디찾기
 
-		for(Member temp : Controller.memberlist) {
+		for(Member temp : memberlist) {
 			if(temp!=null&&temp.getName().equals(name)&&temp.getPhone().equals(phone)) {
 				return temp.getId();
 			}
@@ -62,7 +63,7 @@ public class Controller {
 	}
 	
 	public String findpw(String id,String phone) {
-		for(Member temp : Controller.memberlist) {
+		for(Member temp : memberlist) {
 			if(temp!=null&&temp.getId().equals(id)&&temp.getPhone().equals(phone)) {
 				return temp.getPw();
 			}
@@ -70,7 +71,66 @@ public class Controller {
 		return "false";
 	}
 	
-	public void changepw() {}
+	public void memberInfo(String id) {
+		System.out.println("회원 정보))");
+		for(Member temp : memberlist) {
+			if(temp.getId().equals(id)) {
+				System.out.println("-------------------------------");
+				System.out.println("아이디 : " + temp.getId());
+				System.out.println("이름  : " + temp.getName());
+				System.out.println("번호  : " + temp.getPhone());
+				System.out.println("-------------------------------");
+				System.out.println("1)비밀번호 변경  2)회원 탈퇴  3)뒤로가기");
+				String work = scanner.next();
+				
+				if(work.equals("1")) {
+					changepw(id);
+				}
+				else if(work.equals("2")) {
+					singOut(id);
+				}
+				else if(work.equals("3")) {
+					System.out.println("메세지)) 이전으로 돌아갑니다.");
+				}
+				
+			}
+				
+		}
+		
+		
+	}
+	
+	public void changepw(String id) {
+		System.out.println("비밀번호 변경)) ");
+		System.out.println("비밀번호 : ");
+		String pw = scanner.next();
+		String new_pw = null;
+		for(Member temp : memberlist) {
+			if(temp.getId().equals(id) && temp.getPw().equals(pw)) {
+				while(true) {
+					int pass = 0;
+					System.out.println(" 변경할 비밀번호 입력 : "); 
+					new_pw = scanner.next();
+					if(new_pw.length() < 7) {
+						System.out.println("메세지)) 비밀번호의 길이는 8자리 이상이여야 합니다.");
+						pass = 0;
+					}
+					else {
+						pass = 1;
+					}
+					if(pass == 1) {
+						break;
+					}
+				}
+				temp.setPw(new_pw);
+				break;
+			}
+		}
+	}
+	
+	public void singOut(String id) {
+		
+	}
 	
 	//영화시스템///////////////////////////////////////////////////////////////////////////
 	

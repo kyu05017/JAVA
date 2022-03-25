@@ -112,7 +112,7 @@ public static void main(String[] args) {
 					}
 					else { 
 						System.out.println("메세지)) "+result + "님 환영 합니다.");
-						main.membermenu();
+						main.membermenu(result);
 					}
 
 				}
@@ -163,7 +163,9 @@ public static void main(String[] args) {
 	
 	Scanner scanner = new Scanner(System.in);
 	
-	public void membermenu() {
+	public void membermenu(String id) {
+		
+		Controller con = new Controller();
 		
 		while(true) {
 			System.out.println("회원메뉴))");
@@ -196,10 +198,7 @@ public static void main(String[] args) {
 				String confirm = scanner.next();
 			}
 			else if(ch.equals("4")||ch.equals("회원정보")) {
-				////////예매목록 자동생성
-				////////////////
-				System.out.println("1.예매취소 2.뒤로가기"); 
-				String confirm = scanner.next();
+				con.memberInfo(id);
 			}
 			else if(ch.equals("5")||ch.equals("로그아웃")) {
 				System.out.println("메세지)) 로그아웃 했습니다.");
