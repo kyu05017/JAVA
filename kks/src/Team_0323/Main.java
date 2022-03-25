@@ -21,7 +21,23 @@ public static void main(String[] args) {
 				System.out.println("|    현재 상영중인 영화     | 영화시작시간 |    영화끝나는시간       |");
 				System.out.println("--------------------------------------------------------");
 				for(Movie movie : Controller.movielist) {
-					System.out.printf("|\t%s\t| %s | %s | \n", movie.getTitle(), movie.getIntime(), movie.getRuntime());
+					
+					movie.getIntime();
+					movie.getRuntime();
+					String[] new_intime = movie.getIntime().split(":");
+					String[] new_runtime = movie.getRuntime().split(":");
+					int intime_hour = Integer.parseInt(new_intime[0]);
+					int intime_min = Integer.parseInt(new_intime[1]);
+					int runtime_hour = Integer.parseInt(new_runtime[0]);
+					int runtime_min = Integer.parseInt(new_runtime[1]);
+					int outhour = (intime_hour+runtime_hour);
+					int outmin = (intime_min+runtime_min);
+					DecimalFormat df = new DecimalFormat("00");
+					String out1 = df.format(outhour);
+					String out2 = df.format(outmin);
+					String outtime = out1+":"+out2;
+					
+					System.out.printf("|\t%s\t| %s | %s | \n", movie.getTitle(), movie.getIntime(),outtime);
 				}
 				for(Member temp : con.memberlist) {
 					System.out.println(temp.getId());
