@@ -49,8 +49,6 @@ public static void main(String[] args) {
 				String ch = scanner.next();
 				
 				if(ch.equals("1") || ch.equals("회원가입")) {
-					
-					
 
 					String id = null;
 					String pw = null;
@@ -119,8 +117,7 @@ public static void main(String[] args) {
 							break;
 						}
 					}
-					
-					///저장
+
 					if(allpass == 3) {
 						int result = con.sign(id, pw,name,phone);
 						
@@ -131,7 +128,6 @@ public static void main(String[] args) {
 					else {
 					System.out.println("메세지)) 회원가입 실패");
 					}
-
 				}
 				else if(ch.equals("2") || ch.equals("로그인")) {
 					System.out.println("아이디: "); 
@@ -152,7 +148,6 @@ public static void main(String[] args) {
 						System.out.println("메세지)) "+result + "님 환영 합니다.");
 						main.membermenu(result);
 					}
-
 				}
 				else if(ch.equals("3") || ch.equals("아이디찾기")) {
 					System.out.println("이름: "); 
