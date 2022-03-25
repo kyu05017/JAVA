@@ -10,5 +10,21 @@ public class Day18_1 {
 			//  2. 삭제 했을때 듬성듬성 빠진 옥수수 [ 삭제시 인덱스가 빈 현상 ]
 		// 객체들을 효율[ ! ] 적으로 추가, 삭제, 검색 ---> 컬렉션 프레임 워크
 		// 컬렉션 => 수집 
+		// * 저장 ( 수집 ) 관련 클래스 / 인터페이스
+	
+	// 1. List 인터페이스
+		// 1. Arraylist 클래스
+		// 2. Vector 클래스
+		// 3. Linkedlist 클래스
+	
+	// 2. Set 인터페이스
+		// 1. Hashset 클래스
+		// 2. TreeSet 클래스
+	
+	// 3. Map 인터페이스
+		// 1. HashMap 클래스
+		// 2. Hashtable 클래스
+		// 3. TreeMap 클래스
+		// 4. Propertoes 클래스
 	
 }
