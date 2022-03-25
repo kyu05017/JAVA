@@ -12,6 +12,7 @@ public static void main(String[] args) {
 		Controller con = new Controller();
 		DB db = new DB();
 		db.memberLoad();
+		db.movieLoad();
 		
 		while(true) {
 			try {
