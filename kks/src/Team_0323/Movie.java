@@ -4,18 +4,18 @@ public class Movie {
 
 	private String title;
 	private String intime;
-	private String outtime;
+	private String runtime;
 	private int money;
 	
 	public Movie() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Movie(String title, String intime, String outtime, int money) {
+	public Movie(String title, String intime, String runtime, int money) {
 		super();
 		this.title = title;
 		this.intime = intime;
-		this.outtime = outtime;
+		this.runtime = runtime;
 		this.money = money;
 	}
 
@@ -35,12 +35,12 @@ public class Movie {
 		this.intime = intime;
 	}
 
-	public String getOuttime() {
-		return outtime;
+	public String getRuntime() {
+		return runtime;
 	}
 
-	public void setOuttime(String outtime) {
-		this.outtime = outtime;
+	public void setRuntime(String outtime) {
+		this.runtime = outtime;
 	}
 
 	public int getMoney() {

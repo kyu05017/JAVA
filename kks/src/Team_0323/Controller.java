@@ -1,7 +1,6 @@
 package Team_0323;
 
 import java.io.FileOutputStream;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -173,10 +172,7 @@ public class Controller {
 	//관리자 시스템/////////////////////////////////////////////////////////////////////////
 	
 	public void moive_register (String title, String intime, String runtime) {
-		
-		Movie movie = new Movie(title, intime, runtime , 0);
-		
-		//영화티켓가격 계산
+
 		String [] startTime = intime.split(":");
 		
 		int startHour = Integer.parseInt(startTime[0]);
@@ -188,25 +184,17 @@ public class Controller {
 		}else {
 			money = 7000;
 		}
-		
-		
-		//리스트에 저장
+		Movie movie = new Movie(title, intime, runtime , money);
 		movielist.add(movie);
-		
-		//파일처리
-		try {//예외가 발생할 것 같은 코드 묶음					
-			FileOutputStream outputStream = new FileOutputStream("D:/movie/상영중인영화.txt", true);
-			String movieRecord = title + "," + intime+ "," +runtime+  ","+ money + "\n"; //, : 구분
-			outputStream.write(movieRecord.getBytes());	//문자열 ->바이트열
-		}catch (Exception e) {//예외[오류] 처리[잡기] : Exception 클래스
-				
-		}
+		db.movieSave();
 		System.out.println("영화 저장 완료");
 		
 	}
 
 	
-	public void movie_remove () {}
+	public void movie_remove () {
+		
+	}
 	
 	public void sale() {}
 	

@@ -46,11 +46,40 @@ public class DB {
 	}
 	
 	public void movieSave() {
+		try {
+			FileOutputStream outputStream = new FileOutputStream("D:/movieDB.txt");
 		
+			for(Movie temp : Controller.movielist) {
+				String memberSave = temp.getTitle()+","+temp.getIntime()+","+temp.getRuntime()+","+temp.getMoney()+"\n";
+				outputStream.write(memberSave.getBytes());
+			}
+		}
+		catch(Exception e) {
+			
+		}
 	}
 	
 	public void movieLoad() {
-		
+		try {
+			FileInputStream inputStream = new FileInputStream("D:/movieDB.txt");
+			byte[] bytes = new byte[1024]; 
+			inputStream.read(bytes); 
+			String file = new String(bytes); 
+			String[]list = file.split("\n"); 
+			int i = 0;
+			for(String temp : list) {
+				if( i+1 == list.length ) {
+					break; 
+				}
+				String[] filed = temp.split(",");
+				Movie temp2 = new Movie(filed[0],filed[1],filed[2],Integer.parseInt(filed[3]));
+				Controller.movielist.add(temp2);
+				i++;
+			}
+			
+		}
+		catch(Exception e) {
+		}
 	}
 	
 	public void ticketSave() {

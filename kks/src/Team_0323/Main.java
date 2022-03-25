@@ -15,9 +15,13 @@ public static void main(String[] args) {
 		
 		while(true) {
 			try {
-				
 				////상영영화목록////
-				////
+				System.out.println("--------------------------------------------------------");
+				System.out.println("|    현재 상영중인 영화     | 영화시작시간 |    영화끝나는시간       |");
+				System.out.println("--------------------------------------------------------");
+				for(Movie movie : Controller.movielist) {
+					System.out.printf("|\t%s\t| %s | %s | \n", movie.getTitle(), movie.getIntime(), movie.getRuntime());
+				}
 				for(Member temp : con.memberlist) {
 					System.out.println(temp.getId());
 				}
