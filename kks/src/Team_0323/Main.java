@@ -13,6 +13,7 @@ public static void main(String[] args) {
 		
 		while(true) {
 			try {
+				db.memberLoad();
 				////상영영화목록////
 				////
 				System.out.println("메뉴)) ");
@@ -22,7 +23,7 @@ public static void main(String[] args) {
 				
 				if(ch.equals("1") || ch.equals("회원가입")) {
 					
-					db.memberLoad();
+					
 
 					String id = null;
 					String pw = null;

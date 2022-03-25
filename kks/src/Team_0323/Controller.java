@@ -1,9 +1,9 @@
 package Team_0323;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Scanner;
+
 
 public class Controller {
 	
@@ -24,11 +24,8 @@ public class Controller {
 	
 	public int sign (String id, String pw,String name, String phone) {
 		
-		//객체화
 		Member member = new Member( id, pw, name, phone,false);
-		//회원정보 저장
 		memberlist.add(member);
-		
 		db.memberSave();
 		return 1;
 	}
@@ -36,15 +33,14 @@ public class Controller {
 	public String login(String id,String pw) {
 		
 		db.memberLoad();
-		
-		//로그인 중복체크
+
 		for(Member temp : memberlist) {
 			if(temp!=null) {
 				if(id.equals("admin") && temp.getPw().equals(pw)) {
 					return "admin";
 				}
 				else if(temp.getId().equals(id)&&temp.getPw().equals(pw)) {
-					return temp.getId(); //로그인성공 리스트에있는 아이디 리턴
+					return temp.getId();
 				}
 				
 			}
@@ -109,10 +105,12 @@ public class Controller {
 	}
 	
 	public boolean changepw(String id) {
+		
 		System.out.println("비밀번호 변경)) ");
 		System.out.println("비밀번호 : ");
 		String pw = scanner.next();
 		String new_pw = null;
+		
 		for(Member temp : memberlist) {
 			if(temp.getId().equals(id) && temp.getPw().equals(pw)) {
 				while(true) {
@@ -130,6 +128,7 @@ public class Controller {
 						break;
 					}
 				}
+				
 				temp.setPw(new_pw);
 				db.memberSave();
 				return true;
@@ -137,37 +136,30 @@ public class Controller {
 		}
 		return false;
 	}
-	
+	/*
 	public void singOut(String id) {
-		System.out.println("회원탈퇴");
-		System.out.println("비밀번호 : ");
-		String pw = scanner.next();
-		boolean pass = false;
 		
 		for(Member temp : memberlist) {
-			if(temp != null && temp.getId().equals(id) && temp.getPw().equals(pw)) {
-				System.out.println("메세지)) 탈퇴 하시겠습니까?");
-				System.out.println("1) 네 2) 아니요");
-				String work = scanner.next();
-				pass = true;
-				if(work.equals("1") || work.equals("네")) {
-					System.out.println("메세지)) 그동안 이용해주셔서 갑사합니다.");
-					memberlist.remove(temp);
-					db.memberSave();
-					break;
-				}
-				else if(work.equals("2") || work.equals("아니요")) {
-					System.out.println("메세지)) 이전 메뉴로 돌아갑니다.");
-					break;
-				}
-				else {
-					System.out.println("메세지)) 잘못된 선택입니다.");
-				}
+			if(temp != null && temp.getId().equals(id)) {
+				memberlist.remove(temp);
+				break;
 			}
 		}
-		if(pass == false) {
-			System.out.println("메세지)) 비밀번호가 잘못되었습니다.");
+		db.memberSave();
+		return;
+	}
+	*/
+	public void singOut(String id)  {
+
+		for(int i = 0; i <memberlist.size(); i++) {
+			
+			if(memberlist.get(i).getId().equals(id)) {
+
+				memberlist.remove(i);
+			}
 		}
+		db.memberSave();
+		return ;
 	}
 	
 	//영화시스템///////////////////////////////////////////////////////////////////////////
