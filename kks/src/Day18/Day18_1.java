@@ -78,6 +78,12 @@ public class Day18_1 {
 		System.out.println("2번 인덱스 삭제 : " + list );
 		list.remove(2);
 		System.out.println("2번 인덱스 삭제 후 : " + list );
+		list.remove("iBATIS");
+		System.out.println("아이베티스 삭제 후 : " + list);
+		// 모두 삭제
+		list.clear();
+		System.out.println("모두 삭제 후 : " + list);
+		
 		
 	}
 		
