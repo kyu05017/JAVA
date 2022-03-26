@@ -13,7 +13,6 @@ public class Ticket {
 
 	public Ticket(String t_id, String t_title, String t_intime, String t_outtime, int t_seat, int t_num,
 			int t_money) {
-		super();
 		this.t_id = t_id;
 		this.t_title = t_title;
 		this.t_intime = t_intime;

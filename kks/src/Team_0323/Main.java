@@ -281,7 +281,7 @@ public static void main(String[] args) {
 						}
 					}
 				}
-				con.reserve();
+				con.reserve(id,);
 			}
 			else if(ch.equals("2")||ch.equals("예매취소")){
 				System.out.println("영화제목: "); 
