@@ -51,7 +51,7 @@ public static void main(String[] args) {
 					}
 					System.out.println("--------------------------------------------------------");
 					System.out.println("메뉴)) ");
-					System.out.println("1.회원가입 2.로그인 3.아이디찾기 4.비밀번호찾기 5.종료"); 
+					System.out.println("1.회원가입 2.로그인 3.비회원예매 4.아이디찾기 5.비밀번호찾기 6.종료"); 
 					System.out.println("선택 : ");
 					String ch = scanner.next();
 					
@@ -156,7 +156,10 @@ public static void main(String[] args) {
 							main.membermenu(result);
 						}
 					}
-					else if(ch.equals("3") || ch.equals("아이디찾기")) {
+					else if(ch.equals("6") || ch.equals("비회원예매")){
+						System.out.println("메세지)) 프로그램을 종료 합니다.");
+					}
+					else if(ch.equals("4") || ch.equals("아이디찾기")) {
 						System.out.println("이름: "); 
 						String name = scanner.next();
 						System.out.println("전화번호: "); 
@@ -171,7 +174,7 @@ public static void main(String[] args) {
 							System.out.println("메세지)) 회원님의 아이디는 "+ result + " 입니다.");
 						}
 					}
-					else if(ch.equals("4") || ch.equals("비밀번호찾기")){
+					else if(ch.equals("5") || ch.equals("비밀번호찾기")){
 						System.out.println("아이디: "); 
 						String id = scanner.next();
 						System.out.println("전화번호: "); 
@@ -186,7 +189,7 @@ public static void main(String[] args) {
 							System.out.println("메세지)) 회원님의 비밀번호는 "+ result + " 입니다.");
 						}
 					}
-					else if(ch.equals("5") || ch.equals("종료")){
+					else if(ch.equals("6") || ch.equals("종료")){
 						System.out.println("메세지)) 프로그램을 종료 합니다.");
 						break;
 					}
