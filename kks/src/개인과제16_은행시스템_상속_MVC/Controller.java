@@ -66,7 +66,7 @@ public class Controller {
 	
 /////////////////////////////////////////////////////////////////////////////////////////
 	
-	boolean bankregistration(String id, int bnum, String pw) {
+	boolean bankregistration(int bch,String id, int bnum, String pw) {
 		
 		Bank_Book bank = new Bank_Book(bnum, 0, pw, id, 0);
 		

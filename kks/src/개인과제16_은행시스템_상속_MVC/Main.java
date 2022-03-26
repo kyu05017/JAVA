@@ -130,6 +130,9 @@ public class Main {
 			
 			if(ch.equals("1")) {
 				System.out.println("계좌가입) ");
+				System.out.println("가입할 은행 선택");
+				System.out.println("1)국민은행 2)신한은행 3)카카오뱅크");
+				int bch = scanner.nextInt();
 				System.out.print("사용할 계좌번호 입력 : \n");
 				int banknum = scanner.nextInt();
 				
@@ -143,7 +146,7 @@ public class Main {
 				String pw = scanner.next();
 				
 				
-				boolean result =  con.bankregistration(id,banknum,pw);
+				boolean result =  con.bankregistration(bch,id,banknum,pw);
 				
 				if(result) {
 					System.out.println("계좌생성이 완료 되었습니다.");
