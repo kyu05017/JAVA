@@ -16,6 +16,7 @@ public static void main(String[] args) {
 			DB db = new DB();
 			db.memberLoad();
 			db.movieLoad();
+			db.ticketLoad();
 			
 			while(true) {
 				try {
@@ -214,6 +215,10 @@ public static void main(String[] args) {
 			String ch = scanner.next();
 			
 			if(ch.equals("1")||ch.equals("예매")) {
+				Date date = new Date();
+				SimpleDateFormat nowdate = new SimpleDateFormat("HH : mm");
+				String nowTime = nowdate.format(date);
+				
 				System.out.println("-------------현재 상영중인 영화-----------");
 				System.out.println("번호\t영화제목\t\t영화상영시간");
 				int i=0;
@@ -225,7 +230,19 @@ public static void main(String[] args) {
 				System.out.println("영화선택: "); 
 				int index = scanner.nextInt();
 				index -= 1;
+				String[] thistime = Controller.movielist.get(index).getIntime().split(":");
+				
 				System.out.println("-------------------------------------");
+				
+				for(Ticket ticket : Controller.ticketlist) {
+					if(Controller.movielist.get(index).getTitle().equals(ticket.getT_title())) {
+						for(Member member : Controller.memberlist) {
+							if(member.getId().equals(ticket.getT_id())) {
+								Controller.theater[ticket.getT_seat()] = "[ X  ]";
+							}
+						}
+					}
+				}
 				for(int a=0; a<Controller.theater.length; a++) {
 					System.out.print(Controller.theater[a]);
 					 if(a%10==9) {
@@ -249,14 +266,17 @@ public static void main(String[] args) {
 				System.out.println("-------------------------------------");
 				System.out.println("좌석선택: "); 
 				int seat = scanner.nextInt();
+				boolean pass = true;
 				String Tseat = null;
 				for(int p=0; p<Controller.theater.length;p++) {
-					if(Controller.theater[p].equals("[ 예약 ]")) {
+					if(Controller.theater[seat].equals("[ X  ]")) {
 						System.err.println("이미 선택된 좌석입니다.");
+						pass = false;
+						break;
 					}
 					else {
-						if(Controller.theater[p]!=null && Controller.theater[p].equals("[ "+seat+" ]")) {
-							Controller.theater[p] = "[ 예약 ]";
+						if(Controller.theater[seat]!=null && Controller.theater[seat].equals("[ "+seat+" ]")) {
+							Controller.theater[seat] = "[ X  ]";
 							if(seat<=9) {
 								Tseat = "A열"+seat+"번";
 								System.out.println(Tseat+" 좌석이 선택되었습니다.");
@@ -287,8 +307,10 @@ public static void main(String[] args) {
 						}
 					}
 				}
-				con.reserve(id,Controller.movielist.get(index).getTitle(),Controller.movielist.get(index).getIntime(),
+				if(pass) {
+					con.reserve(id,Controller.movielist.get(index).getTitle(),Controller.movielist.get(index).getIntime(),
 						Controller.movielist.get(index).getRuntime(),Controller.movielist.get(index).getMoney(),seat);
+				}
 			}
 			else if(ch.equals("2")||ch.equals("예매취소")){
 				System.out.println("영화제목: "); 

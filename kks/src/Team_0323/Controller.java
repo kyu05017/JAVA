@@ -1,6 +1,8 @@
 package Team_0323;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Controller {
@@ -164,14 +166,37 @@ public class Controller {
 	//영화시스템///////////////////////////////////////////////////////////////////////////
 	
 	public void reserve(String id,String title,String intime,String runtime,int money,int seat) {
+		Random random = new Random();
+		int ticket_number = random.nextInt(99999999)+10000000;
+		
 		System.out.println(id);
 		System.out.println(title);
 		System.out.println(intime);
 		System.out.println(runtime);
 		System.out.println(money);
 		System.out.println(seat);
+		System.out.println(ticket_number);
 		
+		String[] new_intime = intime.split(":");
+		String[] new_runtime = runtime.split(":");
+		int intime_hour = Integer.parseInt(new_intime[0]);
+		int intime_min = Integer.parseInt(new_intime[1]);
+		int runtime_hour = Integer.parseInt(new_runtime[0]);
+		int runtime_min = Integer.parseInt(new_runtime[1]);
+		int outhour = (intime_hour+runtime_hour);
+		int outmin = (intime_min+runtime_min);
+		DecimalFormat df = new DecimalFormat("00");
+		String out1 = df.format(outhour);
+		String out2 = df.format(outmin);
+		String outtime = out1+":"+out2;
 		
+		System.out.println(outtime);
+		
+		Ticket ticket = new Ticket(id, title, intime, outtime, seat, ticket_number, money);
+		
+		ticketlist.add(ticket);
+		
+		db.ticketSave();
 	}
 	
 	public void myreserve() {}

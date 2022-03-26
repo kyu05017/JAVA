@@ -83,11 +83,41 @@ public class DB {
 	}
 	
 	public void ticketSave() {
+		try {
+			FileOutputStream outputStream = new FileOutputStream("D:/ticketDB.txt");
 		
+			for(Ticket temp : Controller.ticketlist) {
+				String ticketSave = temp.getT_id()+","+temp.getT_title()+","+temp.getT_intime()+","+temp.getT_outtime()+","+temp.getT_seat()
+				+","+temp.getT_num()+","+temp.getT_money()+"\n";
+				outputStream.write(ticketSave.getBytes());
+			}
+		}
+		catch(Exception e) {
+			
+		}
 	}
 	
 	public void ticketLoad() {
-		
+		try {
+			FileInputStream inputStream = new FileInputStream("D:/ticketDB.txt");
+			byte[] bytes = new byte[1024]; 
+			inputStream.read(bytes); 
+			String file = new String(bytes); 
+			String[]list = file.split("\n"); 
+			int i = 0;
+			for(String temp : list) {
+				if( i+1 == list.length ) {
+					break; 
+				}
+				String[] filed = temp.split(",");
+				Ticket temp2 = new Ticket(filed[0],filed[1],filed[2],filed[3],Integer.parseInt(filed[4]),Integer.parseInt(filed[5]),Integer.parseInt(filed[6]));
+				Controller.ticketlist.add(temp2);
+				i++;
+			}
+			
+		}
+		catch(Exception e) {
+		}
 	}
 	
 }
