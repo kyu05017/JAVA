@@ -5,7 +5,6 @@ import java.util.Random;
 import Day08.Hana;
 import Day08.Kokmin;
 import Day08.Shinhan;
-import Day08_2.B;
 
 public class Controler { // 통합 컨트롤러
 	
