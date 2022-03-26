@@ -163,7 +163,14 @@ public class Controller {
 	
 	//영화시스템///////////////////////////////////////////////////////////////////////////
 	
-	public void reserve(String id,String title,String intime,String runtime,int money,int seat) {}
+	public void reserve(String id,String title,String intime,String runtime,int money,int seat) {
+		System.out.println(id);
+		System.out.println(title);
+		System.out.println(intime);
+		System.out.println(runtime);
+		System.out.println(money);
+		System.out.println(seat);
+	}
 	
 	public void myreserve() {}
 	
