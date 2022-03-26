@@ -49,6 +49,7 @@ public static void main(String[] args) {
 						
 						System.out.printf("|\t%s\t\t| %s | %s | %s |\n", movie.getTitle(), movie.getIntime(),outtime,new_money);
 					}
+					System.out.println("--------------------------------------------------------");
 					System.out.println("메뉴)) ");
 					System.out.println("1.회원가입 2.로그인 3.아이디찾기 4.비밀번호찾기 5.종료"); 
 					System.out.println("선택 : ");
@@ -210,6 +211,16 @@ public static void main(String[] args) {
 			String ch = scanner.next();
 			
 			if(ch.equals("1")||ch.equals("예매")) {
+				System.out.println("-------------현재 상영중인 영화-----------");
+				System.out.println("번호\t영화제목\t\t영화상영시간");
+				int i=0;
+				for(Movie movie : Controller.movielist) {
+					System.out.printf("%d\t%s\t\t%s \n",(i+1), movie.getTitle(),movie.getIntime());
+					i++;
+				}
+				System.out.println("-------------------------------------");
+				System.out.println("영화선택: "); 
+				int index = scanner.nextInt();
 				
 			}
 			else if(ch.equals("2")||ch.equals("예매취소")){

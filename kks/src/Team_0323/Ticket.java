@@ -23,12 +23,6 @@ public class Ticket {
 		this.t_money = t_money;
 	}
 	
-	
-	
-	
-
-	
-
 	public Ticket(String t_id, String t_title, String t_intime, String t_outtime, String t_seat) {
 		super();
 		this.t_id = t_id;
@@ -37,7 +31,6 @@ public class Ticket {
 		this.t_outtime = t_outtime;
 		this.t_seat = t_seat;
 	}
-	
 	
 
 	public Ticket(String t_id, String t_title, String t_intime, String t_outtime, String t_seat, int t_num) {
