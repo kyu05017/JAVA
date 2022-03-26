@@ -163,7 +163,7 @@ public class Controller {
 	
 	//영화시스템///////////////////////////////////////////////////////////////////////////
 	
-	public void reserve() {}
+	public void reserve(String id,String title,String intime,String runtime,int money,int seat) {}
 	
 	public void myreserve() {}
 	

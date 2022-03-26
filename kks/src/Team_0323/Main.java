@@ -281,7 +281,8 @@ public static void main(String[] args) {
 						}
 					}
 				}
-				con.reserve(id,);
+				con.reserve(id,Controller.movielist.get(index).getTitle(),Controller.movielist.get(index).getIntime(),
+						Controller.movielist.get(index).getRuntime(),Controller.movielist.get(index).getMoney(),seat);
 			}
 			else if(ch.equals("2")||ch.equals("예매취소")){
 				System.out.println("영화제목: "); 
