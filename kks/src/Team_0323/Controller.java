@@ -3,13 +3,14 @@ package Team_0323;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-
 public class Controller {
 	
 	// 회원리스트
 	static ArrayList<Member> memberlist = new ArrayList<>();
 	// 영화리스트
 	static ArrayList<Movie> movielist = new ArrayList<>();
+	// 티켓리스트
+	static ArrayList<Ticket> ticketlist = new ArrayList<>();
 	
 	static String[] theater = {	"[ 0  ]","[ 1  ]","[ 2  ]","[ 3  ]","[ 4  ]","[ 5  ]","[ 6  ]","[ 7  ]","[ 8  ]","[ 9  ]",
 								"[ 10 ]","[ 11 ]","[ 12 ]","[ 13 ]","[ 14 ]","[ 15 ]","[ 16 ]","[ 17 ]","[ 18 ]","[ 19 ]",

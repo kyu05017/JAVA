@@ -5,13 +5,13 @@ public class Ticket {
 	 private String t_title; // 티켓에 표시될 영화제목
 	 private String t_intime; // 티켓에 표시될 시작시간
 	 private String t_outtime; // 티켓에 표시될 끝나는시간
-	 private String t_seat; // 티켓에 표시될 자리
+	 private int t_seat; // 티켓에 표시될 자리
 	 private int t_num; // 티켓에 표시될 예매번호
 	 private int t_money; // 티켓에 표시될 금액
 
 	 public Ticket() {}
 
-	public Ticket(String t_id, String t_title, String t_intime, String t_outtime, String t_seat, int t_num,
+	public Ticket(String t_id, String t_title, String t_intime, String t_outtime, int t_seat, int t_num,
 			int t_money) {
 		super();
 		this.t_id = t_id;
@@ -21,26 +21,6 @@ public class Ticket {
 		this.t_seat = t_seat;
 		this.t_num = t_num;
 		this.t_money = t_money;
-	}
-	
-	public Ticket(String t_id, String t_title, String t_intime, String t_outtime, String t_seat) {
-		super();
-		this.t_id = t_id;
-		this.t_title = t_title;
-		this.t_intime = t_intime;
-		this.t_outtime = t_outtime;
-		this.t_seat = t_seat;
-	}
-	
-
-	public Ticket(String t_id, String t_title, String t_intime, String t_outtime, String t_seat, int t_num) {
-		super();
-		this.t_id = t_id;
-		this.t_title = t_title;
-		this.t_intime = t_intime;
-		this.t_outtime = t_outtime;
-		this.t_seat = t_seat;
-		this.t_num = t_num;
 	}
 
 	public String getT_id() {
@@ -75,11 +55,11 @@ public class Ticket {
 		this.t_outtime = t_outtime;
 	}
 
-	public String getT_seat() {
+	public int getT_seat() {
 		return t_seat;
 	}
 
-	public void setT_seat(String t_seat) {
+	public void setT_seat(int t_seat) {
 		this.t_seat = t_seat;
 	}
 

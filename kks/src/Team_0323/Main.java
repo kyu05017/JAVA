@@ -25,7 +25,7 @@ public static void main(String[] args) {
 					String nowInTime = nowdate.format(date);
 					System.out.println("E.zen 영화관 홈페이지))");
 					System.out.println("--------------------------------------------------------");
-					System.out.println("\t현재 시간 : "+ nowInTime);
+					System.out.println("|\t현재 시간 : "+ nowInTime+ "\t\t|");
 					System.out.println("--------------------------------------------------------");
 					System.out.printf("|\t%s\t\t| %s | %s | %s\n","상역작","시작 시간","종료 시간","가격");
 					System.out.println("--------------------------------------------------------");
@@ -156,7 +156,7 @@ public static void main(String[] args) {
 							main.membermenu(result);
 						}
 					}
-					else if(ch.equals("6") || ch.equals("비회원예매")){
+					else if(ch.equals("3") || ch.equals("비회원예매")){
 						System.out.println("메세지)) 프로그램을 종료 합니다.");
 					}
 					else if(ch.equals("4") || ch.equals("아이디찾기")) {
@@ -224,7 +224,64 @@ public static void main(String[] args) {
 				System.out.println("-------------------------------------");
 				System.out.println("영화선택: "); 
 				int index = scanner.nextInt();
-				
+				System.out.println("-------------------------------------");
+				for(int a=0; a<Controller.theater.length; a++) {
+					System.out.print(Controller.theater[a]);
+					 if(a%10==9) {
+						 if(a==9) {
+							 System.out.println("A열");
+						 }
+						 if(a==19) {
+							 System.out.println("B열");
+						 }
+						 if(a==29) {
+							 System.out.println("C열");
+						 }
+						 if(a==39) {
+							 System.out.println("D열");
+						 }
+						 if(a==49) {
+							 System.out.println("E열");
+						 }
+					 }
+				}
+				System.out.println("-------------------------------------");
+				System.out.println("좌석선택: "); 
+				int seat = scanner.nextInt();
+				String Tseat = null;
+				for(int p=0; p<Controller.theater.length;p++) {
+					if(Controller.theater[p].equals("[ 예약 ]")) {
+						System.err.println("이미 선택된 좌석입니다.");
+					}
+					else {
+						if(Controller.theater[p]!=null && Controller.theater[p].equals("[ "+seat+" ]")) {
+							Controller.theater[p] = "[ 예약 ]";
+							if(seat<=9) {
+								Tseat = "A열"+seat+"번";
+								System.out.println(Tseat+" 좌석이 선택되었습니다.");
+							}
+							else if(seat<=19) {
+								Tseat = "B열"+seat+"번";
+								System.out.println(Tseat+" 좌석이 선택되었습니다.");
+							}
+							else if(seat<=29) {
+								Tseat = "C열"+seat+"번";
+								System.out.println(Tseat+" 좌석이 선택되었습니다.");
+							}
+							else if(seat<=39) {
+								Tseat = "D열"+seat+"번";
+								System.out.println(Tseat+" 좌석이 선택되었습니다.");
+							}
+							else if(seat<=49) {
+								Tseat = "E열"+seat+"번";
+								System.out.println(Tseat+" 좌석이 선택되었습니다.");
+							}
+							else {System.err.println("메세지)) 해당 좌석이 없습니다.");
+							}
+						}
+					}
+				}
+				con.reserve();
 			}
 			else if(ch.equals("2")||ch.equals("예매취소")){
 				System.out.println("영화제목: "); 
