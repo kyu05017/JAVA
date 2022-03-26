@@ -170,6 +170,8 @@ public class Controller {
 		System.out.println(runtime);
 		System.out.println(money);
 		System.out.println(seat);
+		
+		
 	}
 	
 	public void myreserve() {}

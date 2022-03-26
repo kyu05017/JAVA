@@ -224,6 +224,7 @@ public static void main(String[] args) {
 				System.out.println("-------------------------------------");
 				System.out.println("영화선택: "); 
 				int index = scanner.nextInt();
+				index -= 1;
 				System.out.println("-------------------------------------");
 				for(int a=0; a<Controller.theater.length; a++) {
 					System.out.print(Controller.theater[a]);
@@ -259,22 +260,27 @@ public static void main(String[] args) {
 							if(seat<=9) {
 								Tseat = "A열"+seat+"번";
 								System.out.println(Tseat+" 좌석이 선택되었습니다.");
+								break;
 							}
 							else if(seat<=19) {
 								Tseat = "B열"+seat+"번";
 								System.out.println(Tseat+" 좌석이 선택되었습니다.");
+								break;
 							}
 							else if(seat<=29) {
 								Tseat = "C열"+seat+"번";
 								System.out.println(Tseat+" 좌석이 선택되었습니다.");
+								break;
 							}
 							else if(seat<=39) {
 								Tseat = "D열"+seat+"번";
 								System.out.println(Tseat+" 좌석이 선택되었습니다.");
+								break;
 							}
 							else if(seat<=49) {
 								Tseat = "E열"+seat+"번";
 								System.out.println(Tseat+" 좌석이 선택되었습니다.");
+								break;
 							}
 							else {System.err.println("메세지)) 해당 좌석이 없습니다.");
 							}
