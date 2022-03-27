@@ -22,28 +22,38 @@ public class Main {
 		void menu() {
 			Scanner scanner = new Scanner(System.in);
 			while(true) {
+				
 				Controller controler = new Controller();
 				System.out.println("----------------------메뉴----------------------");
 				System.out.println("1.계좌생성 2.입금 3.출금 4.이체 5.내 계좌 6.대출 7.로그아웃");
 				System.out.print("메뉴 선택 : \n");
 				int ch = scanner.nextInt();
+				
 				if(ch == 1) {
 					System.out.println("계좌생성 페이지))");
-					System.out.println("비밀번호 입력 : ");String pw = scanner.next();
-					System.out.println("계좌주 입력	  : ");String name = scanner.next();
+					System.out.println("비밀번호 입력 : ");
+					String pw = scanner.next();
+					System.out.println("계좌주 입력	  : ");
+					String name = scanner.next();
 					System.out.println("은행 목록(1.국민은행 2.신한은행 3.신한은행)");
-					System.out.print("은행선택 : \n"); int bankcompanynum = scanner.nextInt();
+					System.out.print("은행선택 : \n"); 
+					int bankcompanynum = scanner.nextInt();
 					String result  = controler.resregistration(pw, name, bankcompanynum);
+					
 					if(result != null) {
 						System.out.println("알림)) 계좌 생성이 완료 되었습니다.");
 						System.out.println("계좌번호는 "+ result + "입니다.");
 					}
 					else {System.out.println("알림)) 계좌 등록에 실패했습니다.");}
 				}
+				
 				else if(ch == 2) {
+					
 					System.out.println("입금 페이지))");
-					System.out.println("계좌번호 입력 : ");String bknum = scanner.next();
-					System.out.println("입금할 금액 입력 : ");int putmoney = scanner.nextInt();
+					System.out.println("계좌번호 입력 : ");
+					String bknum = scanner.next();
+					System.out.println("입금할 금액 입력 : ");
+					int putmoney = scanner.nextInt();
 					int inmoney = controler.inmoney(bknum,putmoney);
 					
 					if(inmoney == 0) {
@@ -54,11 +64,17 @@ public class Main {
 					}
 					else {System.out.println("알림)) 입금에 실패 했습니다.");}
 				}
+				
 				else if(ch == 3) {
+					
 					System.out.println("출금 페이지))");
-					System.out.println("계좌번호 입력 : ");String bknum = scanner.next();
-					System.out.println("비밀번호 입력 : ");String pw = scanner.next();
-					System.out.println("출금할 금액 입력 : ");int putmoney = scanner.nextInt();
+					System.out.println("계좌번호 입력 : ");
+					String bknum = scanner.next();
+					System.out.println("비밀번호 입력 : ");
+					String pw = scanner.next();
+					System.out.println("출금할 금액 입력 : ");
+					
+					int putmoney = scanner.nextInt();
 					int outmoney = controler.outmoney(bknum,pw,putmoney);
 					if(outmoney == 0) {
 						System.out.println("알림)) "+putmoney+"원이 "+bknum+"계좌에서 출금이 완료 되었습니다.");
@@ -71,14 +87,20 @@ public class Main {
 					}
 					else {System.out.println("알림)) 출금에 실패 했습니다.");}
 				}
+				
 				else if(ch == 4) {
-					System.out.println("이체 페이지))");
-					System.out.println("계좌번호 입력 : ");String bknum = scanner.next();
-					System.out.println("비밀번호 입력 : ");String pw = scanner.next();
-					System.out.println("받는 사람의 계좌번호 입력 : ");String bknum2 = scanner.next();
-					System.out.println("이체할 금액 입력 : ");int putmoney = scanner.nextInt();
 					
+					System.out.println("이체 페이지))");
+					System.out.println("계좌번호 입력 : ");
+					String bknum = scanner.next();
+					System.out.println("비밀번호 입력 : ");
+					String pw = scanner.next();
+					System.out.println("받는 사람의 계좌번호 입력 : ");
+					String bknum2 = scanner.next();
+					System.out.println("이체할 금액 입력 : ");
+					int putmoney = scanner.nextInt();
 					int reslut = controler.sendmoney(bknum,pw,bknum2,putmoney);
+					
 					if(reslut == 2) {
 						System.out.println("계좌번호 "+ bknum2+ "로 "+putmoney+"원을 이체 했습니다.");
 					}
@@ -94,10 +116,11 @@ public class Main {
 				}
 				else if(ch == 5) {
 					System.out.println("내 계좌 목록 페이지))");
-					System.out.println("계좌주 입력 : ");String name = scanner.next();
+					System.out.println("계좌주 입력 : ");
+					String name = scanner.next();
 					System.out.println("순서\t계좌번호\t잔액\t대출액");
-					
 					Bank[] mybanklist = controler.mylist(name);
+					
 					int i = 1;
 					for(Bank temp : mybanklist) {
 						if(temp != null) {
@@ -106,7 +129,9 @@ public class Main {
 						}
 					}
 				}
+				
 				else if(ch == 6) {
+					
 					System.out.println("대출 페이지))");
 					System.out.println("1)대출 2)상환");
 					int ch2 = scanner.nextInt();
