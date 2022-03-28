@@ -347,10 +347,12 @@ public static void main(String[] args) {
 			System.out.println("1.영화등록 2.영화삭제 3.매출확인 4.회원목록 5.로그아웃"); 
 			System.out.println("선택 : ");
 			String ch =scanner.next();
+			
 			if(ch.equals("1")||ch.equals("영화등록")) {
 				
-				System.out.println("영화제목 : ");		
+				System.out.println("영화제목 : ");	
 				String title = scanner.next();
+				
 				boolean pass1 = false;
 				int hour = 0;
 				while(true) {
@@ -369,6 +371,7 @@ public static void main(String[] args) {
 				}
 				DecimalFormat df = new DecimalFormat("00");
 				String start_hour = df.format(hour);
+				
 				int min = 0;
 				boolean pass2 = false;
 				while(true) {
@@ -387,22 +390,8 @@ public static void main(String[] args) {
 				}
 				df = new DecimalFormat("00");
 				String start_min = df.format(min);
-				
 				String intime = start_hour+":"+start_min;
-				boolean moviest_admin = true;
 				
-				while(moviest_admin) {
-					if (intime.length() != 5) {
-						System.out.println("메세지)) 입력오류");
-						System.out.println("시작 시간: ");	
-						start_hour = scanner.next();
-						System.out.println("시작 분: ");	
-						start_min = scanner.next();
-						intime = start_hour+":"+start_min;
-					}else {
-						moviest_admin = false;
-					}
-				}
 				
 				System.out.println("러닝타임(분) : ");		
 				int time = scanner.nextInt();
@@ -431,6 +420,9 @@ public static void main(String[] args) {
 						movierun_admin = false;
 					}
 				}
+				
+				
+				
 				con.moive_register(title, intime, runtime);
 				
 			}
