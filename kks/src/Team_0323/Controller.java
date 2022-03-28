@@ -197,7 +197,7 @@ public class Controller {
 	public void myreserve() {}
 	
 	public void cancle(int index) {
-		Theater theater = new Theater();
+		Movie theater = new Movie();
 		for(Ticket temp : ticketlist) {
 		
 			theater.getTheater()[temp.getT_seat()] = "[ "+temp.getT_seat()+" ]";

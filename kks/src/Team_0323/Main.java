@@ -12,7 +12,7 @@ public static void main(String[] args) {
 		try (Scanner scanner = new Scanner(System.in)) {
 			Main main = new Main();
 			Controller con = new Controller();
-			Theater theater = new Theater();
+
 			
 			DB db = new DB();
 			db.memberLoad();
@@ -385,8 +385,7 @@ public static void main(String[] args) {
 		}
 	}
 	public void adminmenu() {
-		
-		Theater theater = new Theater();
+
 		Controller con = new Controller();
 		
 		while(true) {
