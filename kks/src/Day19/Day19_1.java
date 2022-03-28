@@ -26,7 +26,7 @@ public class Day19_1 {
 						// or
 						// for( 임시객체명 : set객체명 ) { }
 					// 4. .remove ( 객체명 ) : set 객체내 해당 요소 삭제
-					// 5. .cleara(); : 해당 
+					// 5. .cleara(); : set객체내 객체 전체 삭제
 			// 3. Map
 		 //ㅇ
 		// p. 737
