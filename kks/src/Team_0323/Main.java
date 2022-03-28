@@ -466,8 +466,6 @@ public static void main(String[] args) {
 						if(Controller.ticketlist.get(index-1).getT_title().equals(ticket.getT_title())&&Controller.ticketlist.get(index-1).getT_intime().equals(ticket.getT_intime())) {
 							con.myreserve(Controller.ticketlist.get(index-1).getT_id(),Controller.ticketlist.get(index-1).getT_title(),Controller.ticketlist.get(index-1).getT_intime());
 						}
-						else {System.out.println("알 수 없는 번호입니다.");}
-						
 					}
 				}
 				///뒤로가기
