@@ -5,21 +5,34 @@ public class Ticket {
 	 private String t_title; // 티켓에 표시될 영화제목
 	 private String t_intime; // 티켓에 표시될 시작시간
 	 private String t_outtime; // 티켓에 표시될 끝나는시간
+	 private int th_num;
 	 private int t_seat; // 티켓에 표시될 자리
 	 private int t_num; // 티켓에 표시될 예매번호
 	 private int t_money; // 티켓에 표시될 금액
 
 	 public Ticket() {}
 
-	public Ticket(String t_id, String t_title, String t_intime, String t_outtime, int t_seat, int t_num,
+	public Ticket(String t_id, String t_title, String t_intime, String t_outtime, int th_num, int t_seat, int t_num,
 			int t_money) {
+		super();
 		this.t_id = t_id;
 		this.t_title = t_title;
 		this.t_intime = t_intime;
 		this.t_outtime = t_outtime;
+		this.th_num = th_num;
 		this.t_seat = t_seat;
 		this.t_num = t_num;
 		this.t_money = t_money;
+	}
+
+	
+	
+	public int getTh_num() {
+		return th_num;
+	}
+
+	public void setTh_num(int th_num) {
+		this.th_num = th_num;
 	}
 
 	public String getT_id() {

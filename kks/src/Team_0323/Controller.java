@@ -13,12 +13,8 @@ public class Controller {
 	static ArrayList<Movie> movielist = new ArrayList<>();
 	// 티켓리스트
 	static ArrayList<Ticket> ticketlist = new ArrayList<>();
-	
-	static String[] theater = {	"[ 0  ]","[ 1  ]","[ 2  ]","[ 3  ]","[ 4  ]","[ 5  ]","[ 6  ]","[ 7  ]","[ 8  ]","[ 9  ]",
-								"[ 10 ]","[ 11 ]","[ 12 ]","[ 13 ]","[ 14 ]","[ 15 ]","[ 16 ]","[ 17 ]","[ 18 ]","[ 19 ]",
-								"[ 20 ]","[ 21 ]","[ 22 ]","[ 23 ]","[ 24 ]","[ 25 ]","[ 26 ]","[ 27 ]","[ 28 ]","[ 29 ]",
-								"[ 30 ]","[ 31 ]","[ 32 ]","[ 33 ]","[ 34 ]","[ 35 ]","[ 36 ]","[ 37 ]","[ 38 ]","[ 39 ]",
-								"[ 40 ]","[ 41 ]","[ 42 ]","[ 43 ]","[ 44 ]","[ 45 ]","[ 46 ]","[ 47 ]","[ 48 ]","[ 49 ]"};
+	// 관리스트 
+
 	
 	Scanner scanner = new Scanner(System.in);
 	DB db = new DB();
@@ -165,12 +161,13 @@ public class Controller {
 	
 	//영화시스템///////////////////////////////////////////////////////////////////////////
 	
-	public void reserve(String id,String title,String intime,String runtime,int money,int seat) {
+	public void reserve(String id,String title,String intime,String runtime,int money,int seat,int Th_num) {
 		Random random = new Random();
 		int ticket_number = random.nextInt(99999999)+10000000;
 		System.out.println("-----------예매 정보----------");
 		System.out.println("사용자id : " +id);
 		System.out.println("영화제목 : "+title);
+		System.out.println("상영관  :" + Th_num);
 		System.out.println("시작시간 : "+intime);
 		System.out.println("러닝타임 : "+runtime);
 		System.out.println("금액 : " +money);
@@ -189,10 +186,8 @@ public class Controller {
 		String out1 = df.format(outhour);
 		String out2 = df.format(outmin);
 		String outtime = out1+":"+out2;
-		
-		System.out.println(outtime);
-		
-		Ticket ticket = new Ticket(id, title, intime, outtime, seat, ticket_number, money);
+
+		Ticket ticket = new Ticket(id, title, intime, outtime, seat, ticket_number, money,Th_num);
 		
 		ticketlist.add(ticket);
 		
@@ -202,29 +197,18 @@ public class Controller {
 	public void myreserve() {}
 	
 	public void cancle(int index) {
+		Theater theater = new Theater();
 		for(Ticket temp : ticketlist) {
 		
-		theater[temp.getT_seat()] = "[ "+temp.getT_seat()+" ]";
+			theater.getTheater()[temp.getT_seat()] = "[ "+temp.getT_seat()+" ]";
 		}
-		ticketlist.remove(index);
 		System.err.println(ticketlist.get(index).getT_money()+"원 환불되었습니다.");
+		ticketlist.remove(index);
 		db.ticketSave();
-//		for(Ticket temp : ticketlist) {
-//				int seat = temp.getT_seat();
-//				//temp.setT_intime("취소");
-//				//temp.setT_num(0000000);
-//				theater[temp.getT_seat()] = "[ "+seat+" ]";
-//				//temp.setT_money(0);
-//				db.ticketSave();
-//				return 2;
-//			
-//			
-//		}return 3;
-		
 	}
 	//관리자 시스템/////////////////////////////////////////////////////////////////////////
 	
-	public void moive_register (String title, String intime, String runtime) {
+	public void moive_register (String title, String intime, String runtime, int num) {
 
 		String [] startTime = intime.split(":");
 		
@@ -237,7 +221,7 @@ public class Controller {
 		}else {
 			money = 7000;
 		}
-		Movie movie = new Movie(title, intime, runtime , money);
+		Movie movie = new Movie(title, intime, runtime , money, num);
 		movielist.add(movie);
 		db.movieSave();
 		System.out.println("영화 저장 완료");

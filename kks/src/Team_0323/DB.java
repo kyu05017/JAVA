@@ -50,7 +50,7 @@ public class DB {
 			FileOutputStream outputStream = new FileOutputStream("D:/movieDB.txt");
 		
 			for(Movie temp : Controller.movielist) {
-				String memberSave = temp.getTitle()+","+temp.getIntime()+","+temp.getRuntime()+","+temp.getMoney()+"\n";
+				String memberSave = temp.getTitle()+","+temp.getIntime()+","+temp.getRuntime()+","+temp.getMoney()+","+temp.getTh_num()+"\n";
 				outputStream.write(memberSave.getBytes());
 			}
 		}
@@ -72,7 +72,7 @@ public class DB {
 					break; 
 				}
 				String[] filed = temp.split(",");
-				Movie temp2 = new Movie(filed[0],filed[1],filed[2],Integer.parseInt(filed[3]));
+				Movie temp2 = new Movie(filed[0],filed[1],filed[2],Integer.parseInt(filed[3]),Integer.parseInt(filed[4]));
 				Controller.movielist.add(temp2);
 				i++;
 			}
@@ -88,7 +88,7 @@ public class DB {
 		
 			for(Ticket temp : Controller.ticketlist) {
 				String ticketSave = temp.getT_id()+","+temp.getT_title()+","+temp.getT_intime()+","+temp.getT_outtime()+","+temp.getT_seat()
-				+","+temp.getT_num()+","+temp.getT_money()+"\n";
+				+","+temp.getT_num()+","+temp.getT_money()+","+temp.getTh_num()+"\n";
 				outputStream.write(ticketSave.getBytes());
 			}
 		}
@@ -110,7 +110,7 @@ public class DB {
 					break; 
 				}
 				String[] filed = temp.split(",");
-				Ticket temp2 = new Ticket(filed[0],filed[1],filed[2],filed[3],Integer.parseInt(filed[4]),Integer.parseInt(filed[5]),Integer.parseInt(filed[6]));
+				Ticket temp2 = new Ticket(filed[0],filed[1],filed[2],filed[3],Integer.parseInt(filed[4]),Integer.parseInt(filed[5]),Integer.parseInt(filed[6]),Integer.parseInt(filed[7]));
 				Controller.ticketlist.add(temp2);
 				i++;
 			}

@@ -1,11 +1,8 @@
 package Team_0323;
 
-public class Movie {
-
-	private String title;
-	private String intime;
-	private String runtime;
-	private int money;
+public class Theater {
+	private String Th_title;
+	
 	private int Th_num;
 	private String[] theater = {	"[ 0  ]","[ 1  ]","[ 2  ]","[ 3  ]","[ 4  ]","[ 5  ]","[ 6  ]","[ 7  ]","[ 8  ]","[ 9  ]",
 			"[ 10 ]","[ 11 ]","[ 12 ]","[ 13 ]","[ 14 ]","[ 15 ]","[ 16 ]","[ 17 ]","[ 18 ]","[ 19 ]",
@@ -13,16 +10,19 @@ public class Movie {
 			"[ 30 ]","[ 31 ]","[ 32 ]","[ 33 ]","[ 34 ]","[ 35 ]","[ 36 ]","[ 37 ]","[ 38 ]","[ 39 ]",
 			"[ 40 ]","[ 41 ]","[ 42 ]","[ 43 ]","[ 44 ]","[ 45 ]","[ 46 ]","[ 47 ]","[ 48 ]","[ 49 ]"};
 	
-	public Movie() {
+	public Theater() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Movie(String title, String intime, String runtime, int money, int Th_num) {
-		this.title = title;
-		this.intime = intime;
-		this.runtime = runtime;
-		this.money = money;
-		this.Th_num = Th_num;
+	public Theater(int th_num, String th_title) {
+		super();
+		Th_num = th_num;
+		Th_title = th_title;
+	}
+
+	public Theater(int th_num, String[] theater) {
+		Th_num = th_num;
+		this.theater = theater;
 	}
 
 	public int getTh_num() {
@@ -41,37 +41,14 @@ public class Movie {
 		this.theater = theater;
 	}
 
-	public String getTitle() {
-		return title;
+	public String getTh_title() {
+		return Th_title;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
+	public void setTh_title(String th_title) {
+		Th_title = th_title;
 	}
-
-	public String getIntime() {//
-		return intime;
-	}
-
-	public void setIntime(String intime) {
-		this.intime = intime;
-	}
-
-	public String getRuntime() {
-		return runtime;
-	}
-
-	public void setRuntime(String outtime) {
-		this.runtime = outtime;
-	}
-
-	public int getMoney() {
-		return money;
-	}
-
-	public void setMoney(int money) {
-		this.money = money;
-	}
-
+	
+	
 	
 }
