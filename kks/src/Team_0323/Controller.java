@@ -168,15 +168,15 @@ public class Controller {
 	public void reserve(String id,String title,String intime,String runtime,int money,int seat) {
 		Random random = new Random();
 		int ticket_number = random.nextInt(99999999)+10000000;
-		
-		System.out.println(id);
-		System.out.println(title);
-		System.out.println(intime);
-		System.out.println(runtime);
-		System.out.println(money);
-		System.out.println(seat);
-		System.out.println(ticket_number);
-		
+		System.out.println("-----------예매 정보----------");
+		System.out.println("사용자id : " +id);
+		System.out.println("영화제목 : "+title);
+		System.out.println("시작시간 : "+intime);
+		System.out.println("러닝타임 : "+runtime);
+		System.out.println("금액 : " +money);
+		System.out.println("자리 : "+seat);
+		System.out.println("예매번호 : "+ticket_number);
+		System.out.println("----------------------------");
 		String[] new_intime = intime.split(":");
 		String[] new_runtime = runtime.split(":");
 		int intime_hour = Integer.parseInt(new_intime[0]);
@@ -201,8 +201,27 @@ public class Controller {
 	
 	public void myreserve() {}
 	
-	public void cancle() {}
-	
+	public void cancle(int index) {
+		for(Ticket temp : ticketlist) {
+		
+		theater[temp.getT_seat()] = "[ "+temp.getT_seat()+" ]";
+		}
+		ticketlist.remove(index);
+		System.err.println(ticketlist.get(index).getT_money()+"원 환불되었습니다.");
+		db.ticketSave();
+//		for(Ticket temp : ticketlist) {
+//				int seat = temp.getT_seat();
+//				//temp.setT_intime("취소");
+//				//temp.setT_num(0000000);
+//				theater[temp.getT_seat()] = "[ "+seat+" ]";
+//				//temp.setT_money(0);
+//				db.ticketSave();
+//				return 2;
+//			
+//			
+//		}return 3;
+		
+	}
 	//관리자 시스템/////////////////////////////////////////////////////////////////////////
 	
 	public void moive_register (String title, String intime, String runtime) {

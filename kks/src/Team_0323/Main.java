@@ -227,27 +227,20 @@ public static void main(String[] args) {
 				System.out.println("번호\t영화제목\t\t영화상영시간");
 				int i=0;
 				for(Movie movie : Controller.movielist) {
-					System.out.printf("%d\t%s\t\t%s \n",(i+1), movie.getTitle(),movie.getIntime());
+					System.out.printf("%d\t%s\t\t%s \n",(i), movie.getTitle(),movie.getIntime());
 					i++;
 				}
 				System.out.println("-------------------------------------");
 				System.out.println("영화선택: "); 
 				int index = scanner.nextInt();
-				index -= 1;
+
 				String[] thistime = Controller.movielist.get(index).getIntime().split(":");
 				
 				System.out.println("-------------------------------------");
 				
 				for(Ticket ticket : Controller.ticketlist) {
 					if(Controller.movielist.get(index).getTitle().equals(ticket.getT_title())) {
-						for(Member member : Controller.memberlist) {
-							if(id.equals(ticket.getT_id())) {
-								Controller.theater[ticket.getT_seat()] = "[ R  ]";
-							}
-							else {
-								Controller.theater[ticket.getT_seat()] = "[ X  ]";
-							}
-						}
+						Controller.theater[ticket.getT_seat()] = "[ X  ]";
 					}
 				}
 				for(int a=0; a<Controller.theater.length; a++) {
@@ -282,35 +275,33 @@ public static void main(String[] args) {
 						break;
 					}
 					else {
-						if(Controller.theater[seat]!=null && Controller.theater[seat].equals("[ "+seat+" ]")) {
-							Controller.theater[seat] = "[ X  ]";
-							if(seat<=9) {
-								Tseat = "A열"+seat+"번";
-								System.out.println(Tseat+" 좌석이 선택되었습니다.");
-								break;
-							}
-							else if(seat<=19) {
-								Tseat = "B열"+seat+"번";
-								System.out.println(Tseat+" 좌석이 선택되었습니다.");
-								break;
-							}
-							else if(seat<=29) {
-								Tseat = "C열"+seat+"번";
-								System.out.println(Tseat+" 좌석이 선택되었습니다.");
-								break;
-							}
-							else if(seat<=39) {
-								Tseat = "D열"+seat+"번";
-								System.out.println(Tseat+" 좌석이 선택되었습니다.");
-								break;
-							}
-							else if(seat<=49) {
-								Tseat = "E열"+seat+"번";
-								System.out.println(Tseat+" 좌석이 선택되었습니다.");
-								break;
-							}
-							else {System.err.println("메세지)) 해당 좌석이 없습니다.");
-							}
+						Controller.theater[seat] = "[ X  ]";
+						if(seat<=9) {
+							Tseat = "A열"+seat+"번";
+							System.out.println(Tseat+" 좌석이 선택되었습니다.");
+							break;
+						}
+						else if(seat<=19) {
+							Tseat = "B열"+seat+"번";
+							System.out.println(Tseat+" 좌석이 선택되었습니다.");
+							break;
+						}
+						else if(seat<=29) {
+							Tseat = "C열"+seat+"번";
+							System.out.println(Tseat+" 좌석이 선택되었습니다.");
+							break;
+						}
+						else if(seat<=39) {
+							Tseat = "D열"+seat+"번";
+							System.out.println(Tseat+" 좌석이 선택되었습니다.");
+							break;
+						}
+						else if(seat<=49) {
+							Tseat = "E열"+seat+"번";
+							System.out.println(Tseat+" 좌석이 선택되었습니다.");
+							break;
+						}
+						else {System.err.println("메세지)) 해당 좌석이 없습니다.");
 						}
 					}
 				}
@@ -320,18 +311,54 @@ public static void main(String[] args) {
 				}
 			}
 			else if(ch.equals("2")||ch.equals("예매취소")){
-				System.out.println("영화제목: "); 
-				String title = scanner.nextLine();
-				//////해당 영화의 상영시간 출력//
-				System.out.println("영화시간: "); 
-				String intime = scanner.next();
-				//////결제취소
+				
+				System.out.println("-------------예매 영화-----------");
+				System.out.println("번호\t영화제목\t\t영화상영시간\t자리\t예매번호");
+				
+				int i=0;
+				for(Ticket ticket  : Controller.ticketlist) {
+					if(ticket.getT_id().equals(id)) {
+					System.out.printf("%d\t%s\t\t%s\t\t%d\t%d \n",(i+1), ticket.getT_title(),ticket.getT_intime(),ticket.getT_seat(),ticket.getT_num());
+					}
+					i++;
+				}
+				System.out.println("-------------------------------------");
+				System.out.println("영화선택: "); 
+				int index = scanner.nextInt();
+				index -= 1;
+				if(index < Controller.ticketlist.size()){
+					for(Ticket temp :Controller.ticketlist) {
+					
+						if(temp.getT_id().equals(id)&&temp.getT_title().equals(Controller.ticketlist.get(index).getT_title())&&temp.getT_seat() == Controller.ticketlist.get(index).getT_seat()) {
+							con.cancle(index);
+							break;
+						}
+					
+					}
+				}
+				else {
+					System.out.println("없는번호");
+				}
 			}
 			else if(ch.equals("3")||ch.equals("예매확인")) {
-				////////예매목록 자동생성
-				////////////////
-				System.out.println("1.예매취소 2.뒤로가기"); 
+				
+				System.out.println("-------------예매 영화-----------");
+				System.out.println("번호\t영화제목\t\t영화상영시간\t자리\t예매번호");
+				
+				int i=0;
+				for(Ticket ticket  : Controller.ticketlist) {
+					if(ticket.getT_id().equals(id)) {
+					System.out.printf("%d\t%s\t\t%s\t\t%d\t%d \n",(i+1), ticket.getT_title(),ticket.getT_intime(),ticket.getT_seat(),ticket.getT_num());
+					}
+					i++;
+				}
+				System.out.println("-------------------------------------");
+				System.out.println("1.뒤로가기"); 
 				String confirm = scanner.next();
+				
+				if(confirm.equals("1") || confirm.equals("뒤로가기") || confirm.equals("뒤로")) {
+					System.out.println("이전 메뉴로 이동합니다.");
+				}
 			}
 			else if(ch.equals("4")||ch.equals("회원정보")) {
 				con.memberInfo(id);
@@ -468,7 +495,47 @@ public static void main(String[] args) {
 					System.out.println(temp.getId());
 				}
 			}
-			else if(ch.equals("5")||ch.equals("로그아웃")) {
+			else if(ch.equals("5")||ch.equals("예매목록")) {
+				
+				System.out.println("-------------현재 상영중인 영화-----------");
+				System.out.println("번호\t영화제목\t\t영화상영시간");
+				int i=0;
+				for(Movie movie : Controller.movielist) {
+					System.out.printf("%d\t%s\t\t%s \n",(i), movie.getTitle(),movie.getIntime());
+					i++;
+				}
+				System.out.println("-------------------------------------");
+				System.out.println("영화선택: "); 
+				
+				int index = scanner.nextInt();
+				for(Ticket ticket : Controller.ticketlist) {
+					if(Controller.movielist.get(index).getTitle().equals(ticket.getT_title())) {
+						Controller.theater[ticket.getT_seat()] = "[ X  ]";
+					}
+				}
+				for(int a=0; a<Controller.theater.length; a++) {
+					System.out.print(Controller.theater[a]);
+					 if(a%10==9) {
+						 if(a==9) {
+							 System.out.println("A열");
+						 }
+						 if(a==19) {
+							 System.out.println("B열");
+						 }
+						 if(a==29) {
+							 System.out.println("C열");
+						 }
+						 if(a==39) {
+							 System.out.println("D열");
+						 }
+						 if(a==49) {
+							 System.out.println("E열");
+						 }
+					 }
+				}
+				
+			}
+			else if(ch.equals("6")||ch.equals("로그아웃")) {
 				System.out.println("메세지)) 로그아웃 했습니다.");
 				break;
 			}
