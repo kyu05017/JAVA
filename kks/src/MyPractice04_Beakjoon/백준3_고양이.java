@@ -1,6 +1,6 @@
 package MyPractice04_Beakjoon;
 
-public class 고양이 {
+public class 백준3_고양이 {
 
 	public static void main(String[] args) {
 		System.out.println("\\    /\\");

@@ -1,6 +1,6 @@
 package MyPractice04_Beakjoon;
 
-public class 강아지 {
+public class 백준4_강아지 {
 
 	public static void main(String[] args) {
 		System.out.println("|\\_/|");		// \ 출력시 -> \\
