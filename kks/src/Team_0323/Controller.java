@@ -286,10 +286,10 @@ public void sale() {
 						//이 전에 같은 영화제목이 없었으면 -> 출력
 						sales[i] = ticketfee;	//티켓가격 합계를 sales배열에 저장. 
 						System.out.println((movielist.get(i).getTitle() +" : "+ sales[i]+"원"));
-						break;
+						
 					}
 				}
-			
+				
 			}//for end
 			int totalsales = 0;
 			for (int i = 0; i < sales.length; i++) {
