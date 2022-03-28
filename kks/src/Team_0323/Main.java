@@ -390,7 +390,7 @@ public static void main(String[] args) {
 		
 		while(true) {
 			System.out.println("관리자 메뉴))");
-			System.out.println("1.영화등록 2.영화삭제 3.매출확인 4.회원목록 5.로그아웃"); 
+			System.out.println("1.영화등록 2.영화삭제 3.매출확인 4.회원목록 5.예매목록 6.로그아웃"); 
 			System.out.println("선택 : ");
 			String ch =scanner.next();
 			

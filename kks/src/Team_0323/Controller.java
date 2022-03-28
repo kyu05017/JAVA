@@ -222,6 +222,7 @@ public class Controller {
 			money = 7000;
 		}
 		Movie movie = new Movie(title, intime, runtime , money, num);
+		
 		movielist.add(movie);
 		db.movieSave();
 		System.out.println("영화 저장 완료");
