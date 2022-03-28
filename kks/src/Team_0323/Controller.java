@@ -199,17 +199,16 @@ public class Controller {
 		db.ticketSave();
 	}
 	
-	public void myreserve() {}
-	
-	public void cancle(int index) {
-		Movie theater = new Movie();
-		for(Ticket temp : ticketlist) {
-		
-			theater.getTheater()[temp.getT_seat()] = "[ "+temp.getT_seat()+" ]";
+	public void myreserve(String id,String title, String intime) {
+		for(int i=0; i<ticketlist.size(); i++) {
+		if( title.equals( ticketlist.get(i).getT_title() )&& intime.equals( ticketlist.get(i).getT_intime() ) ) {
+			// 입력받은제목,시간과  기존에 있던 제목,시간 동일하면 
+				ticketlist.remove(i);	//  삭제
+				System.err.println(ticketlist.get(i).getT_money()+"원 환불되었습니다.");
+				db.ticketSave();
+				return;
+			}
 		}
-		System.err.println(ticketlist.get(index).getT_money()+"원 환불되었습니다.");
-		ticketlist.remove(index);
-		db.ticketSave();
 	}
 	//관리자 시스템/////////////////////////////////////////////////////////////////////////
 	

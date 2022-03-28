@@ -57,7 +57,7 @@ public static void main(String[] args) {
 					}
 					System.out.println("--------------------------------------------------------");
 					System.out.println("메뉴)) ");
-					System.out.println("1.회원가입 2.로그인 3.비회원예매 4.아이디찾기 5.비밀번호찾기 6.종료"); 
+					System.out.println("1.회원가입 2.로그인 3.아이디찾기 4.비밀번호찾기 5.종료"); 
 					System.out.println("선택 : ");
 					String ch = scanner.next();
 					
@@ -162,10 +162,12 @@ public static void main(String[] args) {
 							main.membermenu(result);
 						}
 					}
+					/*
 					else if(ch.equals("3") || ch.equals("비회원예매")){
 						System.out.println("메세지)) 프로그램을 종료 합니다.");
 					}
-					else if(ch.equals("4") || ch.equals("아이디찾기")) {
+					*/
+					else if(ch.equals("3") || ch.equals("아이디찾기")) {
 						System.out.println("이름: "); 
 						String name = scanner.next();
 						System.out.println("전화번호: "); 
@@ -180,7 +182,7 @@ public static void main(String[] args) {
 							System.out.println("메세지)) 회원님의 아이디는 "+ result + " 입니다.");
 						}
 					}
-					else if(ch.equals("5") || ch.equals("비밀번호찾기")){
+					else if(ch.equals("4") || ch.equals("비밀번호찾기")){
 						System.out.println("아이디: "); 
 						String id = scanner.next();
 						System.out.println("전화번호: "); 
@@ -195,7 +197,7 @@ public static void main(String[] args) {
 							System.out.println("메세지)) 회원님의 비밀번호는 "+ result + " 입니다.");
 						}
 					}
-					else if(ch.equals("6") || ch.equals("종료")){
+					else if(ch.equals("5") || ch.equals("종료")){
 						System.out.println("메세지)) 프로그램을 종료 합니다.");
 						break;
 					}
@@ -216,7 +218,7 @@ public static void main(String[] args) {
 		
 		while(true) {
 			System.out.println("회원메뉴))");
-			System.out.println("1.예매 2.예매취소 3.예매확인 4.회원정보 5.로그아웃"); 
+			System.out.println("1.예매 2.예매확인 3.회원정보 4.로그아웃"); 
 			System.out.println("선택 : ");
 			String ch = scanner.next();
 			
@@ -389,60 +391,59 @@ public static void main(String[] args) {
 				}
 				
 			}
-			else if(ch.equals("2")||ch.equals("예매취소")){
+			else if(ch.equals("2")||ch.equals("예매확인")) {
 				
-				System.out.println("-------------예매 영화-----------");
-				System.out.println("번호\t영화제목\t\t영화상영시간\t자리\t예매번호");
+				System.out.println("-------------예매목록-------------");
+				System.out.println("번호\t영화제목\t예매번호\t\t좌석번호\t영화상영시간");
+				int i=1;
 				
-				int i=0;
-				for(Ticket ticket  : Controller.ticketlist) {
-					if(ticket.getT_id().equals(id)) {
-					System.out.printf("%d\t%s\t\t%s\t\t%d\t%d \n",(i+1), ticket.getT_title(),ticket.getT_intime(),ticket.getT_seat(),ticket.getT_num());
-					}
-					i++;
-				}
-				System.out.println("-------------------------------------");
-				System.out.println("영화선택: "); 
-				int index = scanner.nextInt();
-				index -= 1;
-				if(index < Controller.ticketlist.size()){
-					for(Ticket temp :Controller.ticketlist) {
-					
-						if(temp.getT_id().equals(id)&&temp.getT_title().equals(Controller.ticketlist.get(index).getT_title())&&temp.getT_seat() == Controller.ticketlist.get(index).getT_seat()) {
-							con.cancle(index);
-							break;
+				for(Ticket ticket : Controller.ticketlist) {
+					if(id.equals(ticket.getT_id())) {
+						String Tseat = null;
+						if(ticket.getT_seat()<=9) {
+							Tseat = "A열"+ticket.getT_seat()+"번";
 						}
-					
+						else if(ticket.getT_seat()>9&&ticket.getT_seat()<=19) {
+							Tseat = "B열"+ticket.getT_seat()+"번";
+						}
+						else if(ticket.getT_seat()>19&&ticket.getT_seat()<=29) {
+							Tseat = "C열"+ticket.getT_seat()+"번";
+						}
+						else if(ticket.getT_seat()>29&&ticket.getT_seat()<=39) {
+							Tseat = "D열"+ticket.getT_seat()+"번";
+						}
+						else if(ticket.getT_seat()>39&&ticket.getT_seat()<=49) {
+							Tseat = "E열"+ticket.getT_seat()+"번";
+						}
+						
+						System.out.printf("%d\t%s\t%d\t%s\t%s \n",(i), ticket.getT_title(),ticket.getT_num(),Tseat,ticket.getT_intime());
+						i++;
 					}
 				}
-				else {
-					System.out.println("없는번호");
-				}
-			}
-			else if(ch.equals("3")||ch.equals("예매확인")) {
-				
-				System.out.println("-------------예매 영화-----------");
-				System.out.println("번호\t영화제목\t영화상영시간\t자리\t예매번호");
-				
-				int i=0;
-				for(Ticket ticket  : Controller.ticketlist) {
-					if(ticket.getT_id().equals(id)) {
-					System.out.printf("%d\t%s\t%s\t\t%d\t%d \n",(i+1), ticket.getT_title(),ticket.getT_intime(),ticket.getT_seat(),ticket.getT_num());
-					}
-					i++;
-				}
-				System.out.println("-------------------------------------");
-				System.out.println("1.뒤로가기"); 
+		
+				////////////////
+				System.out.println("1.예매취소 2.뒤로가기"); 
 				String confirm = scanner.next();
-				
-				if(confirm.equals("1") || confirm.equals("뒤로가기") || confirm.equals("뒤로")) {
-					System.out.println("이전 메뉴로 이동합니다.");
+				////예매취소
+				if(confirm.equals("1") || confirm.equals("예매취소")) {
+					System.out.println("취소할 예매선택: "); int index = scanner.nextInt();
+					for(Ticket ticket : Controller.ticketlist) {
+						if(Controller.ticketlist.get(index-1).getT_title().equals(ticket.getT_title())&&Controller.ticketlist.get(index-1).getT_intime().equals(ticket.getT_intime())) {
+							con.myreserve(Controller.ticketlist.get(index-1).getT_id(),Controller.ticketlist.get(index-1).getT_title(),Controller.ticketlist.get(index-1).getT_intime());
+						}
+						else {System.out.println("알 수 없는 번호입니다.");}
+						
+					}
+				}
+				///뒤로가기
+				else if(confirm.equals("2") || confirm.equals("뒤로가기")) {
+					
 				}
 			}
-			else if(ch.equals("4")||ch.equals("회원정보")) {
+			else if(ch.equals("3")||ch.equals("회원정보")) {
 				con.memberInfo(id);
 			}
-			else if(ch.equals("5")||ch.equals("로그아웃")) {
+			else if(ch.equals("4")||ch.equals("로그아웃")) {
 				System.out.println("메세지)) 로그아웃 했습니다.");
 				break;
 			}
