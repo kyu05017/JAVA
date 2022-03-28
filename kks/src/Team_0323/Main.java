@@ -40,6 +40,10 @@ public static void main(String[] args) {
 						int runtime_min = Integer.parseInt(new_runtime[1]);
 						int outhour = (intime_hour+runtime_hour);
 						int outmin = (intime_min+runtime_min);
+						if(outmin > 60) {
+							outmin -= 60;
+							outhour += 1;
+						}
 						DecimalFormat df = new DecimalFormat("00");
 						String out1 = df.format(outhour);
 						String out2 = df.format(outmin);
@@ -237,7 +241,10 @@ public static void main(String[] args) {
 				for(Ticket ticket : Controller.ticketlist) {
 					if(Controller.movielist.get(index).getTitle().equals(ticket.getT_title())) {
 						for(Member member : Controller.memberlist) {
-							if(member.getId().equals(ticket.getT_id())) {
+							if(id.equals(ticket.getT_id())) {
+								Controller.theater[ticket.getT_seat()] = "[ R  ]";
+							}
+							else {
 								Controller.theater[ticket.getT_seat()] = "[ X  ]";
 							}
 						}
@@ -269,7 +276,7 @@ public static void main(String[] args) {
 				boolean pass = true;
 				String Tseat = null;
 				for(int p=0; p<Controller.theater.length;p++) {
-					if(Controller.theater[seat].equals("[ X  ]")) {
+					if(Controller.theater[seat].equals("[ X  ]") || Controller.theater[seat].equals("[ R  ]")) {
 						System.err.println("이미 선택된 좌석입니다.");
 						pass = false;
 						break;
