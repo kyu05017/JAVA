@@ -496,6 +496,9 @@ public static void main(String[] args) {
 				scanner.nextLine();
 				String title = scanner.nextLine();
 				boolean pass1 = false;
+				System.out.println("상영할 관을 입력하세요.");
+				int num = scanner.nextInt();
+				
 				int hour = 0;
 				while(true) {
 					System.out.println("시작 시간: ");	
@@ -617,8 +620,7 @@ public static void main(String[] args) {
 						movierun_admin = false;
 					}
 				}
-				System.out.println("상영할 관을 입력하세요.");
-				int num = scanner.nextInt();
+				
 				
 				con.moive_register(title, intime, runtime,num);
 
