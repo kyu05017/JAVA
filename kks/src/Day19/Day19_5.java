@@ -12,6 +12,8 @@ public class Day19_5 {
 			// 3. 부모보다 작으면 왼족 자식 / 부모보다 크면 오른쪽 자식
 			// 4. 트리구조에서 가장 왼쪽에 있는 값이 가장 작은값
 			//			   가장 오른쪽에 있는 값이 가장 큰값
+			// 5. TreeSet < 기본 자료형 클래스 > 
+			// 6. TreeSet < 사용자 정의 클래스 > : Comparble, Comparator 사용
 		
 		// 1. TreeSet 클래스의 객체 선언
 		TreeSet<Integer> scores = new TreeSet<>();
@@ -54,6 +56,21 @@ public class Day19_5 {
 		System.out.println(scores.pollLast()); 	// 가장 오른쪽 노드를 삭제 
 		System.out.println("확인 : " + scores);
 		
+		// 5. 내림차순
+		System.out.println("기본 : 오른촤순" + scores);
+		System.out.println(" 내림차순 :" + scores.descendingSet());
+		
+		// 오름차순으로 하나씩 출력
+		System.out.println("오름차순");
+		for(int temp : scores) {
+			System.out.println(temp);
+		}
+		System.out.println();
+		// 내림차순 출력
+		System.out.println("내림차순");
+		for(int temp : scores.descendingSet()) {
+			System.out.println(temp);
+		}
 	}
 	
 }
