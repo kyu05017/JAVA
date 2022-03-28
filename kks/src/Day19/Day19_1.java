@@ -28,7 +28,7 @@ public class Day19_1 {
 					// 4. .remove ( 객체명 ) : set 객체내 해당 요소 삭제
 					// 5. .cleara(); : 해당 
 			// 3. Map
-		
+		 //ㅇ
 		// p. 737
 		
 		HashSet<String> set = new HashSet<String>();
