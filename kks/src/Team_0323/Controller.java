@@ -167,7 +167,7 @@ public class Controller {
 		System.out.println("-----------예매 정보----------");
 		System.out.println("사용자id : " +id);
 		System.out.println("영화제목 : "+title);
-		System.out.println("상영관  :" + Th_num);
+		System.out.println("상영관  : " + Th_num);
 		System.out.println("시작시간 : "+intime);
 		System.out.println("러닝타임 : "+runtime);
 		System.out.println("금액 : " +money);
@@ -187,8 +187,9 @@ public class Controller {
 		String out2 = df.format(outmin);
 		String outtime = out1+":"+out2;
 
-		Ticket ticket = new Ticket(id, title, intime, outtime, seat, ticket_number, money,Th_num);
+		Ticket ticket = new Ticket(id, title, intime, outtime, ticket_number,money,Th_num,seat);
 		
+
 		ticketlist.add(ticket);
 		
 		db.ticketSave();

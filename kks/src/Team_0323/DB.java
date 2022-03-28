@@ -87,8 +87,8 @@ public class DB {
 			FileOutputStream outputStream = new FileOutputStream("D:/ticketDB.txt");
 		
 			for(Ticket temp : Controller.ticketlist) {
-				String ticketSave = temp.getT_id()+","+temp.getT_title()+","+temp.getT_intime()+","+temp.getT_outtime()+","+temp.getT_seat()
-				+","+temp.getT_num()+","+temp.getT_money()+","+temp.getTh_num()+"\n";
+				String ticketSave = temp.getT_id()+","+temp.getT_title()+","+temp.getT_intime()+","+temp.getT_outtime()+","+temp.getT_num()
+				+","+temp.getT_money()+","+temp.getTh_num()+","+temp.getT_seat()+"\n";
 				outputStream.write(ticketSave.getBytes());
 			}
 		}
