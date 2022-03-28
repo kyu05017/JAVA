@@ -118,6 +118,10 @@ public class Controller {
 						System.out.println("메세지)) 비밀번호의 길이는 8자리 이상이여야 합니다.");
 						pass = 0;
 					}
+					else if(new_pw.equals(temp.getPw())) {
+						System.out.println("메세지)) 이전 비밀번호와 동일합니다.");
+						pass = 0;
+					}
 					else {
 						pass = 1;
 					}
@@ -247,7 +251,56 @@ public class Controller {
 		db.memberSave();
 	}
 	
-	public void sale() {}
+public void sale() {
+		
+		//영화별 매출액 표시
+		//매출액 = 티켓가격 * 예매 인원수
+			//영화제목 이랑 금액 가져오기
+			//영화제목이 같으면 -> 금액 합계구하기
+			//영화제목 별로 표시하기
+		
+		try {
+			//매출액 출력
+			System.out.println("----------------매출액------------------");
+			int[]sales = new int [movielist.size()];	//매출액 저장할 배열 ->총 매출액 출력용
+			
+			for (int i = 0; i < movielist.size(); i++) { //영화목록 길이 만큼
+				int ticketfee = 0; 	//티켓 가격 저장할 변수
+				for (int j = 0; j  <ticketlist.size(); j++) { //티켓리스트 길이만큼
+					if (movielist.get(i).getTitle().equals(ticketlist.get(j).getT_title()) ) {//영화목록 i번째 영화랑 예매목록 j번째 영화제목이랑 같으면
+						ticketfee += ticketlist.get(j).getT_money() ; //티켓 가격 합계 구하기
+					}
+				}
+				// 중복지우기
+				for (int j = 0; j < i; j++) { //영화목록에서 출력할 영화 순서 전까지 
+					if ( movielist.get(i) != null && movielist.get(i).getTitle().equals(movielist.get(j).getTitle())) {
+								//영화목록 i번째가 null이 아니고 영화목록 i 번째 영화 제목이 영화목록j번째 영화제목이랑 같으면 (출력할 순서의 영화목록 전에 같은 영화제목이 있었으면
+						if (i == 0 && j == 0) { //영화목록 0번째 랑 0번째를 비교할때
+							sales[i] = ticketfee; //그냥 출력
+							System.out.println((movielist.get(i).getTitle() +" : "+ sales[i]+"원"));
+							
+						}else {
+							//출력안함
+							
+						}
+					}else {
+						//이 전에 같은 영화제목이 없었으면 -> 출력
+						sales[i] = ticketfee;	//티켓가격 합계를 sales배열에 저장. 
+						System.out.println((movielist.get(i).getTitle() +" : "+ sales[i]+"원"));
+						break;
+					}
+				}
+			
+			}//for end
+			int totalsales = 0;
+			for (int i = 0; i < sales.length; i++) {
+				totalsales += sales[i];
+			}
+			System.out.println("총 매출액 : " + totalsales + "원");
+		}//try end
+		catch(Exception e) {
+		}
+	}
 	
 	
 	

@@ -243,9 +243,6 @@ public static void main(String[] args) {
 				for(Movie temp : Controller.movielist) {
 					if (temp.getTh_num() == 1) {
 						for(Ticket temp2 : Controller.ticketlist) {
-							System.out.println("티켓 영화관 "+temp2.getTh_num());
-							System.out.println("영화관 "+temp.getTh_num());
-							System.out.println("좌석 " +temp2.getT_seat());
 							if(Controller.movielist.get(index).getTitle().equals(temp2.getT_title())) {
 								if(temp2.getTh_num() == temp.getTh_num()) {
 									theater2.getTheater()[temp2.getT_seat()] = "[ X  ]";
@@ -346,7 +343,7 @@ public static void main(String[] args) {
 				String Tseat = null;
 				if(seat < 50) {
 					for(int p=0; p < theater.getTheater().length;p++) {
-						if(mov.getTheater()[seat].equals("[ X  ]") || mov.getTheater()[seat].equals("[ R  ]")) {
+						if(theater2.getTheater()[seat].equals("[ X  ]") || theater3.getTheater()[seat].equals("[ X  ]") || theater4.getTheater()[seat].equals("[ X  ]")) {
 							System.err.println("이미 선택된 좌석입니다.");
 							pass = false;
 							break;
@@ -571,7 +568,7 @@ public static void main(String[] args) {
 				con.movie_remove(num);
 			}
 			else if(ch.equals("3")||ch.equals("매출확인")) {
-				System.out.println("");
+				con.sale();
 			}
 			else if(ch.equals("4")||ch.equals("회원목록")) {
 				for(Member temp : Controller.memberlist) {
@@ -580,6 +577,10 @@ public static void main(String[] args) {
 			}
 			else if(ch.equals("5")||ch.equals("예매목록")) {
 				Movie mov = new Movie();
+				Theater theater = new Theater();
+				Theater theater2 = new A_hall();
+				Theater theater3 = new B_hall();
+				Theater theater4 = new C_hall();
 				
 				System.out.println("-------------현재 상영중인 영화-----------");
 				System.out.println("번호\t관\t영화제목\t\t영화상영시간");
@@ -594,33 +595,101 @@ public static void main(String[] args) {
 				int index = scanner.nextInt();
 				index -= 1;
 				
-				for(Ticket ticket : Controller.ticketlist) {
-					if(Controller.movielist.get(index).getTitle().equals(ticket.getT_title())) {
-						 if(Controller.movielist.get(index).getTh_num() == ticket.getTh_num()) {
-							mov.getTheater()[ticket.getT_seat()] = "[ X  ]";
-						 }
+				for(Movie temp : Controller.movielist) {
+					if (temp.getTh_num() == 1) {
+						for(Ticket temp2 : Controller.ticketlist) {
+							if(Controller.movielist.get(index).getTitle().equals(temp2.getT_title())) {
+								if(temp2.getTh_num() == temp.getTh_num()) {
+									theater2.getTheater()[temp2.getT_seat()] = "[ X  ]";
+								}
+							}
+						}
+					}
+					else if (temp.getTh_num() == 2) {
+						for(Ticket temp2 : Controller.ticketlist) {
+							if(Controller.movielist.get(index).getTitle().equals(temp2.getT_title())) {
+								if(temp2.getTh_num() == Controller.movielist.get(index).getTh_num()) {
+									theater3.getTheater()[temp2.getT_seat()] = "[ X  ]";
+								}
+							}
+						}
+					}
+					else if (temp.getTh_num() == 3) {
+						for(Ticket temp2 : Controller.ticketlist) {
+							if(Controller.movielist.get(index).getTitle().equals(temp2.getT_title())) {
+								if(temp2.getTh_num() == Controller.movielist.get(index).getTh_num()) {
+									theater4.getTheater()[temp2.getT_seat()] = "[ X  ]";
+								}
+							}
+						}
 					}
 				}
 				
-				for(int a=0; a < mov.getTheater().length; a++) {
-					System.out.print(mov.getTheater()[a]);
-					 if(a%10==9) {
-						 if(a==9) {
-							 System.out.println("A열");
+				if (Controller.movielist.get(index).getTh_num() == 1) {
+					for(int a=0; a < theater2.getTheater().length; a++) {
+						System.out.print(theater2.getTheater()[a]);
+						 if(a%10==9) {
+							 if(a==9) {
+								 System.out.println("A열");
+							 }
+							 if(a==19) {
+								 System.out.println("B열");
+							 }
+							 if(a==29) {
+								 System.out.println("C열");
+							 }
+							 if(a==39) {
+								 System.out.println("D열");
+							 }
+							 if(a==49) {
+								 System.out.println("E열");
+							 }
 						 }
-						 if(a==19) {
-							 System.out.println("B열");
+					}
+				}
+				if (Controller.movielist.get(index).getTh_num() == 2) {
+					for(int a=0; a < theater3.getTheater().length; a++) {
+						System.out.print(theater3.getTheater()[a]);
+						 if(a%10==9) {
+							 if(a==9) {
+								 System.out.println("A열");
+							 }
+							 if(a==19) {
+								 System.out.println("B열");
+							 }
+							 if(a==29) {
+								 System.out.println("C열");
+							 }
+							 if(a==39) {
+								 System.out.println("D열");
+							 }
+							 if(a==49) {
+								 System.out.println("E열");
+							 }
 						 }
-						 if(a==29) {
-							 System.out.println("C열");
+					}
+				}
+				if (Controller.movielist.get(index).getTh_num() == 3) {
+					for(int a=0; a < theater4.getTheater().length; a++) {
+						System.out.print(theater4.getTheater()[a]);
+						 if(a%10==9) {
+							 if(a==9) {
+								 System.out.println("A열");
+							 }
+							 if(a==19) {
+								 System.out.println("B열");
+							 }
+							 if(a==29) {
+								 System.out.println("C열");
+							 }
+							 if(a==39) {
+								 System.out.println("D열");
+							 }
+							 if(a==49) {
+								 System.out.println("E열");
+							 }
 						 }
-						 if(a==39) {
-							 System.out.println("D열");
-						 }
-						 if(a==49) {
-							 System.out.println("E열");
-						 }
-					 }
+					}
 				}
 				
 			}
