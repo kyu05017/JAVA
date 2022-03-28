@@ -23,7 +23,7 @@ public static void main(String[] args) {
 				try {
 					////상영영화목록////
 					Date date = new Date();
-					SimpleDateFormat nowdate = new SimpleDateFormat("yyyy - MM - dd HH : mm");
+					SimpleDateFormat nowdate = new SimpleDateFormat("yyyy - MM - dd | HH : mm");
 					String nowInTime = nowdate.format(date);
 					System.out.println("E.zen 영화관 홈페이지))");
 					System.out.println("--------------------------------------------------------");
