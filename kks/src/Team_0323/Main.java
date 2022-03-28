@@ -523,7 +523,9 @@ public static void main(String[] args) {
 				
 				int index = scanner.nextInt();
 				index -= 1;
+				
 				for(Ticket ticket : Controller.ticketlist) {
+					
 					if(Controller.movielist.get(index).getTitle().equals(ticket.getT_title())) {
 						 if(Controller.movielist.get(index).getTh_num() == ticket.getTh_num()) {
 							mov.getTheater()[ticket.getT_seat()] = "[ X  ]";
