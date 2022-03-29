@@ -505,36 +505,47 @@ public static void main(String[] args) {
 				System.out.println("영화제목 : ");	
 				scanner.nextLine();
 				String title = scanner.nextLine();
-				boolean pass1 = false;
-				int hour = 0;
-				while(true) {
-					System.out.println("시작 시간: ");	
-					hour = scanner.nextInt();
-					
-					if(hour > 23) {
-						System.out.println("메세지)) 다시 입력하세요");
-						pass1 = false;
-					}
-					else {
-						for(Movie temp : Controller.movielist) {
-						String [] intime = temp.getIntime().split(":");
-						int intime_hour = Integer.parseInt(intime[0]); ////String 영화시작시간(:)로 나눈후 int로 전환
-						String [] runtime = temp.getRuntime().split(":");
-						int runtime_hour =Integer.parseInt(runtime[0]); ///러닝타임 int로 전환 후 60분이면 +1시간
-						////만약 기존에 있던 영화시작시간~영화시작+러닝시간 안에 상영시간을 등록하면 재입력
-						if(intime_hour<hour&&(intime_hour+runtime_hour)>hour) {
-							System.err.println("해당 시간에 상영중인 영화가 있습니다.");
+				System.out.println("상영할 관을 입력하세요.");
+				int num = scanner.nextInt();
+				
+				if(num > 4) {
+					System.out.println("존재하지 않는 상영관 입니다.");
+				}
+				else {
+	
+					boolean pass1 = false;
+					int hour = 0;
+					while(true) {
+						System.out.println("시작 시간: ");	
+						hour = scanner.nextInt();
+						
+						if(hour > 23) {
+							System.out.println("메세지)) 다시 입력하세요");
 							pass1 = false;
-							break;
-							}
-						else {pass1 = true;}
 						}
-						pass1 = true;
+						else {
+							for(Movie temp : Controller.movielist) {
+							String [] intime = temp.getIntime().split(":");
+							int intime_hour = Integer.parseInt(intime[0]); ////String 영화시작시간(:)로 나눈후 int로 전환
+							String [] runtime = temp.getRuntime().split(":");
+							int runtime_hour =Integer.parseInt(runtime[0]); ///러닝타임 int로 전환 후 60분이면 +1시간
+							////만약 기존에 있던 영화시작시간~영화시작+러닝시간 안에 상영시간을 등록하면 재입력
+							if(temp.getTh_num()==num) {
+							if(intime_hour<hour&&(intime_hour+runtime_hour)>hour) {
+								System.err.println("해당 시간에 상영중인 영화가 있습니다.");
+								pass1 = false;
+								break;
+								}
+							else {pass1 = true;}
+							}
+							else {pass1 = true;}
+							}
+							pass1 = true;
+					}
+					if(pass1) {
+						break;
+					}
 				}
-				if(pass1) {
-					break;
-				}
-			}
 				DecimalFormat df = new DecimalFormat("00");
 				String start_hour = df.format(hour);
 				
@@ -547,24 +558,32 @@ public static void main(String[] args) {
 						System.out.println("메세지)) 다시 입력하세요");
 						pass2 = false;
 					}
-					else{for(Movie temp : Controller.movielist) {
-						String [] intime = temp.getIntime().split(":");
-						int intime_hour = Integer.parseInt(intime[0]);
-						int intime_min = Integer.parseInt(intime[1]); ////String 영화시작시간(:)로 나눈후 int로 전환
-						String [] runtime = temp.getRuntime().split(":");
-						int runtime_hour =Integer.parseInt(runtime[0]);
-						int runtime_min =Integer.parseInt(runtime[1]); ///러닝타임 int로 전환 후 60분이면 +1시간
-						////만약 기존에 있던 영화시작시간~영화시작+러닝시간 안에 상영시간을 등록하면 재입력
-						if(intime_hour<=hour&&(intime_hour+runtime_hour)>=hour&&intime_min<min&&(intime_min+runtime_min)>min) {
-							System.err.println("해당 시간에 상영중인 영화가 있습니다.");
-							pass2 = false; 
-							break;
+					else {
+						for(Movie temp : Controller.movielist) {
+							String [] intime = temp.getIntime().split(":");
+							int intime_hour = Integer.parseInt(intime[0]);
+							int intime_min = Integer.parseInt(intime[1]); ////String 영화시작시간(:)로 나눈후 int로 전환
+							String [] runtime = temp.getRuntime().split(":");
+							int runtime_hour =Integer.parseInt(runtime[0]);
+							int runtime_min =Integer.parseInt(runtime[1]); ///러닝타임 int로 전환 후 60분이면 +1시간
+							////만약 기존에 있던 영화시작시간~영화시작+러닝시간 안에 상영시간을 등록하면 재입력
+							if(temp.getTh_num()==num) {
+								if(intime_hour<=hour&&(intime_hour+runtime_hour)>=hour&&intime_min<min&&(intime_min+runtime_min)>min) {
+								System.err.println("해당 시간에 상영중인 영화가 있습니다.");
+								pass2 = false; 
+								break;
+								}
+								else {
+									pass2 = true;
+								}
 							}
-						else {pass2 = true;}
+							else {
+								pass2 = true;
+							}
 						}
-				}
-				if(pass2) {
-					break;
+					}
+					if(pass2) {
+						break;
 					}
 				}
 				df = new DecimalFormat("00");
@@ -593,6 +612,7 @@ public static void main(String[] args) {
 						int runtime_min =Integer.parseInt(runtimes[1]);
 						
 						////만약 기존에 있던 영화시작시간~영화시작+러닝시간 안에 상영시간을 등록하면 재입력
+						if(temp.getTh_num()==num) {
 						if(hour+runhour>=intime_hour&&min+runmin>intime_min&&hour+runhour<=intime_hour+runtime_hour&&min+runmin<intime_min+runtime_min) {
 							System.err.println("해당 시간에 상영중인 영화가 있습니다.");
 							System.out.println("다시 입력해주세요.");
@@ -609,30 +629,30 @@ public static void main(String[] args) {
 						else {
 							movierun_admin = false;
 						}
+							}
+							else {
+								movierun_admin = false;}
+						}
 					}
-				}
-				while(movierun_admin) {
-					if (runtime.length() != 5) {
-						System.out.println("다시 입력해주세요.");
-						System.out.println("러닝타임(분) : ");		
-						time = scanner.nextInt();
-						
-						runhour = time/60;
-						runmin = time%60;
-						new_runhour = df.format(runhour);
-						new_runmin = df.format(runmin);
-						
-						runtime = new_runhour+":"+new_runmin;
-					}else {
-						movierun_admin = false;
+					while(movierun_admin) {
+						if (runtime.length() != 5) {
+							System.out.println("다시 입력해주세요.");
+							System.out.println("러닝타임(분) : ");		
+							time = scanner.nextInt();
+							
+							runhour = time/60;
+							runmin = time%60;
+							new_runhour = df.format(runhour);
+							
+							new_runmin = df.format(runmin);
+							
+							runtime = new_runhour+":"+new_runmin;
+						}else {
+							movierun_admin = false;
+						}
 					}
+					con.moive_register(title, intime, runtime,num);
 				}
-				System.out.println("상영할 관을 입력하세요.");
-				int num = scanner.nextInt();
-				
-				con.moive_register(title, intime, runtime,num);
-
-				
 			}
 			else if(ch.equals("2")||ch.equals("영화삭제")){
 				System.out.println("영화 삭제))");
