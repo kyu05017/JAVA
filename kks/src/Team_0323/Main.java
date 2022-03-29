@@ -365,7 +365,7 @@ public static void main(String[] args) {
 				if(seat < 50) {
 					for(int p=0; p < theater.getTheater().length;p++) {
 						if(theater2.getTheater()[seat].equals("[ X  ]") || theater3.getTheater()[seat].equals("[ X  ]") || theater4.getTheater()[seat].equals("[ X  ]")) {
-							System.err.println("이미 선택된 좌석입니다.");
+							System.err.println("메세지)) 이미 선택된 좌석입니다.");
 							pass = false;
 							break;
 						}
@@ -373,27 +373,27 @@ public static void main(String[] args) {
 							theater.getTheater()[seat] = "[ X  ]";
 							if(seat<=9) {
 								Tseat = "A열"+seat+"번";
-								System.out.println(Tseat+" 좌석이 선택되었습니다.");
+								System.out.println("메세지)) "+Tseat+" 좌석이 선택되었습니다.");
 								break;
 							}
 							else if(seat<=19) {
 								Tseat = "B열"+seat+"번";
-								System.out.println(Tseat+" 좌석이 선택되었습니다.");
+								System.out.println("메세지)) "+Tseat+" 좌석이 선택되었습니다.");
 								break;
 							}
 							else if(seat<=29) {
 								Tseat = "C열"+seat+"번";
-								System.out.println(Tseat+" 좌석이 선택되었습니다.");
+								System.out.println("메세지)) "+Tseat+" 좌석이 선택되었습니다.");
 								break;
 							}
 							else if(seat<=39) {
 								Tseat = "D열"+seat+"번";
-								System.out.println(Tseat+" 좌석이 선택되었습니다.");
+								System.out.println("메세지)) "+Tseat+" 좌석이 선택되었습니다.");
 								break;
 							}
 							else if(seat<=49) {
 								Tseat = "E열"+seat+"번";
-								System.out.println(Tseat+" 좌석이 선택되었습니다.");
+								System.out.println("메세지)) "+Tseat+" 좌석이 선택되었습니다.");
 								break;
 							}
 							else {System.err.println("메세지)) 해당 좌석이 없습니다.");
@@ -401,7 +401,9 @@ public static void main(String[] args) {
 						}
 					}
 					if(pass) {
-						System.out.println("결제하실 금액: " + Controller.movielist.get(index).getMoney());
+						DecimalFormat df2 = new DecimalFormat("#,##0원");
+						String new_money = df2.format(Controller.movielist.get(index).getMoney());
+						System.out.println("결제하실 금액: " + new_money);
 						System.out.println("1.결제 2.취소"); String payment = scanner.next();
 						if(payment.equals("1") || payment.equals("결제")) {
 							System.out.println("결제액: "); int money = scanner.nextInt();//// 입금액 입력
@@ -412,8 +414,10 @@ public static void main(String[] args) {
 							}
 							///입금액이 더 많거나 같을경우 잔돈출력
 							else{
-								System.err.println(Controller.movielist.get(index).getMoney()+ "원 결제완료");
-								System.out.println("잔돈출력: " +  (money-Controller.movielist.get(index).getMoney()) + "원");
+								String new_money2 = df2.format(Controller.movielist.get(index).getMoney());
+								System.err.println(new_money2+ "원 결제완료");
+								String new_money3 = df2.format((money-Controller.movielist.get(index).getMoney()));
+								System.out.println("잔돈출력: " +  new_money3);
 								con.reserve(id,Controller.movielist.get(index).getTitle(),Controller.movielist.get(index).getIntime(),
 								Controller.movielist.get(index).getRuntime(),Controller.movielist.get(index).getMoney(),seat,Controller.movielist.get(index).getTh_num());
 								break;
@@ -424,7 +428,7 @@ public static void main(String[] args) {
 							break;
 						}
 						else {
-							System.out.println("존재하지 않는 메뉴입니다.");
+							System.out.println("메세지)) 존재하지 않는 메뉴입니다.");
 						}
 					}
 					
