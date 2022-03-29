@@ -225,7 +225,7 @@ public class Controller {
 		}else {
 			money = 7000;
 		}
-		Movie movie = new Movie(title, intime, runtime , money, num);
+		Movie movie = new Movie(title, intime, runtime , money, num , true);
 		
 		movielist.add(movie);
 		db.movieSave();

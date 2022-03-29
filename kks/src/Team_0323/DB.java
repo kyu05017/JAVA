@@ -50,7 +50,7 @@ public class DB {
 			FileOutputStream outputStream = new FileOutputStream("D:/movieDB.txt");
 		
 			for(Movie temp : Controller.movielist) {
-				String memberSave = temp.getTitle()+","+temp.getIntime()+","+temp.getRuntime()+","+temp.getMoney()+","+temp.getTh_num()+"\n";
+				String memberSave = temp.getTitle()+","+temp.getIntime()+","+temp.getRuntime()+","+temp.getMoney()+","+temp.getTh_num()+","+temp.isCheck()+"\n";
 				outputStream.write(memberSave.getBytes());
 			}
 		}
@@ -72,7 +72,7 @@ public class DB {
 					break; 
 				}
 				String[] filed = temp.split(",");
-				Movie temp2 = new Movie(filed[0],filed[1],filed[2],Integer.parseInt(filed[3]),Integer.parseInt(filed[4]));
+				Movie temp2 = new Movie(filed[0],filed[1],filed[2],Integer.parseInt(filed[3]),Integer.parseInt(filed[4]),Boolean.parseBoolean(filed[5]));
 				Controller.movielist.add(temp2);
 				i++;
 			}

@@ -7,6 +7,7 @@ public class Movie {
 	private String runtime;
 	private int money;
 	private int Th_num;
+	private boolean check;
 	private String[] theater = {	"[ 0  ]","[ 1  ]","[ 2  ]","[ 3  ]","[ 4  ]","[ 5  ]","[ 6  ]","[ 7  ]","[ 8  ]","[ 9  ]",
 			"[ 10 ]","[ 11 ]","[ 12 ]","[ 13 ]","[ 14 ]","[ 15 ]","[ 16 ]","[ 17 ]","[ 18 ]","[ 19 ]",
 			"[ 20 ]","[ 21 ]","[ 22 ]","[ 23 ]","[ 24 ]","[ 25 ]","[ 26 ]","[ 27 ]","[ 28 ]","[ 29 ]",
@@ -17,12 +18,22 @@ public class Movie {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Movie(String title, String intime, String runtime, int money, int Th_num) {
+	public Movie(String title, String intime, String runtime, int money, int Th_num, boolean check) {
 		this.title = title;
 		this.intime = intime;
 		this.runtime = runtime;
 		this.money = money;
 		this.Th_num = Th_num;
+		this.check = check;
+	}
+
+	
+	public boolean isCheck() {
+		return check;
+	}
+
+	public void setCheck(boolean check) {
+		this.check = check;
 	}
 
 	public int getTh_num() {
