@@ -483,6 +483,7 @@ public static void main(String[] args) { // 최종
 				String confirm = scanner.next();
 				////예매취소
 				if(confirm.equals("1") || confirm.equals("예매취소")) {
+					DecimalFormat df2 = new DecimalFormat("#,##0원");
 					System.out.println("취소할 예매선택: ");
 					int index = scanner.nextInt();
 					if(index > Controller.ticketlist.size()) {
@@ -491,8 +492,9 @@ public static void main(String[] args) { // 최종
 					else {
 						for(Ticket ticket : Controller.ticketlist) {
 							if(Controller.ticketlist.get(index-1).getT_title().equals(ticket.getT_title())&&Controller.ticketlist.get(index-1).getT_intime().equals(ticket.getT_intime())) {
+								String new_money = df2.format(Controller.ticketlist.get(index-1).getT_money());
+								System.err.println(new_money+" 환불되었습니다.");
 								con.myreserve(Controller.ticketlist.get(index-1).getT_id(),Controller.ticketlist.get(index-1).getT_title(),Controller.ticketlist.get(index-1).getT_intime());
-								
 								break;
 							}
 							else {

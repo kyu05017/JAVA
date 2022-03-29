@@ -203,12 +203,9 @@ public class Controller {
 	}
 	
 	public void myreserve(String id,String title, String intime) {
-		DecimalFormat df2 = new DecimalFormat("#,##0원");
+		
 		for(int i=0; i<ticketlist.size(); i++) {
-		if( title.equals( ticketlist.get(i).getT_title() )&& intime.equals( ticketlist.get(i).getT_intime() ) ) {
-			
-				String new_money = df2.format(ticketlist.get(i).getT_money());
-				System.err.println(new_money+" 환불되었습니다.");
+			if( title.equals( ticketlist.get(i).getT_title() )&& intime.equals( ticketlist.get(i).getT_intime() ) ) {
 				ticketlist.remove(i);
 				db.ticketSave();
 				return;
