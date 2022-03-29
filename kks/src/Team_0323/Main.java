@@ -23,16 +23,21 @@ public static void main(String[] args) {
 				try {
 					////상영영화목록////
 					Date date = new Date();
-					SimpleDateFormat nowdate = new SimpleDateFormat("yyyy - MM - dd HH : mm");
+					SimpleDateFormat nowdate = new SimpleDateFormat("yyyy - MM - dd | HH : mm");
 					String nowInTime = nowdate.format(date);
 					System.out.println("E.zen 영화관 홈페이지))");
 					System.out.println("--------------------------------------------------------");
 					System.out.println("|\t현재 시간 : "+ nowInTime+ "\t\t|");
 					System.out.println("--------------------------------------------------------");
-					System.out.printf("| %s\t%s\t\t| %s | %s | %s\n","관","상역작","시작 시간","종료 시간","가격");
+					System.out.printf("| %s\t%s\t\t| %s | %s | %s\n","관","상영작","시작 시간","종료 시간","가격");
 					System.out.println("--------------------------------------------------------");
 					for(Movie movie : Controller.movielist) {
 
+						SimpleDateFormat nowtime = new SimpleDateFormat("HH:mm");
+						String nowTime = nowtime.format(date);
+						String[] now_intime = nowTime.split(":");
+						int nowtime_hour = Integer.parseInt(now_intime[0]);
+						int nowtime_min = Integer.parseInt(now_intime[1]);
 						String[] new_intime = movie.getIntime().split(":");
 						String[] new_runtime = movie.getRuntime().split(":");
 						int intime_hour = Integer.parseInt(new_intime[0]);
@@ -49,11 +54,21 @@ public static void main(String[] args) {
 						String out1 = df.format(outhour);
 						String out2 = df.format(outmin);
 						String outtime = out1+":"+out2;
-						
+		                  
 						DecimalFormat df2 = new DecimalFormat("#,##0원");
 						String new_money = df2.format(movie.getMoney());
+						/////if 영화상영시간이 현재시간에 포함되어있으면
+
+						if(( nowtime_hour >= outhour && nowtime_min > outmin)) {
+							System.out.printf("| %s\t%s\t\t| %s |\n",movie.getTh_num(),movie.getTitle(),"상영종료");
+						}
+						else if((nowtime_hour >= intime_hour && nowtime_min > intime_min) ) {
+							System.out.printf("| %s\t%s\t\t| %s | %s | %s |\n",movie.getTh_num(),movie.getTitle(),"상영중",outtime,new_money);
+						}
+						else {
+							System.out.printf("| %s\t%s\t\t| %s | %s | %s |\n",movie.getTh_num(),movie.getTitle(), movie.getIntime(),outtime,new_money);
+						}
 						
-						System.out.printf("| %s\t%s\t\t| %s | %s | %s |\n",movie.getTh_num(),movie.getTitle(), movie.getIntime(),outtime,new_money);
 					}
 					System.out.println("--------------------------------------------------------");
 					System.out.println("메뉴)) ");
