@@ -203,11 +203,13 @@ public class Controller {
 	}
 	
 	public void myreserve(String id,String title, String intime) {
+		DecimalFormat df2 = new DecimalFormat("#,##0원");
 		for(int i=0; i<ticketlist.size(); i++) {
 		if( title.equals( ticketlist.get(i).getT_title() )&& intime.equals( ticketlist.get(i).getT_intime() ) ) {
-			// 입력받은제목,시간과  기존에 있던 제목,시간 동일하면 
-				ticketlist.remove(i);	//  삭제
-				System.err.println(ticketlist.get(i).getT_money()+"원 환불되었습니다.");
+			
+				String new_money = df2.format(ticketlist.get(i).getT_money());
+				System.err.println(new_money+" 환불되었습니다.");
+				ticketlist.remove(i);
 				db.ticketSave();
 				return;
 			}

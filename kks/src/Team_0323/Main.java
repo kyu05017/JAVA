@@ -370,6 +370,7 @@ public static void main(String[] args) { // 최종
 					}
 					
 					System.out.println("-------------------------------------");
+					
 					System.out.println("좌석선택: "); 
 					int seat = scanner.nextInt();
 					boolean pass = true;
@@ -476,7 +477,7 @@ public static void main(String[] args) { // 최종
 						i++;
 					}
 				}
-		
+				System.out.println("------------------------------");
 				////////////////
 				System.out.println("1.예매취소 2.뒤로가기"); 
 				String confirm = scanner.next();
@@ -491,8 +492,13 @@ public static void main(String[] args) { // 최종
 						for(Ticket ticket : Controller.ticketlist) {
 							if(Controller.ticketlist.get(index-1).getT_title().equals(ticket.getT_title())&&Controller.ticketlist.get(index-1).getT_intime().equals(ticket.getT_intime())) {
 								con.myreserve(Controller.ticketlist.get(index-1).getT_id(),Controller.ticketlist.get(index-1).getT_title(),Controller.ticketlist.get(index-1).getT_intime());
+								
+								break;
 							}
-							else {System.out.println("알 수 없는 번호입니다.");}
+							else {
+								System.out.println("알 수 없는 번호입니다.");
+								break;
+							}
 							
 						}
 					}
