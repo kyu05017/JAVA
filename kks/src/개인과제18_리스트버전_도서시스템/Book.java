@@ -23,7 +23,7 @@ public class Book {
 	
 	
 	void book_add(String iSBN, String book_name, String book_writer) {
-		Book book = new Book(iSBN, book_name, book_writer, false , "");
+		Book book = new Book(iSBN, book_name, book_writer, false , "없음");
 		
 		for(Book temp : Main.booklist) {
 			if(temp != null && temp.ISBN.equals(iSBN)) {
@@ -39,8 +39,11 @@ public class Book {
 	
 	void book_remove(String iSBN) {
 		
-
-		Main.booklist.remove(iSBN);
+		for(int i = 0; i < Main.booklist.size(); i++) {
+			if(Main.booklist.get(i).ISBN.equals(iSBN)) {
+				Main.booklist.remove(i);
+			}
+		}
 		System.out.println("해당 도서가 삭제 되었습니다.");
 
 	}
@@ -68,7 +71,7 @@ public class Book {
 		for(Book temp : Main.booklist) {
 			if(temp != null && temp.ISBN.equals(iSBN)) {
 				Main.booklist.get(i).book_rent = false;
-				Main.booklist.get(i).renterId = null;
+				Main.booklist.get(i).renterId = "없음";
 				System.out.println(temp.book_name + "책을 반납했습니다.");
 				return;
 			}
@@ -95,14 +98,14 @@ public class Book {
 	}
 	
 	void book_list() {
-		System.out.println("ISBN\t제목\t저자\t대여여부");
+		System.out.println("ISBN\t제목\t저자\t대여여부\t대여자");
 		for(Book temp :Main.booklist) {
 			if(temp != null) {
 				if(temp.book_rent) {
-					System.out.printf("%s\t%s\t%s\t대여중 \n",temp.ISBN,temp.book_name,temp.book_writer);
+					System.out.printf("%s\t%s\t%s\t대여중 \t%s\n",temp.ISBN,temp.book_name,temp.book_writer,temp.renterId);
 				}
 				else {
-					System.out.printf("%s\t%s\t%s\t대여중가능\n",temp.ISBN,temp.book_name,temp.book_writer);
+					System.out.printf("%s\t%s\t%s\t대여가능\n",temp.ISBN,temp.book_name,temp.book_writer);
 				}
 			}
 		}

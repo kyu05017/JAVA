@@ -1,5 +1,7 @@
 package 개인과제18_리스트버전_도서시스템;
 
+import java.util.Random;
+
 public class Account {
 	
 	int number;
@@ -33,28 +35,12 @@ public class Account {
 		}
 		
 		
-		int num = 0;
-		int i = 1;
-		for(Account temp : Main.accountsList) {
-			if(temp == null) {
-				if(i == 0) {
-					num = 1;
-				}
-				else {
-					num = Main.accountsList.get(i).number +1;
-					break;
-				}
-			}
-			i++;
-		}
+		Random random = new Random();
+		
+		int num = random.nextInt(9999)+1000;
 		
 		Account memberSave = new Account(num, id, pw, name, phone);
 		
-		System.out.println(num);
-		System.out.println(id);
-		System.out.println(pw);
-		System.out.println(name);
-		System.out.println(phone);
 		
 		Main.accountsList.add(memberSave);
 
