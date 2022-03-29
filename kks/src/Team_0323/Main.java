@@ -18,7 +18,7 @@ public static void main(String[] args) { // 최종
 			db.memberLoad();
 			db.movieLoad();
 			db.ticketLoad();
-			boolean check = true;
+
 			while(true) {
 				try {
 					////상영영화목록////
