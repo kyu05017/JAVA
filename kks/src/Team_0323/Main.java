@@ -486,15 +486,16 @@ public static void main(String[] args) { // 최종
 					DecimalFormat df2 = new DecimalFormat("#,##0원");
 					System.out.println("취소할 예매선택: ");
 					int index = scanner.nextInt();
+					index -= 1;
 					if(index > Controller.ticketlist.size()) {
 						System.out.println("메세지)) 존재하지 않는 영화 입니다.");
 					}
 					else {
 						for(Ticket ticket : Controller.ticketlist) {
-							if(Controller.ticketlist.get(index-1).getT_title().equals(ticket.getT_title())&&Controller.ticketlist.get(index-1).getT_intime().equals(ticket.getT_intime())) {
-								String new_money = df2.format(Controller.ticketlist.get(index-1).getT_money());
+							if(Controller.ticketlist.get(index).getT_title().equals(ticket.getT_title())&&Controller.ticketlist.get(index).getT_intime().equals(ticket.getT_intime())) {
+								String new_money = df2.format(Controller.ticketlist.get(index).getT_money());
 								System.err.println(new_money+" 환불되었습니다.");
-								con.myreserve(Controller.ticketlist.get(index-1).getT_id(),Controller.ticketlist.get(index-1).getT_title(),Controller.ticketlist.get(index-1).getT_intime());
+								con.myreserve(index);
 								break;
 							}
 							else {

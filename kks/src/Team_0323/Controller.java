@@ -202,15 +202,11 @@ public class Controller {
 		db.ticketSave();
 	}
 	
-	public void myreserve(String id,String title, String intime) {
+	public void myreserve(int num) {
 		
-		for(int i=0; i<ticketlist.size(); i++) {
-			if( title.equals( ticketlist.get(i).getT_title() )&& intime.equals( ticketlist.get(i).getT_intime() ) ) {
-				ticketlist.remove(i);
-				db.ticketSave();
-				return;
-			}
-		}
+		ticketlist.remove(num);
+		db.ticketSave();
+		return;
 	}
 	//관리자 시스템/////////////////////////////////////////////////////////////////////////
 	
