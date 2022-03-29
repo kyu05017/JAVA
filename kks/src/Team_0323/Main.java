@@ -272,7 +272,9 @@ public static void main(String[] args) {
 							for(Ticket temp2 : Controller.ticketlist) {
 								if(Controller.movielist.get(index).getTitle().equals(temp2.getT_title())) {
 									if(temp2.getTh_num() == temp.getTh_num()) {
-										theater2.getTheater()[temp2.getT_seat()] = "[ X  ]";
+										if(Controller.movielist.get(index).getIntime().equals(temp2.getT_intime())) {
+											theater2.getTheater()[temp2.getT_seat()] = "[ X  ]";
+										}
 									}
 								}
 							}
@@ -281,7 +283,9 @@ public static void main(String[] args) {
 							for(Ticket temp2 : Controller.ticketlist) {
 								if(Controller.movielist.get(index).getTitle().equals(temp2.getT_title())) {
 									if(temp2.getTh_num() == Controller.movielist.get(index).getTh_num()) {
-										theater3.getTheater()[temp2.getT_seat()] = "[ X  ]";
+										if(Controller.movielist.get(index).getIntime().equals(temp2.getT_intime())) {
+											theater3.getTheater()[temp2.getT_seat()] = "[ X  ]";
+										}
 									}
 								}
 							}
@@ -290,7 +294,9 @@ public static void main(String[] args) {
 							for(Ticket temp2 : Controller.ticketlist) {
 								if(Controller.movielist.get(index).getTitle().equals(temp2.getT_title())) {
 									if(temp2.getTh_num() == Controller.movielist.get(index).getTh_num()) {
-										theater4.getTheater()[temp2.getT_seat()] = "[ X  ]";
+										if(Controller.movielist.get(index).getIntime().equals(temp2.getT_intime())) {
+											theater4.getTheater()[temp2.getT_seat()] = "[ X  ]";
+										}
 									}
 								}
 							}
@@ -509,7 +515,7 @@ public static void main(String[] args) {
 		}
 	}
 	public void adminmenu() {
-		Main main = new Main();
+
 		Controller con = new Controller();
 		
 		while(true) {
@@ -526,7 +532,7 @@ public static void main(String[] args) {
 				System.out.println("상영할 관을 입력하세요.");
 				int num = scanner.nextInt();
 				
-				if(num > 4) {
+				if(num >= 4) {
 					System.out.println("메세지)) 존재하지 않는 상영관 입니다.");
 				}
 				else {

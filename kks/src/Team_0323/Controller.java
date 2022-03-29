@@ -224,6 +224,7 @@ public class Controller {
 		int money = 0;
 		
 		if (startHour <= 10) {
+			System.out.println(startHour);
 			money = 5000;
 		}else {
 			money = 7000;
