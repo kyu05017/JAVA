@@ -259,7 +259,7 @@ public static void main(String[] args) {
 				System.out.println("영화선택: "); 
 				int index = scanner.nextInt();
 				index -= 1;
-				if(index > Controller.movielist.size()) {
+				if(index > Controller.movielist.size() || index < 0) {
 					System.out.println("메세지)) 존재하지 않는 영화 입니다.");
 				}
 				else {
@@ -423,12 +423,10 @@ public static void main(String[] args) {
 									System.out.println("잔돈출력: " +  new_money3);
 									con.reserve(id,Controller.movielist.get(index).getTitle(),Controller.movielist.get(index).getIntime(),
 									Controller.movielist.get(index).getRuntime(),Controller.movielist.get(index).getMoney(),seat,Controller.movielist.get(index).getTh_num());
-									break;
 								}
 							}
 							else if(payment.equals("2") || payment.equals("취소")) {
 								theater.getTheater()[seat] = "[ "+seat+" ]";
-								break;
 							}
 							else {
 								System.out.println("메세지)) 존재하지 않는 메뉴입니다.");
