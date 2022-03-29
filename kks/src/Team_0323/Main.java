@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class Main {
 	
-public static void main(String[] args) {
+public static void main(String[] args) { // √÷¡æ
 		
 		try (Scanner scanner = new Scanner(System.in)) {
 			Main main = new Main();
@@ -740,7 +740,9 @@ public static void main(String[] args) {
 							for(Ticket temp2 : Controller.ticketlist) {
 								if(Controller.movielist.get(index).getTitle().equals(temp2.getT_title())) {
 									if(temp2.getTh_num() == temp.getTh_num()) {
-										theater2.getTheater()[temp2.getT_seat()] = "[ X  ]";
+										if(Controller.movielist.get(index).getIntime().equals(temp2.getT_intime())) {
+											theater2.getTheater()[temp2.getT_seat()] = "[ X  ]";
+										}
 									}
 								}
 							}
@@ -749,7 +751,9 @@ public static void main(String[] args) {
 							for(Ticket temp2 : Controller.ticketlist) {
 								if(Controller.movielist.get(index).getTitle().equals(temp2.getT_title())) {
 									if(temp2.getTh_num() == Controller.movielist.get(index).getTh_num()) {
-										theater3.getTheater()[temp2.getT_seat()] = "[ X  ]";
+										if(Controller.movielist.get(index).getIntime().equals(temp2.getT_intime())) {
+											theater3.getTheater()[temp2.getT_seat()] = "[ X  ]";
+										}
 									}
 								}
 							}
@@ -758,13 +762,14 @@ public static void main(String[] args) {
 							for(Ticket temp2 : Controller.ticketlist) {
 								if(Controller.movielist.get(index).getTitle().equals(temp2.getT_title())) {
 									if(temp2.getTh_num() == Controller.movielist.get(index).getTh_num()) {
-										theater4.getTheater()[temp2.getT_seat()] = "[ X  ]";
+										if(Controller.movielist.get(index).getIntime().equals(temp2.getT_intime())) {
+											theater4.getTheater()[temp2.getT_seat()] = "[ X  ]";
+										}
 									}
 								}
 							}
 						}
 					}
-					
 					if (Controller.movielist.get(index).getTh_num() == 1) {
 						for(int a=0; a < theater2.getTheater().length; a++) {
 							System.out.print(theater2.getTheater()[a]);
