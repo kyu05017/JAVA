@@ -407,7 +407,7 @@ public static void main(String[] args) {
 							System.out.println("결제액: "); int money = scanner.nextInt();//// 입금액 입력
 							///입금액이 요구하는 결제금액보다 적을 경우
 							if(Controller.movielist.get(index).getMoney() > money) {
-								System.err.println("결제불가(결제액 부족)");
+								System.err.println("메세지)) 결제불가(결제액 부족)");
 								break;
 							}
 							///입금액이 더 많거나 같을경우 잔돈출력

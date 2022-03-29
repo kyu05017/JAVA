@@ -2,6 +2,7 @@ package Team_0323;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Hashtable;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -168,13 +169,15 @@ public class Controller {
 	public void reserve(String id,String title,String intime,String runtime,int money,int seat,int Th_num) {
 		Random random = new Random();
 		int ticket_number = random.nextInt(99999999)+10000000;
+		DecimalFormat df2 = new DecimalFormat("#,##0원");
+		String new_money = df2.format(money);
 		System.out.println("-----------예매 정보----------");
 		System.out.println("사용자id : " +id);
 		System.out.println("영화제목 : "+title);
 		System.out.println("상영관  : " + Th_num);
 		System.out.println("시작시간 : "+intime);
 		System.out.println("러닝타임 : "+runtime);
-		System.out.println("금액 : " +money);
+		System.out.println("금액 : " +new_money);
 		System.out.println("자리 : "+seat);
 		System.out.println("예매번호 : "+ticket_number);
 		System.out.println("----------------------------");
@@ -251,57 +254,41 @@ public class Controller {
 		
 	}
 	
-public void sale() {
-		
-		//영화별 매출액 표시
-		//매출액 = 티켓가격 * 예매 인원수
-			//영화제목 이랑 금액 가져오기
-			//영화제목이 같으면 -> 금액 합계구하기
-			//영화제목 별로 표시하기
-		
+	public void sale() {
+	
 		try {
 			//매출액 출력
-			System.out.println("----------------매출액------------------");
-			int[]sales = new int [movielist.size()];	//매출액 저장할 배열 ->총 매출액 출력용
+			System.out.println("--------------------매출액----------------------");
+			//영화별 매출액 표시
+			Hashtable <String, Integer> map = new Hashtable<>();
+			DecimalFormat df2 = new DecimalFormat("#,##0원");
 			
-			for (int i = 0; i < movielist.size(); i++) { //영화목록 길이 만큼
-				int ticketfee = 0; 	//티켓 가격 저장할 변수
-				for (int j = 0; j  <ticketlist.size(); j++) { //티켓리스트 길이만큼
-					if (movielist.get(i).getTitle().equals(ticketlist.get(j).getT_title()) ) {//영화목록 i번째 영화랑 예매목록 j번째 영화제목이랑 같으면
-						ticketfee += ticketlist.get(j).getT_money() ; //티켓 가격 합계 구하기
+			for (int i = 0; i < ticketlist.size(); i++) {
+				int ticketfee = 0; 
+				for (int j = 0; j < ticketlist.size(); j++) {
+					if (ticketlist.get(i).getT_title().equals(ticketlist.get(j).getT_title())) {
+						ticketfee += ticketlist.get(i).getT_money();
 					}
 				}
-				// 중복지우기
-				for (int j = 0; j < i; j++) { //영화목록에서 출력할 영화 순서 전까지 
-					if ( movielist.get(i) != null && movielist.get(i).getTitle().equals(movielist.get(j).getTitle())) {
-								//영화목록 i번째가 null이 아니고 영화목록 i 번째 영화 제목이 영화목록j번째 영화제목이랑 같으면 (출력할 순서의 영화목록 전에 같은 영화제목이 있었으면
-						if (i == 0 && j == 0) { //영화목록 0번째 랑 0번째를 비교할때
-							sales[i] = ticketfee; //그냥 출력
-							System.out.println((movielist.get(i).getTitle() +" : "+ sales[i]+"원"));
-							
-						}else {
-							//출력안함
-							
-						}
-					}else {
-						//이 전에 같은 영화제목이 없었으면 -> 출력
-						sales[i] = ticketfee;	//티켓가격 합계를 sales배열에 저장. 
-						System.out.println((movielist.get(i).getTitle() +" : "+ sales[i]+"원"));
-						break;
-					}
-				}
-			
-			}//for end
-			int totalsales = 0;
-			for (int i = 0; i < sales.length; i++) {
-				totalsales += sales[i];
+				map.put(ticketlist.get(i).getT_title(), ticketfee);
 			}
-			System.out.println("총 매출액 : " + totalsales + "원");
+			
+			for(String temp : map.keySet()) {
+				String new_money = df2.format(map.get(temp));
+				System.out.println("영화 "+temp+ " " + new_money);
+			}
+			//총 매출액 표시
+			int totalsales = 0;
+			for (int i = 0; i < ticketlist.size(); i++) {
+				 totalsales += ticketlist.get(i).getT_money();
+			}
+			String new_money = df2.format(totalsales);
+			System.out.println("총 매출액 : " + new_money);
+			
 		}//try end
 		catch(Exception e) {
+			
 		}
 	}
-	
-	
-	
+
 }
