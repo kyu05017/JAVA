@@ -205,7 +205,7 @@ public static void main(String[] args) {
 						System.out.println("전화번호: "); 
 						String phone = scanner.next();
 						
-						String result = con.findid(id,phone);
+						String result = con.findpw(id,phone);
 						
 						if(result.equals("false")) {
 							System.out.println("메세지)) 존재하지 않는 회원입니다.");
