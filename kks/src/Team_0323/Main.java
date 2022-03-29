@@ -253,7 +253,6 @@ public static void main(String[] args) {
 					if(movie.isCheck()) {
 						System.out.printf("%d\t%s\t\t%s \n",(i+1), movie.getTitle(),movie.getIntime());
 					}
-					else 
 					i++;
 				}
 				System.out.println("-------------------------------------");
@@ -419,7 +418,7 @@ public static void main(String[] args) {
 								///입금액이 더 많거나 같을경우 잔돈출력
 								else{
 									String new_money2 = df2.format(Controller.movielist.get(index).getMoney());
-									System.err.println(new_money2+ "원 결제완료");
+									System.err.println(new_money2+ " 결제완료");
 									String new_money3 = df2.format((money-Controller.movielist.get(index).getMoney()));
 									System.out.println("잔돈출력: " +  new_money3);
 									con.reserve(id,Controller.movielist.get(index).getTitle(),Controller.movielist.get(index).getIntime(),
@@ -477,13 +476,19 @@ public static void main(String[] args) {
 				String confirm = scanner.next();
 				////예매취소
 				if(confirm.equals("1") || confirm.equals("예매취소")) {
-					System.out.println("취소할 예매선택: "); int index = scanner.nextInt();
-					for(Ticket ticket : Controller.ticketlist) {
-						if(Controller.ticketlist.get(index-1).getT_title().equals(ticket.getT_title())&&Controller.ticketlist.get(index-1).getT_intime().equals(ticket.getT_intime())) {
-							con.myreserve(Controller.ticketlist.get(index-1).getT_id(),Controller.ticketlist.get(index-1).getT_title(),Controller.ticketlist.get(index-1).getT_intime());
+					System.out.println("취소할 예매선택: ");
+					int index = scanner.nextInt();
+					if(index > Controller.ticketlist.size()) {
+						System.out.println("메세지)) 존재하지 않는 영화 입니다.");
+					}
+					else {
+						for(Ticket ticket : Controller.ticketlist) {
+							if(Controller.ticketlist.get(index-1).getT_title().equals(ticket.getT_title())&&Controller.ticketlist.get(index-1).getT_intime().equals(ticket.getT_intime())) {
+								con.myreserve(Controller.ticketlist.get(index-1).getT_id(),Controller.ticketlist.get(index-1).getT_title(),Controller.ticketlist.get(index-1).getT_intime());
+							}
+							else {System.out.println("알 수 없는 번호입니다.");}
+							
 						}
-						else {System.out.println("알 수 없는 번호입니다.");}
-						
 					}
 				}
 				///뒤로가기
