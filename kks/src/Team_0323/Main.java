@@ -525,7 +525,7 @@ public static void main(String[] args) {
 					System.out.println("메세지)) 존재하지 않는 상영관 입니다.");
 				}
 				else {
-					boolean pass1 = false;
+					boolean pass1 = true;
 					int hour = 0;
 					while(true) {
 						System.out.println("시작 시간: ");	
@@ -537,37 +537,34 @@ public static void main(String[] args) {
 						}
 						else {
 							for(Movie temp : Controller.movielist) {
-							String [] intime = temp.getIntime().split(":");
-							int intime_hour = Integer.parseInt(intime[0]); 
-							String [] runtime = temp.getRuntime().split(":");
-							int runtime_hour =Integer.parseInt(runtime[0]); 
-							if(temp.getTh_num()==num) {
-								if(intime_hour <= hour && (intime_hour+runtime_hour) >= hour) {
-									System.err.println("메세지)) 해당 시간에 상영중인 영화가 있습니다.");
-									pass1 = false;
-									break;
+								String [] intime = temp.getIntime().split(":");
+								int intime_hour = Integer.parseInt(intime[0]); 
+								String [] runtime = temp.getRuntime().split(":");
+								int runtime_hour =Integer.parseInt(runtime[0]); 
+								if(temp.getTh_num()==num) {
+									if(intime_hour <= hour && (intime_hour+runtime_hour) >= hour) {
+										System.err.println("메세지)) 해당 시간에 상영중인 영화가 있습니다.");
+										pass1 = false;
+										break;
+										}
+									else {
+										pass1 = true;
 									}
+								}
 								else {
 									pass1 = true;
 								}
 							}
-							else {
-								pass1 = true;
-							}
+						}
+						if(pass1) {
+							break;
 						}
 					}
-					if(pass1) {
-						break;
-					}
-					else {
-						main.adminmenu();
-					}
-				}
-				DecimalFormat df = new DecimalFormat("00");
-				String start_hour = df.format(hour);
-				
-				int min = 0;
-				boolean pass2 = false;
+					DecimalFormat df = new DecimalFormat("00");
+					String start_hour = df.format(hour);
+					
+					int min = 0;
+					boolean pass2 = true;
 				while(true) {
 					System.out.println("시작 분: ");	
 					min = scanner.nextInt();

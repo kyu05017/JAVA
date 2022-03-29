@@ -284,6 +284,7 @@ public class Controller {
 			}
 			String new_money = df2.format(totalsales);
 			System.out.println("ÃÑ ¸ÅÃâ¾× : " + new_money);
+			System.out.println("---------------------------------------------");
 			
 		}//try end
 		catch(Exception e) {
