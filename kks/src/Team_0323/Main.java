@@ -262,6 +262,9 @@ public static void main(String[] args) {
 				if(index > Controller.movielist.size() || index < 0) {
 					System.out.println("메세지)) 존재하지 않는 영화 입니다.");
 				}
+				else if(Controller.movielist.get(index).isCheck() == false) {
+					System.out.println("메세지)) 예매할수 없는 영화 입니다.");
+				}
 				else {
 					System.out.println("-------------------------------------");
 					for(Movie temp : Controller.movielist) {
@@ -413,7 +416,6 @@ public static void main(String[] args) {
 								///입금액이 요구하는 결제금액보다 적을 경우
 								if(Controller.movielist.get(index).getMoney() > money) {
 									System.err.println("메세지)) 결제불가(결제액 부족)");
-									break;
 								}
 								///입금액이 더 많거나 같을경우 잔돈출력
 								else{
