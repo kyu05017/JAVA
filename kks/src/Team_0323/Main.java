@@ -487,7 +487,7 @@ public static void main(String[] args) { // 최종
 					System.out.println("취소할 예매선택: ");
 					int index = scanner.nextInt();
 					index -= 1;
-					if(index > Controller.ticketlist.size()) {
+					if(index  > Controller.ticketlist.size() ) {
 						System.out.println("메세지)) 존재하지 않는 영화 입니다.");
 					}
 					else {
@@ -498,11 +498,6 @@ public static void main(String[] args) { // 최종
 								con.myreserve(index);
 								break;
 							}
-							else {
-								System.out.println("알 수 없는 번호입니다.");
-								break;
-							}
-							
 						}
 					}
 				}
