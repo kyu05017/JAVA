@@ -1,12 +1,15 @@
-package 개인과제13_회원제도서프로그램;
+package 개인과제18_리스트버전_도서시스템;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
 	
 	static Scanner scanner = new Scanner(System.in);
-	static Account[] accountlist = new Account[1000];
-	static Book[] booklist = new Book[1000];
+
+	static ArrayList<Account> accountsList = new ArrayList<>();
+	
+	static ArrayList<Book> booklist = new ArrayList<>();
 	static Main main = new Main();
 	
 	public static void main(String[] args) {
@@ -38,11 +41,11 @@ public class Main {
 					System.out.println("중복된 아이디 입니다.");
 				}
 				else if(result == 0) {
-					System.out.println("회원가입에 실패 했습니다.");
+					System.out.println("회원가입이 완료 되었습니다.");
 					
 				}
-				else if(result == 1) {
-					System.out.println("회원가입이 완료 되었습니다.");
+				else if(result == 2) {
+					System.out.println("회원가입에 실패 했습니다.");
 				}
 			}
 			else if(ch == 2) {
@@ -54,7 +57,10 @@ public class Main {
 				
 				String result = account.login(id,pw);
 				
-				if(result.equals("admin")) {
+				if (result == null) {
+					System.out.println("로그인에 실패 하였습니다.");
+				}
+				else if(result.equals("admin")) {
 					System.out.println("관리자로 로그인 합니다.");
 					main.adminmenu();
 				}
@@ -62,10 +68,7 @@ public class Main {
 					System.out.println(id+ "님 환영 합니다.");
 					main.membermenu(id);
 				}
-				else {
-					System.out.println("로그인에 실패 하였습니다.");
-					
-				}
+				
 				
 			}
 			else if(ch == 3) {

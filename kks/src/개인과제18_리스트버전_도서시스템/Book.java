@@ -1,4 +1,4 @@
-package 개인과제13_회원제도서프로그램;
+package 개인과제18_리스트버전_도서시스템;
 
 public class Book {
 		
@@ -31,30 +31,18 @@ public class Book {
 				return;
 			}
 		}
-		
-		int i = 0;
-		for(Book temp : Main.booklist) {
-			if(temp == null) {
-				Main.booklist[i] = book;
-				System.out.println("책등록 완료.");
-				return;
-			}
-			i++;
-		}
+
+		Main.booklist.add(book);
+		System.out.println("책등록 완료.");
+
 	}
 	
 	void book_remove(String iSBN) {
 		
-		int i = 0;
-		for(Book temp : Main.booklist) {
-			if(temp != null && temp.ISBN.equals(iSBN)) {
-				Main.booklist[i] = null;
-				System.out.println("해당 도서가 삭제 되었습니다.");
-				return;
-			}
-			i++;
-		}
-		
+
+		Main.booklist.remove(iSBN);
+		System.out.println("해당 도서가 삭제 되었습니다.");
+
 	}
 	
 	
@@ -64,8 +52,8 @@ public class Book {
 		int i = 0;
 		for(Book temp : Main.booklist) {
 			if(temp != null && temp.ISBN.equals(iSBN)) {
-				Main.booklist[i].book_rent = true;
-				Main.booklist[i].renterId = id;
+				Main.booklist.get(i).book_rent = true;
+				Main.booklist.get(i).renterId = id;
 				System.out.println(temp.book_name + "책을 대여했습니다.");
 				return;
 			}
@@ -79,8 +67,8 @@ public class Book {
 		int i = 0;
 		for(Book temp : Main.booklist) {
 			if(temp != null && temp.ISBN.equals(iSBN)) {
-				Main.booklist[i].book_rent = false;
-				Main.booklist[i].renterId = null;
+				Main.booklist.get(i).book_rent = false;
+				Main.booklist.get(i).renterId = null;
 				System.out.println(temp.book_name + "책을 반납했습니다.");
 				return;
 			}
