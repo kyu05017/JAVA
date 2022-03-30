@@ -7,6 +7,7 @@ import java.util.Scanner;
 public class Control {
 	
 	static ArrayList<Product> saleItem = new ArrayList<>();
+	static ArrayList<Customer> customerlist = new ArrayList<>();
 	static Scanner scanner = new Scanner(System.in);
 	
 	static DecimalFormat df = new DecimalFormat("#,###¿ø");
@@ -183,5 +184,9 @@ public class Control {
 			System.out.printf("| %d | %s | %s | %s |\n",(i+1),temp.getName(),df.format(temp.getMoney()),df2.format(temp.getItem()));
 			i++;
 		}
+	}
+	public void buy(int num) {
+		Customer customer = new Customer(saleItem.get(num).getName(), saleItem.get(num).getItem(), saleItem.get(num).getMoney());
+		customerlist.add(customer);
 	}
 }
