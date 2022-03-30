@@ -2,6 +2,7 @@ package 개인과제19_키오스크_파일처리;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Hashtable;
 import java.util.Scanner;
 
 public class Control {
@@ -11,7 +12,7 @@ public class Control {
 	static Scanner scanner = new Scanner(System.in);
 	
 	static DecimalFormat df = new DecimalFormat("#,###원");
-	static DecimalFormat df2 = new DecimalFormat("####박스");
+	static DecimalFormat df2 = new DecimalFormat("####개");
 	
 	public void addItem() {
 		
@@ -175,7 +176,6 @@ public class Control {
 			}
 		}
 	}
-	
 	public void itemCheckList() {
 		System.out.println("상품 목록))");
 		int i = 0;
@@ -186,7 +186,9 @@ public class Control {
 		}
 	}
 	public void buy(int num) {
-		Customer customer = new Customer(saleItem.get(num).getName(), saleItem.get(num).getItem(), saleItem.get(num).getMoney());
+		Customer customer = new Customer(saleItem.get(num).getName(), 1, saleItem.get(num).getMoney());
 		customerlist.add(customer);
+		saleItem.get(num).setItem((saleItem.get(num).getItem()-1));
+		DB.itemSave();
 	}
 }
