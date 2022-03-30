@@ -49,25 +49,28 @@ public class Main {
 				System.out.println("비밀번호 입력 : ");
 				String pw = Control.scanner.next();
 				if(pw.equals("1234")) {
-					Control con = new Control();
-					System.out.println("관리자 메뉴))");
-					System.out.println("1) 재고추가 2) 재고확인 3) 품목삭제 4)로그아웃");
-					String work2 = Control.scanner.next();
-					
-					if(work2.equals("1") || work2.equals("재고추가")) {
-						con.addItem();
-					}
-					else if(work2.equals("2") || work2.equals("재고확인")) {
-						con.itemCheckList();
-					}
-					else if(work.equals("3") || work2.equals("품목삭제")) {
-						con.removeItem();
-					}
-					else if(work.equals("4") || work2.equals("로그아웃")) {
-						System.out.println("메세지)) 메인메뉴로 돌아갑니다.");
-					}
-					else {
-						System.out.println("메세지)) 잘못된 입력입니다.");
+					while(true) {
+						Control con = new Control();
+						System.out.println("관리자 메뉴))");
+						System.out.println("1) 재고추가 2) 재고확인 3) 품목삭제 4)로그아웃");
+						String work2 = Control.scanner.next();
+						
+						if(work2.equals("1") || work2.equals("재고추가")) {
+							con.addItem();
+						}
+						else if(work2.equals("2") || work2.equals("재고확인")) {
+							con.itemCheckList();
+						}
+						else if(work.equals("3") || work2.equals("품목삭제")) {
+							con.removeItem();
+						}
+						else if(work.equals("4") || work2.equals("로그아웃")) {
+							System.out.println("메세지)) 메인메뉴로 돌아갑니다.");
+							break;
+						}
+						else {
+							System.out.println("메세지)) 잘못된 입력입니다.");
+						}
 					}
 				}
 				else {
