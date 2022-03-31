@@ -1,4 +1,4 @@
-package MyPractice02_Programmers;
+package 개인연습.프로그래머스;
 
 class 신규_아이디_추천 {
     public String solution(String new_id) {

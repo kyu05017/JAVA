@@ -1,4 +1,4 @@
-package MyPractice03_Star;
+package 개인연습.별그리기;
 
 import java.util.Scanner;
 
