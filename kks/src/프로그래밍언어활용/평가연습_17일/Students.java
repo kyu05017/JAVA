@@ -1,6 +1,6 @@
-package 프로그램밍언어활용_김규석_0317;
+package 프로그래밍언어활용.평가연습_17일;
 
-public class 프로그래밍언어활용_김규석_학생클래스 {
+public class Students {
 	
 	//필드 
 	private String name;
@@ -12,12 +12,13 @@ public class 프로그래밍언어활용_김규석_학생클래스 {
 	
 	
 	//생성자
-	public 프로그래밍언어활용_김규석_학생클래스() {
+	public Students() {
 		
 	}
 
 
-	public 프로그래밍언어활용_김규석_학생클래스( String name, int kor, int eng, int math, int total, double ave) {
+	public Students( String name, int kor, int eng, int math, int total, double ave) {
+
 		this.name = name;
 		this.kor = kor;
 		this.eng = eng;
@@ -25,6 +26,7 @@ public class 프로그래밍언어활용_김규석_학생클래스 {
 		this.total = total;
 		this.ave = ave;
 	}
+
 
 
 

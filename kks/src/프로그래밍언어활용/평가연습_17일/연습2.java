@@ -1,4 +1,4 @@
-package 평가연습_17일;
+package 프로그래밍언어활용.평가연습_17일;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;

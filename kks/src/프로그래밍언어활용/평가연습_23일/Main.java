@@ -1,4 +1,4 @@
-package 프로그래밍언어활용_김규석_0323;
+package 프로그래밍언어활용.평가연습_23일;
 
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
