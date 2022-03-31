@@ -2,10 +2,6 @@ package 개인과제._14_모바일뱅크시스템;
 
 import java.util.Scanner;
 
-import 모바일_뱅크_시스템.Bankbook;
-import 모바일_뱅크_시스템.Day08_5;
-import 모바일_뱅크_시스템.Loan;
-
 public class Controller {
 	
 	static Account[] accountlist = new Account[1000];
