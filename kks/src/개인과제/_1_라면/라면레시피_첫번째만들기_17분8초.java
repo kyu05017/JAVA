@@ -1,4 +1,4 @@
-package 개인과제01_2라면;
+package 개인과제._1_라면;
 
 import java.util.Scanner;
 
