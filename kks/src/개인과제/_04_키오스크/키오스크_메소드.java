@@ -2,7 +2,7 @@ package 개인과제._04_키오스크;
 
 import java.util.Scanner;
 
-import Day07.Day07_5_bookApplication;
+import Day01_to_Day21.Day07.Day07_5_bookApplication;
 
 public class 키오스크_메소드 {
 

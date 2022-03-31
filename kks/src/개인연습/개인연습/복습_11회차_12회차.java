@@ -5,7 +5,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import Day11.Board_MainContents;
+import Day01_to_Day21.Day11.Board_MainContents;
 
 public class 복습_11회차_12회차 {
 

@@ -3,7 +3,7 @@ package 개인연습.개인연습;
 import java.util.Calendar;
 import java.util.Scanner;
 
-import Day13.Day13_3_달력;
+import Day01_to_Day21.Day13.Day13_3_달력;
 
 public class 달력연습 {
 	public static void main(String[] args) {
