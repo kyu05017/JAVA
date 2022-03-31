@@ -1,4 +1,4 @@
-package Team_0323;
+package Team_Project._영화홈페이지;
 
 public class C_hall extends Theater{
 
