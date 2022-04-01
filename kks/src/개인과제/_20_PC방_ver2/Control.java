@@ -198,8 +198,22 @@ public class Control {
 	
 	public void addTime(String id, int time) {
 		
-		if(memberList.contains(id)) {
-			System.out.println("테스트");
+		for(Member temp : memberList) {
+			if(id.equals(temp.getId())) {
+				if(time == 1) {
+					System.out.println("메세지)) 1시간 추가되었습니다.");
+				}
+				else if(time == 2) {
+					System.out.println("메세지)) 2시간 추가되었습니다.");
+				}
+				else if(time == 3) {
+					System.out.println("메세지)) 5시간 추가되었습니다.");
+				}
+				else {
+					System.out.printf("메세지)) %d시간 추가되었습니다.\n",time);
+				}
+			}
 		}
 	}
+	
 }

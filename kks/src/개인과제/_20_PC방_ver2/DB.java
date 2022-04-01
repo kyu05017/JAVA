@@ -11,8 +11,8 @@ public class DB {
 			FileOutputStream outputStream = new FileOutputStream("D:/pcMemberDB.txt");
 		
 			for(Member temp : Control.memberList) {
-				String memberSave = temp.getId()+"^"+temp.getPw()+"^"+temp.getName()+"^"
-			+temp.getPhone()+"^"+temp.getTime()+"^"+temp.getSeat()+"^"+temp.isUse()+"\n";
+				String memberSave = temp.getId()+","+temp.getPw()+","+temp.getName()+","
+			+temp.getPhone()+","+temp.getTime()+","+temp.getSeat()+","+temp.isUse()+"\n";
 				outputStream.write(memberSave.getBytes());
 			}
 		}
@@ -35,7 +35,7 @@ public class DB {
 				if( i+1 == list.length ) {
 					break; 
 				}
-				String[] filed = temp.split("^");
+				String[] filed = temp.split(",");
 				Member temp2 = new Member(filed[0], filed[1], filed[2], filed[3],Integer.parseInt(filed[4]), Integer.parseInt(filed[5]), Boolean.parseBoolean(filed[6]));
 				Control.memberList.add(temp2);
 				i++;
