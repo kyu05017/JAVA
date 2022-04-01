@@ -88,6 +88,12 @@ public class Main {
 				if(i%5==0)System.out.println();
 				//0을 제외하고 5개마다 줄바꿈
 			}
+			for(Member temp : Control.memberList) {
+				if(id.equals(temp.getId())) {
+					
+					System.out.println(id+"님의 잔여시간 " + temp.getTime() + "분");
+				}
+			}
 			System.out.println("메뉴))");
 			System.out.println("1)시간추가 2)자리선택 3)자리이동 4)먹거리주문 5)로그아웃 6)메인메뉴(컴퓨터종료x)");
 			String tesk = Control.scanner.next();

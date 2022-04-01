@@ -197,24 +197,32 @@ public class Control {
 	}
 	
 	public void addTime(String id, int time) {
-		
+	
 		for(Member temp : memberList) {
 			if(id.equals(temp.getId())) {
-				System.out.println(id+"님의 잔여시간 " + temp.getTime());
 				if(time == 1) {
 					System.out.println("메세지)) 1시간 추가되었습니다.");
+					temp.setTime(temp.getTime() + 60);
+					System.out.println(id+"님의 잔여시간 " + temp.getTime() + "분");
 				}
 				else if(time == 2) {
 					System.out.println("메세지)) 2시간 추가되었습니다.");
+					temp.setTime(temp.getTime() + 120);
+					System.out.println(id+"님의 잔여시간 " + temp.getTime() + "분");
 				}
 				else if(time == 3) {
 					System.out.println("메세지)) 5시간 추가되었습니다.");
+					temp.setTime(temp.getTime() + 300);
+					System.out.println(id+"님의 잔여시간 " + temp.getTime() + "분");
 				}
 				else {
 					System.out.printf("메세지)) %d시간 추가되었습니다.\n",time);
+					temp.setTime(temp.getTime() + time);
+					System.out.println(id+"님의 잔여시간 " + temp.getTime() + "분");
 				}
 			}
 		}
+		DB.memberSave();
 	}
 	
 }
