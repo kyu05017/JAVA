@@ -7,7 +7,6 @@ import java.util.regex.Pattern;
 
 public class Control {
 	
-	
 	static ArrayList<Member> memberList = new ArrayList<>();
 	static String[] PC = {"[д╚©Нем]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]"};
 	static Scanner scanner = new Scanner(System.in);
@@ -87,6 +86,7 @@ public class Control {
 				if(pass2) {
 					break;
 				}
+				
 			}
 			if(id.equals("admin")) {
 				Member admin = new Member(id, pw, null, null, 0, 0, true);
