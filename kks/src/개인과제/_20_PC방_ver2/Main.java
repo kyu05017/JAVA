@@ -96,6 +96,7 @@ public class Main {
 				System.out.println("시간 추가))");
 				System.out.println("1)1시간(60분)  2)2시간(120분) ");
 				System.out.println("3)5시간(300분) 4)시간입력(분)  ");
+				
 				int insert_Time = 0;
 				while(true) {
 					try {

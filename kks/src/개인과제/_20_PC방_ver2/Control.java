@@ -200,6 +200,7 @@ public class Control {
 		
 		for(Member temp : memberList) {
 			if(id.equals(temp.getId())) {
+				System.out.println(id+"님의 잔여시간 " + temp.getTime());
 				if(time == 1) {
 					System.out.println("메세지)) 1시간 추가되었습니다.");
 				}
