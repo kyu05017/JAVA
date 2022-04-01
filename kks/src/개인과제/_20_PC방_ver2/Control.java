@@ -92,6 +92,7 @@ public class Control {
 				Member admin = new Member(id, pw, null, null, 0, 0, true);
 				System.out.println("메세지) 관리자 계정생성 완료");
 				memberList.add(admin);
+				DB.memberSave();
 				break;
 			}
 			else {
@@ -169,6 +170,7 @@ public class Control {
 				System.out.println("Phone : "+ phone);
 				Member member = new Member(id, pw, name, phone, 0, 0, false);
 				memberList.add(member);
+				DB.memberSave();
 				break;
 			}
 			
@@ -194,5 +196,10 @@ public class Control {
 		return "false";
 	}
 	
-	
+	public void addTime(String id, int time) {
+		
+		if(memberList.contains(id)) {
+			System.out.println("테스트");
+		}
+	}
 }
