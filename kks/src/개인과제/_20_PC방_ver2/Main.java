@@ -1,5 +1,8 @@
 package 개인과제._20_PC방_ver2;
 
+import java.text.DecimalFormat;
+import java.util.Hashtable;
+
 public class Main {
 	
 	public static void main(String[] args) {
@@ -7,6 +10,8 @@ public class Main {
 		Main main = new Main();
 		PcUse use = new PcUse();
 		DB.memberLoad();
+		DB.itemLoad();
+		DB.Load();
 		
 		for(Member temp : Control.memberList) {
 			if(temp.isUse() == true && temp.getTime() != 0) {
@@ -127,11 +132,117 @@ public class Main {
 				}
 			}
 			System.out.println("메뉴))");
+			System.out.println("0)먹거리");
 			System.out.println("1)시간추가 2)자리선택 3)자리이동 4)내정보 5)사용종료 6)메인메뉴(컴퓨터종료x)");
 			System.out.println("--------------------------------------------------------");
 			String tesk = Control.scanner.next();
+			if(tesk.equals("0")) {
+				while(true) {
+					System.out.println("먹거리 메뉴))");
+					System.out.println("1)구매 2)구매내역 3)돌아가기");
+					String work = Control.scanner.next();
+					if(work.equals("1")) {
+						if(Control.saleItem.size() == 0) {
+							System.out.println("메세지)) 상품 없음 관리자 문의");
+						}
+						else {
+							int e = 0;
+							System.out.println("| 순번 | 제품 | 가격 |");
+							for(Product temp : Control.saleItem) {
+								System.out.printf("| %d | %s | %s |\n",(e+1),temp.getName(),Control.moneySet.format(temp.getMoney()));
+								e++;
+							}
+							System.out.println("결제)결제 99)뒤로가기");
+							System.out.printf("메뉴)) 품목선택 : (%d : 결제 )\n",Control.saleItem.size()+1);
+							while(true) {
+								try {
+									int itemNum = Control.scanner.nextInt();
+									itemNum -= 1;
+									if(itemNum > Control.saleItem.size()+2) {
+										System.out.println("메세지)) 존재하지 않는 품목 입니다.");
+									}
+									else if(itemNum+1 == Control.saleItem.size()+1) {
+										try {
+											Hashtable <String, Integer> map = new Hashtable<>();
+											DecimalFormat df2 = new DecimalFormat("#,##0원");
+											
+											for (int i = 0; i < Control.customerlist.size(); i++) {
+												int ticketfee = 0; 
+												for (int j = 0; j < Control.customerlist.size(); j++) {
+													if (Control.customerlist.get(i).getC_Name().equals(Control.customerlist.get(j).getC_Name())) {
+														ticketfee += Control.customerlist.get(i).getC_Pay();
+													}
+												}
+												map.put(Control.customerlist.get(i).getC_Name(), ticketfee);
+											}
+											
+											for(String temp : map.keySet()) {
+												String new_money = df2.format(map.get(temp));
+												System.out.println("상품 "+temp+ " " + new_money);
+											}
+											//총 매출액 표시
+											int totalsales = 0;
+											for (int i = 0; i < Control.customerlist.size(); i++) {
+												 totalsales += Control.customerlist.get(i).getC_Pay();
+											}
+											String new_money = df2.format(totalsales);
+											System.out.println("총 결제금액 : " + new_money);
+											System.out.println("---------------------------------------------");
+											System.out.println("1) 결제 2) 취소");
+											int ch = Control.scanner.nextInt();
+											if(ch == 1) {
+												System.out.println("지불할 금액을 입력하세요.");
+												int pay_money = Control.scanner.nextInt();
+												if(pay_money < totalsales) {
+													System.out.println("결제 금액 부족");
+												}
+												else if(pay_money >= totalsales) {
+													if(pay_money - totalsales == 0) {
+														System.out.println("결제가 완료 되었습니다.");
+													}
+													else {
+														String change = df2.format(pay_money - totalsales);
+														System.out.println("결제가 완료되었습니다. 거스름돈은 "+change+ "입니다.");	
+													}
+													
+													break;
+												}
+											}
+											else if (ch == 2) {
+												System.out.println("결제를 취소합니다.");
+												break;
+											}
+										}//try end
+										catch(Exception a) {
+											
+										}
+									}
+									else {
+										System.out.println(Control.saleItem.get(itemNum).getName()+" 삼품을 담았습니다.");
+										con.buy(id,itemNum);
+									}
 			
-			if(tesk.equals("1")) {
+								}
+								catch(Exception a) {
+									
+								}
+							}
+						}
+					}
+					else if(work.equals("2")) {
+						System.out.println("확인");
+						con.buylist(id);
+					}
+					else if(work.equals("3")) {
+						System.out.println("이전으로 돌아갑니다.");
+						break;
+					}
+					else {
+						System.out.println("존재하지 않는 메뉴입니다.");
+					}
+				}
+			}
+			else if(tesk.equals("1")) {
 				System.out.println("시간 추가))");
 				System.out.println("1)1시간(60분)  2)2시간(120분) ");
 				System.out.println("3)5시간(300분) 4)시간입력(분)  ");
@@ -247,12 +358,15 @@ public class Main {
 				//0을 제외하고 5개마다 줄바꿈
 			}
 			System.out.println("관리자 메뉴))");
+			System.out.println("0)식품추가 6)재고확인 7)품목삭제");
 			System.out.println("1)강제로그아웃 2)회원목록 3)시간변경 4)매출확인 5)로그아웃");
 			
 			System.out.println("-------------------------------------------------");
 			String tesk = Control.scanner.next();
-			
-			if(tesk.equals("1")) {
+			if(tesk.equals("0")) {
+				con.addItem();
+			}
+			else if(tesk.equals("1")) {
 				con.members();
 				System.out.println("로그아웃할 회원 번호 입력 : ");
 				con.changeTime();
@@ -264,7 +378,6 @@ public class Main {
 				con.members();
 				System.out.println("수정할 회원 번호 입력 : ");
 				con.changeTime();
-				
 			}
 			else if(tesk.equals("4")) {
 				System.out.println("회원별 매출현황");
@@ -273,6 +386,15 @@ public class Main {
 			else if(tesk.equals("5")) {
 				System.out.println("메세지)) 로그아웃 합니다.");
 				break;
+			}
+			else if(tesk.equals("6")) {
+				con.itemCheckList();
+			}
+			else if(tesk.equals("7")) {
+				con.removeItem();
+			}
+			else {
+				System.out.println("메세지)) 존재하지 않는 메뉴 입니다.");
 			}
 		}
 	}
