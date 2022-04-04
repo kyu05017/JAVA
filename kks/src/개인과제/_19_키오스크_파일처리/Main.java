@@ -84,10 +84,12 @@ public class Main {
 										else if(pay_money >= totalsales) {
 											if(pay_money - totalsales == 0) {
 												System.out.println("결제가 완료 되었습니다.");
+												
 											}
 											else {
 												String change = df2.format(pay_money - totalsales);
 												System.out.println("결제가 완료되었습니다. 거스름돈은 "+change+ "입니다.");	
+												
 											}
 											
 											break;
@@ -130,10 +132,10 @@ public class Main {
 						else if(work2.equals("2") || work2.equals("재고확인")) {
 							con.itemCheckList();
 						}
-						else if(work.equals("3") || work2.equals("품목삭제")) {
+						else if(work2.equals("3") || work2.equals("품목삭제")) {
 							con.removeItem();
 						}
-						else if(work.equals("4") || work2.equals("로그아웃")) {
+						else if(work2.equals("4") || work2.equals("로그아웃")) {
 							System.out.println("메세지)) 메인메뉴로 돌아갑니다.");
 							break;
 						}
