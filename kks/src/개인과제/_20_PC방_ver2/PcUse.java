@@ -19,7 +19,7 @@ public class PcUse extends Thread{
 						DB.memberSave();
 					}
 				}
-				Thread.sleep(1000);
+				Thread.sleep(60000);
 			} 
 			catch (InterruptedException e) {
 				
