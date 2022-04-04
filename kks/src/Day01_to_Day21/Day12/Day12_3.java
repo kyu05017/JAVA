@@ -93,12 +93,8 @@ public class Day12_3 {
 
 			}
 			
-			
-			
+
 			
 		}
-		
-		
-		
 	}
 }
