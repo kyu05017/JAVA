@@ -5,6 +5,7 @@ import java.util.Date;
 
 public class Reply {
 	//필드
+		private int board_num;
 		private String reply_contents;
 		private String reply_writer;
 		private String reply_password;
@@ -13,9 +14,19 @@ public class Reply {
 		//생성자
 		public Reply() {
 		}
-
-
-		public Reply(String reply_contents, String reply_writer, String reply_password) {
+		public Reply(int board_num,String reply_contents, String reply_writer, String reply_password) {
+			this.board_num = board_num;
+			this.reply_contents = reply_contents;
+			this.reply_writer = reply_writer;
+			this.reply_password=reply_password;
+			Date date = new Date(); // 날짜 객체 입력
+			// 날짜 형식 클래스 : SimpleDateFormat 클래스 java.text
+			SimpleDateFormat format = new SimpleDateFormat("yy-MM-dd");
+			this.reply_Date = format.format(date);
+			// 객체명.format{ 날짜 } : 해당 달짜가 포멧으로 설정한 패턴으로 저장
+		}
+		public Reply(int board_num,String reply_contents, String reply_writer, String reply_password,String reply_Date) {
+			this.board_num = board_num;
 			this.reply_contents = reply_contents;
 			this.reply_writer = reply_writer;
 			this.reply_password=reply_password;
@@ -27,6 +38,12 @@ public class Reply {
 		}
 		
 		//메소드
+		public int getBoard_num() {
+			return board_num;
+		}
+		public void setBoard_num(int board_num) {
+			this.board_num = board_num;
+		}
 		public String getReply_contents() {
 			return reply_contents;
 		}

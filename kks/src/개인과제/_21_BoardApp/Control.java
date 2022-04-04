@@ -1,13 +1,13 @@
 package 개인과제._21_BoardApp;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Control {
 	
 	public static ArrayList<Board> boardlist = new ArrayList<>();
-
+	public static ArrayList<Reply> replylist = new ArrayList<>();
+	static Scanner scanner = new Scanner(System.in);
 	// 쓰기
 	public static void writer(String title, String writting, String id, String pw) {
 		// 1. 객체화 [ 변수가 하나이상이면 관리하기 불편함으로 하나의 객체로 묶어서 편하게 한다 ]
@@ -15,7 +15,7 @@ public class Control {
 		// 2. 리스트에 저장 [ 콘솔의 메모리 ]
 		boardlist.add(board);
 		// 3. 파일에도 저장 [ 외부로 전달 ]
-		save();
+		DB.save();
 	}
 	// 보기
 
@@ -27,7 +27,7 @@ public class Control {
 			if(temp2.getPassword().equals(pw)) {
 				temp.setTitle(newtitle);
 				temp.setContens(newcontents);
-				Control.save();
+				DB.save();
 			return true;
 			}	
 			else {
@@ -43,7 +43,7 @@ public class Control {
 		for(Board temp2 : Control.boardlist) {
 			if(temp2.getPassword().equals(pw)) {
 				Control.boardlist.remove(number);
-				Control.save();
+				DB.save();
 				return true;
 			}
 			else {
@@ -54,48 +54,20 @@ public class Control {
 	}
 	
 	// 댓글 작성
-	public static void reply_wwrite(int number, String replyCT, String replyID, String replyPW) {
-			
-		Reply reply = new Reply(replyCT, replyID, replyPW);
-		Board board = new Board();
-		reply.setReply_contents(replyCT);
-		reply.setReply_writer(replyID);
-		reply.setReply_password(replyPW);
-		//board.getReplylist(board.setReplylist(reply));
+	public static void reply_wwrite(int number, String replyCT, String replyID, String replyPW) {	
+		Reply reply = new Reply(number,replyCT, replyID, replyPW);
+		replylist.add(reply);
+		DB.resave();
 	}
-	
-	// 게시물 저장
-	public static void save() {
-		try {
-			FileOutputStream outputStream = new FileOutputStream("D:/bookDB.txt");
-			for(Board temp : boardlist) {
-				String contents = temp.getTitle() +","+temp.getContens()+","+temp.getPassword()+","+temp.getWriter()+","+temp.getViewcount()+","+temp.getDate()+"\n";
-				outputStream.write(contents.getBytes());
-			}
-		}
-		catch(Exception e) {
-		}
-	}
-	// 게시물 불러오기
-	public static void load() {
+	public static void reply_remove(int num) {
 		
-		try {
-			FileInputStream inputStream = new FileInputStream("D:/bookDB.txt");
-			byte[] bytes = new byte[1024]; 
-			inputStream.read(bytes); 
-			String file = new String(bytes); 
-			String[]list = file.split("\n"); 
-			
-			
-			for(String temp : list) {
-				String[] filed = temp.split(",");
-				Board boards = new Board(filed[0], filed[1], filed[2], filed[3], Integer.parseInt(filed[4]), filed[5],null);
-				boardlist.add(boards);
-			}
-			
-		}
-		catch(Exception e) {
-		}
 		
+		System.out.println(replylist.get(num).getReply_writer() + "님 의 비밀번호 입력:");
+		String pw = scanner.next();
+		if(pw.equals(replylist.get(num).getReply_password())){
+			System.out.println("메세지)) 댓글을 삭제합니다.");
+			replylist.remove(num);
+		}
 	}
+
 }

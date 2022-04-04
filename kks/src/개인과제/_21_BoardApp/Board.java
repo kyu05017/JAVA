@@ -13,8 +13,6 @@ public class Board {
 	private int viewcount;
 	private String Date;
 	
-	private ArrayList<Reply> replylist = new ArrayList<>();
-	
 		//생성자
 	public Board() {
 	}
@@ -33,14 +31,13 @@ public class Board {
 
 	//게시물 수정
 	
-	public Board(String title, String contens, String password, String writer, int viewcount,String date, ArrayList<Reply> replylist) {
+	public Board(String title, String contens, String password, String writer, int viewcount,String date) {
 		this.title = title;
 		this.contens = contens;
 		this.password = password;
 		this.writer = writer;
 		this.viewcount = viewcount;
 		this.Date = date;
-		this.replylist = replylist;
 	}
 
 	public String getTitle() {
@@ -90,13 +87,4 @@ public class Board {
 	public void setDate(String date) {
 		Date = date;
 	}
-
-	public ArrayList<Reply> getReplylist() {
-		return replylist;
-	}
-
-	public void setReplylist(ArrayList<Reply> replylist) {
-		this.replylist = replylist;
-	}
-	
 }
