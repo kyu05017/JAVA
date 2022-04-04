@@ -59,15 +59,30 @@ public class Control {
 		replylist.add(reply);
 		DB.resave();
 	}
-	public static void reply_remove(int num) {
-		
-		
+	
+	public static boolean reply_remove(int num) {
 		System.out.println(replylist.get(num).getReply_writer() + "님 의 비밀번호 입력:");
 		String pw = scanner.next();
 		if(pw.equals(replylist.get(num).getReply_password())){
 			System.out.println("메세지)) 댓글을 삭제합니다.");
 			replylist.remove(num);
+			DB.resave();
+			return true;
 		}
+		return false;
+	}
+	public static boolean reply_change(int num) {	
+		System.out.println(replylist.get(num).getReply_writer() + "님 의 비밀번호 입력:");
+		String pw = scanner.next();
+		if(pw.equals(replylist.get(num).getReply_password())){
+			System.out.println("수정할 내용 : ");
+			scanner.nextLine();
+			String newcontents = scanner.nextLine();
+			replylist.get(num).setReply_contents(newcontents);
+			DB.resave();
+			return true;
+		}
+		return false;
 	}
 
 }

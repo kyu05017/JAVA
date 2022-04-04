@@ -120,15 +120,33 @@ public static void main(String[] args) {
 								
 								Control.reply_wwrite((num-1),reply_contents,reply_id,reply_pw);
 							}
-							else if(work2.equals("2")) {
-								
-							}
 							else if(work2.equals("3")) {
+								System.out.println("댓글수정))");
+								System.out.println("수정할 댓글 번호 입력");
+								int renum = scanner.nextInt();
+								if(renum > Control.replylist.size()+1) {
+									System.out.println("존재하지 않는 번호입니다.");
+								}
+								else {
+									boolean result = Control.reply_change(renum-1);
+									if(result != true) {
+										System.out.println("메세지) 삭제에 실패했습니다.");
+									}
+								}
+							}
+							else if(work2.equals("2")) {
 								System.out.println("댓글삭제))");
 								System.out.println("삭제할 댓글 번호 입력");
 								int renum = scanner.nextInt();
-								
-								Control.reply_remove(renum-1);
+								if(renum > Control.replylist.size()+1) {
+									System.out.println("존재하지 않는 번호입니다.");
+								}
+								else {
+									boolean result = Control.reply_remove(renum-1);
+									if(result != true) {
+										System.out.println("메세지) 삭제에 실패했습니다.");
+									}
+								}
 							}
 							
 						}
