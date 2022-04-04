@@ -12,7 +12,8 @@ public class 여러가지_입출력 {
 		// 입력
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		Scanner scanner = new Scanner(System.in);
-		
+		byte[] bytes1 = new byte[100];
+		int input = System.in.read(bytes1);
 		// 출력
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		
