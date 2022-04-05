@@ -8,8 +8,14 @@ public class Main {
 		
 		Scanner scanner = new Scanner(System.in);
 		Remote rc;
-		boolean power = false;
-		boolean option = false;
+		boolean tv_power = false;
+		boolean tv_option = false;
+		boolean Air_conditioner_power = false;
+		boolean Air_conditioner_option = false;
+		boolean Air_cleaner_power = false;
+		boolean Air_cleaner_option = false;
+		boolean DoorLock_power = false;
+		boolean Gas_valve_power = false;
 		int ch = 1;
 		int vol = 1;
 		
@@ -26,13 +32,13 @@ public class Main {
 					
 					rc = new Tv();
 					System.out.print("Ezen 스마트 티비");
-					if(power) {
+					if(tv_power) {
 						System.out.print("\t 전원 켜짐");
 					}
 					else {
 						System.out.print("\t 전원 꺼짐");
 					}
-					if(option) {
+					if(tv_option) {
 						System.out.print("\t 음소거  \n");
 					}
 					else {
@@ -43,16 +49,16 @@ public class Main {
 					
 
 					if(work2.equals("1") || work2.equals("전원")) {
-						if(power) {
-							boolean result = rc.turnOff(power);
-							power = result;
+						if(tv_power) {
+							boolean result = rc.turnOff(tv_power);
+							tv_power = result;
 						}
-						else if(power == false){
-							boolean result = rc.turnOn(power);
-							power = result;
+						else if(tv_power == false){
+							boolean result = rc.turnOn(tv_power);
+							tv_power = result;
 						}
 					}
-					if(power) {
+					if(tv_power) {
 						if(work2.equals("2") || work2.equals("다음채널")) {
 							rc.mainUp();
 							ch++;
@@ -78,7 +84,7 @@ public class Main {
 								vol++;
 							}
 							System.out.println("TV)) 현재볼륨 " + vol);
-							option = false;
+							tv_option = false;
 						}
 						else if(work2.equals("5") || work2.equals("볼륨다운")) {
 							if(vol == 0) {
@@ -89,16 +95,16 @@ public class Main {
 								vol--;
 							}
 							System.out.println("TV)) 현재볼륨 " + vol);
-							option = false;
+							tv_option = false;
 						}
 						else if(work2.equals("6") || work2.equals("음소거")) {
-							if(option) {
-								boolean result = rc.optionOff(option);
-								option = result;
+							if(tv_option) {
+								boolean result = rc.optionOff(tv_option);
+								tv_option = result;
 							}
-							else if(option == false){
-								boolean result = rc.optionOn(option);
-								option = result;
+							else if(tv_option == false){
+								boolean result = rc.optionOn(tv_option);
+								tv_option = result;
 							}
 						}
 					}
@@ -107,8 +113,7 @@ public class Main {
 					}
 					if(work2.equals("7") || work2.equals("메인메뉴")) {
 						System.out.println("메세지)) 메뉴로 돌아갑니다.");
-						power = false;
-						option = false;
+
 						ch = 1;
 						vol = 1;		
 						break;
@@ -122,13 +127,13 @@ public class Main {
 					rc = new Air_conditioner();
 					
 					System.out.print("Ezen 무풍 에어컨");
-					if(power) {
+					if(Air_conditioner_power) {
 						System.out.print("\t 전원 켜짐");
 					}
 					else {
 						System.out.print("\t 전원 꺼짐");
 					}
-					if(option) {
+					if(Air_conditioner_option) {
 						System.out.print("\t 무풍모드  \n");
 					}
 					else {
@@ -139,18 +144,18 @@ public class Main {
 					
 
 					if(work2.equals("1") || work2.equals("전원")) {
-						if(power) {
-							boolean result = rc.turnOff(power);
-							power = result;
+						if(Air_conditioner_power) {
+							boolean result = rc.turnOff(Air_conditioner_power);
+							Air_conditioner_power = result;
 						}
-						else if(power == false){
-							boolean result = rc.turnOn(power);
-							power = result;
+						else if(Air_conditioner_power == false){
+							boolean result = rc.turnOn(Air_conditioner_power);
+							Air_conditioner_power = result;
 							vol = 1;
 						}
 						
 					}
-					if(power) {
+					if(Air_conditioner_power) {
 						if(work2.equals("2") || work2.equals("온도업")) {
 							if(ch >= 30) {
 								System.out.println("에어컨)) 최고 온도 입니다.");
@@ -180,7 +185,7 @@ public class Main {
 								rc.subUp();
 							}
 							System.out.println("에어컨)) 현재풍량 " + vol);
-							option = false;
+							Air_conditioner_option = false;
 						}
 						else if(work2.equals("5") || work2.equals("풍량다운")) {							
 							if(vol == 0) {
@@ -191,16 +196,16 @@ public class Main {
 								rc.subDown();
 							}
 							System.out.println("에어컨)) 현재풍량 " + vol);
-							option = false;
+							Air_conditioner_option = false;
 						}
 						else if(work2.equals("6") || work2.equals("무풍")) {
-							if(option) {
-								boolean result = rc.optionOff(option);
-								option = result;
+							if(Air_conditioner_option) {
+								boolean result = rc.optionOff(Air_conditioner_option);
+								Air_conditioner_option = result;
 							}
-							else if(option == false){
-								boolean result = rc.optionOn(option);
-								option = result;
+							else if(Air_conditioner_option == false){
+								boolean result = rc.optionOn(Air_conditioner_option);
+								Air_conditioner_option = result;
 							}						}
 					}
 					else {
@@ -208,8 +213,6 @@ public class Main {
 					}
 					if(work2.equals("7") || work2.equals("메인메뉴")) {
 						System.out.println("메세지)) 메뉴로 돌아갑니다.");
-						power = false;
-						option = false;
 						ch = 1;
 						vol = 1;		
 						break;
@@ -221,13 +224,13 @@ public class Main {
 					rc = new Air_cleaner();
 					ch = 0;
 					System.out.print("Ezen 공기청정기");
-					if(power) {
+					if(Air_cleaner_power) {
 						System.out.print("\t 전원 켜짐");
 					}
 					else {
 						System.out.print("\t 전원 꺼짐");
 					}
-					if(option) {
+					if(Air_cleaner_option) {
 						System.out.print("\t 자동모드  \n");
 					}
 					else {
@@ -238,18 +241,18 @@ public class Main {
 					
 
 					if(work2.equals("1") || work2.equals("전원")) {
-						if(power) {
-							boolean result = rc.turnOff(power);
-							power = result;
+						if(Air_cleaner_power) {
+							boolean result = rc.turnOff(Air_cleaner_power);
+							Air_cleaner_power = result;
 						}
-						else if(power == false){
-							boolean result = rc.turnOn(power);
-							power = result;
+						else if(Air_cleaner_power == false){
+							boolean result = rc.turnOn(Air_cleaner_power);
+							Air_cleaner_power = result;
 							vol = 1;
 						}
 						
 					}
-					if(power) {
+					if(Air_cleaner_power) {
 						if(work2.equals("2") || work2.equals("온도업")) {
 							if(ch >= 11) {
 								System.out.println("공기청정기)) 최고 풍량 입니다.");
@@ -271,13 +274,13 @@ public class Main {
 							System.out.println("공기청정기)) 현재 풍량 " + ch);
 						}
 						else if(work2.equals("4") || work2.equals("자동")) {
-							if(option) {
-								boolean result = rc.optionOff(option);
-								option = result;
+							if(Air_cleaner_option) {
+								boolean result = rc.optionOff(Air_cleaner_option);
+								Air_cleaner_option = result;
 							}
-							else if(option == false){
-								boolean result = rc.optionOn(option);
-								option = result;
+							else if(Air_cleaner_option == false){
+								boolean result = rc.optionOn(Air_cleaner_option);
+								Air_cleaner_option = result;
 							}						
 						}
 					}
@@ -286,8 +289,6 @@ public class Main {
 					}
 					if(work2.equals("5") || work2.equals("메인메뉴")) {
 						System.out.println("메세지)) 메뉴로 돌아갑니다.");
-						power = false;
-						option = false;
 						ch = 1;
 						vol = 1;		
 						break;
@@ -298,7 +299,7 @@ public class Main {
 				while(true) {
 					rc = new DoorLock();
 					System.out.print("Ezen 도어락");
-					if(power) {
+					if(DoorLock_power) {
 						System.out.print("\t 도어락 잠김 \n");
 					}
 					else {
@@ -310,23 +311,21 @@ public class Main {
 					
 
 					if(work2.equals("1") || work2.equals("전원")) {
-						if(power) {
-							boolean result = rc.turnOff(power);
-							power = result;
+						if(DoorLock_power) {
+							boolean result = rc.turnOff(DoorLock_power);
+							DoorLock_power = result;
 						}
-						else if(power == false){
-							boolean result2 = rc.turnOn(power);
-							power = result2;
+						else if(DoorLock_power == false){
+							boolean result2 = rc.turnOn(DoorLock_power);
+							DoorLock_power = result2;
 							Thread.sleep(5000);
-							boolean result = rc.turnOff(power);
-							power = result;
+							boolean result = rc.turnOff(DoorLock_power);
+							DoorLock_power = result;
 						}
 						
 					}
 					if(work2.equals("5") || work2.equals("메인메뉴")) {
 						System.out.println("메세지)) 메뉴로 돌아갑니다.");
-						power = false;
-						option = false;
 						ch = 1;
 						vol = 1;		
 						break;
@@ -338,7 +337,7 @@ public class Main {
 				while(true) {
 					rc = new Gas_valve();
 					System.out.print("Ezen 가스벨브");
-					if(power) {
+					if(Gas_valve_power) {
 						System.out.print("\t 가스벨브 열림 \n");
 					}
 					else {
@@ -350,20 +349,18 @@ public class Main {
 					
 
 					if(work2.equals("1") || work2.equals("전원")) {
-						if(power) {
-							boolean result = rc.turnOff(power);
-							power = result;
+						if(Gas_valve_power) {
+							boolean result = rc.turnOff(Gas_valve_power);
+							Gas_valve_power = result;
 						}
-						else if(power == false){
-							boolean result2 = rc.turnOn(power);
-							power = result2;
+						else if(Gas_valve_power == false){
+							boolean result2 = rc.turnOn(Gas_valve_power);
+							Gas_valve_power = result2;
 						}
 						
 					}
 					if(work2.equals("5") || work2.equals("메인메뉴")) {
 						System.out.println("메세지)) 메뉴로 돌아갑니다.");
-						power = false;
-						option = false;
 						ch = 1;
 						vol = 1;		
 						break;

@@ -3,6 +3,7 @@ package 개인과제._20_PC방_ver2;
 import java.text.DecimalFormat;
 import java.util.Hashtable;
 
+
 public class Main {
 	
 	public static void main(String[] args) {
@@ -191,25 +192,27 @@ public class Main {
 											System.out.println("1) 결제 2) 취소");
 											int ch = Control.scanner.nextInt();
 											if(ch == 1) {
-												System.out.println("지불할 금액을 입력하세요.");
+												System.out.println("메세지)) 지불할 금액을 입력하세요.");
 												int pay_money = Control.scanner.nextInt();
 												if(pay_money < totalsales) {
 													System.out.println("결제 금액 부족");
+													break;
 												}
 												else if(pay_money >= totalsales) {
 													if(pay_money - totalsales == 0) {
-														System.out.println("결제가 완료 되었습니다.");
+														System.out.println("메세지)) 결제가 완료 되었습니다.");
 													}
 													else {
 														String change = df2.format(pay_money - totalsales);
-														System.out.println("결제가 완료되었습니다. 거스름돈은 "+change+ "입니다.");	
+														System.out.println("메세지)) 결제가 완료되었습니다. 거스름돈은 "+change+ "입니다.");	
 													}
-													
+													Control.customerlist.clear();
 													break;
 												}
 											}
 											else if (ch == 2) {
-												System.out.println("결제를 취소합니다.");
+												System.out.println("메세지)) 결제를 취소합니다.");
+												con.buy_cancle();
 												break;
 											}
 										}//try end
@@ -218,7 +221,7 @@ public class Main {
 										}
 									}
 									else {
-										System.out.println(Control.saleItem.get(itemNum).getName()+" 삼품을 담았습니다.");
+										System.out.println("메세지)) "+Control.saleItem.get(itemNum).getName()+" 삼품을 담았습니다.");
 										con.buy(id,itemNum);
 									}
 			

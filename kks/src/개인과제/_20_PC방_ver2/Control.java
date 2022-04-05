@@ -7,6 +7,7 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+
 public class Control {
 	
 	static ArrayList<Member> memberList = new ArrayList<>();
@@ -1122,6 +1123,31 @@ public class Control {
 			System.out.println("ªÛ«∞ "+temp+ " " + new_money);
 		}
 	}
-	
+	public void buy_cancle() {
+		Hashtable <String, Integer> map = new Hashtable<>();
+		for(Customer temp : customerlist) {
+			System.out.println(temp.getC_Name() + " " + temp.getC_Item());
+		}
+		for (Customer temp : customerlist) {
+			int ticketfee = 0; 
+			for (Customer temp2 : customerlist) {
+				if (temp.getC_Name().equals(temp2.getC_Name())) {
+					ticketfee += temp.getC_Item();
+				}
+			}
+			map.put(temp.getC_Name(), ticketfee);
+		}
+		for(Product temp : saleItem) {
+			for(String temp2 : map.keySet()) {
+				if(temp.getName().equals(temp2)) {
+					System.out.println(map.get(temp2));
+					System.out.println(temp.getItem());
+					temp.setItem(temp.getItem()+map.get(temp2));
+					DB.itemSave();
+					break;
+				}
+			}
+		}
+	}
 	
 }

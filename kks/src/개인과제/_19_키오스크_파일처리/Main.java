@@ -80,6 +80,7 @@ public class Main {
 										int pay_money = Control.scanner.nextInt();
 										if(pay_money < totalsales) {
 											System.out.println("결제 금액 부족");
+											break;
 										}
 										else if(pay_money >= totalsales) {
 											if(pay_money - totalsales == 0) {
@@ -91,12 +92,13 @@ public class Main {
 												System.out.println("결제가 완료되었습니다. 거스름돈은 "+change+ "입니다.");	
 												
 											}
-											
+											Control.customerlist.clear();
 											break;
 										}
 									}
 									else if (ch == 2) {
 										System.out.println("결제를 취소합니다.");
+										con.buy_cancle();
 										break;
 									}
 								}//try end
@@ -107,6 +109,7 @@ public class Main {
 							else {
 								System.out.println(Control.saleItem.get(itemNum).getName()+" 삼품을 담았습니다.");
 								con.buy(itemNum);
+								
 							}
 	
 						}
@@ -148,7 +151,7 @@ public class Main {
 					System.out.println("메세지)) 관리자외 사용금지");
 				}
 			}
-			else if(work.equals("4") || work.equals("종료")) {
+			else if(work.equals("3") || work.equals("종료")) {
 				System.out.println("메세지)) 프로그램을 종료합니다.");
 				break;
 			}
