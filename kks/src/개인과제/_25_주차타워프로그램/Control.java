@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Hashtable;
 import java.util.Scanner;
 
 public class Control {
@@ -48,16 +49,20 @@ public class Control {
 			if(carlist.get(i).getCarNum().equals(CarNum)) {
 				
 				String[] now_date = date.split("-");
-				
 				String[] car_date = carlist.get(i).getCardate().split("-");
 				
 				System.out.println("출차날짜 : " + now_date[1] + "월" + now_date[2] + "일");
 				System.out.println("출차시간 : " + now_date[3] + "시" + now_date[4] + "분");
 				
+				String a = now_date[0]+now_date[1]+now_date[2];
+				String b = car_date[0]+car_date[1]+car_date[2];
+				
+				int now_month  = Integer.parseInt(now_date[1]);
 				int now_day  = Integer.parseInt(now_date[2]);
 				int now_hour = Integer.parseInt(now_date[3]);
 				int now_min = Integer.parseInt(now_date[4]);
 				
+				int car_month  = Integer.parseInt(car_date[1]);
 				int car_day  = Integer.parseInt(car_date[2]);
 				int car_hour = Integer.parseInt(car_date[3]);
 				int car_min = Integer.parseInt(car_date[4]);
@@ -67,40 +72,66 @@ public class Control {
 				
 				int total_time = now_all_min - car_all_min;
 				
+//				System.out.println("1 " + a);
+//				System.out.println("2 " + b);
+//				System.out.println("3 " + now_month);
+//				System.out.println("4 " + now_day);
+//				System.out.println("5 " + now_hour);
+//				System.out.println("6 " + now_min);
+//				System.out.println("7 " + car_month);
+//				System.out.println("8 " + car_day);
+//				System.out.println("9 " + car_hour);
+//				System.out.println("10 " + car_min);
+//				System.out.println("11 " + now_all_min);
+//				System.out.println("12 " + car_all_min);
+//				System.out.println("13 " + total_time);
+
 				int money = 0;
 				
-				if(now_day == car_day) {
-					if(total_time < 30) {
-						System.out.println("회차 차량입니다.");
+				if(now_date != null && car_date!= null) {
+					if(a.equals(b)) {
+						if(total_time < 30) {
+							System.out.println("회차 차량입니다.");
+						}
+						else if(total_time >= 30 && total_time < 480) {
+							int todaypay = ((((now_all_min - car_all_min)-30)/10)*1000);
+							money = todaypay;
+							DecimalFormat df = new DecimalFormat("#,##0원");
+							System.out.print("결제하실 금액은  ");
+							System.out.println( df.format( todaypay ) );
+							
+						}
+						else if(total_time >=480) {
+							int todaypay = 50000;;
+							money = todaypay;
+							System.out.println(total_time);
+							DecimalFormat df = new DecimalFormat("#,##0원");
+							System.out.print("결제하실 금액은  ");
+							System.out.println( df.format( todaypay ) );
+						}
 					}
-					else if(total_time >= 30 && total_time < 480) {
-						int todaypay = ((((now_all_min - car_all_min)-30)/10)*1000);
-						money = todaypay;
-						DecimalFormat df = new DecimalFormat("#,##0원");
-						System.out.print("결제하실 금액은  ");
-						System.out.println( df.format( todaypay ) );
-						
+					else {
+						// 같은 달인 경우
+						if(now_month == car_month) {
+							int c = now_day - car_day;
+							int todaypay = c*50000;
+							money = todaypay;
+							System.out.println(c+"일");
+							DecimalFormat df = new DecimalFormat("#,##0원");
+							System.out.print("결제하실 금액은  ");
+							System.out.println( df.format( todaypay ) );
+						}
+						else if(now_month != car_month){
+							//int d = now_month - car_month;
+							int e = 30 - car_day;
+							int f = e + now_day;
+							int todaypay = f*50000;
+							System.out.println(f+"일");
+							DecimalFormat df = new DecimalFormat("#,##0원");
+							System.out.print("결제하실 금액은  ");
+							System.out.println( df.format( todaypay ) );
+						}
 					}
-					else if(total_time >=480) {
-						int todaypay = 50000;;
-						money = todaypay;
-						System.out.println(total_time);
-						DecimalFormat df = new DecimalFormat("#,##0원");
-						System.out.print("결제하실 금액은  ");
-						System.out.println( df.format( todaypay ) );
-					
-					}
-				}
-				else if(now_day > car_day){
-					System.out.println(now_day);
-					System.out.println(car_day);
-					int todaypay = ((now_day - car_day)*50000);
-					money = todaypay;
-					DecimalFormat df = new DecimalFormat("#,##0원");
-					System.out.println("결제하실 금액은");
-					System.out.println( df.format( todaypay ) );
-
-					
 				}
 				DaySale saveday = new DaySale(money, date);
 				salelist.add(saveday);
@@ -146,68 +177,42 @@ public class Control {
 		}
 		return 0;
 	}
-	
-	
-	
-	public void sales(int year,int month) {
+	public void salelist(int a, int b) {
+		Hashtable <String, Integer> map = new Hashtable<>();
+		DecimalFormat df2 = new DecimalFormat("#,##0원");
+		DecimalFormat df3 = new DecimalFormat("0000");
+		String new_year = df3.format(a);
 		
-		DecimalFormat ny = new DecimalFormat("0000"); 
-		String A = ny.format(year);
-		DecimalFormat nm = new DecimalFormat("00"); 
-		String B = nm.format(month);
-		String no = "매출 없음";
-		calendar.set(year, month-1,1); 
-		int start_week = calendar.get(Calendar.DAY_OF_WEEK) ;
-		int end_day = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
-		int total_day_money = 0;
-		boolean aaa = true;
-		System.out.println("--------------------------------------------------------");
-		System.out.println(year + "년 "+ month+"월의 매출현황");
-		System.out.println("일\t월\t화\t수\t목\t금\t토");
-		for(int i =0; i < salelist.size(); i++) {
-			String[] saved_date = salelist.get(i).getSavedate().split("-");
-			if(saved_date[0].equals(A) && saved_date[1].equals(B)) {
-				total_day_money += salelist.get(i).getTodaymoney();
-			}
-			
-		}	
-		for(int i =1; i < start_week; i++ ) {
-				System.out.print("\t");
-			}
-		for(int j = 1; j <= end_day; j++) {
-			DecimalFormat aa = new DecimalFormat("00일"); 
-			String a = aa.format(j);
-			System.out.print(a+"\t");
-			if(start_week%7 == 0) {
-				System.out.println();
-			}
-			start_week++;
-		}
-		System.out.println();
-		System.out.println();
-		System.out.println("수익날자))");
+		DecimalFormat df4 = new DecimalFormat("00");
+		String new_month = df4.format(b);
 		for(DaySale temp : salelist) {
-			String[] saved_date = temp.getSavedate().split("-");
-			int save_day = Integer.parseInt(saved_date[2]);
-			
-			if(temp.getTodaymoney() > 0) {
-				DecimalFormat df = new DecimalFormat("#,##0원");
-				if(saved_date[0].equals(A) && saved_date[1].equals(B)) {
-					System.out.println(save_day+"일 "+df.format(temp.getTodaymoney() ));
+			int ticketfee = 0; 
+			for(DaySale temp2 : salelist) {
+				if(temp.getSavedate().equals(temp2.getSavedate())){
+					ticketfee += temp.getTodaymoney();
 				}
-				
+			}
+			map.put(temp.getSavedate(), ticketfee);
+		}
+		for(String temp : map.keySet()) {
+			String new_money = df2.format(map.get(temp));
+			String[] date = temp.split("-");
+			if(date[0].equals(new_year) ) {
+				if(date[1].equals(new_month)) {
+					System.out.println(temp+ " " + new_money);
+				}
 			}
 			else {
-				aaa = false;
+				System.out.println("메세지) 해당 달에 매출이 없습니다.");
+				break;
 			}
 		}
-
-
-		System.out.println();
-		
-		System.out.println(month+"월 총합계: " +total_day_money + "원");
-		total_day_money = 0;
-		System.out.println();
-		System.out.println("--------------------------------------------------------");
+		//총 매출액 표시
+		int totalsales = 0;
+		for (DaySale temp : salelist) {
+			 totalsales += temp.getTodaymoney();
+		}
+		String new_money = df2.format(totalsales);
+		System.out.println("전채 총 매출액 : " + new_money);
 	}
 }
