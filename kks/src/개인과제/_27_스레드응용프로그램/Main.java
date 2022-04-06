@@ -8,6 +8,16 @@ public class Main {
 			
 			System.out.println("책 읽어주기 프로그램");
 			
+			System.out.println("1) 실행 2) 종료");
+			String work = Control.scanner.next();
+			
+			if(work.equals("1")) {
+				
+			}
+			else if(work.equals("2")) {
+				System.out.println("종료합니다.");
+				break;
+			}
 		}
 	}
 }
