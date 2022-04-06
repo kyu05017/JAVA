@@ -4,7 +4,10 @@ public class Main {
 	
 	public static void main(String[] args) {
 		
-		
-		
+		while(true) {
+			
+			System.out.println("책 읽어주기 프로그램");
+			
+		}
 	}
 }
