@@ -13,9 +13,8 @@ public class Main {
 			
 			if(work.equals("1")) {
 				System.out.println("1. 아이유 Blueming");
-				System.out.println("2. ");
-				System.out.println("3.");
-				System.out.println("4.");
+				System.out.println("2. BTS Dynamite");
+				System.out.println("3. 버스커 버스커 벚꽃 엔딩");
 				
 				try {
 					int ch = Control.scanner.nextInt();
@@ -28,13 +27,13 @@ public class Main {
 							Control.song1();
 						}
 						if(ch == 2) {
-							
+							Control.song2();
 						}
 						if(ch == 3) {
-							
+							Control.song3();
 						}
-						if(ch == 4) {
-							
+						else {
+							System.out.println("메세지)) 존재하지 않는 곡입니다.");
 						}
 					}
 				}
