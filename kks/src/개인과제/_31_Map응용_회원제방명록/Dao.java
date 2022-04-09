@@ -35,7 +35,8 @@ public class Dao {
 				}
 				String[] filed = temp.split(",");
 				Dto_Member member = new Dto_Member(filed[0], filed[1]);
-				
+				Dto_Board board = new Dto_Board(filed[2], filed[3]);
+				Control.list.put(member,board);
 				i++;
 			}
 			inputStream.close();
