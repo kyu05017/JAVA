@@ -1,6 +1,6 @@
 package 개인과제._30_성적표정리프로그램;
 
-public class Student {
+public class Student implements Comparable<Student>{
 	private String name;
 	private int score;
 	
@@ -26,5 +26,10 @@ public class Student {
 	public void setScore(int score) {
 		this.score = score;
 	}
-	
+	@Override
+	public int compareTo(Student o) {
+		if(score > o.score) return 1;
+		else if (score == o.score) return 0;
+		else return -1;
+	}
 }
