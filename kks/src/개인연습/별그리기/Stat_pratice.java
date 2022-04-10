@@ -61,7 +61,16 @@ public class Stat_pratice {//c s
 		//3 - * - * -
 		//4 * - - - *
 		System.out.println("---------------------------------");
-	
+		
+		// ÇÏÆ® Âï±â?
+		int max = 3;
+		
+		for(int i = 0; i < max; i++) {
+			
+			for(int j = max - i; j > 0;j--) {
+				
+			}
+		}
 
 	}//m e
 }//c e
